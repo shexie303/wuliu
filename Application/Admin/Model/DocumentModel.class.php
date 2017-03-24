@@ -269,7 +269,7 @@ class DocumentModel extends Model{
     	$id = I('post.id');
         $cate = I('post.category_id');
         if(empty($id)){	//新增
-        	$status = 1;
+        	$status = 0;
         }else{				//更新
 			$status = $this->getFieldById($id, 'status');
 			//编辑草稿改变状态

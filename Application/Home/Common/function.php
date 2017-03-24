@@ -68,3 +68,9 @@ function get_nav_url($url){
     }
     return $url;
 }
+
+function qr_code($id){
+    $api = 'http://qr.topscan.com/api.php?bg=ffffff&fg=000000&gc=000000&el=l&w=132&m=2&text=';
+    $text = C('SITE_URL') . 'detail/' . $id;
+    return $api . $text;
+}

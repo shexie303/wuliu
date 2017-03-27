@@ -17,17 +17,17 @@
         </notempty>
         <!-- /子导航 -->
     </volist>
- <h3>
- 	<i class="icon <notin name="Think.ACTION_NAME"  value="mydocument,draftbox,examine">icon-fold</notin>"></i>
- 	个人中心
- </h3>
- 	<ul class="side-sub-menu <notin name="Think.ACTION_NAME"  value="mydocument,draftbox,examine">subnav-off</notin>">
- 		<li <eq name="Think.ACTION_NAME" value="mydocument">class="current"</eq>><a class="item" href="{:U('article/mydocument')}">我的文档</a></li>
- 		<eq name="show_draftbox" value="1">
- 		<li <eq name="Think.ACTION_NAME" value="draftbox">class="current"</eq>><a class="item" href="{:U('article/draftbox')}">草稿箱</a></li>
- 		</eq>
-		<li <eq name="Think.ACTION_NAME" value="draftbox">class="examine"</eq>><a class="item" href="{:U('article/examine')}">待审核</a></li>
- 	</ul>
+ <!--<h3>-->
+ 	<!--<i class="icon <notin name="Think.ACTION_NAME"  value="mydocument,draftbox,examine">icon-fold</notin>"></i>-->
+ 	<!--个人中心-->
+ <!--</h3>-->
+ 	<!--<ul class="side-sub-menu <notin name="Think.ACTION_NAME"  value="mydocument,draftbox,examine">subnav-off</notin>">-->
+ 		<!--<li <eq name="Think.ACTION_NAME" value="mydocument">class="current"</eq>><a class="item" href="{:U('article/mydocument')}">我的文档</a></li>-->
+ 		<!--<eq name="show_draftbox" value="1">-->
+ 		<!--<li <eq name="Think.ACTION_NAME" value="draftbox">class="current"</eq>><a class="item" href="{:U('article/draftbox')}">草稿箱</a></li>-->
+ 		<!--</eq>-->
+		<!--<li <eq name="Think.ACTION_NAME" value="updatepassword">class="current"</eq>><a class="item" href="{:U('user/updatepassword')}">修改密码</a></li>-->
+ 	<!--</ul>-->
 
     <volist name="nodes" id="sub_menu">
         <!-- 子导航 -->

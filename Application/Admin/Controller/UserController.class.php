@@ -36,51 +36,51 @@ class UserController extends AdminController {
         $this->display();
     }
 
-    /**
-     * 修改昵称初始化
-     * @author huajie <banhuajie@163.com>
-     */
-    public function updateNickname(){
-        $nickname = M('Member')->getFieldByUid(UID, 'nickname');
-        $this->assign('nickname', $nickname);
-        $this->meta_title = '修改昵称';
-        $this->display();
-    }
-
-    /**
-     * 修改昵称提交
-     * @author huajie <banhuajie@163.com>
-     */
-    public function submitNickname(){
-        //获取参数
-        $nickname = I('post.nickname');
-        $password = I('post.password');
-        empty($nickname) && $this->error('请输入昵称');
-        empty($password) && $this->error('请输入密码');
-
-        //密码验证
-        $User   =   new UserApi();
-        $uid    =   $User->login(UID, $password, 4);
-        ($uid == -2) && $this->error('密码不正确');
-
-        $Member =   D('Member');
-        $data   =   $Member->create(array('nickname'=>$nickname));
-        if(!$data){
-            $this->error($Member->getError());
-        }
-
-        $res = $Member->where(array('uid'=>$uid))->save($data);
-
-        if($res){
-            $user               =   session('user_auth');
-            $user['username']   =   $data['nickname'];
-            session('user_auth', $user);
-            session('user_auth_sign', data_auth_sign($user));
-            $this->success('修改昵称成功！');
-        }else{
-            $this->error('修改昵称失败！');
-        }
-    }
+//    /**
+//     * 修改昵称初始化
+//     * @author huajie <banhuajie@163.com>
+//     */
+//    public function updateNickname(){
+//        $nickname = M('Member')->getFieldByUid(UID, 'nickname');
+//        $this->assign('nickname', $nickname);
+//        $this->meta_title = '修改昵称';
+//        $this->display();
+//    }
+//
+//    /**
+//     * 修改昵称提交
+//     * @author huajie <banhuajie@163.com>
+//     */
+//    public function submitNickname(){
+//        //获取参数
+//        $nickname = I('post.nickname');
+//        $password = I('post.password');
+//        empty($nickname) && $this->error('请输入昵称');
+//        empty($password) && $this->error('请输入密码');
+//
+//        //密码验证
+//        $User   =   new UserApi();
+//        $uid    =   $User->login(UID, $password, 4);
+//        ($uid == -2) && $this->error('密码不正确');
+//
+//        $Member =   D('Member');
+//        $data   =   $Member->create(array('nickname'=>$nickname));
+//        if(!$data){
+//            $this->error($Member->getError());
+//        }
+//
+//        $res = $Member->where(array('uid'=>$uid))->save($data);
+//
+//        if($res){
+//            $user               =   session('user_auth');
+//            $user['username']   =   $data['nickname'];
+//            session('user_auth', $user);
+//            session('user_auth_sign', data_auth_sign($user));
+//            $this->success('修改昵称成功！');
+//        }else{
+//            $this->error('修改昵称失败！');
+//        }
+//    }
 
     /**
      * 修改密码初始化
@@ -200,8 +200,11 @@ class UserController extends AdminController {
         }
     }
 
-    public function add($username = '', $password = '', $repassword = '', $email = ''){
+    public function add($username = '', $password = '', $repassword = '', $email = '', $group = ''){
         if(IS_POST){
+            if(!in_array($group, array(1,2))){
+                $this->error('用户组不存在！');
+            }
             /* 检测密码 */
             if($password != $repassword){
                 $this->error('密码和重复密码不一致！');
@@ -215,6 +218,10 @@ class UserController extends AdminController {
                 if(!M('Member')->add($user)){
                     $this->error('用户添加失败！');
                 } else {
+                    if(!D('AuthGroup')->addToGroup($uid, $group)){
+                        $this->error('用户添加失败！请稍后再试');
+
+                    }
                     $this->success('用户添加成功！',U('index'));
                 }
             } else { //注册失败，显示错误信息

@@ -8,6 +8,8 @@
 // +----------------------------------------------------------------------
 
 namespace Home\Controller;
+use Admin\Model\AuthGroupModel;
+use Home\Model\MemberModel;
 use User\Api\UserApi;
 
 /**
@@ -41,8 +43,17 @@ class UserController extends HomeController {
             $User = new UserApi;
 			$uid = $User->register($username, $password, $email);
 			if(0 < $uid){ //注册成功
-				//TODO: 发送验证邮件
-				$this->success('注册成功！',U('login'));
+				//
+                $member = new MemberModel();
+                $info = $member->create(array('nickname' => $username, 'status' => 1));
+                $info['uid'] = $uid;
+                if($member->add($info)){
+                    $group = new AuthGroupModel();
+                    $group->addToGroup($uid, 2);
+                    $this->success('注册成功！即将跳转登录页面', U('Admin/Public/login'), 2);
+                }else{
+                    $this->error($this->showRegError());
+                }
 			} else { //注册失败，显示错误信息
 				$this->error($this->showRegError($uid));
 			}
@@ -54,6 +65,7 @@ class UserController extends HomeController {
 
 	/* 登录页面 */
 	public function login($username = '', $password = '', $verify = ''){
+        header('Location: ' . U('Admin/Public/login'));
 		if(IS_POST){ //登录验证
 			/* 检测验证码 */
 			if(!check_verify($verify)){
@@ -121,7 +133,7 @@ class UserController extends HomeController {
 			case -9:  $error = '手机格式不正确！'; break;
 			case -10: $error = '手机被禁止注册！'; break;
 			case -11: $error = '手机号被占用！'; break;
-			default:  $error = '未知错误';
+			default:  $error = '未知错误,请稍后再试';
 		}
 		return $error;
 	}

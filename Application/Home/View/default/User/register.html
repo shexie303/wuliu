@@ -80,7 +80,10 @@
 
     		function success(data){
     			if(data.status){
-    				window.location.href = data.url;
+                    self.find(".Validform_checktip").text(data.info);
+                    setTimeout(function(){
+                        window.location.href = data.url;
+                    },1500);
     			} else {
     				self.find(".Validform_checktip").text(data.info);
     				//刷新验证码

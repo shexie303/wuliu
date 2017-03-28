@@ -31,38 +31,38 @@ class ArticleController extends AdminController {
      *
      * @author 朱亚杰  <xcoolcc@gmail.com>
      */
-    protected function checkDynamic(){
-        if(IS_ROOT){
-            return true;//管理员允许访问任何页面
-        }
-        $cates = AuthGroupModel::getAuthCategories(UID);
-        switch(strtolower(ACTION_NAME)){
-            case 'index':   //文档列表
-                $cate_id =  I('cate_id');
-                break;
-            case 'edit':    //编辑
-            case 'update':  //更新
-                $doc_id  =  I('id');
-                $cate_id =  M('Document')->where(array('id'=>$doc_id))->getField('category_id');
-                break;
-            case 'setstatus': //更改状态
-            case 'permit':    //回收站
-                $doc_id  =  (array)I('ids');
-                $cate_id =  M('Document')->where(array('id'=>array('in',$doc_id)))->getField('category_id',true);
-                $cate_id =  array_unique($cate_id);
-                break;
-        }
-        if(!$cate_id){
-            return null;//不明,需checkRule
-        }elseif( !is_array($cate_id) && in_array($cate_id,$cates) ) {
-            return true;//有权限
-        }elseif( is_array($cate_id) && $cate_id==array_intersect($cate_id,$cates) ){
-            return true;//有权限
-        }else{
-            return false;//无权限
-        }
-        return null;//不明,需checkRule
-    }
+//    protected function checkDynamic(){
+//        if(IS_ROOT){
+//            return true;//管理员允许访问任何页面
+//        }
+//        $cates = AuthGroupModel::getAuthCategories(UID);
+//        switch(strtolower(ACTION_NAME)){
+//            case 'index':   //文档列表
+//                $cate_id =  I('cate_id');
+//                break;
+//            case 'edit':    //编辑
+//            case 'update':  //更新
+//                $doc_id  =  I('id');
+//                $cate_id =  M('Document')->where(array('id'=>$doc_id))->getField('category_id');
+//                break;
+//            case 'setstatus': //更改状态
+//            case 'permit':    //回收站
+//                $doc_id  =  (array)I('ids');
+//                $cate_id =  M('Document')->where(array('id'=>array('in',$doc_id)))->getField('category_id',true);
+//                $cate_id =  array_unique($cate_id);
+//                break;
+//        }
+//        if(!$cate_id){
+//            return null;//不明,需checkRule
+//        }elseif( !is_array($cate_id) && in_array($cate_id,$cates) ) {
+//            return true;//有权限
+//        }elseif( is_array($cate_id) && $cate_id==array_intersect($cate_id,$cates) ){
+//            return true;//有权限
+//        }else{
+//            return false;//无权限
+//        }
+//        return null;//不明,需checkRule
+//    }
 
     /**
      * 显示左边菜单，进行权限控制
@@ -159,7 +159,6 @@ class ArticleController extends AdminController {
 
         //获取模型信息
         $model = M('Model')->getByName('document');
-
         //解析列表规则
         $fields = array();
         $grids  = preg_split('/[;\r\n]+/s', $model['list_grid']);
@@ -213,7 +212,7 @@ class ArticleController extends AdminController {
                         }
                 }
             }
-
+            //var_dump($grids);
             $this->assign('list_grids', $grids);
             $this->assign('model_list', $model);
             // 记录当前列表页的cookie
@@ -327,7 +326,9 @@ class ArticleController extends AdminController {
         if($map['pid']){ // 子文档列表忽略分类
             unset($map['category_id']);
         }
-
+        if(GROUP_ID == 2){
+            $map['uid'] = UID;
+        }
         $list = $this->lists($Document,$map,'level DESC,id DESC');
         int_to_string($list);
         if($map['pid']){

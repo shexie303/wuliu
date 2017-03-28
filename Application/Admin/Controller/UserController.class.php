@@ -21,6 +21,9 @@ class UserController extends AdminController {
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function index(){
+        if(GROUP_ID == 2){
+            header('Location: ' . U('User/recharge'));
+        }
         $nickname       =   I('nickname');
         $map['status']  =   array('egt',0);
         if(is_numeric($nickname)){

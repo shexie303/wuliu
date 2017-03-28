@@ -9,13 +9,12 @@
 	<!-- 标题 -->
 	<div class="main-title">
 		<h2>
-		文档列表({$_total}) [
 		<volist name="rightNav" id="nav">
-		<a href="{:U('article/index','cate_id='.$nav['id'])}">{$nav.title}</a>
+		    {$nav.title}
 			<if condition="count($rightNav) gt $i"><i class="ca"></i></if>
 		</volist>
 		<present name="article">：<a href="{:U('article/index','cate_id='.$cate_id.'&pid='.$article['id'])}">{$article.title}</a></present>
-		]
+        ({$_total})
 		<eq name="allow" value="0">（该分类不允许发布内容）</eq>
 		</h2>
 	</div>
@@ -41,49 +40,52 @@
 					</button>
 				</gt>
 			</div>
-            <button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>1))}">启 用</button>
-			<button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>0))}">禁 用</button>
-			<button class="btn ajax-post" target-form="ids" url="{:U("Article/move")}">移 动</button>
-			<button class="btn ajax-post" target-form="ids" url="{:U("Article/copy")}">复 制</button>
-			<button class="btn ajax-post" target-form="ids" hide-data="true" url="{:U("Article/paste")}">粘 贴</button>
-			<input type="hidden" class="hide-data" name="cate_id" value="{$cate_id}"/>
-			<input type="hidden" class="hide-data" name="pid" value="{$pid}"/>
-			<button class="btn ajax-post confirm" target-form="ids" url="{:U("Article/setStatus",array("status"=>-1))}">删 除</button>
-			<!-- <button class="btn document_add" url="{:U('article/batchOperate',array('cate_id'=>$cate_id,'pid'=>I('pid',0)))}">导入</button> -->
-			<button class="btn list_sort" url="{:U('sort',array('cate_id'=>$cate_id,'pid'=>I('pid',0)),'')}">排序</button>
+            <if condition="GROUP_ID neq 2">
+                <button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>1))}">启 用</button>
+                <button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>0))}">禁 用</button>
+                <button class="btn ajax-post" target-form="ids" url="{:U("Article/move")}">移 动</button>
+                <button class="btn ajax-post" target-form="ids" url="{:U("Article/copy")}">复 制</button>
+                <button class="btn ajax-post" target-form="ids" hide-data="true" url="{:U("Article/paste")}">粘 贴</button>
+                <input type="hidden" class="hide-data" name="cate_id" value="{$cate_id}"/>
+                <input type="hidden" class="hide-data" name="pid" value="{$pid}"/>
+                <button class="btn ajax-post confirm" target-form="ids" url="{:U("Article/setStatus",array("status"=>-1))}">删 除</button>
+                <!-- <button class="btn document_add" url="{:U('article/batchOperate',array('cate_id'=>$cate_id,'pid'=>I('pid',0)))}">导入</button> -->
+                <button class="btn list_sort" url="{:U('sort',array('cate_id'=>$cate_id,'pid'=>I('pid',0)),'')}">排序</button>
+            </if>
 		</div>
-
-		<!-- 高级搜索 -->
-		<div class="search-form fr cf">
-			<div class="sleft">
-				<div class="drop-down">
-					<span id="sch-sort-txt" class="sort-txt" data="{$status}"><if condition="get_status_title($status) eq ''">所有<else/>{:get_status_title($status)}</if></span>
-					<i class="arrow arrow-down"></i>
-					<ul id="sub-sch-menu" class="nav-list hidden">
-						<li><a href="javascript:;" value="">所有</a></li>
-						<li><a href="javascript:;" value="1">正常</a></li>
-						<li><a href="javascript:;" value="0">禁用</a></li>
-						<li><a href="javascript:;" value="2">待审核</a></li>
-					</ul>
-				</div>
-				<input type="text" name="title" class="search-input" value="{:I('title')}" placeholder="请输入标题文档">
-				<a class="sch-btn" href="javascript:;" id="search" url="{:U('article/index','pid='.I('pid',0).'&cate_id='.$cate_id,false)}"><i class="btn-search"></i></a>
-			</div>
-            <div class="btn-group-click adv-sch-pannel fl">
-                <button class="btn">高 级<i class="btn-arrowdown"></i></button>
-                <div class="dropdown cf">
-                	<div class="row">
-                		<label>更新时间：</label>
-                		<input type="text" id="time-start" name="time-start" class="text input-2x" value="" placeholder="起始时间" /> -
-                		<input type="text" id="time-end" name="time-end" class="text input-2x" value="" placeholder="结束时间" />
-                	</div>
-                	<div class="row">
-                		<label>创建者：</label>
-                		<input type="text" name="nickname" class="text input-2x" value="" placeholder="请输入用户名">
-                	</div>
+        <if condition="GROUP_ID neq 2">
+            <!-- 高级搜索 -->
+            <div class="search-form fr cf">
+                <div class="sleft">
+                    <div class="drop-down">
+                        <span id="sch-sort-txt" class="sort-txt" data="{$status}"><if condition="get_status_title($status) eq ''">所有<else/>{:get_status_title($status)}</if></span>
+                        <i class="arrow arrow-down"></i>
+                        <ul id="sub-sch-menu" class="nav-list hidden">
+                            <li><a href="javascript:;" value="">所有</a></li>
+                            <li><a href="javascript:;" value="1">正常</a></li>
+                            <li><a href="javascript:;" value="0">禁用</a></li>
+                            <!--<li><a href="javascript:;" value="2">待审核</a></li>-->
+                        </ul>
+                    </div>
+                    <input type="text" name="title" class="search-input" value="{:I('title')}" placeholder="请输入标题文档">
+                    <a class="sch-btn" href="javascript:;" id="search" url="{:U('article/index','pid='.I('pid',0).'&cate_id='.$cate_id,false)}"><i class="btn-search"></i></a>
+                </div>
+                <div class="btn-group-click adv-sch-pannel fl">
+                    <button class="btn">高 级<i class="btn-arrowdown"></i></button>
+                    <div class="dropdown cf">
+                        <div class="row">
+                            <label>更新时间：</label>
+                            <input type="text" id="time-start" name="time-start" class="text input-2x" value="" placeholder="起始时间" /> -
+                            <input type="text" id="time-end" name="time-end" class="text input-2x" value="" placeholder="结束时间" />
+                        </div>
+                        <div class="row">
+                            <label>创建者：</label>
+                            <input type="text" name="nickname" class="text input-2x" value="" placeholder="请输入用户名">
+                        </div>
+                    </div>
                 </div>
             </div>
-		</div>
+        </if>
 	</div>
 
 	<!-- 数据表格 -->
@@ -98,6 +100,7 @@
                     <volist name="list_grids" id="field">
                         <th>{$field.title}</th>
                     </volist>
+                    <th>操作</th>
                 </tr>
             </thead>
 
@@ -109,6 +112,10 @@
                         <volist name="list_grids" id="grid">
                             <td>{:get_list_field($data,$grid,$model_list)}</td>
                         </volist>
+                        <td>
+                            <a href="/index.php?s=/Admin/Article/edit/id/{$data['id']}.html">编辑</a>
+                            <a href="/index.php?s=/Admin/Article/setstatus/status/-1/ids/{$data['id']}.html">删除</a>
+                        </td>
                     </tr>
                 </volist>
             </tbody>

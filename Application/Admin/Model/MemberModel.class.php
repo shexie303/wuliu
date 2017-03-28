@@ -70,11 +70,13 @@ class MemberModel extends Model {
             'last_login_ip'   => get_client_ip(1),
         );
         $this->save($data);
+        $group = D('AuthGroup')->getUserGroup($user['uid']);
 
         /* 记录登录SESSION和COOKIES */
         $auth = array(
             'uid'             => $user['uid'],
             'username'        => $user['nickname'],
+            'group_id'        => $group[0]['group_id'],
             'last_login_time' => $user['last_login_time'],
         );
 

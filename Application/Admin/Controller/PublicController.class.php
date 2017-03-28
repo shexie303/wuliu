@@ -34,8 +34,8 @@ class PublicController extends \Think\Controller {
                 /* 登录用户 */
                 $Member = D('Member');
                 if($Member->login($uid)){ //登录用户
-                    $group = D('AuthGroup')->getUserGroup($uid);
-                    if(is_administrator() || $group[0]['group_id'] == 1){
+                    $user_auth = session('user_auth');
+                    if(is_administrator() || $user_auth['group_id'] == 1){
                         $this->success('登录成功！', U('Index/index'));
                     }else{
                         $this->success('登录成功！', U('article/index?cate_id=2'));

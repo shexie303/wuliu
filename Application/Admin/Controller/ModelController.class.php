@@ -26,7 +26,7 @@ class ModelController extends AdminController {
      *
      * @author 朱亚杰  <xcoolcc@gmail.com>
      */
-    protected function checkDynamic(){
+    /*protected function checkDynamic(){
         if(IS_ROOT){
             return true;//管理员允许访问任何页面
         }
@@ -57,7 +57,7 @@ class ModelController extends AdminController {
         }
 
         return null;//不明,需checkRule
-    }
+    }*/
 
     /**
      * 模型管理首页

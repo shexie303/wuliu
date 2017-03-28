@@ -13,7 +13,7 @@
  */
 return array(
     /* 数据缓存设置 */
-    'DATA_CACHE_PREFIX'    => 'onethink_', // 缓存前缀
+    'DATA_CACHE_PREFIX'    => 'wuliu_', // 缓存前缀
     'DATA_CACHE_TYPE'      => 'File', // 数据缓存类型
 
     /* 文件上传相关配置 */
@@ -92,8 +92,8 @@ return array(
     ),
 
     /* SESSION 和 COOKIE 配置 */
-    'SESSION_PREFIX' => 'onethink_admin', //session前缀
-    'COOKIE_PREFIX'  => 'onethink_admin_', // Cookie前缀 避免冲突
+    'SESSION_PREFIX' => 'wuliu_admin', //session前缀
+    'COOKIE_PREFIX'  => 'wuliu_admin_', // Cookie前缀 避免冲突
     'VAR_SESSION_ID' => 'session_id',	//修复uploadify插件无法传递session_id的bug
 
     /* 后台错误页面模板 */

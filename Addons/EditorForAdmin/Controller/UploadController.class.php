@@ -9,6 +9,7 @@
 
 namespace Addons\EditorForAdmin\Controller;
 use Home\Controller\AddonsController;
+use Think\Image\Driver\Gd;
 use Think\Upload;
 
 class UploadController extends AddonsController{
@@ -26,7 +27,12 @@ class UploadController extends AddonsController{
 		$info   = $this->uploader->upload($_FILES);
 		if($info){
 			$url = C('EDITOR_UPLOAD.rootPath').$info['imgFile']['savepath'].$info['imgFile']['savename'];
-			$url = str_replace('./', '/', $url);
+            /*添加水印开始*/
+            $image = new \Think\Image();
+            $thumb_file = C('EDITOR_UPLOAD.rootPath').$info['imgFile']['savepath'].$info['imgFile']['savename'];
+            $image->open($thumb_file )->water('.'.C('TMPL_PARSE_STRING.__IMG__').'/water.jpg',\Think\Image::IMAGE_WATER_SOUTHEAST)->save($thumb_file);
+            /*添加水印结束*/
+            $url = str_replace('./', '/', $url);
 			$info['fullpath'] = __ROOT__.$url;
 		}
 		session('upload_error', $this->uploader->getError());

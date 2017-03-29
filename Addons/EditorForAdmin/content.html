@@ -26,7 +26,11 @@
 						urlType : 'absolute',
 						fileManagerJson : '{:U('fileManagerJson')}',
 						//uploadJson : '{:U('uploadJson')}' }
-						uploadJson : '{:addons_url("EditorForAdmin://Upload/ke_upimg")}'
+						uploadJson : '{:addons_url("EditorForAdmin://Upload/ke_upimg")}',
+                        items : [
+                        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'emoticons', 'image', 'link']
 					});
 				});
 

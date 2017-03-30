@@ -87,8 +87,10 @@
                             </case>
                             <case value="picture">
                                 <div class="controls">
-									<input type="file" id="upload_picture_{$field.name}">
-									<input type="hidden" name="{$field.name}" id="cover_id_{$field.name}"/>
+                                    <div id="upload_picture_{$field.name}" class="uploadify-button " style="height: 30px; line-height: 30px; width: 120px;">
+                                        <span class="uploadify-button-text">上传图片</span>
+                                    </div>
+                                    <input type="hidden" name="{$field.name}" id="cover_id_{$field.name}" value="{$data[$field['name']]}"/>
 									<div class="upload-img-box">
 									<notempty name="data[$field['name']]">
 										<div class="upload-pre-item"><img src="{$data[$field['name']]|get_cover='path'}"/></div>
@@ -96,84 +98,34 @@
 									</div>
 								</div>
 								<script type="text/javascript">
-								//上传图片
-							    /* 初始化上传插件 */
-								$("#upload_picture_{$field.name}").uploadify({
-							        "height"          : 30,
-							        "swf"             : "__STATIC__/uploadify/uploadify.swf",
-							        "fileObjName"     : "download",
-							        "buttonText"      : "上传图片",
-							        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
-							        "width"           : 120,
-							        'removeTimeout'	  : 1,
-							        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
-							        "onUploadSuccess" : uploadPicture{$field.name},
-							        'onFallback' : function() {
-							            alert('未检测到兼容版本的Flash.');
-							        }
-							    });
-								function uploadPicture{$field.name}(file, data){
-							    	var data = $.parseJSON(data);
-							    	var src = '';
-							        if(data.status){
-							        	$("#cover_id_{$field.name}").val(data.id);
-							        	src = data.url || '__ROOT__' + data.path
-							        	$("#cover_id_{$field.name}").parent().find('.upload-img-box').html(
-							        		'<div class="upload-pre-item"><img src="__ROOT__' + src + '"/></div>'
-							        	);
-							        } else {
-							        	updateAlert(data.info);
-							        	setTimeout(function(){
-							                $('#top-alert').find('button').click();
-							                $(that).removeClass('disabled').prop('disabled',false);
-							            },1500);
-							        }
-							    }
+                                    KindEditor.ready(function(K) {
+                                        var upload_picture = K.editor({
+                                            allowFileManager : true,
+                                            uploadJson : "{:U('File/uploadPicture',array('save_path'=>'cover'))}"
+                                        });
+                                        K('#upload_picture_{$field.name}').click(function() {
+                                            upload_picture.loadPlugin('image', function() {
+                                                upload_picture.plugin.imageDialog({
+                                                    showRemote : false,
+                                                    clickFn : function(url, title, width, height, border, align, error, cover_id){
+                                                        if(error){
+                                                            updateAlert(res.message);
+                                                        }else{
+                                                            $("#cover_id_{$field.name}").val(cover_id);
+                                                            $("#cover_id_{$field.name}").parent().find('.upload-img-box').html(
+                                                                   '<div class="upload-pre-item"><img src="__ROOT__' + url + '"/></div>'
+                                                            );
+                                                            upload_picture.hideDialog();
+                                                        }
+                                                    }
+                                                });
+                                            });
+                                        });
+                                    });
 								</script>
                             </case>
                             <case value="file">
-								<div class="controls">
-									<input type="file" id="upload_file_{$field.name}">
-									<input type="hidden" name="{$field.name}" value="{$data[$field['name']]}"/>
-									<div class="upload-img-box">
-										<present name="data[$field['name']]">
-											<div class="upload-pre-file"><span class="upload_icon_all"></span>{$data[$field['name']]}</div>
-										</present>
-									</div>
-								</div>
-								<script type="text/javascript">
-								//上传图片
-							    /* 初始化上传插件 */
-								$("#upload_file_{$field.name}").uploadify({
-							        "height"          : 30,
-							        "swf"             : "__STATIC__/uploadify/uploadify.swf",
-							        "fileObjName"     : "download",
-							        "buttonText"      : "上传附件",
-							        "uploader"        : "{:U('File/upload',array('session_id'=>session_id()))}",
-							        "width"           : 120,
-							        'removeTimeout'	  : 1,
-							        "onUploadSuccess" : uploadFile{$field.name},
-							        'onFallback' : function() {
-							            alert('未检测到兼容版本的Flash.');
-							        }
-							    });
-								function uploadFile{$field.name}(file, data){
-									var data = $.parseJSON(data);
-							        if(data.status){
-							        	var name = "{$field.name}";
-							        	$("input[name="+name+"]").val(data.data);
-							        	$("input[name="+name+"]").parent().find('.upload-img-box').html(
-							        		"<div class=\"upload-pre-file\"><span class=\"upload_icon_all\"></span>" + data.info + "</div>"
-							        	);
-							        } else {
-							        	updateAlert(data.info);
-							        	setTimeout(function(){
-							                $('#top-alert').find('button').click();
-							                $(that).removeClass('disabled').prop('disabled',false);
-							            },1500);
-							        }
-							    }
-								</script>
+
                             </case>
                             <default/>
                             <input type="text" class="text input-large" name="{$field.name}" value="{$field.value}">

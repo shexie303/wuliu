@@ -54,14 +54,21 @@ class FileController extends AdminController {
 
     /**
      * 上传图片
+     * @param  string $save_path  上传文件保存路径
      * @author huajie <banhuajie@163.com>
      */
-    public function uploadPicture(){
-        //TODO: 用户登录检测
+    public function uploadPicture($save_path = ''){
 
-        /* 返回标准数据 */
-        $return  = array('status' => 1, 'info' => '上传成功', 'data' => '');
-
+        if(!is_login()){
+            $return['error'] = 1;
+            $return['message'] = '请登录后再上传';
+            exit(json_encode($return));
+        }
+        if(!in_array($save_path, array('cover'))){
+            $return['error'] = 1;
+            $return['message'] = '非法路径,请联系管理员';
+            exit(json_encode($return));
+        }
         /* 调用文件上传组件上传文件 */
         $Picture = D('Picture');
         $pic_driver = C('PICTURE_UPLOAD_DRIVER');
@@ -69,19 +76,21 @@ class FileController extends AdminController {
             $_FILES,
             C('PICTURE_UPLOAD'),
             C('PICTURE_UPLOAD_DRIVER'),
+            $save_path . '/',
             C("UPLOAD_{$pic_driver}_CONFIG")
-        ); //TODO:上传到远程服务器
-
+        );
+        //TODO:上传到远程服务器
         /* 记录图片信息 */
         if($info){
-            $return['status'] = 1;
-            $return = array_merge($info['download'], $return);
+            $return['error'] = 0;
+            $return['cover_id'] = $info['imgFile']['id'];
+            $return['url'] = $info['imgFile']['path'];
         } else {
-            $return['status'] = 0;
-            $return['info']   = $Picture->getError();
+            $return['error'] = 1;
+            $return['message']   = $Picture->getError();
         }
 
         /* 返回JSON数据 */
-        $this->ajaxReturn($return);
+        exit(json_encode($return));
     }
 }

@@ -31,13 +31,17 @@ class PictureModel extends Model{
      * @param  array  $files   要上传的文件列表（通常是$_FILES数组）
      * @param  array  $setting 文件上传配置
      * @param  string $driver  上传驱动名称
+     * @param  string $save_path  上传文件保存路径
      * @param  array  $config  上传驱动配置
      * @return array           文件上传成功后的信息
      */
-    public function upload($files, $setting, $driver = 'Local', $config = null){
+    public function upload($files, $setting, $driver = 'Local', $save_path = '' ,$config = null){
         /* 上传文件 */
         $setting['callback'] = array($this, 'isFile');
 		$setting['removeTrash'] = array($this, 'removeTrash');
+        if($save_path){
+            $setting['savePath'] = $save_path;
+        }
         $Upload = new Upload($setting, $driver, $config);
         $info   = $Upload->upload($files);
 

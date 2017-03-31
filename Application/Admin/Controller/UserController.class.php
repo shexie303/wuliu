@@ -34,6 +34,8 @@ class UserController extends AdminController {
 
         $list   = $this->lists('Member', $map);
         int_to_string($list);
+        // 记录当前列表页的cookie
+        Cookie('__forward__',$_SERVER['REQUEST_URI']);
         $this->assign('_list', $list);
         $this->meta_title = '用户信息';
         $this->display();
@@ -85,6 +87,32 @@ class UserController extends AdminController {
 //        }
 //    }
 
+    public function info(){
+        if(GROUP_ID == 2){
+            $id = UID;
+        }else{
+            $id = I('get.id', 0);
+            if(!$id){
+                $id = UID;
+            }
+        }
+        $s = mb_strlen('而','utf-8');
+        var_dump($s);
+        if(IS_AJAX && IS_POST){
+            $res = D('Member')->update();
+            if(!$res){
+                $this->error(D('Member')->getError());
+            }else{
+                $this->success('资料已完善！',Cookie('__forward__'));
+            }
+        }else{
+
+            $info = D('Member')->getUserInfo($id);
+            $this->assign('data', $info);
+            $this->meta_title = '完善资料';
+            $this->display();
+        }
+    }
     /**
      * 修改密码初始化
      * @author huajie <banhuajie@163.com>
@@ -243,7 +271,7 @@ class UserController extends AdminController {
      */
     private function showRegError($code = 0){
         switch ($code) {
-            case -1:  $error = '用户名长度必须在16个字符以内！'; break;
+            case -1:  $error = '用户名长度必须在3-30个字符之间！'; break;
             case -2:  $error = '用户名被禁止注册！'; break;
             case -3:  $error = '用户名被占用！'; break;
             case -4:  $error = '密码长度必须在6-30个字符之间！'; break;

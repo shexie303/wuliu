@@ -18,8 +18,10 @@ use Think\Model;
 class MemberModel extends Model {
 
     protected $_validate = array(
-        array('nickname', '1,16', '昵称长度为1-16个字符', self::EXISTS_VALIDATE, 'length'),
+        array('nickname', '3,30', '昵称长度为3-30个字符', self::EXISTS_VALIDATE, 'length'),
         array('nickname', '', '昵称被占用', self::EXISTS_VALIDATE, 'unique'), //用户名被占用
+//        array('id_card', '18', '身份证长度为18个字符', self::EXISTS_VALIDATE, 'length'),
+//        array('id_card', '', '身份证被占用', self::EXISTS_VALIDATE, 'unique'), //身份证被占用
     );
 
     public function lists($status = 1, $order = 'uid DESC', $field = true){
@@ -89,4 +91,20 @@ class MemberModel extends Model {
         return $this->where(array('uid'=>(int)$uid))->getField('nickname');
     }
 
+    public function getUserInfo($uid){
+        return $this->find($uid);
+    }
+
+    public function update(){
+        $data = $this->create($_POST);
+        if(empty($data)){
+            return false;
+        }
+        $status = $this->save(); //更新基础内容
+        if(false === $status){
+            $this->error = '完善资料出错！';
+            return false;
+        }
+        return $data;
+    }
 }

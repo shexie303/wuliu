@@ -950,3 +950,25 @@ function get_stemma($pids,Model &$model, $field='id'){
     }
     return $collection;
 }
+
+/**
+ * 检测分类是否还可以发布  精品专线和综合物流只能发布选其一发布1条
+ * @param $cate_id
+ * @return bool
+ */
+function checkCategoryPublish($cate_id){
+    if(GROUP_ID == 2){
+        $where = array(
+            'uid' => UID,
+            'status' => 1
+        );
+        if($cate_id == 3){
+            $where['category_id'] = 3;
+        }else{
+            $where['category_id'] = array('in','2,4');
+        }
+        $res = M('Document')->where($where)->count();
+        if($res['tp_count'] > 0) return false;
+    }
+    return true;
+}

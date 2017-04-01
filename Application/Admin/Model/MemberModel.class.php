@@ -20,8 +20,11 @@ class MemberModel extends Model {
     protected $_validate = array(
         array('nickname', '3,30', '昵称长度为3-30个字符', self::EXISTS_VALIDATE, 'length'),
         array('nickname', '', '昵称被占用', self::EXISTS_VALIDATE, 'unique'), //用户名被占用
-//        array('id_card', '18', '身份证长度为18个字符', self::EXISTS_VALIDATE, 'length'),
-//        array('id_card', '', '身份证被占用', self::EXISTS_VALIDATE, 'unique'), //身份证被占用
+        array('telephone', '/^1[3|4|5|7|8][0-9]\d{8}$/', '手机号格式不正确', self::MUST_VALIDATE, 'regex'),
+        array('wechat', 'require', '微信号不能为空', self::EXISTS_VALIDATE, 'regex'),
+        array('qq', '/^\d{5,12}$/', 'qq号码格式不正确', self::EXISTS_VALIDATE, 'regex'),
+        array('id_card', '/^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/', '身份证格式不正确', self::EXISTS_VALIDATE, 'regex'),
+        array('id_card', '', '身份证被占用', self::EXISTS_VALIDATE, 'unique'), //身份证被占用
     );
 
     public function lists($status = 1, $order = 'uid DESC', $field = true){
@@ -47,7 +50,7 @@ class MemberModel extends Model {
 
         /* 登录用户 */
         $this->autoLogin($user);
-        return true;
+        return $user;
     }
 
     /**
@@ -79,6 +82,7 @@ class MemberModel extends Model {
             'uid'             => $user['uid'],
             'username'        => $user['nickname'],
             'group_id'        => $group[0]['group_id'],
+            'vip'             => $user['vip'],
             'last_login_time' => $user['last_login_time'],
         );
 

@@ -96,8 +96,6 @@ class UserController extends AdminController {
                 $id = UID;
             }
         }
-        $s = mb_strlen('而','utf-8');
-        var_dump($s);
         if(IS_AJAX && IS_POST){
             $res = D('Member')->update();
             if(!$res){
@@ -106,7 +104,6 @@ class UserController extends AdminController {
                 $this->success('资料已完善！',Cookie('__forward__'));
             }
         }else{
-
             $info = D('Member')->getUserInfo($id);
             $this->assign('data', $info);
             $this->meta_title = '完善资料';

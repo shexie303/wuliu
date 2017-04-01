@@ -33,12 +33,16 @@ class PublicController extends \Think\Controller {
             if(0 < $uid){ //UC登录成功
                 /* 登录用户 */
                 $Member = D('Member');
-                if($Member->login($uid)){ //登录用户
+                if($info = $Member->login($uid)){ //登录用户
                     $user_auth = session('user_auth');
                     if(is_administrator() || $user_auth['group_id'] == 1){
                         $this->success('登录成功！', U('User/index'));
                     }else{
-                        $this->success('登录成功！', U('Article/index?cate_id=2'));
+                        if($info['id_card'] && $info['telephone']){
+                            $this->success('登录成功！', U('Article/index?cate_id=2'));
+                        }else{
+                            $this->success('登录成功！', U('User/info'));
+                        }
                     }
                 } else {
                     $this->error($Member->getError());

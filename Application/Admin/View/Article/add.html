@@ -6,7 +6,7 @@
 </block>
 
 <block name="body">
-	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <script charset="utf-8" src="__STATIC__/kindeditor/kindeditor-min.js"></script>
 	<div class="main-title cf">
 		<h2>
 			新增{$info.model_id|get_document_model='title'} [
@@ -108,12 +108,10 @@
                                                 upload_picture.plugin.imageDialog({
                                                     showRemote : false,
                                                     clickFn : function(url, title, width, height, border, align, error, cover_id){
-                                                        if(error){
-                                                            updateAlert(res.message);
-                                                        }else{
+                                                        if(!error){
                                                             $("#cover_id_{$field.name}").val(cover_id);
                                                             $("#cover_id_{$field.name}").parent().find('.upload-img-box').html(
-                                                                   '<div class="upload-pre-item"><img src="__ROOT__' + url + '"/></div>'
+                                                                    '<div class="upload-pre-item"><img src="__ROOT__' + url + '"/></div>'
                                                             );
                                                             upload_picture.hideDialog();
                                                         }

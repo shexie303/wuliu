@@ -113,8 +113,12 @@
                             <td>{:get_list_field($data,$grid,$model_list)}</td>
                         </volist>
                         <td>
-                            <a href="/index.php?s=/Admin/Article/edit/id/{$data['id']}.html">编辑</a>
-                            <a href="/index.php?s=/Admin/Article/setstatus/status/-1/ids/{$data['id']}.html">删除</a>
+                            <if condition="USER_VIP gt 1">
+                                <a href="/index.php?s=/Admin/Article/edit/id/{$data['id']}.html">编辑</a>
+                            </if>
+                            <if condition="GROUP_ID neq 2">
+                                <a href="/index.php?s=/Admin/Article/setstatus/status/-1/ids/{$data['id']}.html">删除</a>
+                            </if>
                         </td>
                     </tr>
                 </volist>

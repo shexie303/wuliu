@@ -1,0 +1,122 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<div class="main-title cf">
+		<h2>温馨提示：资料完善后即可发布物流信息</h2>
+	</div>
+	<!-- 表单 -->
+	<form id="form" action="{:U('info')}" method="post" class="form-horizontal">
+        <div class="form-item cf">
+            <label class="item-label">手机<span class="check-tips">（输入手机号）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="telephone" value="{$data.telephone}">
+            </div>
+        </div>
+        <div class="form-item cf">
+            <label class="item-label">微信<span class="check-tips">（输入微信号）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="wechat" value="{$data.wechat}">
+            </div>
+        </div>
+        <div class="form-item cf">
+            <label class="item-label">QQ<span class="check-tips">（输入QQ号）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="qq" value="{$data.qq}">
+            </div>
+        </div>
+        <div class="form-item cf">
+			<label class="item-label">身份证<span class="check-tips">（输入身份证号）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="id_card" value="{$data.id_card}">
+			</div>
+		</div>
+        <div class="form-item cf">
+            <label class="item-label">门店图片<span class="check-tips">（上传门店图片）</span></label>
+            <input type="hidden" name="facade" id="facade_value" value="{$data.facade}">
+            <div class="controls">
+                <div id="upload_picture_facade" class="uploadify-button " style="height: 30px; line-height: 30px; width: 120px;">
+                    <span class="uploadify-button-text">上传门店图片</span>
+                </div>
+                <div class="upload-img-box img-facade">
+                    <notempty name="data['facade']">
+                        <div class="upload-pre-item"><img src="{$data.facade}"/></div>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+        <div class="form-item cf">
+            <label class="item-label">营业执照<span class="check-tips">（上传营业执照）</span></label>
+            <input type="hidden" name="license" id="license_value" value="{$data.license}">
+            <div class="controls">
+                <div id="upload_picture_license" class="uploadify-button " style="height: 30px; line-height: 30px; width: 120px;">
+                    <span class="uploadify-button-text">上传营业执照</span>
+                </div>
+                <div class="upload-img-box img-license">
+                    <notempty name="data['license']">
+                        <div class="upload-pre-item"><img src="{$data.license}"/></div>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+
+		<div class="form-item">
+			<input type="hidden" name="uid" value="{$data.uid}"/>
+			<button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>
+			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+		</div>
+	</form>
+</block>
+
+<block name="script">
+    <link rel="stylesheet" href="__STATIC__/kindeditor/default/default.css" />
+    <script charset="utf-8" src="__STATIC__/kindeditor/kindeditor-min.js"></script>
+    <script charset="utf-8" src="__STATIC__/kindeditor/zh_CN.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        KindEditor.ready(function(K) {
+            var upload_picture_facade = K.editor({
+                allowFileManager : true,
+                uploadJson : "{:U('File/uploadPicture',array('save_path'=>'facade'))}"
+            });
+            K('#upload_picture_facade').click(function() {
+                upload_picture_facade.loadPlugin('image', function() {
+                    upload_picture_facade.plugin.imageDialog({
+                        showRemote : false,
+                        clickFn : function(url, title, width, height, border, align, error){
+                            if(!error){
+                                $('.img-facade').html(
+                                        '<div class="upload-pre-item"><img src="__ROOT__' + url + '"/></div>'
+                                );
+                                $('#facade_value').val(url);
+                                upload_picture_facade.hideDialog();
+                            }
+                        }
+                    });
+                });
+            });
+            var upload_picture_license = K.editor({
+                allowFileManager : true,
+                uploadJson : "{:U('File/uploadPicture',array('save_path'=>'license'))}"
+            });
+            K('#upload_picture_license').click(function() {
+                upload_picture_license.loadPlugin('image', function() {
+                    upload_picture_license.plugin.imageDialog({
+                        showRemote : false,
+                        clickFn : function(url, title, width, height, border, align, error){
+                            if(!error){
+                                $('.img-license').html(
+                                        '<div class="upload-pre-item"><img src="__ROOT__' + url + '"/></div>'
+                                );
+                                $('#license_value').val(url);
+                                upload_picture_license.hideDialog();
+                            }
+                        }
+                    });
+                });
+            });
+        });
+
+        Think.setValue('type',{$type|default=1});
+        //导航高亮
+        highlight_subnav('{:U('User/info')}');
+    </script>
+</block>

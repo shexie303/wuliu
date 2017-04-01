@@ -61,7 +61,7 @@ class AdminController extends Controller {
 
         $user_auth = session('user_auth');
         define('GROUP_ID', $user_auth['group_id']);
-
+        define('USER_VIP', $user_auth['vip']);
     }
 
     /**

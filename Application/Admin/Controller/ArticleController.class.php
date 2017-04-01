@@ -31,38 +31,38 @@ class ArticleController extends AdminController {
      *
      * @author 朱亚杰  <xcoolcc@gmail.com>
      */
-//    protected function checkDynamic(){
-//        if(IS_ROOT){
-//            return true;//管理员允许访问任何页面
-//        }
-//        $cates = AuthGroupModel::getAuthCategories(UID);
-//        switch(strtolower(ACTION_NAME)){
-//            case 'index':   //文档列表
-//                $cate_id =  I('cate_id');
-//                break;
-//            case 'edit':    //编辑
-//            case 'update':  //更新
-//                $doc_id  =  I('id');
-//                $cate_id =  M('Document')->where(array('id'=>$doc_id))->getField('category_id');
-//                break;
-//            case 'setstatus': //更改状态
-//            case 'permit':    //回收站
-//                $doc_id  =  (array)I('ids');
-//                $cate_id =  M('Document')->where(array('id'=>array('in',$doc_id)))->getField('category_id',true);
-//                $cate_id =  array_unique($cate_id);
-//                break;
-//        }
-//        if(!$cate_id){
-//            return null;//不明,需checkRule
-//        }elseif( !is_array($cate_id) && in_array($cate_id,$cates) ) {
-//            return true;//有权限
-//        }elseif( is_array($cate_id) && $cate_id==array_intersect($cate_id,$cates) ){
-//            return true;//有权限
-//        }else{
-//            return false;//无权限
-//        }
-//        return null;//不明,需checkRule
-//    }
+    protected function checkDynamic(){
+        if(IS_ROOT){
+            return true;//管理员允许访问任何页面
+        }
+        $cates = AuthGroupModel::getAuthCategories(UID);
+        switch(strtolower(ACTION_NAME)){
+            case 'index':   //文档列表
+                $cate_id =  I('cate_id');
+                break;
+            case 'edit':    //编辑
+            case 'update':  //更新
+                $doc_id  =  I('id');
+                $cate_id =  M('Document')->where(array('id'=>$doc_id))->getField('category_id');
+                break;
+            case 'setstatus': //更改状态
+            case 'permit':    //回收站
+                $doc_id  =  (array)I('ids');
+                $cate_id =  M('Document')->where(array('id'=>array('in',$doc_id)))->getField('category_id',true);
+                $cate_id =  array_unique($cate_id);
+                break;
+        }
+        if(!$cate_id){
+            return null;//不明,需checkRule
+        }elseif( !is_array($cate_id) && in_array($cate_id,$cates) ) {
+            return true;//有权限
+        }elseif( is_array($cate_id) && $cate_id==array_intersect($cate_id,$cates) ){
+            return true;//有权限
+        }else{
+            return false;//无权限
+        }
+        return null;//不明,需checkRule
+    }
 
     /**
      * 显示左边菜单，进行权限控制
@@ -353,6 +353,9 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function setStatus($model='Document'){
+        if(GROUP_ID == 2){
+            $this->error('未授权访问!');
+        }
         return parent::setStatus('Document');
     }
 
@@ -361,6 +364,13 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function add(){
+        //添加之前先看是否完善资料
+        if(GROUP_ID == 2){
+            $user = D('Member')->getUserInfo(UID);
+            if(empty($user['telephone']) || empty($user['id_card'])){
+                $this->error('请先完善资料再发布信息！');
+            }
+        }
         //获取左边菜单
         $this->getMenu();
 
@@ -374,6 +384,14 @@ class ArticleController extends AdminController {
         $allow_publish = D('Document')->checkCategory($cate_id);
         !$allow_publish && $this->error('该分类不允许发布内容！');
 
+        //会员只允许在一个类别发布一条信息
+        if(!checkCategoryPublish($cate_id)){
+            if($cate_id == 3){
+                $this->error('该分类只允许发布1条信息！');
+            }else{
+                $this->error('精品专线和综合物流只允许选其一发布1条信息！');
+            }
+        }
         /* 获取要编辑的扩展模型模板 */
         $model      =   get_document_model($model_id);
 
@@ -402,6 +420,9 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function edit(){
+        if(GROUP_ID == 2){
+            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+        }
         //获取左边菜单
         $this->getMenu();
 
@@ -446,6 +467,9 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function update(){
+        if(GROUP_ID == 2){
+            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+        }
         $res = D('Document')->update();
         if(!$res){
             $this->error(D('Document')->getError());

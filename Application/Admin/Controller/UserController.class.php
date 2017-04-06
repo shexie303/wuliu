@@ -21,6 +21,8 @@ class UserController extends AdminController {
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function index(){
+        //更新到期会员状态
+        D('Member')->updateOverdueVip();
         if(GROUP_ID == 2){
             header('Location: ' . U('User/recharge'));
         }
@@ -37,6 +39,7 @@ class UserController extends AdminController {
         // 记录当前列表页的cookie
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
         $this->assign('_list', $list);
+        $this->assign('_now', time());
         $this->meta_title = '用户信息';
         $this->display();
     }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--<a onclick="goToAddress('河北省秦皇岛市河北大街西段512号欧美学院','123456')">去衡水</a>
+        <script src="http://api.map.baidu.com/api?v=2.0&ak=dNcVKmvUBgsfAh2IKy72RTWYVtlrEpvf" type="text/javascript"></script>
+        <script>
+            function goToAddress(address,title){
+                var myGeo = new BMap.Geocoder();
+                // 将地址解析结果显示在地图上,并调整地图视野
+                myGeo.getPoint(address, function(point){
+                    if (point) {
+                        var lng=point.lng;
+                        var lat=point.lat;
+                        var url="http://api.map.baidu.com/marker?location="+lat+","+lng+"&title="+title+"&content="+address+"&output=html&appName=shexie_map";
+                    }else{
+                        var url="http://api.map.baidu.com/geocoder?address="+address+"&output=html";
+                    }
+                    window.location.href=url;
+                }, "");
+            }
+        </script>
+        <div class="form-item cf">
+            <div id="baidumap" style="width:50%;height:400px;">
+
+            </div>
+        </div>
+       <script src="http://api.map.baidu.com/api?v=2.0&ak=dNcVKmvUBgsfAh2IKy72RTWYVtlrEpvf" type="text/javascript"></script>
+
+        <script type="text/javascript">
+
+            // 百度地图API功能
+            var map = new BMap.Map("baidumap");
+            // 创建地址解析器实例
+            var myGeo = new BMap.Geocoder();
+            // 将地址解析结果显示在地图上,并调整地图视野
+            myGeo.getPoint("东丽区巨邦物流东院17号库", function(point){
+                if (point) {
+                    map.centerAndZoom(point, 16);
+                    map.addOverlay(new BMap.Marker(point));
+                }
+            },'');
+        </script>-->
+</body>
+</html>

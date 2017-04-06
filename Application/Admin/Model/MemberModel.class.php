@@ -111,4 +111,20 @@ class MemberModel extends Model {
         }
         return $data;
     }
+
+    /**
+     * 更新到期会员状态
+     */
+    public function updateOverdueVip(){
+        $where = array(
+            'vip' => array('gt',0),
+            'vip_end' => array('lt', time()),
+        );
+        $data = array(
+            'vip' => 0,
+            'vip_start' => 0,
+            'vip_end' => 0
+        );
+        $this->where($where)->save($data);
+    }
 }

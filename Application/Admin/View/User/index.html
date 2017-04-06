@@ -28,11 +28,9 @@
         <tr>
 		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
 		<th class="">UID</th>
-		<th class="">昵称</th>
-		<th class="">积分</th>
-		<th class="">登录次数</th>
-		<th class="">最后登录时间</th>
-		<th class="">最后登录IP</th>
+		<th class="">账号</th>
+		<th class="">vip等级</th>
+		<th class="">vip结束时间</th>
 		<th class="">状态</th>
 		<th class="">操作</th>
 		</tr>
@@ -44,10 +42,12 @@
             <td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" /></td>
 			<td>{$vo.uid} </td>
 			<td>{$vo.nickname}</td>
-			<td>{$vo.score}</td>
-			<td>{$vo.login}</td>
-			<td><span>{$vo.last_login_time|time_format}</span></td>
-			<td><span>{:long2ip($vo['last_login_ip'])}</span></td>
+			<td>{$vo.vip|vipZh}</td>
+			<td>
+                <if condition="$vo['vip_end']">
+                    {$vo.vip_end|time_format}
+                </if>
+            </td>
 			<td>{$vo.status_text}</td>
 			<td>
                 <eq name="vo.status" value="1">

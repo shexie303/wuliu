@@ -972,3 +972,23 @@ function checkCategoryPublish($cate_id){
     }
     return true;
 }
+
+function vipZh($vip){
+    switch($vip){
+        case 0:
+            $level = '游客';
+            break;
+        case 1:
+            $level = '试用期会员';
+            break;
+        case 2:
+            $level = '推荐会员';
+            break;
+        case 3:
+            $level = 'vip会员';
+            break;
+        default:
+            $level = '未知';
+    }
+    return $level;
+}

@@ -48,4 +48,6 @@ return array(
 
     /* 文档模型配置 (文档模型核心配置，请勿更改) */
     'DOCUMENT_MODEL_TYPE' => array(2 => '主题', 1 => '目录', 3 => '段落'),
+    /*vip会员一年价钱 2-推荐 3-vip*/
+    'MEMBER_VIP_MONEY' => array('2' => 388,'3' => 588)
 );

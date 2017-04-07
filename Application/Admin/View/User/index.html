@@ -45,7 +45,7 @@
 			<td>{$vo.vip|vipZh}</td>
 			<td>
                 <if condition="$vo['vip_end']">
-                    {$vo.vip_end|time_format}
+                    {$vo.vip_end|time_format='Y-m-d'}
                 </if>
             </td>
 			<td>{$vo.status_text}</td>

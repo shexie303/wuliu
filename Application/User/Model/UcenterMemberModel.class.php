@@ -228,16 +228,19 @@ class UcenterMemberModel extends Model{
 	 * @author huajie <banhuajie@163.com>
 	 */
 	public function updateUserFields($uid, $password, $data){
-		if(empty($uid) || empty($password) || empty($data)){
+		//if(empty($uid) || empty($password) || empty($data)){
+		if(empty($uid)  || empty($data)){
 			$this->error = '参数错误！';
 			return false;
 		}
 
-		//更新前检查用户密码
-		if(!$this->verifyUser($uid, $password)){
-			$this->error = '验证出错：密码不正确！';
-			return false;
-		}
+        if($password){
+            //更新前检查用户密码
+            if(!$this->verifyUser($uid, $password)){
+                $this->error = '验证出错：密码不正确！';
+                return false;
+            }
+        }
 
 		//更新用户信息
 		$data = $this->create($data);

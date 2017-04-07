@@ -9,6 +9,7 @@
 
 namespace Admin\Model;
 use Think\Model;
+use User\Api\UserApi;
 
 /**
  * 用户模型
@@ -100,6 +101,15 @@ class MemberModel extends Model {
     }
 
     public function update(){
+        if(isset($_POST['password'])){
+            $pass = array('password' => $_POST['password']);
+            $Api    =   new UserApi();
+            $res    =   $Api->updateInfo($_POST['uid'], '', $pass);
+            if(!$res['status']){
+                return false;
+            }
+        }
+        unset($_POST['password']);
         $data = $this->create($_POST);
         if(empty($data)){
             return false;
@@ -127,4 +137,5 @@ class MemberModel extends Model {
         );
         $this->where($where)->save($data);
     }
+
 }

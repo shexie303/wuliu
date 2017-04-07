@@ -2,42 +2,98 @@
 
 <block name="body">
 	<!-- 标题栏 -->
-
-		<div class="tab-wrap">
+    <div class="main-title cf">
+        <h2>[{$user.nickname}]&nbsp;&nbsp;
+            {:vipZh($user['vip'])}&nbsp;&nbsp;
+            <if condition="$user['vip'] gt 0">
+                {$user.vip_end|time_format='Y-m-d'}到期
+            </if>
+        </h2>
+    </div>
+    <div class="tab-wrap">
 		<ul class="tab-nav nav">
-		<!--<li ><a href="{:U('updatenickname')}">修改昵称</a></li>-->
-		<li class="current"><a href="{:U('updatepassword')}">修改密码</a></li>
+		    <li><a class="btn-select" href="javascript:///">试用期会员</a></li>
+		    <li><a class="btn-select"href="javascript:///">推荐会员</a></li>
+		    <li class="current"><a class="btn-select" href="javascript:///">vip会员</a></li>
 		</ul>
-		<div class="tab-content">
-	<!-- 修改密码表单 -->
-	<form action="{:U('User/submitPassword')}" method="post" class="form-horizontal">
-		<div class="form-item">
-			<label class="item-label">原密码：</label>
-			<div class="controls">
-				<input type="password" name="old" class="text input-large" autocomplete="off" />
-			</div>
-		</div>
-		<div class="form-item">
-			<label class="item-label">新密码：</label>
-			<div class="controls">
-				<input type="password" name="password" class="text input-large" autocomplete="off" />
-			</div>
-		</div>
-		<div class="form-item">
-			<label class="item-label">确认密码：</label>
-			<div class="controls">
-				<input type="password" name="repassword" class="text input-large" autocomplete="off" />
-			</div>
-		</div>
-		<div class="form-item">
-			<button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 认</button>
-			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
-		</div>
-	</form>
-			</div>
+		<div class="tab-content" style="display: none">
+            <!-- 修改密码表单 -->
+            <form action="{:U('User/recharge')}" method="post" class="form-horizontal vip-1">
+                <input type="hidden" name="vip" value="1"/>
+                <input type="hidden" name="uid" value="{$user.uid}"/>
+                <div class="form-item">
+                    <label class="item-label">试用期会员说明：</label>
+                    <div class="controls">
+                        123456789
+                    </div>
+                </div>
+                <div class="form-item">
+                    <button type="submit" class="btn submit-btn ajax-post" target-form="vip-1">成为试用期会员</button>
+                </div>
+            </form>
+        </div>
+        <div class="tab-content" style="display: none">
+            <!-- 修改密码表单 -->
+            <form action="{:U('User/recharge')}" method="post" class="form-horizontal vip-2">
+                <input type="hidden" name="vip" value="2"/>
+                <input type="hidden" name="uid" value="{$user.uid}"/>
+                <div class="form-item">
+                    <label class="item-label">推荐会员说明：</label>
+                    <div class="controls">
+                        123456
+                    </div>
+                </div>
+                <div class="form-item">
+                    <label class="item-label">选择会员期限：</label>
+                    <div class="controls">
+                        <select name="month">
+                            <option value="6">6个月</option>
+                            <option value="12" selected="">12个月</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <button type="submit" class="btn submit-btn ajax-post" target-form="vip-2">成为推荐会员</button>
+                </div>
+            </form>
+        </div>
+        <div class="tab-content">
+            <!-- 修改密码表单 -->
+            <form action="{:U('User/recharge')}" method="post" class="form-horizontal vip-3">
+                <input type="hidden" name="vip" value="3"/>
+                <input type="hidden" name="uid" value="{$user.uid}"/>
+                <div class="form-item">
+                    <label class="item-label">vip会员说明：</label>
+                    <div class="controls">
+                        123456654321
+                    </div>
+                </div>
+                <div class="form-item">
+                    <label class="item-label">选择会员期限：</label>
+                    <div class="controls">
+                        <select name="month">
+                            <option value="6">6个月</option>
+                            <option value="12" selected="">12个月</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <button type="submit" class="btn submit-btn ajax-post" target-form="vip-3">成为vip会员</button>
+                    <button class="btn btn-return" onclick="">去支付</button>
+
+                </div>
+            </form>
+        </div>
 	</div>
 </block>
-
 <block name="script">
 	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+    <script>
+        $(function(){
+            $('.nav li').click(function(){
+                $(this).addClass('current').siblings().removeClass('current');
+                $('.tab-content').hide().eq($(this).index()).show();
+            })
+        })
+    </script>
 </block>

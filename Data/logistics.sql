@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50086
 File Encoding         : 65001
 
-Date: 2017-04-06 17:57:48
+Date: 2017-04-07 17:56:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `logistics_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=175 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=192 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of logistics_action_log
@@ -241,6 +241,23 @@ INSERT INTO `logistics_action_log` VALUES ('171', '1', '5', '2130706433', 'membe
 INSERT INTO `logistics_action_log` VALUES ('172', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-06 13:24登录了后台', '1', '1491456251');
 INSERT INTO `logistics_action_log` VALUES ('173', '1', '7', '2130706433', 'member', '7', 'shexie77在2017-04-06 17:02登录了后台', '1', '1491469359');
 INSERT INTO `logistics_action_log` VALUES ('174', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-06 17:04登录了后台', '1', '1491469467');
+INSERT INTO `logistics_action_log` VALUES ('175', '1', '7', '2130706433', 'member', '7', 'shexie77在2017-04-07 10:30登录了后台', '1', '1491532249');
+INSERT INTO `logistics_action_log` VALUES ('176', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-07 13:32登录了后台', '1', '1491543144');
+INSERT INTO `logistics_action_log` VALUES ('177', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-07 13:57登录了后台', '1', '1491544653');
+INSERT INTO `logistics_action_log` VALUES ('178', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-07 14:01登录了后台', '1', '1491544883');
+INSERT INTO `logistics_action_log` VALUES ('179', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-07 15:40登录了后台', '1', '1491550859');
+INSERT INTO `logistics_action_log` VALUES ('180', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:41登录了后台', '1', '1491550916');
+INSERT INTO `logistics_action_log` VALUES ('181', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:47登录了后台', '1', '1491551252');
+INSERT INTO `logistics_action_log` VALUES ('182', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:49登录了后台', '1', '1491551385');
+INSERT INTO `logistics_action_log` VALUES ('183', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:52登录了后台', '1', '1491551536');
+INSERT INTO `logistics_action_log` VALUES ('184', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:55登录了后台', '1', '1491551711');
+INSERT INTO `logistics_action_log` VALUES ('185', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:56登录了后台', '1', '1491551760');
+INSERT INTO `logistics_action_log` VALUES ('186', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:58登录了后台', '1', '1491551931');
+INSERT INTO `logistics_action_log` VALUES ('187', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 16:01登录了后台', '1', '1491552083');
+INSERT INTO `logistics_action_log` VALUES ('188', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 16:03登录了后台', '1', '1491552228');
+INSERT INTO `logistics_action_log` VALUES ('189', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 16:10登录了后台', '1', '1491552634');
+INSERT INTO `logistics_action_log` VALUES ('190', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 16:26登录了后台', '1', '1491553576');
+INSERT INTO `logistics_action_log` VALUES ('191', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 17:48登录了后台', '1', '1491558501');
 
 -- ----------------------------
 -- Table structure for logistics_addons
@@ -965,13 +982,13 @@ CREATE TABLE `logistics_member` (
 -- ----------------------------
 -- Records of logistics_member
 -- ----------------------------
-INSERT INTO `logistics_member` VALUES ('1', 'shexie303', '0', '131128198911296612', '', '', '', '/Uploads/Picture/facade/2017-04-01/58df1a91bef87.jpg', '/Uploads/Picture/license/2017-04-01/58df1b8d7882c.jpg', '0', '0', '0', '40', '56', '0', '1490319959', '2130706433', '1491469467', '1');
-INSERT INTO `logistics_member` VALUES ('2', 'shexie33', '0', '', '', '', '', '', '', '0', '0', '0', '30', '36', '2130706433', '1490321384', '2130706433', '1491031214', '1');
+INSERT INTO `logistics_member` VALUES ('1', 'shexie303', '0', '131128198911296612', '', '', '', '/Uploads/Picture/facade/2017-04-01/58df1a91bef87.jpg', '/Uploads/Picture/license/2017-04-01/58df1b8d7882c.jpg', '1', '1491494400', '1499356800', '40', '57', '0', '1490319959', '2130706433', '1491543144', '1');
+INSERT INTO `logistics_member` VALUES ('2', 'shexie33', '0', '', '', '', '', '', '', '0', '0', '0', '40', '37', '2130706433', '1490321384', '2130706433', '1491550859', '1');
 INSERT INTO `logistics_member` VALUES ('3', 'shexie44', '0', '', '', '', '', '', '', '0', '0', '0', '10', '12', '2130706433', '1490582865', '2130706433', '1490683465', '1');
 INSERT INTO `logistics_member` VALUES ('4', 'shexie55', '0', '', '', '', '', '', '', '0', '0', '0', '20', '2', '0', '0', '2130706433', '1491039189', '1');
-INSERT INTO `logistics_member` VALUES ('5', 'shexie66', '0', '131128198911296613', '123456', '1333333333', '13333333333', '', '', '0', '0', '0', '20', '16', '0', '0', '2130706433', '1491039218', '1');
+INSERT INTO `logistics_member` VALUES ('5', 'shexie66', '0', '131128198911296613', '123456', '1333333333', '13333333333', '', '', '1', '1491494400', '1499356800', '30', '28', '0', '0', '2130706433', '1491558501', '1');
 INSERT INTO `logistics_member` VALUES ('6', 'shexie67', '0', '131128198911296614', '', '', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_member` VALUES ('7', 'shexie77', '0', '', '', '', '', '', '', '0', '0', '0', '20', '2', '2130706433', '1490608386', '2130706433', '1491469359', '1');
+INSERT INTO `logistics_member` VALUES ('7', 'shexie77', '0', '', '', '', '', '', '', '0', '0', '0', '20', '3', '2130706433', '1490608386', '2130706433', '1491532249', '1');
 INSERT INTO `logistics_member` VALUES ('9', 'shexie99', '0', '', '', '', '', '', '', '0', '0', '0', '10', '1', '2130706433', '1490670123', '2130706433', '1490670123', '1');
 INSERT INTO `logistics_member` VALUES ('10', 'shexie98', '0', '', '', '', '', '', '', '0', '0', '0', '10', '2', '2130706433', '1490670236', '2130706433', '1490670317', '1');
 INSERT INTO `logistics_member` VALUES ('11', 'shexie97', '0', '', '', '', '', '', '', '0', '0', '0', '0', '0', '2130706433', '1490670500', '0', '0', '-1');
@@ -980,7 +997,7 @@ INSERT INTO `logistics_member` VALUES ('13', 'shexie95', '0', '', '', '', '', ''
 INSERT INTO `logistics_member` VALUES ('14', 'shexie94', '0', '', '', '', '', '', '', '0', '0', '0', '10', '1', '2130706433', '1490671091', '2130706433', '1490672004', '-1');
 INSERT INTO `logistics_member` VALUES ('15', 'shexie93', '0', '', '', '', '', '', '', '0', '0', '0', '10', '1', '2130706433', '1490671422', '2130706433', '1490671452', '-1');
 INSERT INTO `logistics_member` VALUES ('16', '李二蛋', '0', '', '', '', '', '', '', '0', '0', '0', '10', '7', '0', '0', '2130706433', '1491031933', '1');
-INSERT INTO `logistics_member` VALUES ('17', '二蛋', '0', '', '', '', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_member` VALUES ('17', '二蛋', '0', '131111111111111111', '12314563', '123sdf', '13302134562', '', '', '0', '0', '0', '10', '2', '0', '0', '2130706433', '1491544883', '1');
 
 -- ----------------------------
 -- Table structure for logistics_menu
@@ -1151,6 +1168,26 @@ INSERT INTO `logistics_model` VALUES ('1', 'document', '基础文档', '0', '', 
 INSERT INTO `logistics_model` VALUES ('2', 'article', '文章', '1', '', '1', '{\"1\":[\"3\",\"19\",\"12\",\"24\"],\"2\":[\"9\",\"13\",\"10\",\"16\",\"2\",\"17\",\"5\",\"26\",\"20\",\"14\",\"11\",\"25\"]}', '1:基础,2:扩展', '', '', '', '', 'id:编号\r\ntitle:标题:article/edit?cate_id=[category_id]&id=[id]\r\ncontent:内容', '0', '', '', '1383891243', '1490859874', '1', 'MyISAM');
 
 -- ----------------------------
+-- Table structure for logistics_pay_log
+-- ----------------------------
+DROP TABLE IF EXISTS `logistics_pay_log`;
+CREATE TABLE `logistics_pay_log` (
+  `id` mediumint(8) unsigned NOT NULL auto_increment COMMENT '规则id,自增主键',
+  `order_number` varchar(100) NOT NULL default '' COMMENT '流水号',
+  `type` tinyint(2) NOT NULL default '2' COMMENT '0-免费试用期会员 1-人工后台充值 2-微信',
+  `money` int(10) unsigned NOT NULL default '0' COMMENT '充值金额',
+  `uid` int(10) unsigned NOT NULL default '0' COMMENT 'uid',
+  `month` tinyint(3) unsigned default '0' COMMENT '会员期限',
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '生成时间',
+  PRIMARY KEY  (`id`),
+  KEY `module` (`order_number`,`create_time`,`type`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of logistics_pay_log
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for logistics_picture
 -- ----------------------------
 DROP TABLE IF EXISTS `logistics_picture`;
@@ -1238,13 +1275,13 @@ CREATE TABLE `logistics_ucenter_member` (
 -- ----------------------------
 -- Records of logistics_ucenter_member
 -- ----------------------------
-INSERT INTO `logistics_ucenter_member` VALUES ('1', 'shexie303', '74512fad441da1d65478e0698d82386a', 'lc@qq.com', '', '1490319959', '2130706433', '1491469467', '2130706433', '1490319959', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('2', 'shexie33', '74512fad441da1d65478e0698d82386a', 'lc_php@126.com', '', '1490321367', '2130706433', '1491031214', '2130706433', '1490321367', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('1', 'shexie303', '74512fad441da1d65478e0698d82386a', 'lc@qq.com', '', '1490319959', '2130706433', '1491543144', '2130706433', '1490319959', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('2', 'shexie33', '74512fad441da1d65478e0698d82386a', 'lc_php@126.com', '', '1490321367', '2130706433', '1491550859', '2130706433', '1490321367', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('3', 'shexie44', '74512fad441da1d65478e0698d82386a', 'asd@qq.com', '', '1490582797', '2130706433', '1490683465', '2130706433', '1490582797', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('4', 'shexie55', '74512fad441da1d65478e0698d82386a', '112@126.com', '', '1490604355', '2130706433', '1491039189', '2130706433', '1490604355', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('5', 'shexie66', '74512fad441da1d65478e0698d82386a', '123@qq.com', '', '1490605123', '2130706433', '1491039218', '2130706433', '1490605123', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('5', 'shexie66', '74512fad441da1d65478e0698d82386a', '123@qq.com', '', '1490605123', '2130706433', '1491558501', '2130706433', '1490605123', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('6', 'shexie67', '74512fad441da1d65478e0698d82386a', '1234@qq.com', '', '1490605165', '2130706433', '0', '0', '1490605165', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('7', 'shexie77', '74512fad441da1d65478e0698d82386a', 'sadfwer@126.com', '', '1490607882', '2130706433', '1491469359', '2130706433', '1490607882', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('7', 'shexie77', '74512fad441da1d65478e0698d82386a', 'sadfwer@126.com', '', '1490607882', '2130706433', '1491532249', '2130706433', '1490607882', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('8', 'shexie88', '74512fad441da1d65478e0698d82386a', 'lewis@126.com', '', '1490608463', '2130706433', '1490608482', '2130706433', '1490608463', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('9', 'shexie99', '74512fad441da1d65478e0698d82386a', 'asdf2@126.com', '', '1490669878', '2130706433', '1490670123', '2130706433', '1490669878', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('10', 'shexie98', '74512fad441da1d65478e0698d82386a', 'asdf22@126.com', '', '1490669942', '2130706433', '1490670317', '2130706433', '1490669942', '1');
@@ -1254,7 +1291,7 @@ INSERT INTO `logistics_ucenter_member` VALUES ('13', 'shexie95', '74512fad441da1
 INSERT INTO `logistics_ucenter_member` VALUES ('14', 'shexie94', '74512fad441da1d65478e0698d82386a', 'asdfasd@126.com', '', '1490671091', '2130706433', '1490672004', '2130706433', '1490671091', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('15', 'shexie93', '74512fad441da1d65478e0698d82386a', 'df234@126.com', '', '1490671422', '2130706433', '1490671452', '2130706433', '1490671422', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('16', '李二蛋', '74512fad441da1d65478e0698d82386a', '123@22.com', '', '1490949511', '2130706433', '1491031933', '2130706433', '1490949511', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('17', '二蛋', '74512fad441da1d65478e0698d82386a', '123@123.com', '', '1490950301', '2130706433', '0', '0', '1490950301', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('17', '二蛋', '381c6478383324bc0fb6a068ec26b8ca', '123@123.com', '', '1491544805', '2130706433', '1491544883', '2130706433', '1491544805', '1');
 
 -- ----------------------------
 -- Table structure for logistics_ucenter_setting

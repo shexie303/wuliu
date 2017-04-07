@@ -90,6 +90,70 @@ class UserController extends AdminController {
 //        }
 //    }
 
+    public function recharge(){
+        if(IS_POST){
+            $data['vip'] = I('post.vip', 0);
+            if(!in_array($data['vip'], array(1,2,3))){
+                $this->error('vip参数错误');
+            }
+            if(!UID){
+                $this->error('用户不存在');
+            }
+            $data['uid'] = UID;
+            $data['vip_start'] = strtotime(time_format(time(), 'Y-m-d'));
+            if($data['vip'] == 1){
+                //试用期会员默认为3个月
+                $order_number = random(32, 1);
+                $month = 3;
+                $type = 0;
+                $money = 0;
+            }else{
+                $month = I('post.month', 0);
+                if(!in_array($month, array(6,12))){
+                    $this->error('月份参数错误');
+                }
+                $order_number = I('order_number','');
+                if(!$order_number){
+                    $this->error('抱歉,请您先支付');
+                }
+                //todo 验证订单号的有效性
+                $type = 2;
+                $money = C('MEMBER_VIP_MONEY.'.$data['vip']) * $month / 12;
+            }
+            $data['vip_end'] = strtotime('+'.$month.' month', $data['vip_start']);
+
+            $pay_log = array(
+                'order_number' => $order_number,
+                'uid' => UID,
+                'type' => $type,
+                'money' => $money,
+                'month' => $month,
+                'create_time' => time()
+            );
+            $log_id = M('PayLog')->add($pay_log);
+            if($log_id){
+                if(false === M('Member')->save($data)){
+                    M('PayLog')->delete($log_id);
+                    $this->error('操作失败！请稍后再试');
+                }else{
+                    $user = session('user_auth');
+                    $user['vip'] = $data['vip'];
+                    session('user_auth', $user);
+                    session('user_auth_sign', data_auth_sign($user));
+                    $this->success('恭喜您，操作成功');
+                }
+            }else{
+                $this->error('操作失败！请稍后再试');
+            }
+
+        }else{
+            $user = D('Member')->getUserInfo(UID);
+            $this->assign('user',$user);
+            M('PayLog')->delete(1);
+            $this->meta_title = '会员充值';
+            $this->display();
+        }
+    }
     public function info(){
         if(GROUP_ID == 2){
             $id = UID;

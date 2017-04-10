@@ -39,6 +39,7 @@
 						<if condition="count($model) gt 1"><i class="btn-arrowdown"></i></if>
 					</button>
 				</gt>
+                <if condition="GROUP_ID eq 2">&nbsp;&nbsp;您只有一次发布机会，请谨慎填写信息。</if>
 			</div>
             <if condition="GROUP_ID neq 2">
                 <button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>1))}">启 用</button>
@@ -113,11 +114,9 @@
                             <td>{:get_list_field($data,$grid,$model_list)}</td>
                         </volist>
                         <td>
-                            <if condition="USER_VIP gt 1">
-                                <a href="/index.php?s=/Admin/Article/edit/id/{$data['id']}.html">编辑</a>
-                            </if>
                             <if condition="GROUP_ID neq 2">
-                                <a href="/index.php?s=/Admin/Article/setstatus/status/-1/ids/{$data['id']}.html">删除</a>
+                                <a href="{:U('article/edit',array('cate_id'=>$cate_id,'id'=>$data['id']))}">编辑</a>
+                                <a href="{:U('article/setstatus',array('status'=>-1,'ids'=>$data['id']))}">删除</a>
                             </if>
                         </td>
                     </tr>

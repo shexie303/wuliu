@@ -1,0 +1,48 @@
+<select name="[project]_province" id="[project]_province" class="pca-select" onchange="pac_select(this,1)">
+    <option value="0">请选择</option>
+    <foreach name="province" item="val">
+        <option value="{$val.id}">{$val.name}</option>
+    </foreach>
+</select>
+<select name="[project]_city" id="[project]_city" class="pca-select" style="display: none" onchange="pac_select(this,2)" >
+
+</select>
+<select name="[project]_area" id="[project]_area" class="pca-select" style="display: none">
+
+</select>
+
+<script>
+    function pac_select(object,level){
+        var obj = $('#'+object.id);
+        var id = obj.val();
+        if(level == 1){
+            if(id > 0){
+                $.post("{:U('Public/getNextArea')}", {id : id}, function(e){
+                    if(e.status == 0){
+                        obj.next().html('');
+                        $.each(e.data, function(n, item){
+                            obj.next().append('<option value="'+item.id+'">'+item.name+'</option>')
+                        });
+                        obj.next().show();
+                    }
+                });
+            }else{
+                obj.siblings().hide();
+            }
+        }else{
+            if(id > 0){
+                $.post("{:U('Public/getNextArea')}", {id : id}, function(e){
+                    if(e.status == 0){
+                        obj.next().html('');
+                        $.each(e.data, function(n, item){
+                            obj.next().append('<option value="'+item.id+'">'+item.name+'</option>')
+                        });
+                        obj.next().show();
+                    }
+                });
+            }else{
+                obj.next().hide();
+            }
+        }
+    }
+</script>

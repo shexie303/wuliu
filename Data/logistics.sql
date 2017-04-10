@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50086
 File Encoding         : 65001
 
-Date: 2017-04-07 17:56:03
+Date: 2017-04-10 17:44:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `logistics_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=192 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=200 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of logistics_action_log
@@ -258,6 +258,14 @@ INSERT INTO `logistics_action_log` VALUES ('188', '1', '5', '2130706433', 'membe
 INSERT INTO `logistics_action_log` VALUES ('189', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 16:10登录了后台', '1', '1491552634');
 INSERT INTO `logistics_action_log` VALUES ('190', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 16:26登录了后台', '1', '1491553576');
 INSERT INTO `logistics_action_log` VALUES ('191', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 17:48登录了后台', '1', '1491558501');
+INSERT INTO `logistics_action_log` VALUES ('192', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-10 10:16登录了后台', '1', '1491790601');
+INSERT INTO `logistics_action_log` VALUES ('193', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 10:21登录了后台', '1', '1491790896');
+INSERT INTO `logistics_action_log` VALUES ('194', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 10:43登录了后台', '1', '1491792191');
+INSERT INTO `logistics_action_log` VALUES ('195', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-10 10:45登录了后台', '1', '1491792320');
+INSERT INTO `logistics_action_log` VALUES ('196', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 10:47登录了后台', '1', '1491792465');
+INSERT INTO `logistics_action_log` VALUES ('197', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-10 11:37登录了后台', '1', '1491795478');
+INSERT INTO `logistics_action_log` VALUES ('198', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 11:54登录了后台', '1', '1491796494');
+INSERT INTO `logistics_action_log` VALUES ('199', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 16:09登录了后台', '1', '1491811794');
 
 -- ----------------------------
 -- Table structure for logistics_addons
@@ -819,7 +827,7 @@ CREATE TABLE `logistics_document` (
   `name` char(40) NOT NULL default '' COMMENT '标识',
   `title` char(80) NOT NULL default '' COMMENT '标题',
   `category_id` int(10) unsigned NOT NULL COMMENT '所属分类',
-  `description` char(140) NOT NULL default '' COMMENT '描述',
+  `address` varchar(200) NOT NULL default '' COMMENT '具体地址',
   `root` int(10) unsigned NOT NULL default '0' COMMENT '根节点',
   `pid` int(10) unsigned NOT NULL default '0' COMMENT '所属ID',
   `model_id` tinyint(3) unsigned NOT NULL default '0' COMMENT '内容模型ID',
@@ -840,17 +848,16 @@ CREATE TABLE `logistics_document` (
   PRIMARY KEY  (`id`),
   KEY `idx_category_status` (`category_id`,`status`),
   KEY `idx_status_type_pid` (`status`,`uid`,`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
 
 -- ----------------------------
 -- Records of logistics_document
 -- ----------------------------
-INSERT INTO `logistics_document` VALUES ('1', '15', '', 'OneThink1.0正式版发布', '2', '大家期待的OneThink正式版发布', '0', '0', '2', '2', '0', '0', '2', '1', '0', '0', '14', '0', '0', '5', '1387260660', '1490850896', '1');
+INSERT INTO `logistics_document` VALUES ('1', '15', '', 'OneThink1.0正式版发布', '2', '大家期待的OneThink正式版发布', '0', '0', '2', '2', '0', '0', '2', '1', '0', '0', '15', '0', '0', '5', '1387260660', '1490850896', '1');
 INSERT INTO `logistics_document` VALUES ('2', '16', '', '试试好使不', '2', '看看这个', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '15', '0', '0', '1', '1490325060', '1490342702', '1');
-INSERT INTO `logistics_document` VALUES ('3', '5', '', '【双圆物流】上海至淮安、宿迁、徐州、盐城、连云港专线(苏北三线中转周边地区)', '3', '呜呜呜呜呜呜呜呜呜呜呜呜', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '9', '0', '0', '0', '1490327068', '1490327068', '1');
+INSERT INTO `logistics_document` VALUES ('3', '5', '', '【双圆物流】上海至淮安、宿迁、徐州、盐城、连云港专线(苏北三线中转周边地区)', '3', '呜呜呜呜呜呜呜呜呜呜呜呜', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '10', '0', '0', '0', '1490327068', '1490327068', '1');
 INSERT INTO `logistics_document` VALUES ('6', '1', '', '尼玛', '39', '111', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '1490342760', '1490343570', '1');
 INSERT INTO `logistics_document` VALUES ('8', '17', '', '123123', '2', '123123', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '2', '0', '0', '3', '1490685281', '1491032206', '1');
-INSERT INTO `logistics_document` VALUES ('9', '5', '', '456', '3', '456', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '4', '1490685509', '1491037629', '-1');
 
 -- ----------------------------
 -- Table structure for logistics_document_article
@@ -876,7 +883,6 @@ INSERT INTO `logistics_document_article` VALUES ('4', '0', '1', '', '0', null);
 INSERT INTO `logistics_document_article` VALUES ('5', '0', '2', '', '0', null);
 INSERT INTO `logistics_document_article` VALUES ('6', '0', '<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	<strong>上海双圆物流有限公司</strong>\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	<span style=\"color:#E53333;\">上海至淮安、宿迁、徐州、盐城、连云港专线（苏北三线中转周边地区）</span>\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	<strong>联系人：房经理</strong>\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	手机：13611783986\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	<strong>上海收货地址：</strong>\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	上海市宝山区业绩路21号A区甲棚\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	电话：021-51691330\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	手机：13611956409\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	联系人：陈小姐\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	<strong>嘉定收货地址：</strong>\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	上海市宝安公路2633号祈敏停车场进门第一排13档\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	电话：021-31262856\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	手机：13917144475\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	联系人：房经理\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	<strong>淮安卸货地址：</strong>\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	淮安市国际农贸城南大门西区A8幢113-115号\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	电话：0517-84991018\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	手机：15358691018\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	联系人：房经理\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	<strong>宿迁卸货地址：</strong>\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	宿迁市平安大道748号卡行天下\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	电话：0527-88850210\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	手机：13815785901\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	联系人：苏经理\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	<strong>徐州卸货地址：</strong>\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	徐州市铜山区长安路大成物流园内D12区-12号\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	手机：13013987617\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	手机：13775848989\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	联系人：张经理\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	<strong>连云港卸货地址：</strong>\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	连云港丁字路福客尔物流园A12卡行天下\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	电话：0518-85153837\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	手机：13912165825\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	联系人：王经理\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	<strong>盐城卸货地址：</strong>\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	盐城开放大道361号白马物流园D区7号\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	电话：0515-88892558\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	手机：13651962558\r\n</p>\r\n<p style=\"color:#333333;font-family:&quot;font-size:16px;background-color:#FFFFFF;\">\r\n	联系人：杨经理\r\n</p>', '', '0', null);
 INSERT INTO `logistics_document_article` VALUES ('8', '0', '123123', '', '0', null);
-INSERT INTO `logistics_document_article` VALUES ('9', '0', '456', '', '0', null);
 
 -- ----------------------------
 -- Table structure for logistics_document_download
@@ -982,7 +988,7 @@ CREATE TABLE `logistics_member` (
 -- ----------------------------
 -- Records of logistics_member
 -- ----------------------------
-INSERT INTO `logistics_member` VALUES ('1', 'shexie303', '0', '131128198911296612', '', '', '', '/Uploads/Picture/facade/2017-04-01/58df1a91bef87.jpg', '/Uploads/Picture/license/2017-04-01/58df1b8d7882c.jpg', '1', '1491494400', '1499356800', '40', '57', '0', '1490319959', '2130706433', '1491543144', '1');
+INSERT INTO `logistics_member` VALUES ('1', 'shexie303', '0', '131128198911296612', '', '', '', '/Uploads/Picture/facade/2017-04-01/58df1a91bef87.jpg', '/Uploads/Picture/license/2017-04-01/58df1b8d7882c.jpg', '1', '1491494400', '1499356800', '50', '60', '0', '1490319959', '2130706433', '1491795478', '1');
 INSERT INTO `logistics_member` VALUES ('2', 'shexie33', '0', '', '', '', '', '', '', '0', '0', '0', '40', '37', '2130706433', '1490321384', '2130706433', '1491550859', '1');
 INSERT INTO `logistics_member` VALUES ('3', 'shexie44', '0', '', '', '', '', '', '', '0', '0', '0', '10', '12', '2130706433', '1490582865', '2130706433', '1490683465', '1');
 INSERT INTO `logistics_member` VALUES ('4', 'shexie55', '0', '', '', '', '', '', '', '0', '0', '0', '20', '2', '0', '0', '2130706433', '1491039189', '1');
@@ -997,7 +1003,7 @@ INSERT INTO `logistics_member` VALUES ('13', 'shexie95', '0', '', '', '', '', ''
 INSERT INTO `logistics_member` VALUES ('14', 'shexie94', '0', '', '', '', '', '', '', '0', '0', '0', '10', '1', '2130706433', '1490671091', '2130706433', '1490672004', '-1');
 INSERT INTO `logistics_member` VALUES ('15', 'shexie93', '0', '', '', '', '', '', '', '0', '0', '0', '10', '1', '2130706433', '1490671422', '2130706433', '1490671452', '-1');
 INSERT INTO `logistics_member` VALUES ('16', '李二蛋', '0', '', '', '', '', '', '', '0', '0', '0', '10', '7', '0', '0', '2130706433', '1491031933', '1');
-INSERT INTO `logistics_member` VALUES ('17', '二蛋', '0', '131111111111111111', '12314563', '123sdf', '13302134562', '', '', '0', '0', '0', '10', '2', '0', '0', '2130706433', '1491544883', '1');
+INSERT INTO `logistics_member` VALUES ('17', '二蛋', '0', '131111111111111111', '12314563', '123sdf', '13302134562', '', '', '3', '1491753600', '1499616000', '20', '7', '0', '0', '2130706433', '1491811794', '1');
 
 -- ----------------------------
 -- Table structure for logistics_menu
@@ -1181,11 +1187,12 @@ CREATE TABLE `logistics_pay_log` (
   `create_time` int(10) unsigned NOT NULL default '0' COMMENT '生成时间',
   PRIMARY KEY  (`id`),
   KEY `module` (`order_number`,`create_time`,`type`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of logistics_pay_log
 -- ----------------------------
+INSERT INTO `logistics_pay_log` VALUES ('2', '66837239298008686269686760860866', '0', '0', '17', '3', '1491790908');
 
 -- ----------------------------
 -- Table structure for logistics_picture
@@ -1275,7 +1282,7 @@ CREATE TABLE `logistics_ucenter_member` (
 -- ----------------------------
 -- Records of logistics_ucenter_member
 -- ----------------------------
-INSERT INTO `logistics_ucenter_member` VALUES ('1', 'shexie303', '74512fad441da1d65478e0698d82386a', 'lc@qq.com', '', '1490319959', '2130706433', '1491543144', '2130706433', '1490319959', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('1', 'shexie303', '74512fad441da1d65478e0698d82386a', 'lc@qq.com', '', '1490319959', '2130706433', '1491795478', '2130706433', '1490319959', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('2', 'shexie33', '74512fad441da1d65478e0698d82386a', 'lc_php@126.com', '', '1490321367', '2130706433', '1491550859', '2130706433', '1490321367', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('3', 'shexie44', '74512fad441da1d65478e0698d82386a', 'asd@qq.com', '', '1490582797', '2130706433', '1490683465', '2130706433', '1490582797', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('4', 'shexie55', '74512fad441da1d65478e0698d82386a', '112@126.com', '', '1490604355', '2130706433', '1491039189', '2130706433', '1490604355', '1');
@@ -1291,7 +1298,7 @@ INSERT INTO `logistics_ucenter_member` VALUES ('13', 'shexie95', '74512fad441da1
 INSERT INTO `logistics_ucenter_member` VALUES ('14', 'shexie94', '74512fad441da1d65478e0698d82386a', 'asdfasd@126.com', '', '1490671091', '2130706433', '1490672004', '2130706433', '1490671091', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('15', 'shexie93', '74512fad441da1d65478e0698d82386a', 'df234@126.com', '', '1490671422', '2130706433', '1490671452', '2130706433', '1490671422', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('16', '李二蛋', '74512fad441da1d65478e0698d82386a', '123@22.com', '', '1490949511', '2130706433', '1491031933', '2130706433', '1490949511', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('17', '二蛋', '381c6478383324bc0fb6a068ec26b8ca', '123@123.com', '', '1491544805', '2130706433', '1491544883', '2130706433', '1491544805', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('17', '二蛋', '74512fad441da1d65478e0698d82386a', '123@123.com', '', '1491792443', '2130706433', '1491811794', '2130706433', '1491792443', '1');
 
 -- ----------------------------
 -- Table structure for logistics_ucenter_setting

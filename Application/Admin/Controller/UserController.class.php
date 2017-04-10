@@ -90,11 +90,18 @@ class UserController extends AdminController {
 //        }
 //    }
 
+    /**
+     * 会员充值
+     */
     public function recharge(){
         if(IS_POST){
+            $user = session('user_auth');
             $data['vip'] = I('post.vip', 0);
             if(!in_array($data['vip'], array(1,2,3))){
                 $this->error('vip参数错误');
+            }
+            if($user['vip'] > $data['vip']){
+                $this->error('当前会员级别高于所选会员级别');
             }
             if(!UID){
                 $this->error('用户不存在');
@@ -136,7 +143,6 @@ class UserController extends AdminController {
                     M('PayLog')->delete($log_id);
                     $this->error('操作失败！请稍后再试');
                 }else{
-                    $user = session('user_auth');
                     $user['vip'] = $data['vip'];
                     session('user_auth', $user);
                     session('user_auth_sign', data_auth_sign($user));
@@ -154,6 +160,10 @@ class UserController extends AdminController {
             $this->display();
         }
     }
+
+    /**
+     * 完善个人信息
+     */
     public function info(){
         if(GROUP_ID == 2){
             $id = UID;

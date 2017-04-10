@@ -404,14 +404,17 @@ class ArticleController extends AdminController {
             $article            =   M('Document')->field('id,title,type')->find($info['pid']);
             $this->assign('article',$article);
         }
-
         //获取表单字段排序
         $fields = get_model_attribute($model['id']);
+        //获取省份列表
+        $province = province();
+        //var_dump($province);
         $this->assign('info',       $info);
         $this->assign('fields',     $fields);
         $this->assign('type_list',  get_type_bycate($cate_id));
         $this->assign('model',      $model);
-        $this->meta_title = '新增'.$model['title'];
+        $this->assign('province',      $province);
+        $this->meta_title = '新增';
         $this->display();
     }
 
@@ -421,7 +424,8 @@ class ArticleController extends AdminController {
      */
     public function edit(){
         if(GROUP_ID == 2){
-            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+//            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+            $this->error('抱歉，您没有编辑权限');
         }
         //获取左边菜单
         $this->getMenu();
@@ -458,7 +462,7 @@ class ArticleController extends AdminController {
         //获取当前分类的文档类型
         $this->assign('type_list', get_type_bycate($data['category_id']));
 
-        $this->meta_title   =   '编辑文档';
+        $this->meta_title   =   '编辑';
         $this->display();
     }
 
@@ -468,7 +472,8 @@ class ArticleController extends AdminController {
      */
     public function update(){
         if(GROUP_ID == 2){
-            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+//            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+            $this->error('抱歉，您没有编辑的权限');
         }
         $res = D('Document')->update();
         if(!$res){

@@ -1016,3 +1016,11 @@ function random( $length, $numeric = 0 )
     }
     return $hash;
 }
+
+/**
+ * 获取所有的省份
+ */
+function province(){
+    //todo 缓存
+    return M('Pca')->field('id,name')->where(array('fid'=>1))->select();
+}

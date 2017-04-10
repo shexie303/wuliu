@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50086
 File Encoding         : 65001
 
-Date: 2017-04-10 17:51:32
+Date: 2017-04-10 21:12:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `logistics_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=200 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=201 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of logistics_action_log
@@ -266,6 +266,7 @@ INSERT INTO `logistics_action_log` VALUES ('196', '1', '17', '2130706433', 'memb
 INSERT INTO `logistics_action_log` VALUES ('197', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-10 11:37登录了后台', '1', '1491795478');
 INSERT INTO `logistics_action_log` VALUES ('198', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 11:54登录了后台', '1', '1491796494');
 INSERT INTO `logistics_action_log` VALUES ('199', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 16:09登录了后台', '1', '1491811794');
+INSERT INTO `logistics_action_log` VALUES ('200', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 21:07登录了后台', '1', '1491829648');
 
 -- ----------------------------
 -- Table structure for logistics_addons
@@ -1003,7 +1004,7 @@ INSERT INTO `logistics_member` VALUES ('13', 'shexie95', '0', '', '', '', '', ''
 INSERT INTO `logistics_member` VALUES ('14', 'shexie94', '0', '', '', '', '', '', '', '0', '0', '0', '10', '1', '2130706433', '1490671091', '2130706433', '1490672004', '-1');
 INSERT INTO `logistics_member` VALUES ('15', 'shexie93', '0', '', '', '', '', '', '', '0', '0', '0', '10', '1', '2130706433', '1490671422', '2130706433', '1490671452', '-1');
 INSERT INTO `logistics_member` VALUES ('16', '李二蛋', '0', '', '', '', '', '', '', '0', '0', '0', '10', '7', '0', '0', '2130706433', '1491031933', '1');
-INSERT INTO `logistics_member` VALUES ('17', '二蛋', '0', '131111111111111111', '12314563', '123sdf', '13302134562', '', '', '3', '1491753600', '1499616000', '20', '7', '0', '0', '2130706433', '1491811794', '1');
+INSERT INTO `logistics_member` VALUES ('17', '二蛋', '0', '131111111111111111', '12314563', '123sdf', '13302134562', '', '', '3', '1491753600', '1499616000', '20', '8', '0', '0', '2130706433', '1491829648', '1');
 
 -- ----------------------------
 -- Table structure for logistics_menu
@@ -1199,16 +1200,16 @@ INSERT INTO `logistics_pay_log` VALUES ('2', '66837239298008686269686760860866',
 -- ----------------------------
 DROP TABLE IF EXISTS `logistics_pca`;
 CREATE TABLE `logistics_pca` (
-  `cityid` int(10) NOT NULL auto_increment COMMENT 'cityid',
+  `id` int(10) NOT NULL auto_increment COMMENT 'cityid',
   `name` varchar(100) NOT NULL,
-  `parentid` int(10) NOT NULL,
+  `pid` int(10) NOT NULL,
   `pinyin` varchar(100) NOT NULL,
   `fistchar` varchar(100) NOT NULL,
   `district` varchar(100) default NULL,
   `capital` tinyint(1) unsigned NOT NULL default '0' COMMENT '是否省会 1:是 0:否',
   `level` int(5) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`cityid`),
-  KEY `parentid` (`parentid`)
+  PRIMARY KEY  (`id`),
+  KEY `parentid` (`pid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1767 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -3063,7 +3064,7 @@ INSERT INTO `logistics_ucenter_member` VALUES ('13', 'shexie95', '74512fad441da1
 INSERT INTO `logistics_ucenter_member` VALUES ('14', 'shexie94', '74512fad441da1d65478e0698d82386a', 'asdfasd@126.com', '', '1490671091', '2130706433', '1490672004', '2130706433', '1490671091', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('15', 'shexie93', '74512fad441da1d65478e0698d82386a', 'df234@126.com', '', '1490671422', '2130706433', '1490671452', '2130706433', '1490671422', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('16', '李二蛋', '74512fad441da1d65478e0698d82386a', '123@22.com', '', '1490949511', '2130706433', '1491031933', '2130706433', '1490949511', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('17', '二蛋', '74512fad441da1d65478e0698d82386a', '123@123.com', '', '1491792443', '2130706433', '1491811794', '2130706433', '1491792443', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('17', '二蛋', '74512fad441da1d65478e0698d82386a', '123@123.com', '', '1491792443', '2130706433', '1491829648', '2130706433', '1491792443', '1');
 
 -- ----------------------------
 -- Table structure for logistics_ucenter_setting

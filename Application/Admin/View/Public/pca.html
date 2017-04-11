@@ -1,13 +1,13 @@
-<select name="[project]_province" id="[project]_province" class="pca-select" onchange="pac_select(this,1)">
+<select name="[project]_p" id="[project]_p" class="pca-select" onchange="pac_select(this,1)">
     <option value="0">请选择</option>
     <foreach name="province" item="val">
         <option value="{$val.id}">{$val.name}</option>
     </foreach>
 </select>
-<select name="[project]_city" id="[project]_city" class="pca-select" style="display: none" onchange="pac_select(this,2)" >
+<select name="[project]_c" id="[project]_c" class="pca-select" style="display: none" onchange="pac_select(this,2)" >
 
 </select>
-<select name="[project]_area" id="[project]_area" class="pca-select" style="display: none">
+<select name="[project]_a" id="[project]_a" class="pca-select" style="display: none">
 
 </select>
 
@@ -15,33 +15,35 @@
     function pac_select(object,level){
         var obj = $('#'+object.id);
         var id = obj.val();
-        if(level == 1){
-            if(id > 0){
-                $.post("{:U('Public/getNextArea')}", {id : id}, function(e){
-                    if(e.status == 0){
-                        obj.next().html('');
-                        $.each(e.data, function(n, item){
-                            obj.next().append('<option value="'+item.id+'">'+item.name+'</option>')
-                        });
-                        obj.next().show();
+        if(id > 0){
+            $.post("{:U('Public/getNextArea')}", {id : id}, function(e){
+                if(e.status == 0){
+                    if(level == 1){
+                        obj.siblings().hide().empty();
+                    }else{
+                        obj.next().hide().empty();
+
                     }
-                });
-            }else{
-                obj.siblings().hide();
-            }
+                    obj.next().append('<option value="0">请选择</option>');
+                    $.each(e.data, function(n, item){
+                        obj.next().append('<option value="'+item.id+'">'+item.name+'</option>')
+                    });
+                    obj.next().show();
+                }else{
+                    if(level == 1){
+                        obj.siblings().hide().empty();
+                    }else{
+                        obj.next().hide().empty();
+
+                    }
+                }
+            });
         }else{
-            if(id > 0){
-                $.post("{:U('Public/getNextArea')}", {id : id}, function(e){
-                    if(e.status == 0){
-                        obj.next().html('');
-                        $.each(e.data, function(n, item){
-                            obj.next().append('<option value="'+item.id+'">'+item.name+'</option>')
-                        });
-                        obj.next().show();
-                    }
-                });
+            if(level == 1){
+                obj.siblings().hide().empty();
             }else{
-                obj.next().hide();
+                obj.next().hide().empty();
+
             }
         }
     }

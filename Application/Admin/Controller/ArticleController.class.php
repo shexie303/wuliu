@@ -471,10 +471,11 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function update(){
-        if(GROUP_ID == 2){
-//            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
-            $this->error('抱歉，您没有编辑的权限');
-        }
+//        if(GROUP_ID == 2){
+////            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+//            $this->error('抱歉，您没有编辑的权限');
+//        }
+        var_dump($_POST);exit;
         $res = D('Document')->update();
         if(!$res){
             $this->error(D('Document')->getError());

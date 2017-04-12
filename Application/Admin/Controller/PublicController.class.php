@@ -101,7 +101,7 @@ class PublicController extends \Think\Controller {
             $return['info'] = '参数错误！';
             $this->ajaxReturn($return);
         }
-        $area = M('Pca')->field('id,name')->where(array('pid'=>$id))->select();
+        $area = M('Pca')->field('id,name')->where(array('parent_id'=>$id))->select();
         if($area){
             $return['data'] = $area;
         }else{

@@ -1022,5 +1022,5 @@ function random( $length, $numeric = 0 )
  */
 function province(){
     //todo 缓存
-    return M('Pca')->field('id,name')->where(array('pid'=>0))->select();
+    return M('Pca')->field('id,name')->where(array('type'=>1))->select();
 }

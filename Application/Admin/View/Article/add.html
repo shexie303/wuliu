@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="form-item cf">
-                <label class="item-label">始发地<span class="check-tips">（始发地）</span></label>
+                <label class="item-label">所在地<span class="check-tips">（所在地）</span></label>
                 <div class="controls">
                     <include file="Public:pca" project="start" />
                 </div>
@@ -58,14 +58,11 @@
             <div class="form-item cf">
                 <label class="item-label">封面图片<span class="check-tips">（点击上传按钮，如果已经上传则会覆盖）</span></label>
                 <div class="controls">
-                    <div id="upload_picture_{$field.name}" class="uploadify-button " style="height: 30px; line-height: 30px; width: 120px;">
+                    <div id="upload_picture" class="uploadify-button " style="height: 30px; line-height: 30px; width: 120px;">
                         <span class="uploadify-button-text">上传图片</span>
                     </div>
-                    <input type="hidden" name="{$field.name}" id="cover_id_{$field.name}" value="{$data[$field['name']]}"/>
+                    <input type="hidden" name="cover_id" id="cover_id" value=""/>
                     <div class="upload-img-box">
-                        <notempty name="data[$field['name']]">
-                            <div class="upload-pre-item"><img src="{$data[$field['name']]|get_cover='path'}"/></div>
-                        </notempty>
                     </div>
                 </div>
                 <script type="text/javascript">
@@ -74,14 +71,14 @@
                             allowFileManager : true,
                             uploadJson : "{:U('File/uploadPicture',array('save_path'=>'cover'))}"
                         });
-                        K('#upload_picture_{$field.name}').click(function() {
+                        K('#upload_picture').click(function() {
                             upload_picture.loadPlugin('image', function() {
                                 upload_picture.plugin.imageDialog({
                                     showRemote : false,
                                     clickFn : function(url, title, width, height, border, align, error, cover_id){
                                         if(!error){
-                                            $("#cover_id_{$field.name}").val(cover_id);
-                                            $("#cover_id_{$field.name}").parent().find('.upload-img-box').html('<div class="upload-pre-item"><img src="__ROOT__' + url + '"/></div>');
+                                            $("#cover_id").val(cover_id);
+                                            $("#cover_id").parent().find('.upload-img-box').html('<div class="upload-pre-item"><img src="__ROOT__' + url + '"/></div>');
                                             upload_picture.hideDialog();
                                         }
                                     }
@@ -108,6 +105,7 @@
                 <input type="hidden" name="pid" value="{$info.pid|default=''}"/>
                 <input type="hidden" name="model_id" value="{$info.model_id|default=''}"/>
                 <input type="hidden" name="category_id" value="{$info.category_id|default=''}">
+                <input type="hidden" name="type" value="2">
             </div>
         </form>
 	</div>

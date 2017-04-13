@@ -117,6 +117,8 @@
                             <if condition="GROUP_ID neq 2">
                                 <a href="{:U('article/edit',array('cate_id'=>$cate_id,'id'=>$data['id']))}">编辑</a>
                                 <a href="{:U('article/setstatus',array('status'=>-1,'ids'=>$data['id']))}">删除</a>
+                            <elseif condition="USER_VIP gt 1" />
+                                <a href="{:U('article/edit',array('cate_id'=>$cate_id,'id'=>$data['id']))}">编辑</a>
                             </if>
                         </td>
                     </tr>

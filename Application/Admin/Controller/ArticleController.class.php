@@ -386,11 +386,7 @@ class ArticleController extends AdminController {
 
         //会员只允许在一个类别发布一条信息
         if(!checkCategoryPublish($cate_id)){
-            if($cate_id == 3){
-                $this->error('该分类只允许发布1条信息！');
-            }else{
-                $this->error('精品专线和综合物流只允许选其一发布1条信息！');
-            }
+            $this->error('该分类只允许发布1条信息！');
         }
         /* 获取要编辑的扩展模型模板 */
         $model      =   get_document_model($model_id);
@@ -408,7 +404,7 @@ class ArticleController extends AdminController {
         $fields = get_model_attribute($model['id']);
         //获取省份列表
         $province = province();
-        //var_dump($province);
+
         $this->assign('info',       $info);
         $this->assign('fields',     $fields);
         $this->assign('type_list',  get_type_bycate($cate_id));
@@ -424,8 +420,7 @@ class ArticleController extends AdminController {
      */
     public function edit(){
         if(GROUP_ID == 2){
-//            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
-            $this->error('抱歉，您没有编辑权限');
+            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
         }
         //获取左边菜单
         $this->getMenu();
@@ -458,10 +453,11 @@ class ArticleController extends AdminController {
         $fields = get_model_attribute($model['id']);
         $this->assign('fields',     $fields);
 
-
+        //获取省份列表
+        $province = province();
+        $this->assign('province',      $province);
         //获取当前分类的文档类型
         $this->assign('type_list', get_type_bycate($data['category_id']));
-
         $this->meta_title   =   '编辑';
         $this->display();
     }
@@ -475,7 +471,6 @@ class ArticleController extends AdminController {
 ////            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
 //            $this->error('抱歉，您没有编辑的权限');
 //        }
-        var_dump($_POST);exit;
         $res = D('Document')->update();
         if(!$res){
             $this->error(D('Document')->getError());

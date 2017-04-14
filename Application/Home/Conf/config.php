@@ -65,8 +65,8 @@ return array(
     ),
 
     /* SESSION 和 COOKIE 配置 */
-    'SESSION_PREFIX' => 'wuliu_home', //session前缀
-    'COOKIE_PREFIX'  => 'wuliu_home_', // Cookie前缀 避免冲突
+    'SESSION_PREFIX' => 'wuliu_admin', //session前缀
+    'COOKIE_PREFIX'  => 'wuliu_admin_', // Cookie前缀 避免冲突
 
     /**
      * 附件相关配置

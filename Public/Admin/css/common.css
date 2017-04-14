@@ -243,3 +243,7 @@ button.close {
 .pca-select {
     margin-right: 15px;
 }
+.input-required {
+    margin-left: 10px;
+    color: red;
+}

@@ -23,7 +23,7 @@ class UserController extends AdminController {
     public function index(){
         //更新到期会员状态
         D('Member')->updateOverdueVip();
-        if(GROUP_ID == 2){
+        if(GROUP_ID > 1){
             header('Location: ' . U('User/recharge'));
         }
         $nickname       =   I('nickname');
@@ -165,7 +165,7 @@ class UserController extends AdminController {
      * 完善个人信息
      */
     public function info(){
-        if(GROUP_ID == 2){
+        if(GROUP_ID > 1){
             $id = UID;
         }else{
             $id = I('get.id', 0);
@@ -187,6 +187,7 @@ class UserController extends AdminController {
             $this->display();
         }
     }
+
     /**
      * 修改密码初始化
      * @author huajie <banhuajie@163.com>

@@ -41,7 +41,7 @@
 				</gt>
                 <if condition="GROUP_ID eq 2">&nbsp;&nbsp;您只有一次发布机会，请谨慎填写信息。</if>
 			</div>
-            <if condition="GROUP_ID neq 2">
+            <if condition="GROUP_ID lt 2">
                 <button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>1))}">启 用</button>
                 <button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>0))}">禁 用</button>
                 <button class="btn ajax-post" target-form="ids" url="{:U("Article/move")}">移 动</button>
@@ -54,7 +54,7 @@
                 <button class="btn list_sort" url="{:U('sort',array('cate_id'=>$cate_id,'pid'=>I('pid',0)),'')}">排序</button>
             </if>
 		</div>
-        <if condition="GROUP_ID neq 2">
+        <if condition="GROUP_ID gt 1">
             <!-- 高级搜索 -->
             <div class="search-form fr cf">
                 <div class="sleft">
@@ -114,7 +114,7 @@
                             <td>{:get_list_field($data,$grid,$model_list)}</td>
                         </volist>
                         <td>
-                            <if condition="GROUP_ID neq 2">
+                            <if condition="GROUP_ID lt 2">
                                 <a href="{:U('article/edit',array('cate_id'=>$cate_id,'id'=>$data['id']))}">编辑</a>
                                 <a href="{:U('article/setstatus',array('status'=>-1,'ids'=>$data['id']))}">删除</a>
                             <elseif condition="USER_VIP gt 1" />

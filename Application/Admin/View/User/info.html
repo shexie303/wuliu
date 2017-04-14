@@ -9,13 +9,13 @@
         <div class="form-item cf">
             <label class="item-label">手机<span class="check-tips">（输入手机号）</span></label>
             <div class="controls">
-                <input type="text" class="text input-large" name="telephone" value="{$data.telephone}">
+                <input type="text" class="text input-large" name="telephone" value="{$data.telephone}"><span class="input-required">*</span>
             </div>
         </div>
         <div class="form-item cf">
             <label class="item-label">微信<span class="check-tips">（输入微信号）</span></label>
             <div class="controls">
-                <input type="text" class="text input-large" name="wechat" value="{$data.wechat}">
+                <input type="text" class="text input-large" name="wechat" value="{$data.wechat}"><span class="input-required">*</span>
             </div>
         </div>
         <div class="form-item cf">
@@ -30,7 +30,7 @@
 				<input type="text" class="text input-large" name="id_card" value="{$data.id_card}">
 			</div>
 		</div>
-        <if condition="GROUP_ID neq 2">
+        <if condition="GROUP_ID lt 2">
             <div class="form-item cf">
                 <label class="item-label">重置密码<span class="check-tips">（如需重置密码，请填写。不重置则勿填）</span></label>
                 <div class="controls">
@@ -39,17 +39,9 @@
             </div>
         </if>
         <div class="form-item cf">
-            <label class="item-label">门店图片<span class="check-tips">（上传门店图片）</span></label>
-            <input type="hidden" name="facade" id="facade_value" value="{$data.facade}">
+            <label class="item-label">车牌号<span class="check-tips">（物流运输车辆的车牌号）</span></label>
             <div class="controls">
-                <div id="upload_picture_facade" class="uploadify-button " style="height: 30px; line-height: 30px; width: 120px;">
-                    <span class="uploadify-button-text">上传门店图片</span>
-                </div>
-                <div class="upload-img-box img-facade">
-                    <notempty name="data['facade']">
-                        <div class="upload-pre-item"><img src="{$data.facade}"/></div>
-                    </notempty>
-                </div>
+                <input type="text" name="truck" class="text input-large" value="{$data.truck}">
             </div>
         </div>
         <div class="form-item cf">
@@ -81,26 +73,6 @@
     <script charset="utf-8" src="__STATIC__/kindeditor/zh_CN.js"></script>
     <script type="text/javascript" charset="utf-8">
         KindEditor.ready(function(K) {
-            var upload_picture_facade = K.editor({
-                allowFileManager : true,
-                uploadJson : "{:U('File/uploadPicture',array('save_path'=>'facade'))}"
-            });
-            K('#upload_picture_facade').click(function() {
-                upload_picture_facade.loadPlugin('image', function() {
-                    upload_picture_facade.plugin.imageDialog({
-                        showRemote : false,
-                        clickFn : function(url, title, width, height, border, align, error){
-                            if(!error){
-                                $('.img-facade').html(
-                                        '<div class="upload-pre-item"><img src="__ROOT__' + url + '"/></div>'
-                                );
-                                $('#facade_value').val(url);
-                                upload_picture_facade.hideDialog();
-                            }
-                        }
-                    });
-                });
-            });
             var upload_picture_license = K.editor({
                 allowFileManager : true,
                 uploadJson : "{:U('File/uploadPicture',array('save_path'=>'license'))}"

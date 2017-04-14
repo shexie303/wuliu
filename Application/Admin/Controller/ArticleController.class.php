@@ -326,7 +326,7 @@ class ArticleController extends AdminController {
         if($map['pid']){ // 子文档列表忽略分类
             unset($map['category_id']);
         }
-        if(GROUP_ID == 2){
+        if(GROUP_ID > 1){
             $map['uid'] = UID;
         }
         $list = $this->lists($Document,$map,'level DESC,id DESC');
@@ -353,7 +353,7 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function setStatus($model='Document'){
-        if(GROUP_ID == 2){
+        if(GROUP_ID > 1){
             $this->error('未授权访问!');
         }
         return parent::setStatus('Document');
@@ -365,9 +365,9 @@ class ArticleController extends AdminController {
      */
     public function add(){
         //添加之前先看是否完善资料
-        if(GROUP_ID == 2){
+        if(GROUP_ID > 1){
             $user = D('Member')->getUserInfo(UID);
-            if(empty($user['telephone']) || empty($user['id_card'])){
+            if(empty($user['telephone']) || empty($user['wechat'])){
                 $this->error('请先完善资料再发布信息！');
             }
         }
@@ -419,7 +419,7 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function edit(){
-        if(GROUP_ID == 2){
+        if(GROUP_ID > 1){
             USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
         }
         //获取左边菜单
@@ -467,10 +467,9 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function update(){
-//        if(GROUP_ID == 2){
-////            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
-//            $this->error('抱歉，您没有编辑的权限');
-//        }
+        if(GROUP_ID > 1){
+            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+        }
         $res = D('Document')->update();
         if(!$res){
             $this->error(D('Document')->getError());
@@ -639,36 +638,41 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function mydocument($status = null, $title = null){
-        //获取左边菜单
-        $this->getMenu();
-
-        $Document   =   D('Document');
-        /* 查询条件初始化 */
-        $map['uid'] = UID;
-        if(isset($title)){
-            $map['title']   =   array('like', '%'.$title.'%');
-        }
-        if(isset($status)){
-            $map['status']  =   $status;
+        if(GROUP_ID == 3){
+            header('Location:' . U('Article/index?cate_id=6'));
         }else{
-            $map['status']  =   array('in', '0,1,2');
+            header('Location:' . U('Article/index?cate_id=2'));
         }
-        if ( isset($_GET['time-start']) ) {
-            $map['update_time'][] = array('egt',strtotime(I('time-start')));
-        }
-        if ( isset($_GET['time-end']) ) {
-            $map['update_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
-        }
-        //只查询pid为0的文章
-        $map['pid'] = 0;
-        $list = $this->lists($Document,$map,'update_time desc');
-        int_to_string($list);
-        // 记录当前列表页的cookie
-        Cookie('__forward__',$_SERVER['REQUEST_URI']);
-        $this->assign('status', $status);
-        $this->assign('list', $list);
-        $this->meta_title = '我的文档';
-        $this->display();
+//        //获取左边菜单
+//        $this->getMenu();
+//
+//        $Document   =   D('Document');
+//        /* 查询条件初始化 */
+//        $map['uid'] = UID;
+//        if(isset($title)){
+//            $map['title']   =   array('like', '%'.$title.'%');
+//        }
+//        if(isset($status)){
+//            $map['status']  =   $status;
+//        }else{
+//            $map['status']  =   array('in', '0,1,2');
+//        }
+//        if ( isset($_GET['time-start']) ) {
+//            $map['update_time'][] = array('egt',strtotime(I('time-start')));
+//        }
+//        if ( isset($_GET['time-end']) ) {
+//            $map['update_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
+//        }
+//        //只查询pid为0的文章
+//        $map['pid'] = 0;
+//        $list = $this->lists($Document,$map,'update_time desc');
+//        int_to_string($list);
+//        // 记录当前列表页的cookie
+//        Cookie('__forward__',$_SERVER['REQUEST_URI']);
+//        $this->assign('status', $status);
+//        $this->assign('list', $list);
+//        $this->meta_title = '我的文档';
+//        $this->display();
     }
 
     /**

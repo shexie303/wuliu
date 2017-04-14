@@ -12,6 +12,9 @@
  * 所有系统级别的配置
  */
 return array(
+    /*域名*/
+    'SITE_DOMAIN' => 'http://www.wuliu.com',
+
     /* 模块相关配置 */
     'AUTOLOAD_NAMESPACE' => array('Addons' => ONETHINK_ADDON_PATH), //扩展模块列表
     'DEFAULT_MODULE'     => 'Home',

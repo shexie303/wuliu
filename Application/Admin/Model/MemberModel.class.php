@@ -23,7 +23,7 @@ class MemberModel extends Model {
         array('nickname', '', '昵称被占用', self::EXISTS_VALIDATE, 'unique'), //用户名被占用
         array('telephone', '/^1[3|4|5|7|8][0-9]\d{8}$/', '手机号格式不正确', self::MUST_VALIDATE, 'regex'),
         array('wechat', 'require', '微信号不能为空', self::EXISTS_VALIDATE, 'regex'),
-        array('qq', '/^\d{5,12}$/', 'qq号码格式不正确', self::EXISTS_VALIDATE, 'regex'),
+        array('qq', '/^\d{5,12}$/', 'qq号码格式不正确', self::VALUE_VALIDATE, 'regex'),
         array('id_card', '/^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/', '身份证格式不正确', self::EXISTS_VALIDATE, 'regex'),
         array('id_card', '', '身份证被占用', self::EXISTS_VALIDATE, 'unique'), //身份证被占用
     );
@@ -101,7 +101,7 @@ class MemberModel extends Model {
     }
 
     public function update(){
-        if(isset($_POST['password'])){
+        if(!empty($_POST['password'])){
             $pass = array('password' => $_POST['password']);
             $Api    =   new UserApi();
             $res    =   $Api->updateInfo($_POST['uid'], '', $pass);

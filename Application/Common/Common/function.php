@@ -952,26 +952,27 @@ function get_stemma($pids,Model &$model, $field='id'){
 }
 
 /**
- * todo 检测分类是否还可以发布  精品专线、落地配、综合物流、推荐货车、生产厂家只能发布1条 货源
+ * 检测分类是否还可以发布  精品专线、落地配、综合物流、推荐货车、生产厂家只能发布1条 货源根据vip等级来限制
  * @param $cate_id
  * @return bool
  */
 function checkCategoryPublish($cate_id){
-    if(GROUP_ID == 2){
+    if(GROUP_ID > 1){
         $where = array(
             'uid' => UID,
-            'status' => 1
         );
         if($cate_id < 7){
             $num = 0;
         }elseif($cate_id == 7){
             if(USER_VIP == 1){
-                $num = 20;
+                $num = 19;
+            }else{
+                $num = 9999;
             }
         }
         $where['category_id'] = $cate_id;
         $res = M('Document')->where($where)->count();
-        if($res['tp_count'] > $num) return false;
+        if($res['tp_count'] > $num) return $num + 1;
     }
     return true;
 }

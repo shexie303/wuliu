@@ -39,14 +39,20 @@
 						<if condition="count($model) gt 1"><i class="btn-arrowdown"></i></if>
 					</button>
 				</gt>
-                <if condition="GROUP_ID eq 2">&nbsp;&nbsp;您只有一次发布机会，请谨慎填写信息。</if>
+                <if condition="GROUP_ID gt 1">
+                    <if condition="$cate_id eq 7">
+                        <eq name="USER_VIP" value="1">&nbsp;&nbsp;您可以发布20条货源信息。</eq>
+                    <else />
+                        &nbsp;&nbsp;您在该分类下只有一次发布机会，请谨慎填写信息。
+                    </if>
+                </if>
 			</div>
             <if condition="GROUP_ID lt 2">
                 <button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>1))}">启 用</button>
                 <button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>0))}">禁 用</button>
-                <button class="btn ajax-post" target-form="ids" url="{:U("Article/move")}">移 动</button>
-                <button class="btn ajax-post" target-form="ids" url="{:U("Article/copy")}">复 制</button>
-                <button class="btn ajax-post" target-form="ids" hide-data="true" url="{:U("Article/paste")}">粘 贴</button>
+                <!--<button class="btn ajax-post" target-form="ids" url="{:U("Article/move")}">移 动</button>-->
+                <!--<button class="btn ajax-post" target-form="ids" url="{:U("Article/copy")}">复 制</button>-->
+                <!--<button class="btn ajax-post" target-form="ids" hide-data="true" url="{:U("Article/paste")}">粘 贴</button>-->
                 <input type="hidden" class="hide-data" name="cate_id" value="{$cate_id}"/>
                 <input type="hidden" class="hide-data" name="pid" value="{$pid}"/>
                 <button class="btn ajax-post confirm" target-form="ids" url="{:U("Article/setStatus",array("status"=>-1))}">删 除</button>

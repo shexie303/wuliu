@@ -381,12 +381,13 @@ class ArticleController extends AdminController {
         empty($model_id) && $this->error('该分类未绑定模型！');
 
         //检查该分类是否允许发布
-        $allow_publish = D('Document')->checkCategory($cate_id);
-        !$allow_publish && $this->error('该分类不允许发布内容！');
+//        $allow_publish = D('Document')->checkCategory($cate_id);
+//        !$allow_publish && $this->error('该分类不允许发布内容！');
 
         //会员只允许在一个类别发布一条信息
-        if(!checkCategoryPublish($cate_id)){
-            $this->error('该分类只允许发布1条信息！');
+        $limit = checkCategoryPublish($cate_id);
+        if($limit !== true){
+            $this->error('该分类只允许发布'.$limit.'条信息！');
         }
         /* 获取要编辑的扩展模型模板 */
         $model      =   get_document_model($model_id);
@@ -468,7 +469,10 @@ class ArticleController extends AdminController {
      */
     public function update(){
         if(GROUP_ID > 1){
-            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+            $limit = checkCategoryPublish($_POST['category_id']);
+            if($limit !== true){
+                USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+            }
         }
         $res = D('Document')->update();
         if(!$res){

@@ -155,7 +155,6 @@ class UserController extends AdminController {
         }else{
             $user = D('Member')->getUserInfo(UID);
             $this->assign('user',$user);
-            M('PayLog')->delete(1);
             $this->meta_title = '会员充值';
             $this->display();
         }
@@ -178,7 +177,7 @@ class UserController extends AdminController {
             if(!$res){
                 $this->error(D('Member')->getError());
             }else{
-                $this->success('资料已完善！',Cookie('__forward__'));
+                $this->success('资料已完善！');
             }
         }else{
             $info = D('Member')->getUserInfo($id);

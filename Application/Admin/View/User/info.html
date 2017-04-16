@@ -7,6 +7,12 @@
 	<!-- 表单 -->
 	<form id="form" action="{:U('info')}" method="post" class="form-horizontal">
         <div class="form-item cf">
+            <label class="item-label">联系人<span class="check-tips">（输入联系人）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="contact" value="{$data.contact}"><span class="input-required">*</span>
+            </div>
+        </div>
+        <div class="form-item cf">
             <label class="item-label">手机<span class="check-tips">（输入手机号）</span></label>
             <div class="controls">
                 <input type="text" class="text input-large" name="telephone" value="{$data.telephone}"><span class="input-required">*</span>
@@ -15,20 +21,22 @@
         <div class="form-item cf">
             <label class="item-label">微信<span class="check-tips">（输入微信号）</span></label>
             <div class="controls">
-                <input type="text" class="text input-large" name="wechat" value="{$data.wechat}"><span class="input-required">*</span>
+                <input type="text" class="text input-large" name="wechat" value="{$data.wechat}">
             </div>
         </div>
         <div class="form-item cf">
-            <label class="item-label">QQ<span class="check-tips">（输入QQ号）</span></label>
+			<label class="item-label">身份证<span class="check-tips">（上传身份证）</span></label>
+            <input type="hidden" name="id_card" id="id_card_value" value="{$data.id_card}">
             <div class="controls">
-                <input type="text" class="text input-large" name="qq" value="{$data.qq}">
+                <div id="upload_picture_id_card" class="uploadify-button " style="height: 30px; line-height: 30px; width: 120px;">
+                    <span class="uploadify-button-text">上传身份证</span>
+                </div>
+                <div class="upload-img-box img-id-card">
+                    <notempty name="data['id_card']">
+                        <div class="upload-pre-item"><img src="{$data.id_card}"/></div>
+                    </notempty>
+                </div>
             </div>
-        </div>
-        <div class="form-item cf">
-			<label class="item-label">身份证<span class="check-tips">（输入身份证号）</span></label>
-			<div class="controls">
-				<input type="text" class="text input-large" name="id_card" value="{$data.id_card}">
-			</div>
 		</div>
         <if condition="GROUP_ID lt 2">
             <div class="form-item cf">
@@ -38,12 +46,28 @@
                 </div>
             </div>
         </if>
-        <div class="form-item cf">
-            <label class="item-label">车牌号<span class="check-tips">（物流运输车辆的车牌号）</span></label>
-            <div class="controls">
-                <input type="text" name="truck" class="text input-large" value="{$data.truck}">
+        <if condition="GROUP_ID lt 3">
+            <div class="form-item cf">
+                <label class="item-label">车牌号<span class="check-tips">（物流运输车辆的车牌号）</span></label>
+                <div class="controls">
+                    <input type="text" name="truck" class="text input-large" value="{$data.truck}">
+                </div>
             </div>
-        </div>
+            <div class="form-item cf">
+                <label class="item-label">上传驾驶证<span class="check-tips">（上传驾驶证）</span></label>
+                <input type="hidden" name="driver_license" id="driver_license_value" value="{$data.driver_license}">
+                <div class="controls">
+                    <div id="upload_picture_driver_license" class="uploadify-button " style="height: 30px; line-height: 30px; width: 120px;">
+                        <span class="uploadify-button-text">上传驾驶证</span>
+                    </div>
+                    <div class="upload-img-box img-driver-license">
+                        <notempty name="data['driver_license']">
+                            <div class="upload-pre-item"><img src="{$data.driver_license}"/></div>
+                        </notempty>
+                    </div>
+                </div>
+            </div>
+        </if>
         <div class="form-item cf">
             <label class="item-label">营业执照<span class="check-tips">（上传营业执照）</span></label>
             <input type="hidden" name="license" id="license_value" value="{$data.license}">
@@ -62,6 +86,7 @@
 		<div class="form-item">
 			<input type="hidden" name="uid" value="{$data.uid}"/>
 			<button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>
+			<a class="btn btn-return" href="{:U('Article/mydocument')}">去发布信息</a>
 			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
 		</div>
 	</form>
@@ -73,6 +98,46 @@
     <script charset="utf-8" src="__STATIC__/kindeditor/zh_CN.js"></script>
     <script type="text/javascript" charset="utf-8">
         KindEditor.ready(function(K) {
+            var upload_picture_id_card = K.editor({
+                allowFileManager : true,
+                uploadJson : "{:U('File/uploadPicture',array('save_path'=>'id_card'))}"
+            });
+            K('#upload_picture_id_card').click(function() {
+                upload_picture_id_card.loadPlugin('image', function() {
+                    upload_picture_id_card.plugin.imageDialog({
+                        showRemote : false,
+                        clickFn : function(url, title, width, height, border, align, error){
+                            if(!error){
+                                $('.img-id-card').html(
+                                        '<div class="upload-pre-item"><img src="__ROOT__' + url + '"/></div>'
+                                );
+                                $('#id_card_value').val(url);
+                                upload_picture_id_card.hideDialog();
+                            }
+                        }
+                    });
+                });
+            });
+            var upload_picture_driver_license = K.editor({
+                allowFileManager : true,
+                uploadJson : "{:U('File/uploadPicture',array('save_path'=>'driver_license'))}"
+            });
+            K('#upload_picture_driver_license').click(function() {
+                upload_picture_driver_license.loadPlugin('image', function() {
+                    upload_picture_driver_license.plugin.imageDialog({
+                        showRemote : false,
+                        clickFn : function(url, title, width, height, border, align, error){
+                            if(!error){
+                                $('.img-driver-license').html(
+                                        '<div class="upload-pre-item"><img src="__ROOT__' + url + '"/></div>'
+                                );
+                                $('#driver_license_value').val(url);
+                                upload_picture_driver_license.hideDialog();
+                            }
+                        }
+                    });
+                });
+            });
             var upload_picture_license = K.editor({
                 allowFileManager : true,
                 uploadJson : "{:U('File/uploadPicture',array('save_path'=>'license'))}"

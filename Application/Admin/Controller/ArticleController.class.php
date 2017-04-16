@@ -212,7 +212,6 @@ class ArticleController extends AdminController {
                         }
                 }
             }
-            //var_dump($grids);
             $this->assign('list_grids', $grids);
             $this->assign('model_list', $model);
             // 记录当前列表页的cookie
@@ -344,7 +343,7 @@ class ArticleController extends AdminController {
         $this->assign('allow',  $allow_publish);
         $this->assign('pid',    $map['pid']);
 
-        $this->meta_title = '文档列表';
+        $this->meta_title = '内容管理';
         return 'index';
     }
 
@@ -364,21 +363,26 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function add(){
-        //添加之前先看是否完善资料
-        if(GROUP_ID > 1){
-            $user = D('Member')->getUserInfo(UID);
-            if(empty($user['telephone']) || empty($user['wechat'])){
-                $this->error('请先完善资料再发布信息！');
-            }
-        }
-        //获取左边菜单
-        $this->getMenu();
 
         $cate_id    =   I('get.cate_id',0);
         $model_id   =   I('get.model_id',0);
 
         empty($cate_id) && $this->error('参数不能为空！');
         empty($model_id) && $this->error('该分类未绑定模型！');
+
+        //添加之前先看是否完善资料
+        if(GROUP_ID > 1){
+            if($cate_id < 7){
+                $user = D('Member')->getUserInfo(UID);
+                if(empty($user['telephone']) || empty($user['contact'])){
+                    $this->error('请先完善资料再发布信息！' , U('User/info'));
+                }
+            }
+        }
+        //获取左边菜单
+        $this->getMenu();
+
+
 
         //检查该分类是否允许发布
 //        $allow_publish = D('Document')->checkCategory($cate_id);

@@ -60,7 +60,7 @@
                 <button class="btn list_sort" url="{:U('sort',array('cate_id'=>$cate_id,'pid'=>I('pid',0)),'')}">排序</button>
             </if>
 		</div>
-        <if condition="GROUP_ID gt 1">
+        <if condition="GROUP_ID lt 2">
             <!-- 高级搜索 -->
             <div class="search-form fr cf">
                 <div class="sleft">

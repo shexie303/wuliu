@@ -64,7 +64,7 @@ class FileController extends AdminController {
             $return['message'] = '请登录后再上传';
             exit(json_encode($return));
         }
-        if(!in_array($save_path, array('cover','facade','license'))){
+        if(!in_array($save_path, array('cover','id_card','driver_license','license'))){
             $return['error'] = 1;
             $return['message'] = '非法路径,请联系管理员';
             exit(json_encode($return));

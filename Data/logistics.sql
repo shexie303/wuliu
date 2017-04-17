@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50086
 File Encoding         : 65001
 
-Date: 2017-04-16 21:48:19
+Date: 2017-04-17 17:52:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `logistics_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=251 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=253 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of logistics_action_log
@@ -317,6 +317,8 @@ INSERT INTO `logistics_action_log` VALUES ('247', '1', '16', '2130706433', 'memb
 INSERT INTO `logistics_action_log` VALUES ('248', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-16 11:01登录了后台', '1', '1492311702');
 INSERT INTO `logistics_action_log` VALUES ('249', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-16 11:15登录了后台', '1', '1492312531');
 INSERT INTO `logistics_action_log` VALUES ('250', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-04-16 11:16登录了后台', '1', '1492312574');
+INSERT INTO `logistics_action_log` VALUES ('251', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-17 16:34登录了后台', '1', '1492418078');
+INSERT INTO `logistics_action_log` VALUES ('252', '11', '1', '2130706433', 'category', '8', '操作url：/index.php?s=/Admin/Category/add.html', '1', '1492419007');
 
 -- ----------------------------
 -- Table structure for logistics_addons
@@ -785,7 +787,7 @@ CREATE TABLE `logistics_category` (
   PRIMARY KEY  (`id`),
   UNIQUE KEY `uk_name` (`name`),
   KEY `pid` (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='分类表';
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='分类表';
 
 -- ----------------------------
 -- Records of logistics_category
@@ -796,6 +798,40 @@ INSERT INTO `logistics_category` VALUES ('3', 'ldp', '落地配', '0', '2', '10'
 INSERT INTO `logistics_category` VALUES ('4', 'zhwl', '综合物流', '0', '3', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1491035129', '1492065525', '1', '0');
 INSERT INTO `logistics_category` VALUES ('6', 'sccj', '生产厂家', '0', '5', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492065425', '1492065529', '1', '0');
 INSERT INTO `logistics_category` VALUES ('7', 'fbhy', '发布货源', '0', '6', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492133721', '1492133728', '1', '0');
+INSERT INTO `logistics_category` VALUES ('8', 'snzx', '市内配送', '2', '1', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('9', 'bjzx', '北京专线', '2', '2', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('10', 'tjzx', '天津专线', '2', '3', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('11', 'shzx', '上海专线', '2', '4', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('12', 'cqzx', '重庆专线', '2', '5', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('13', 'zjzx', '浙江专线', '2', '6', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('14', 'jszx', '江苏专线', '2', '7', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('15', 'sdzx', '山东专线', '2', '8', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('16', 'ahzx', '安徽专线', '2', '9', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('17', 'gdzx', '广东专线', '2', '10', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('18', 'fjzx', '福建专线', '2', '11', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('19', 'jxzx', '江西专线', '2', '12', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('20', 'hnzx', '湖南专线', '2', '13', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('21', 'hbzx', '湖北专线', '2', '14', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('22', 'henzx', '河南专线', '2', '15', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('23', 'hebzx', '河北专线', '2', '16', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('24', 'sxzx', '山西专线', '2', '17', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('25', 'shxzx', '陕西专线', '2', '18', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('26', 'gxzx', '广西专线', '2', '19', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('27', 'ynzx', '云南专线', '2', '20', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('28', 'gzzx', '贵州专线', '2', '21', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('29', 'sczx', '四川专线', '2', '22', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('30', 'jlzx', '吉林专线', '2', '23', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('31', 'hljzx', '黑龙江线', '2', '24', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('32', 'lnzx', '辽宁专线', '2', '25', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('33', 'xjzx', '新疆专线', '2', '26', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('34', 'nxzx', '宁夏专线', '2', '27', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('35', 'nmzx', '内蒙专线', '2', '28', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('36', 'gszx', '甘肃专线', '2', '29', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('37', 'qhzx', '青海专线', '2', '30', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('38', 'xzzx', '西藏专线', '2', '31', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('39', 'hainzx', '海南专线', '2', '32', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('40', 'gatzx', '港澳台线', '2', '33', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('41', 'shengnzx', '省内专线', '2', '34', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
 
 -- ----------------------------
 -- Table structure for logistics_channel
@@ -886,6 +922,9 @@ CREATE TABLE `logistics_document` (
   `name` char(40) NOT NULL default '' COMMENT '标识',
   `title` char(80) NOT NULL default '' COMMENT '标题',
   `category_id` int(10) unsigned NOT NULL COMMENT '所属分类',
+  `location_p` mediumint(8) unsigned NOT NULL default '0' COMMENT '归属地省份id',
+  `location_c` mediumint(8) unsigned NOT NULL default '0' COMMENT '归属地城市id',
+  `location_a` mediumint(8) unsigned NOT NULL default '0' COMMENT '归属地县区id',
   `address` varchar(200) NOT NULL default '' COMMENT '具体地址',
   `root` int(10) unsigned NOT NULL default '0' COMMENT '根节点',
   `pid` int(10) unsigned NOT NULL default '0' COMMENT '所属ID',
@@ -912,17 +951,17 @@ CREATE TABLE `logistics_document` (
 -- ----------------------------
 -- Records of logistics_document
 -- ----------------------------
-INSERT INTO `logistics_document` VALUES ('1', '15', '', 'OneThink1.0正式版发布', '2', '大家期待的OneThink正式版发布', '0', '0', '2', '2', '0', '0', '2', '1', '0', '0', '15', '0', '0', '5', '1387260660', '1490850896', '1');
-INSERT INTO `logistics_document` VALUES ('2', '16', '', '试试好使不', '2', '看看这个', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '15', '0', '0', '1', '1490325060', '1490342702', '1');
-INSERT INTO `logistics_document` VALUES ('3', '5', '', '【双圆物流】上海至淮安、宿迁、徐州、盐城、连云港专线(苏北三线中转周边地区)', '3', '呜呜呜呜呜呜呜呜呜呜呜呜', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '10', '0', '0', '0', '1490327068', '1490327068', '1');
-INSERT INTO `logistics_document` VALUES ('6', '1', '', '尼玛', '39', '111', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '1490342760', '1490343570', '1');
-INSERT INTO `logistics_document` VALUES ('8', '17', '', '123123', '2', '123456', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '2', '0', '0', '3', '1490685240', '1492066079', '1');
-INSERT INTO `logistics_document` VALUES ('11', '1', '', '213', '4', '106国道105公里处文安县史各庄新桥北', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '123', '1492050874', '1492050874', '0');
-INSERT INTO `logistics_document` VALUES ('12', '1', '', 'dfgsdas123123', '2', '123123asdfadsf', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '2', '1492072174', '1492072174', '0');
-INSERT INTO `logistics_document` VALUES ('13', '1', '', '阿桑德拉发卡数量的疯狂', '2', '阿萨德发送方', '0', '0', '2', '2', '0', '0', '17', '1', '0', '0', '0', '0', '0', '1', '1492073195', '1492073195', '0');
-INSERT INTO `logistics_document` VALUES ('14', '1', '', '123345sadfasdfasdf', '2', '12312阿斯蒂芬', '0', '0', '2', '2', '0', '0', '13', '1', '0', '0', '0', '0', '0', '123', '1492073977', '1492152945', '-1');
-INSERT INTO `logistics_document` VALUES ('15', '17', '', '我有货源', '7', '106国道105公里处文安县史各庄新桥北', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1492154764', '1492154764', '0');
-INSERT INTO `logistics_document` VALUES ('16', '17', '', '我有货源2', '7', '123', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1492154831', '1492154831', '0');
+INSERT INTO `logistics_document` VALUES ('1', '15', '', 'OneThink1.0正式版发布', '2', '0', '0', '0', '大家期待的OneThink正式版发布', '0', '0', '2', '2', '0', '0', '2', '1', '0', '0', '15', '0', '0', '5', '1387260660', '1490850896', '1');
+INSERT INTO `logistics_document` VALUES ('2', '16', '', '试试好使不', '2', '0', '0', '0', '看看这个', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '15', '0', '0', '1', '1490325060', '1490342702', '1');
+INSERT INTO `logistics_document` VALUES ('3', '5', '', '【双圆物流】上海至淮安、宿迁、徐州、盐城、连云港专线(苏北三线中转周边地区)', '3', '0', '0', '0', '呜呜呜呜呜呜呜呜呜呜呜呜', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '10', '0', '0', '0', '1490327068', '1490327068', '1');
+INSERT INTO `logistics_document` VALUES ('6', '1', '', '尼玛', '39', '0', '0', '0', '111', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '1490342760', '1490343570', '1');
+INSERT INTO `logistics_document` VALUES ('8', '17', '', '123123', '2', '0', '0', '0', '123456', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '2', '0', '0', '3', '1490685240', '1492066079', '1');
+INSERT INTO `logistics_document` VALUES ('11', '1', '', '213', '4', '0', '0', '0', '106国道105公里处文安县史各庄新桥北', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '123', '1492050874', '1492050874', '0');
+INSERT INTO `logistics_document` VALUES ('12', '1', '', 'dfgsdas123123', '2', '0', '0', '0', '123123asdfadsf', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '2', '1492072174', '1492072174', '0');
+INSERT INTO `logistics_document` VALUES ('13', '1', '', '阿桑德拉发卡数量的疯狂', '2', '0', '0', '0', '阿萨德发送方', '0', '0', '2', '2', '0', '0', '17', '1', '0', '0', '0', '0', '0', '1', '1492073195', '1492073195', '0');
+INSERT INTO `logistics_document` VALUES ('14', '1', '', '123345sadfasdfasdf', '2', '0', '0', '0', '12312阿斯蒂芬', '0', '0', '2', '2', '0', '0', '13', '1', '0', '0', '0', '0', '0', '123', '1492073977', '1492152945', '-1');
+INSERT INTO `logistics_document` VALUES ('15', '17', '', '我有货源', '7', '0', '0', '0', '106国道105公里处文安县史各庄新桥北', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1492154764', '1492154764', '0');
+INSERT INTO `logistics_document` VALUES ('16', '17', '', '我有货源2', '7', '0', '0', '0', '123', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1492154831', '1492154831', '0');
 
 -- ----------------------------
 -- Table structure for logistics_document_article
@@ -1029,6 +1068,30 @@ INSERT INTO `logistics_hooks` VALUES ('14', 'topicComment', '评论提交方式�
 INSERT INTO `logistics_hooks` VALUES ('16', 'app_begin', '应用开始', '2', '1384481614', '');
 
 -- ----------------------------
+-- Table structure for logistics_jpzx
+-- ----------------------------
+DROP TABLE IF EXISTS `logistics_jpzx`;
+CREATE TABLE `logistics_jpzx` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `wuliu_id` int(10) unsigned NOT NULL,
+  `zx_id` int(10) unsigned NOT NULL,
+  `city_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of logistics_jpzx
+-- ----------------------------
+INSERT INTO `logistics_jpzx` VALUES ('1', '1', '7', '6');
+INSERT INTO `logistics_jpzx` VALUES ('2', '1', '8', '6');
+INSERT INTO `logistics_jpzx` VALUES ('3', '1', '9', '6');
+INSERT INTO `logistics_jpzx` VALUES ('4', '1', '10', '6');
+INSERT INTO `logistics_jpzx` VALUES ('5', '1', '11', '6');
+INSERT INTO `logistics_jpzx` VALUES ('6', '2', '9', '6');
+INSERT INTO `logistics_jpzx` VALUES ('7', '2', '10', '6');
+INSERT INTO `logistics_jpzx` VALUES ('8', '2', '20', '6');
+
+-- ----------------------------
 -- Table structure for logistics_member
 -- ----------------------------
 DROP TABLE IF EXISTS `logistics_member`;
@@ -1060,7 +1123,7 @@ CREATE TABLE `logistics_member` (
 -- ----------------------------
 -- Records of logistics_member
 -- ----------------------------
-INSERT INTO `logistics_member` VALUES ('1', 'shexie303', '0', '131128198911296612', '', '', '', '/Uploads/Picture/facade/2017-04-01/58df1a91bef87.jpg', '', '/Uploads/Picture/license/2017-04-01/58df1b8d7882c.jpg', '1', '1491494400', '1499356800', '60', '73', '0', '1490319959', '2130706433', '1492311702', '1');
+INSERT INTO `logistics_member` VALUES ('1', 'shexie303', '0', '131128198911296612', '', '', '', '/Uploads/Picture/facade/2017-04-01/58df1a91bef87.jpg', '', '/Uploads/Picture/license/2017-04-01/58df1b8d7882c.jpg', '1', '1491494400', '1499356800', '70', '74', '0', '1490319959', '2130706433', '1492418078', '1');
 INSERT INTO `logistics_member` VALUES ('2', 'shexie33', '0', '', '', '', '', '', '', '', '0', '0', '0', '50', '39', '2130706433', '1490321384', '2130706433', '1492152897', '1');
 INSERT INTO `logistics_member` VALUES ('3', 'shexie44', '0', '', '', '', '', '', '', '', '0', '0', '0', '20', '13', '2130706433', '1490582865', '2130706433', '1492312574', '1');
 INSERT INTO `logistics_member` VALUES ('4', 'shexie55', '0', '', '', '', '', '', '', '', '0', '0', '0', '20', '2', '0', '0', '2130706433', '1491039189', '1');
@@ -5124,7 +5187,7 @@ CREATE TABLE `logistics_ucenter_member` (
 -- ----------------------------
 -- Records of logistics_ucenter_member
 -- ----------------------------
-INSERT INTO `logistics_ucenter_member` VALUES ('1', 'shexie303', '74512fad441da1d65478e0698d82386a', 'lc@qq.com', '', '1490319959', '2130706433', '1492311702', '2130706433', '1490319959', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('1', 'shexie303', '74512fad441da1d65478e0698d82386a', 'lc@qq.com', '', '1490319959', '2130706433', '1492418078', '2130706433', '1490319959', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('2', 'shexie33', '74512fad441da1d65478e0698d82386a', 'lc_php@126.com', '', '1490321367', '2130706433', '1492152897', '2130706433', '1490321367', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('3', 'shexie44', '74512fad441da1d65478e0698d82386a', 'asd@qq.com', '', '1490582797', '2130706433', '1492312574', '2130706433', '1490582797', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('4', 'shexie55', '74512fad441da1d65478e0698d82386a', '112@126.com', '', '1490604355', '2130706433', '1491039189', '2130706433', '1490604355', '1');
@@ -5189,27 +5252,3 @@ CREATE TABLE `logistics_userdata` (
 -- ----------------------------
 -- Records of logistics_userdata
 -- ----------------------------
-
--- ----------------------------
--- Table structure for test
--- ----------------------------
-DROP TABLE IF EXISTS `test`;
-CREATE TABLE `test` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `wuliu_id` int(10) unsigned NOT NULL,
-  `zx_id` int(10) unsigned NOT NULL,
-  `city_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of test
--- ----------------------------
-INSERT INTO `test` VALUES ('1', '1', '7', '6');
-INSERT INTO `test` VALUES ('2', '1', '8', '6');
-INSERT INTO `test` VALUES ('3', '1', '9', '6');
-INSERT INTO `test` VALUES ('4', '1', '10', '6');
-INSERT INTO `test` VALUES ('5', '1', '11', '6');
-INSERT INTO `test` VALUES ('6', '2', '9', '6');
-INSERT INTO `test` VALUES ('7', '2', '10', '6');
-INSERT INTO `test` VALUES ('8', '2', '20', '6');

@@ -72,7 +72,7 @@ class ArticleController extends AdminController {
         //获取动态分类
         $cate_auth  =   AuthGroupModel::getAuthCategories(UID);	//获取当前用户所有的内容权限节点
         $cate_auth  =   $cate_auth == null ? array() : $cate_auth;
-        $cate       =   M('Category')->where(array('status'=>1))->field('id,title,pid,allow_publish')->order('pid,sort')->select();
+        $cate       =   M('Category')->where(array('status'=>1,'pid'=>0))->field('id,title,pid,allow_publish')->order('pid,sort')->select();
 
         //没有权限的分类则不显示
         if(!IS_ROOT){
@@ -83,7 +83,7 @@ class ArticleController extends AdminController {
             }
         }
 
-        $cate           =   list_to_tree($cate);	//生成分类树
+        //$cate           =   list_to_tree($cate);	//生成分类树
 
         //获取分类id
         $cate_id        =   I('param.cate_id');

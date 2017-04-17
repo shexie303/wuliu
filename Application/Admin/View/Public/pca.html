@@ -19,6 +19,7 @@
             $.post("{:U('Public/getNextArea')}", {id : id}, function(e){
                 if(e.status == 0){
                     if(level == 1){
+                        //alert(11);
                         obj.siblings().hide().empty();
                     }else{
                         obj.next().hide().empty();

@@ -1029,15 +1029,38 @@ function province(){
     return M('Pca')->field('id,name')->where(array('type'=>1))->select();
 }
 
-function getNextCategory($cate_id){
+/**
+ * 获取省市区的下级 默认是取省份
+ * @param $parent_id
+ * @param $type
+ * @return mixed\
+ */
+function getNextPca($parent_id = 0, $type = 1){
     //todo 缓存
-    $data = M('Category')->field('id,title')->where(array('status'=>1,'pid'=>$cate_id))->order('sort asc')->select();
+    return M('Pca')->field('id,name')->where(array('parent_id'=>$parent_id,'type'=>$type))->select();
+}
+
+function getNextCategory($cate_id, $p_id){
+    //todo 缓存
+    $data = M('Category')->field('id,title,province_id')->where(array('status'=>1,'pid'=>$cate_id))->order('sort asc')->select();
     if($cate_id == 2){
-        $new = array();
+        $s_cate = array();
         foreach($data as $val){
-            $new[$val['id']] = $val['title'];
+            $s_cate[$val['province_id']] = $val;
         }
-        $data = $new;
+        //直辖市
+        if(in_array($p_id, array(110000, 120000, 310000, 500000))){
+            unset($s_cate[$p_id]);
+            array_pop($s_cate);
+            //港澳台
+        }elseif(in_array($p_id, array(710000, 810000, 820000))){
+            array_shift($s_cate);
+        }else{
+            unset($s_cate[$p_id]);
+            array_shift($s_cate);
+        }
+        $data = $s_cate;
     }
+
     return $data;
 }

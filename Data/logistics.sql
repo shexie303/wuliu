@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50086
 File Encoding         : 65001
 
-Date: 2017-04-17 17:52:20
+Date: 2017-04-18 17:58:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,9 +36,9 @@ CREATE TABLE `logistics_action` (
 -- Records of logistics_action
 -- ----------------------------
 INSERT INTO `logistics_action` VALUES ('1', 'user_login', '用户登录', '积分+10，每天一次', 'table:member|field:score|condition:uid={$self} AND status>-1|rule:score+10|cycle:24|max:1;', '[user|get_nickname]在[time|time_format]登录了后台', '1', '1', '1387181220');
-INSERT INTO `logistics_action` VALUES ('2', 'add_article', '发布文章', '积分+5，每天上限5次', 'table:member|field:score|condition:uid={$self}|rule:score+5|cycle:24|max:5', '', '2', '0', '1380173180');
+INSERT INTO `logistics_action` VALUES ('2', 'add_article', '发布文章', '积分+5，每天上限5次', 'table:member|field:score|condition:uid={$self}|rule:score+5|cycle:24|max:5', '', '2', '1', '1380173180');
 INSERT INTO `logistics_action` VALUES ('3', 'review', '评论', '评论积分+1，无限制', 'table:member|field:score|condition:uid={$self}|rule:score+1', '', '2', '1', '1383285646');
-INSERT INTO `logistics_action` VALUES ('4', 'add_document', '发表文档', '积分+10，每天上限5次', 'table:member|field:score|condition:uid={$self}|rule:score+10|cycle:24|max:5', '[user|get_nickname]在[time|time_format]发表了一篇文章。\r\n表[model]，记录编号[record]。', '2', '0', '1386139726');
+INSERT INTO `logistics_action` VALUES ('4', 'add_document', '发表文档', '积分+10，每天上限5次', 'table:member|field:score|condition:uid={$self}|rule:score+10|cycle:24|max:5', '[user|get_nickname]在[time|time_format]发表了一篇文章。\r\n表[model]，记录编号[record]。', '2', '1', '1386139726');
 INSERT INTO `logistics_action` VALUES ('5', 'add_document_topic', '发表讨论', '积分+5，每天上限10次', 'table:member|field:score|condition:uid={$self}|rule:score+5|cycle:24|max:10', '', '2', '0', '1383285551');
 INSERT INTO `logistics_action` VALUES ('6', 'update_config', '更新配置', '新增或修改或删除配置', '', '', '1', '1', '1383294988');
 INSERT INTO `logistics_action` VALUES ('7', 'update_model', '更新模型', '新增或修改模型', '', '', '1', '1', '1383295057');
@@ -65,7 +65,7 @@ CREATE TABLE `logistics_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=253 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=264 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of logistics_action_log
@@ -319,6 +319,17 @@ INSERT INTO `logistics_action_log` VALUES ('249', '1', '17', '2130706433', 'memb
 INSERT INTO `logistics_action_log` VALUES ('250', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-04-16 11:16登录了后台', '1', '1492312574');
 INSERT INTO `logistics_action_log` VALUES ('251', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-17 16:34登录了后台', '1', '1492418078');
 INSERT INTO `logistics_action_log` VALUES ('252', '11', '1', '2130706433', 'category', '8', '操作url：/index.php?s=/Admin/Category/add.html', '1', '1492419007');
+INSERT INTO `logistics_action_log` VALUES ('253', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-18 09:59登录了后台', '1', '1492480750');
+INSERT INTO `logistics_action_log` VALUES ('254', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-18 13:34登录了后台', '1', '1492493649');
+INSERT INTO `logistics_action_log` VALUES ('255', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-18 14:18登录了后台', '1', '1492496338');
+INSERT INTO `logistics_action_log` VALUES ('256', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-18 14:30登录了后台', '1', '1492497001');
+INSERT INTO `logistics_action_log` VALUES ('257', '6', '1', '2130706433', 'config', '33', '操作url：/index.php?s=/Admin/Config/edit.html', '1', '1492497121');
+INSERT INTO `logistics_action_log` VALUES ('258', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-18 14:32登录了后台', '1', '1492497142');
+INSERT INTO `logistics_action_log` VALUES ('259', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-18 14:58登录了后台', '1', '1492498728');
+INSERT INTO `logistics_action_log` VALUES ('260', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-18 15:03登录了后台', '1', '1492498998');
+INSERT INTO `logistics_action_log` VALUES ('261', '4', '2', '2130706433', 'document', '24', 'shexie33在2017-04-18 15:08发表了一篇文章。\r\n表document，记录编号24。', '1', '1492499325');
+INSERT INTO `logistics_action_log` VALUES ('262', '4', '2', '2130706433', 'document', '25', 'shexie33在2017-04-18 15:45发表了一篇文章。\r\n表document，记录编号25。', '1', '1492501511');
+INSERT INTO `logistics_action_log` VALUES ('263', '4', '2', '2130706433', 'document', '26', 'shexie33在2017-04-18 15:51发表了一篇文章。\r\n表document，记录编号26。', '1', '1492501892');
 
 -- ----------------------------
 -- Table structure for logistics_addons
@@ -480,7 +491,7 @@ CREATE TABLE `logistics_auth_group` (
 -- ----------------------------
 -- Records of logistics_auth_group
 -- ----------------------------
-INSERT INTO `logistics_auth_group` VALUES ('1', 'admin', '1', '管理员', '', '1', '1,2,3,7,8,9,10,17,23,24,26,88,107,108,110,211');
+INSERT INTO `logistics_auth_group` VALUES ('1', 'admin', '1', '管理员', '', '1', '1,2,3,7,8,9,10,17,23,24,26,88,108,211');
 INSERT INTO `logistics_auth_group` VALUES ('2', 'admin', '1', '物流用户', '', '1', '2,3,7,10,17,108,218,221');
 INSERT INTO `logistics_auth_group` VALUES ('3', 'admin', '1', '生成厂家', '', '1', '2,3,7,10,17,108,218,221');
 
@@ -784,6 +795,7 @@ CREATE TABLE `logistics_category` (
   `update_time` int(10) unsigned NOT NULL default '0' COMMENT '更新时间',
   `status` tinyint(4) NOT NULL default '0' COMMENT '数据状态',
   `icon` int(10) unsigned NOT NULL default '0' COMMENT '分类图标',
+  `province_id` mediumint(8) unsigned NOT NULL default '0' COMMENT '省份id 为jpzx的二级分类准备',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `uk_name` (`name`),
   KEY `pid` (`pid`)
@@ -792,46 +804,46 @@ CREATE TABLE `logistics_category` (
 -- ----------------------------
 -- Records of logistics_category
 -- ----------------------------
-INSERT INTO `logistics_category` VALUES ('5', 'tjhc', '推荐货车', '0', '4', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492065358', '1492065527', '1', '0');
-INSERT INTO `logistics_category` VALUES ('2', 'jpzx', '精品专线', '0', '1', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '1', '1', '0', '1', '', '', '1490326849', '1492065489', '1', '0');
-INSERT INTO `logistics_category` VALUES ('3', 'ldp', '落地配', '0', '2', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1490595686', '1492065524', '1', '0');
-INSERT INTO `logistics_category` VALUES ('4', 'zhwl', '综合物流', '0', '3', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1491035129', '1492065525', '1', '0');
-INSERT INTO `logistics_category` VALUES ('6', 'sccj', '生产厂家', '0', '5', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492065425', '1492065529', '1', '0');
-INSERT INTO `logistics_category` VALUES ('7', 'fbhy', '发布货源', '0', '6', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492133721', '1492133728', '1', '0');
-INSERT INTO `logistics_category` VALUES ('8', 'snzx', '市内配送', '2', '1', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('9', 'bjzx', '北京专线', '2', '2', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('10', 'tjzx', '天津专线', '2', '3', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('11', 'shzx', '上海专线', '2', '4', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('12', 'cqzx', '重庆专线', '2', '5', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('13', 'zjzx', '浙江专线', '2', '6', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('14', 'jszx', '江苏专线', '2', '7', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('15', 'sdzx', '山东专线', '2', '8', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('16', 'ahzx', '安徽专线', '2', '9', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('17', 'gdzx', '广东专线', '2', '10', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('18', 'fjzx', '福建专线', '2', '11', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('19', 'jxzx', '江西专线', '2', '12', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('20', 'hnzx', '湖南专线', '2', '13', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('21', 'hbzx', '湖北专线', '2', '14', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('22', 'henzx', '河南专线', '2', '15', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('23', 'hebzx', '河北专线', '2', '16', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('24', 'sxzx', '山西专线', '2', '17', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('25', 'shxzx', '陕西专线', '2', '18', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('26', 'gxzx', '广西专线', '2', '19', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('27', 'ynzx', '云南专线', '2', '20', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('28', 'gzzx', '贵州专线', '2', '21', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('29', 'sczx', '四川专线', '2', '22', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('30', 'jlzx', '吉林专线', '2', '23', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('31', 'hljzx', '黑龙江线', '2', '24', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('32', 'lnzx', '辽宁专线', '2', '25', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('33', 'xjzx', '新疆专线', '2', '26', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('34', 'nxzx', '宁夏专线', '2', '27', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('35', 'nmzx', '内蒙专线', '2', '28', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('36', 'gszx', '甘肃专线', '2', '29', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('37', 'qhzx', '青海专线', '2', '30', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('38', 'xzzx', '西藏专线', '2', '31', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('39', 'hainzx', '海南专线', '2', '32', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('40', 'gatzx', '港澳台线', '2', '33', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
-INSERT INTO `logistics_category` VALUES ('41', 'shengnzx', '省内专线', '2', '34', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0');
+INSERT INTO `logistics_category` VALUES ('5', 'tjhc', '推荐货车', '0', '4', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492065358', '1492065527', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('2', 'jpzx', '精品专线', '0', '1', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '1', '1', '0', '1', '', '', '1490326849', '1492065489', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('3', 'ldp', '落地配', '0', '2', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1490595686', '1492065524', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('4', 'zhwl', '综合物流', '0', '3', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1491035129', '1492065525', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('6', 'sccj', '生产厂家', '0', '5', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492065425', '1492065529', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('7', 'fbhy', '发布货源', '0', '6', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492133721', '1492133728', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('8', 'snzx', '市内配送', '2', '1', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '100000');
+INSERT INTO `logistics_category` VALUES ('9', 'bjzx', '北京专线', '2', '2', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '110000');
+INSERT INTO `logistics_category` VALUES ('10', 'tjzx', '天津专线', '2', '3', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '120000');
+INSERT INTO `logistics_category` VALUES ('11', 'shzx', '上海专线', '2', '4', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '310000');
+INSERT INTO `logistics_category` VALUES ('12', 'cqzx', '重庆专线', '2', '5', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '500000');
+INSERT INTO `logistics_category` VALUES ('13', 'zjzx', '浙江专线', '2', '6', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '330000');
+INSERT INTO `logistics_category` VALUES ('14', 'jszx', '江苏专线', '2', '7', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '320000');
+INSERT INTO `logistics_category` VALUES ('15', 'sdzx', '山东专线', '2', '8', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '370000');
+INSERT INTO `logistics_category` VALUES ('16', 'ahzx', '安徽专线', '2', '9', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '340000');
+INSERT INTO `logistics_category` VALUES ('17', 'gdzx', '广东专线', '2', '10', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '440000');
+INSERT INTO `logistics_category` VALUES ('18', 'fjzx', '福建专线', '2', '11', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '350000');
+INSERT INTO `logistics_category` VALUES ('19', 'jxzx', '江西专线', '2', '12', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '360000');
+INSERT INTO `logistics_category` VALUES ('20', 'hnzx', '湖南专线', '2', '13', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '430000');
+INSERT INTO `logistics_category` VALUES ('21', 'hbzx', '湖北专线', '2', '14', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '420000');
+INSERT INTO `logistics_category` VALUES ('22', 'henzx', '河南专线', '2', '15', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '410000');
+INSERT INTO `logistics_category` VALUES ('23', 'hebzx', '河北专线', '2', '16', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '130000');
+INSERT INTO `logistics_category` VALUES ('24', 'sxzx', '山西专线', '2', '17', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '140000');
+INSERT INTO `logistics_category` VALUES ('25', 'shxzx', '陕西专线', '2', '18', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '610000');
+INSERT INTO `logistics_category` VALUES ('26', 'gxzx', '广西专线', '2', '19', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '450000');
+INSERT INTO `logistics_category` VALUES ('27', 'ynzx', '云南专线', '2', '20', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '530000');
+INSERT INTO `logistics_category` VALUES ('28', 'gzzx', '贵州专线', '2', '21', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '520000');
+INSERT INTO `logistics_category` VALUES ('29', 'sczx', '四川专线', '2', '22', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '510000');
+INSERT INTO `logistics_category` VALUES ('30', 'jlzx', '吉林专线', '2', '23', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '220000');
+INSERT INTO `logistics_category` VALUES ('31', 'hljzx', '黑龙江线', '2', '24', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '230000');
+INSERT INTO `logistics_category` VALUES ('32', 'lnzx', '辽宁专线', '2', '25', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '210000');
+INSERT INTO `logistics_category` VALUES ('33', 'xjzx', '新疆专线', '2', '26', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '650000');
+INSERT INTO `logistics_category` VALUES ('34', 'nxzx', '宁夏专线', '2', '27', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '630000');
+INSERT INTO `logistics_category` VALUES ('35', 'nmzx', '内蒙专线', '2', '28', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '150000');
+INSERT INTO `logistics_category` VALUES ('36', 'gszx', '甘肃专线', '2', '29', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '620000');
+INSERT INTO `logistics_category` VALUES ('37', 'qhzx', '青海专线', '2', '30', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '630000');
+INSERT INTO `logistics_category` VALUES ('38', 'xzzx', '西藏专线', '2', '31', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '540000');
+INSERT INTO `logistics_category` VALUES ('39', 'hainzx', '海南专线', '2', '32', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '460000');
+INSERT INTO `logistics_category` VALUES ('40', 'gatzx', '港澳台线', '2', '33', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '850000');
+INSERT INTO `logistics_category` VALUES ('41', 'shengnzx', '省内专线', '2', '34', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '900000');
 
 -- ----------------------------
 -- Table structure for logistics_channel
@@ -906,7 +918,7 @@ INSERT INTO `logistics_config` VALUES ('29', 'DATA_BACKUP_PART_SIZE', '0', '数�
 INSERT INTO `logistics_config` VALUES ('30', 'DATA_BACKUP_COMPRESS', '4', '数据库备份文件是否启用压缩', '4', '0:不压缩\r\n1:启用压缩', '压缩备份文件需要PHP环境支持gzopen,gzwrite函数', '1381713345', '1381729544', '1', '1', '9');
 INSERT INTO `logistics_config` VALUES ('31', 'DATA_BACKUP_COMPRESS_LEVEL', '4', '数据库备份文件压缩级别', '4', '1:普通\r\n4:一般\r\n9:最高', '数据库备份文件的压缩级别，该配置在开启压缩时生效', '1381713408', '1381713408', '1', '9', '10');
 INSERT INTO `logistics_config` VALUES ('32', 'DEVELOP_MODE', '4', '开启开发者模式', '4', '0:关闭\r\n1:开启', '是否开启开发者模式', '1383105995', '1383291877', '1', '1', '11');
-INSERT INTO `logistics_config` VALUES ('33', 'ALLOW_VISIT', '3', '不受限控制器方法', '0', '', '', '1386644047', '1386644741', '1', '0:article/draftbox\r\n1:article/mydocument\r\n2:Category/tree\r\n3:Index/verify\r\n4:file/upload\r\n5:file/download\r\n6:user/updatePassword\r\n7:user/updateNickname\r\n8:user/submitPassword\r\n9:user/submitNickname\r\n10:file/uploadpicture', '0');
+INSERT INTO `logistics_config` VALUES ('33', 'ALLOW_VISIT', '3', '不受限控制器方法', '0', '', '', '1386644047', '1492497121', '1', '0:article/draftbox\r\n1:article/mydocument\r\n2:Category/tree\r\n3:Index/verify\r\n4:file/upload\r\n5:file/download\r\n6:user/updatePassword\r\n7:user/updateNickname\r\n8:user/submitPassword\r\n9:user/submitNickname\r\n10:file/uploadpicture\r\n11:Article/getNextCategory\r\n12:Article/getNextArea', '0');
 INSERT INTO `logistics_config` VALUES ('34', 'DENY_VISIT', '3', '超管专限控制器方法', '0', '', '仅超级管理员可访问的控制器方法', '1386644141', '1386644659', '1', '0:Addons/addhook\r\n1:Addons/edithook\r\n2:Addons/delhook\r\n3:Addons/updateHook\r\n4:Admin/getMenus\r\n5:Admin/recordList\r\n6:AuthManager/updateRules\r\n7:AuthManager/tree', '0');
 INSERT INTO `logistics_config` VALUES ('35', 'REPLY_LIST_ROWS', '0', '回复列表每页条数', '2', '', '', '1386645376', '1387178083', '1', '10', '0');
 INSERT INTO `logistics_config` VALUES ('36', 'ADMIN_ALLOW_IP', '2', '后台允许访问IP', '4', '', '多个用逗号分隔，如果不配置表示不限制IP访问', '1387165454', '1387165553', '1', '', '12');
@@ -925,6 +937,9 @@ CREATE TABLE `logistics_document` (
   `location_p` mediumint(8) unsigned NOT NULL default '0' COMMENT '归属地省份id',
   `location_c` mediumint(8) unsigned NOT NULL default '0' COMMENT '归属地城市id',
   `location_a` mediumint(8) unsigned NOT NULL default '0' COMMENT '归属地县区id',
+  `destination_p` mediumint(8) unsigned NOT NULL default '0' COMMENT '目的地省份id',
+  `destination_c` mediumint(8) unsigned NOT NULL default '0' COMMENT '目的地城市id',
+  `destination_a` mediumint(8) unsigned NOT NULL default '0' COMMENT '目的地县区id',
   `address` varchar(200) NOT NULL default '' COMMENT '具体地址',
   `root` int(10) unsigned NOT NULL default '0' COMMENT '根节点',
   `pid` int(10) unsigned NOT NULL default '0' COMMENT '所属ID',
@@ -946,22 +961,32 @@ CREATE TABLE `logistics_document` (
   PRIMARY KEY  (`id`),
   KEY `idx_category_status` (`category_id`,`status`),
   KEY `idx_status_type_pid` (`status`,`uid`,`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
 
 -- ----------------------------
 -- Records of logistics_document
 -- ----------------------------
-INSERT INTO `logistics_document` VALUES ('1', '15', '', 'OneThink1.0正式版发布', '2', '0', '0', '0', '大家期待的OneThink正式版发布', '0', '0', '2', '2', '0', '0', '2', '1', '0', '0', '15', '0', '0', '5', '1387260660', '1490850896', '1');
-INSERT INTO `logistics_document` VALUES ('2', '16', '', '试试好使不', '2', '0', '0', '0', '看看这个', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '15', '0', '0', '1', '1490325060', '1490342702', '1');
-INSERT INTO `logistics_document` VALUES ('3', '5', '', '【双圆物流】上海至淮安、宿迁、徐州、盐城、连云港专线(苏北三线中转周边地区)', '3', '0', '0', '0', '呜呜呜呜呜呜呜呜呜呜呜呜', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '10', '0', '0', '0', '1490327068', '1490327068', '1');
-INSERT INTO `logistics_document` VALUES ('6', '1', '', '尼玛', '39', '0', '0', '0', '111', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '1490342760', '1490343570', '1');
-INSERT INTO `logistics_document` VALUES ('8', '17', '', '123123', '2', '0', '0', '0', '123456', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '2', '0', '0', '3', '1490685240', '1492066079', '1');
-INSERT INTO `logistics_document` VALUES ('11', '1', '', '213', '4', '0', '0', '0', '106国道105公里处文安县史各庄新桥北', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '123', '1492050874', '1492050874', '0');
-INSERT INTO `logistics_document` VALUES ('12', '1', '', 'dfgsdas123123', '2', '0', '0', '0', '123123asdfadsf', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '2', '1492072174', '1492072174', '0');
-INSERT INTO `logistics_document` VALUES ('13', '1', '', '阿桑德拉发卡数量的疯狂', '2', '0', '0', '0', '阿萨德发送方', '0', '0', '2', '2', '0', '0', '17', '1', '0', '0', '0', '0', '0', '1', '1492073195', '1492073195', '0');
-INSERT INTO `logistics_document` VALUES ('14', '1', '', '123345sadfasdfasdf', '2', '0', '0', '0', '12312阿斯蒂芬', '0', '0', '2', '2', '0', '0', '13', '1', '0', '0', '0', '0', '0', '123', '1492073977', '1492152945', '-1');
-INSERT INTO `logistics_document` VALUES ('15', '17', '', '我有货源', '7', '0', '0', '0', '106国道105公里处文安县史各庄新桥北', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1492154764', '1492154764', '0');
-INSERT INTO `logistics_document` VALUES ('16', '17', '', '我有货源2', '7', '0', '0', '0', '123', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1492154831', '1492154831', '0');
+INSERT INTO `logistics_document` VALUES ('1', '15', '', 'OneThink1.0正式版发布', '2', '0', '0', '0', '0', '0', '0', '大家期待的OneThink正式版发布', '0', '0', '2', '2', '0', '0', '2', '1', '0', '0', '15', '0', '0', '5', '1387260660', '1490850896', '1');
+INSERT INTO `logistics_document` VALUES ('2', '16', '', '试试好使不', '2', '0', '0', '0', '0', '0', '0', '看看这个', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '15', '0', '0', '1', '1490325060', '1490342702', '1');
+INSERT INTO `logistics_document` VALUES ('3', '5', '', '【双圆物流】上海至淮安、宿迁、徐州、盐城、连云港专线(苏北三线中转周边地区)', '3', '130000', '130300', '130303', '0', '0', '0', '呜呜呜呜呜呜呜呜呜呜呜呜', '0', '0', '2', '2', '0', '0', '17', '1', '0', '0', '10', '0', '0', '0', '1492505894', '1492505894', '1');
+INSERT INTO `logistics_document` VALUES ('6', '1', '', '尼玛', '39', '0', '0', '0', '0', '0', '0', '111', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '1490342760', '1490343570', '1');
+INSERT INTO `logistics_document` VALUES ('8', '17', '', '123123', '2', '0', '0', '0', '0', '0', '0', '123456', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '2', '0', '0', '3', '1490685240', '1492066079', '1');
+INSERT INTO `logistics_document` VALUES ('11', '1', '', '213', '4', '130000', '131000', '131026', '0', '0', '0', '106国道105公里处文安县史各庄新桥北', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '123', '1492504875', '1492504875', '0');
+INSERT INTO `logistics_document` VALUES ('12', '1', '', 'dfgsdas123123', '2', '0', '0', '0', '0', '0', '0', '123123asdfadsf', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '2', '1492072174', '1492072174', '0');
+INSERT INTO `logistics_document` VALUES ('13', '1', '', '阿桑德拉发卡数量的疯狂', '2', '0', '0', '0', '0', '0', '0', '阿萨德发送方', '0', '0', '2', '2', '0', '0', '17', '1', '0', '0', '0', '0', '0', '1', '1492073195', '1492073195', '0');
+INSERT INTO `logistics_document` VALUES ('14', '1', '', '123345sadfasdfasdf', '2', '0', '0', '0', '0', '0', '0', '12312阿斯蒂芬', '0', '0', '2', '2', '0', '0', '13', '1', '0', '0', '0', '0', '0', '123', '1492073977', '1492152945', '-1');
+INSERT INTO `logistics_document` VALUES ('15', '17', '', '我有货源', '7', '0', '0', '0', '0', '0', '0', '106国道105公里处文安县史各庄新桥北', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1492154764', '1492154764', '0');
+INSERT INTO `logistics_document` VALUES ('16', '17', '', '我有货源2', '7', '0', '0', '0', '0', '0', '0', '123', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1492154831', '1492154831', '0');
+INSERT INTO `logistics_document` VALUES ('17', '2', '', '测试jpzx', '2', '140000', '140100', '140107', '0', '0', '0', 'sadfjl123123', '0', '0', '2', '2', '0', '0', '17', '1', '0', '0', '0', '0', '0', '1', '1492497685', '1492497685', '0');
+INSERT INTO `logistics_document` VALUES ('18', '2', '', 'ces测试jpzx', '2', '140000', '140100', '140107', '0', '0', '0', 'sadfjl123123', '0', '0', '2', '2', '0', '0', '17', '1', '0', '0', '0', '0', '0', '1', '1492497801', '1492497801', '0');
+INSERT INTO `logistics_document` VALUES ('19', '2', '', '123luodi', '3', '130000', '130400', '130434', '0', '0', '0', '1233', '0', '0', '2', '2', '0', '0', '12', '1', '0', '0', '0', '0', '0', '1', '1492505915', '1492505915', '1');
+INSERT INTO `logistics_document` VALUES ('20', '2', '', '123123zxzc', '3', '130000', '130200', '130208', '0', '0', '0', '123', '0', '0', '2', '2', '0', '0', '17', '1', '0', '0', '0', '0', '0', '1', '1492505868', '1492505868', '0');
+INSERT INTO `logistics_document` VALUES ('21', '2', '', '123ddddd', '3', '140000', '140300', '140311', '0', '0', '0', '1', '0', '0', '2', '2', '0', '0', '12', '1', '0', '0', '0', '0', '0', '1', '1492498406', '1492498406', '0');
+INSERT INTO `logistics_document` VALUES ('22', '2', '', '我要推荐货车', '5', '150000', '150300', '150302', '0', '0', '0', '阿斯蒂芬立刻机未遂', '0', '0', '2', '2', '0', '0', '12', '1', '0', '0', '0', '0', '0', '2', '1492499298', '1492499298', '0');
+INSERT INTO `logistics_document` VALUES ('23', '2', '', '我要推荐货车', '5', '150000', '150300', '150302', '0', '0', '0', '阿斯蒂芬立刻机未遂', '0', '0', '2', '2', '0', '0', '12', '1', '0', '0', '0', '0', '0', '2', '1492499306', '1492499306', '0');
+INSERT INTO `logistics_document` VALUES ('24', '2', '', '我要推荐货车', '5', '150000', '150300', '150302', '0', '0', '0', '阿斯蒂芬立刻机未遂', '0', '0', '2', '2', '0', '0', '12', '1', '0', '0', '0', '0', '0', '2', '1492499325', '1492499325', '0');
+INSERT INTO `logistics_document` VALUES ('25', '2', '', '【金力快运（原旺发）】丽水至江苏、北京、天津、丽水地区专线', '2', '330000', '331100', '331102', '0', '0', '0', '丽水市莲都区南环西路18号城南停车场内', '0', '0', '2', '2', '0', '0', '20', '1', '0', '0', '0', '0', '0', '0', '1492509396', '1492509396', '0');
+INSERT INTO `logistics_document` VALUES ('26', '2', '', '123嘻嘻嘻', '2', '130000', '130100', '130102', '0', '0', '0', '123', '0', '0', '2', '2', '0', '0', '17', '1', '0', '0', '0', '0', '0', '0', '1492509291', '1492509291', '0');
 
 -- ----------------------------
 -- Table structure for logistics_document_article
@@ -993,6 +1018,16 @@ INSERT INTO `logistics_document_article` VALUES ('13', '0', '123123', '', '0', n
 INSERT INTO `logistics_document_article` VALUES ('14', '0', '<img src=\"/Uploads/Editor/2017-04-13/58ef3df2a90bd.jpg\" alt=\"\" />123123', '', '0', null);
 INSERT INTO `logistics_document_article` VALUES ('15', '0', '2', '', '0', null);
 INSERT INTO `logistics_document_article` VALUES ('16', '0', '23', '', '0', null);
+INSERT INTO `logistics_document_article` VALUES ('17', '0', '1123234234', '', '0', null);
+INSERT INTO `logistics_document_article` VALUES ('18', '0', '1123234234', '', '0', null);
+INSERT INTO `logistics_document_article` VALUES ('19', '0', '1', '', '0', null);
+INSERT INTO `logistics_document_article` VALUES ('20', '0', '123', '', '0', null);
+INSERT INTO `logistics_document_article` VALUES ('21', '0', '1', '', '0', null);
+INSERT INTO `logistics_document_article` VALUES ('22', '0', '123阿斯蒂芬', '', '0', null);
+INSERT INTO `logistics_document_article` VALUES ('23', '0', '123阿斯蒂芬', '', '0', null);
+INSERT INTO `logistics_document_article` VALUES ('24', '0', '123阿斯蒂芬', '', '0', null);
+INSERT INTO `logistics_document_article` VALUES ('25', '0', '<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"> <strong>丽水市金力快运有限公司（原旺发）</strong> \r\n	</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\">\r\n	承接全国各地整车货物，丽水地区中转分流，仓储配送业务\r\n</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"> <strong><span style=\"color:#E53333;\">丽水地区分流：</span></strong> \r\n	</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\">\r\n	龙泉、庆元、云和、景宁、松阳<br />\r\n遂昌、青田、温溪、缙云、壶镇<br />\r\n电话：0578-2666288\r\n</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\">\r\n	电话：0578-2951133<br />\r\n手机：18157838889<br />\r\n联系人：程经理\r\n	</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"> <strong>丽水公司地址：</strong> \r\n</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\">\r\n	丽水市城南停车场内(客运西站斜对面)\r\n	</p>\r\n<span style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\">传真：0578-2690978</span><br />\r\n<span style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\">手机：15305789996</span><br />\r\n<strong><span style=\"color:#E53333;\">丽水至江苏专线&nbsp;</span></strong><br />\r\n<span style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\">热线：153&nbsp;7227&nbsp;9333&nbsp;&nbsp;&nbsp;133&nbsp;0578&nbsp;0799</span><br />\r\n<span style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\">联系人：王经理</span><br />\r\n<strong><span style=\"color:#E53333;\">丽水至北京、天津专线&nbsp;</span></strong><br />\r\n<span style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\">热线：138&nbsp;1424&nbsp;8666</span><br />\r\n<span style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\">联系人：金经理</span><br />\r\n<strong>无锡卸货地址:</strong><span style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"></span> <p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"> <span style=\"line-height:1.5;\">无锡市锡港路和通沙路口金阳停车场东侧</span> \r\n</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\">\r\n	电话：&nbsp;0510-82350672<br />\r\n手机：186&nbsp;5101&nbsp;5566\r\n	</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"> <img src=\"http://lishui.chawuliu.com/resource/kindeditor-4.1.10/attached/image/20150707/20150707113031_31470.jpg_water.jpg\" alt=\"\" /> \r\n</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"><br />\r\n	</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"> <img src=\"http://lishui.chawuliu.com/resource/kindeditor-4.1.10/attached/image/20150707/20150707101621_38100.jpg_water.jpg\" alt=\"\" /> \r\n</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"><br />\r\n	</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"> <img src=\"http://lishui.chawuliu.com/resource/kindeditor-4.1.10/attached/image/20150707/20150707101631_93243.jpg_water.jpg\" alt=\"\" /> \r\n</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"><br />\r\n	</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"> <img src=\"http://lishui.chawuliu.com/resource/kindeditor-4.1.10/attached/image/20150707/20150707101639_21813.jpg_water.jpg\" alt=\"\" /> \r\n</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"><br />\r\n	</p>\r\n<p style=\"color:#333333;font-family:\" font-size:16px;background-color:#ffffff;\"=\"\"> <img src=\"http://lishui.chawuliu.com/resource/kindeditor-4.1.10/attached/image/20150707/20150707101659_82622.jpg_water.jpg\" alt=\"\" /> \r\n</p>\r\n<div>\r\n	<br />\r\n</div>', '', '0', null);
+INSERT INTO `logistics_document_article` VALUES ('26', '0', '123123', '', '0', null);
 
 -- ----------------------------
 -- Table structure for logistics_document_download
@@ -1072,24 +1107,21 @@ INSERT INTO `logistics_hooks` VALUES ('16', 'app_begin', '应用开始', '2', '1
 -- ----------------------------
 DROP TABLE IF EXISTS `logistics_jpzx`;
 CREATE TABLE `logistics_jpzx` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `wuliu_id` int(10) unsigned NOT NULL,
-  `zx_id` int(10) unsigned NOT NULL,
-  `city_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `wuliu_id` int(10) unsigned NOT NULL default '0' COMMENT '精品专线的id',
+  `zdzx_id` int(10) unsigned NOT NULL default '0' COMMENT '直达专线（精品专线的二级分类）',
+  `city_id` int(10) unsigned NOT NULL default '0' COMMENT '城市id',
+  KEY `zdzx_id-city_id` USING BTREE (`zdzx_id`,`city_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of logistics_jpzx
 -- ----------------------------
-INSERT INTO `logistics_jpzx` VALUES ('1', '1', '7', '6');
-INSERT INTO `logistics_jpzx` VALUES ('2', '1', '8', '6');
-INSERT INTO `logistics_jpzx` VALUES ('3', '1', '9', '6');
-INSERT INTO `logistics_jpzx` VALUES ('4', '1', '10', '6');
-INSERT INTO `logistics_jpzx` VALUES ('5', '1', '11', '6');
-INSERT INTO `logistics_jpzx` VALUES ('6', '2', '9', '6');
-INSERT INTO `logistics_jpzx` VALUES ('7', '2', '10', '6');
-INSERT INTO `logistics_jpzx` VALUES ('8', '2', '20', '6');
+INSERT INTO `logistics_jpzx` VALUES ('26', '9', '130100');
+INSERT INTO `logistics_jpzx` VALUES ('26', '10', '130100');
+INSERT INTO `logistics_jpzx` VALUES ('26', '11', '130100');
+INSERT INTO `logistics_jpzx` VALUES ('26', '12', '130100');
+INSERT INTO `logistics_jpzx` VALUES ('25', '20', '331100');
+INSERT INTO `logistics_jpzx` VALUES ('25', '22', '331100');
 
 -- ----------------------------
 -- Table structure for logistics_member
@@ -1123,8 +1155,8 @@ CREATE TABLE `logistics_member` (
 -- ----------------------------
 -- Records of logistics_member
 -- ----------------------------
-INSERT INTO `logistics_member` VALUES ('1', 'shexie303', '0', '131128198911296612', '', '', '', '/Uploads/Picture/facade/2017-04-01/58df1a91bef87.jpg', '', '/Uploads/Picture/license/2017-04-01/58df1b8d7882c.jpg', '1', '1491494400', '1499356800', '70', '74', '0', '1490319959', '2130706433', '1492418078', '1');
-INSERT INTO `logistics_member` VALUES ('2', 'shexie33', '0', '', '', '', '', '', '', '', '0', '0', '0', '50', '39', '2130706433', '1490321384', '2130706433', '1492152897', '1');
+INSERT INTO `logistics_member` VALUES ('1', 'shexie303', '0', '131128198911296612', '', '', '', '/Uploads/Picture/facade/2017-04-01/58df1a91bef87.jpg', '', '/Uploads/Picture/license/2017-04-01/58df1b8d7882c.jpg', '1', '1491494400', '1499356800', '70', '78', '0', '1490319959', '2130706433', '1492498728', '1');
+INSERT INTO `logistics_member` VALUES ('2', 'shexie33', '0', '', '', '', '', '', '', '', '0', '0', '0', '90', '42', '2130706433', '1490321384', '2130706433', '1492498998', '1');
 INSERT INTO `logistics_member` VALUES ('3', 'shexie44', '0', '', '', '', '', '', '', '', '0', '0', '0', '20', '13', '2130706433', '1490582865', '2130706433', '1492312574', '1');
 INSERT INTO `logistics_member` VALUES ('4', 'shexie55', '0', '', '', '', '', '', '', '', '0', '0', '0', '20', '2', '0', '0', '2130706433', '1491039189', '1');
 INSERT INTO `logistics_member` VALUES ('5', 'shexie66', '0', '131128198911296613', '123456', '1333333333', '13333333333', '', '', '', '1', '1491494400', '1499356800', '30', '28', '0', '0', '2130706433', '1491558501', '1');
@@ -1351,7 +1383,7 @@ CREATE TABLE `logistics_pca` (
 -- ----------------------------
 -- Records of logistics_pca
 -- ----------------------------
-INSERT INTO `logistics_pca` VALUES ('110000', '100000', '1', '北京', '北京', '');
+INSERT INTO `logistics_pca` VALUES ('110000', '0', '1', '北京', '北京', '');
 INSERT INTO `logistics_pca` VALUES ('110100', '110000', '2', '北京', '北京市', 'beijing');
 INSERT INTO `logistics_pca` VALUES ('110101', '110100', '3', '东城', '东城区', '');
 INSERT INTO `logistics_pca` VALUES ('110102', '110100', '3', '西城', '西城区', '');
@@ -1369,7 +1401,7 @@ INSERT INTO `logistics_pca` VALUES ('110116', '110100', '3', '怀柔', '怀柔�
 INSERT INTO `logistics_pca` VALUES ('110117', '110100', '3', '平谷', '平谷区', '');
 INSERT INTO `logistics_pca` VALUES ('110228', '110100', '3', '密云', '密云县', '');
 INSERT INTO `logistics_pca` VALUES ('110229', '110100', '3', '延庆', '延庆县', '');
-INSERT INTO `logistics_pca` VALUES ('120000', '100000', '1', '天津', '天津', '');
+INSERT INTO `logistics_pca` VALUES ('120000', '0', '1', '天津', '天津', '');
 INSERT INTO `logistics_pca` VALUES ('120100', '120000', '2', '天津', '天津市', 'tianjin');
 INSERT INTO `logistics_pca` VALUES ('120101', '120100', '3', '和平', '和平区', '');
 INSERT INTO `logistics_pca` VALUES ('120102', '120100', '3', '河东', '河东区', '');
@@ -1387,7 +1419,7 @@ INSERT INTO `logistics_pca` VALUES ('120116', '120100', '3', '滨海新区', '�
 INSERT INTO `logistics_pca` VALUES ('120221', '120100', '3', '宁河', '宁河县', '');
 INSERT INTO `logistics_pca` VALUES ('120223', '120100', '3', '静海', '静海县', '');
 INSERT INTO `logistics_pca` VALUES ('120225', '120100', '3', '蓟县', '蓟县', '');
-INSERT INTO `logistics_pca` VALUES ('130000', '100000', '1', '河北', '河北省', '');
+INSERT INTO `logistics_pca` VALUES ('130000', '0', '1', '河北', '河北省', '');
 INSERT INTO `logistics_pca` VALUES ('130100', '130000', '2', '石家庄', '石家庄市', 'shijiazhuang');
 INSERT INTO `logistics_pca` VALUES ('130102', '130100', '3', '长安', '长安区', '');
 INSERT INTO `logistics_pca` VALUES ('130104', '130100', '3', '桥西', '桥西区', '');
@@ -1570,7 +1602,7 @@ INSERT INTO `logistics_pca` VALUES ('131127', '131100', '3', '景县', '景县',
 INSERT INTO `logistics_pca` VALUES ('131128', '131100', '3', '阜城', '阜城县', '');
 INSERT INTO `logistics_pca` VALUES ('131181', '131100', '3', '冀州', '冀州市', '');
 INSERT INTO `logistics_pca` VALUES ('131182', '131100', '3', '深州', '深州市', '');
-INSERT INTO `logistics_pca` VALUES ('140000', '100000', '1', '山西', '山西省', '');
+INSERT INTO `logistics_pca` VALUES ('140000', '0', '1', '山西', '山西省', '');
 INSERT INTO `logistics_pca` VALUES ('140100', '140000', '2', '太原', '太原市', 'taiyuan');
 INSERT INTO `logistics_pca` VALUES ('140105', '140100', '3', '小店', '小店区', '');
 INSERT INTO `logistics_pca` VALUES ('140106', '140100', '3', '迎泽', '迎泽区', '');
@@ -1701,7 +1733,7 @@ INSERT INTO `logistics_pca` VALUES ('141129', '141100', '3', '中阳', '中阳�
 INSERT INTO `logistics_pca` VALUES ('141130', '141100', '3', '交口', '交口县', '');
 INSERT INTO `logistics_pca` VALUES ('141181', '141100', '3', '孝义', '孝义市', '');
 INSERT INTO `logistics_pca` VALUES ('141182', '141100', '3', '汾阳', '汾阳市', '');
-INSERT INTO `logistics_pca` VALUES ('150000', '100000', '1', '内蒙古', '内蒙古自治区', '');
+INSERT INTO `logistics_pca` VALUES ('150000', '0', '1', '内蒙古', '内蒙古自治区', '');
 INSERT INTO `logistics_pca` VALUES ('150100', '150000', '2', '呼和浩特', '呼和浩特市', 'huhehaote');
 INSERT INTO `logistics_pca` VALUES ('150102', '150100', '3', '新城', '新城区', '');
 INSERT INTO `logistics_pca` VALUES ('150103', '150100', '3', '回民', '回民区', '');
@@ -1816,7 +1848,7 @@ INSERT INTO `logistics_pca` VALUES ('152900', '150000', '2', '阿拉善盟', '�
 INSERT INTO `logistics_pca` VALUES ('152921', '152900', '3', '阿拉善左旗', '阿拉善左旗', '');
 INSERT INTO `logistics_pca` VALUES ('152922', '152900', '3', '阿拉善右旗', '阿拉善右旗', '');
 INSERT INTO `logistics_pca` VALUES ('152923', '152900', '3', '额济纳旗', '额济纳旗', '');
-INSERT INTO `logistics_pca` VALUES ('210000', '100000', '1', '辽宁', '辽宁省', '');
+INSERT INTO `logistics_pca` VALUES ('210000', '0', '1', '辽宁', '辽宁省', '');
 INSERT INTO `logistics_pca` VALUES ('210100', '210000', '2', '沈阳', '沈阳市', 'shenyang');
 INSERT INTO `logistics_pca` VALUES ('210102', '210100', '3', '和平', '和平区', '');
 INSERT INTO `logistics_pca` VALUES ('210103', '210100', '3', '沈河', '沈河区', '');
@@ -1935,7 +1967,7 @@ INSERT INTO `logistics_pca` VALUES ('211500', '210000', '2', '金普新区', '�
 INSERT INTO `logistics_pca` VALUES ('211501', '211500', '3', '金州新区', '金州新区', '');
 INSERT INTO `logistics_pca` VALUES ('211502', '211500', '3', '普湾新区', '普湾新区', '');
 INSERT INTO `logistics_pca` VALUES ('211503', '211500', '3', '保税区', '保税区', '');
-INSERT INTO `logistics_pca` VALUES ('220000', '100000', '1', '吉林', '吉林省', '');
+INSERT INTO `logistics_pca` VALUES ('220000', '0', '1', '吉林', '吉林省', '');
 INSERT INTO `logistics_pca` VALUES ('220100', '220000', '2', '长春', '长春市', 'zhangchun');
 INSERT INTO `logistics_pca` VALUES ('220102', '220100', '3', '南关', '南关区', '');
 INSERT INTO `logistics_pca` VALUES ('220103', '220100', '3', '宽城', '宽城区', '');
@@ -2005,7 +2037,7 @@ INSERT INTO `logistics_pca` VALUES ('222405', '222400', '3', '龙井', '龙井�
 INSERT INTO `logistics_pca` VALUES ('222406', '222400', '3', '和龙', '和龙市', '');
 INSERT INTO `logistics_pca` VALUES ('222424', '222400', '3', '汪清', '汪清县', '');
 INSERT INTO `logistics_pca` VALUES ('222426', '222400', '3', '安图', '安图县', '');
-INSERT INTO `logistics_pca` VALUES ('230000', '100000', '1', '黑龙江', '黑龙江省', '');
+INSERT INTO `logistics_pca` VALUES ('230000', '0', '1', '黑龙江', '黑龙江省', '');
 INSERT INTO `logistics_pca` VALUES ('230100', '230000', '2', '哈尔滨', '哈尔滨市', 'haerbin');
 INSERT INTO `logistics_pca` VALUES ('230102', '230100', '3', '道里', '道里区', '');
 INSERT INTO `logistics_pca` VALUES ('230103', '230100', '3', '南岗', '南岗区', '');
@@ -2151,7 +2183,7 @@ INSERT INTO `logistics_pca` VALUES ('232704', '232700', '3', '呼中', '呼中�
 INSERT INTO `logistics_pca` VALUES ('232721', '232700', '3', '呼玛', '呼玛县', '');
 INSERT INTO `logistics_pca` VALUES ('232722', '232700', '3', '塔河', '塔河县', '');
 INSERT INTO `logistics_pca` VALUES ('232723', '232700', '3', '漠河', '漠河县', '');
-INSERT INTO `logistics_pca` VALUES ('310000', '100000', '1', '上海', '上海', '');
+INSERT INTO `logistics_pca` VALUES ('310000', '0', '1', '上海', '上海', '');
 INSERT INTO `logistics_pca` VALUES ('310100', '310000', '2', '上海', '上海市', 'shanghai');
 INSERT INTO `logistics_pca` VALUES ('310101', '310100', '3', '黄浦', '黄浦区', '');
 INSERT INTO `logistics_pca` VALUES ('310104', '310100', '3', '徐汇', '徐汇区', '');
@@ -2170,7 +2202,7 @@ INSERT INTO `logistics_pca` VALUES ('310117', '310100', '3', '松江', '松江�
 INSERT INTO `logistics_pca` VALUES ('310118', '310100', '3', '青浦', '青浦区', '');
 INSERT INTO `logistics_pca` VALUES ('310120', '310100', '3', '奉贤', '奉贤区', '');
 INSERT INTO `logistics_pca` VALUES ('310230', '310100', '3', '崇明', '崇明县', '');
-INSERT INTO `logistics_pca` VALUES ('320000', '100000', '1', '江苏', '江苏省', '');
+INSERT INTO `logistics_pca` VALUES ('320000', '0', '1', '江苏', '江苏省', '');
 INSERT INTO `logistics_pca` VALUES ('320100', '320000', '2', '南京', '南京市', 'nanjing');
 INSERT INTO `logistics_pca` VALUES ('320102', '320100', '3', '玄武', '玄武区', '');
 INSERT INTO `logistics_pca` VALUES ('320104', '320100', '3', '秦淮', '秦淮区', '');
@@ -2283,7 +2315,7 @@ INSERT INTO `logistics_pca` VALUES ('321311', '321300', '3', '宿豫', '宿豫�
 INSERT INTO `logistics_pca` VALUES ('321322', '321300', '3', '沭阳', '沭阳县', '');
 INSERT INTO `logistics_pca` VALUES ('321323', '321300', '3', '泗阳', '泗阳县', '');
 INSERT INTO `logistics_pca` VALUES ('321324', '321300', '3', '泗洪', '泗洪县', '');
-INSERT INTO `logistics_pca` VALUES ('330000', '100000', '1', '浙江', '浙江省', '');
+INSERT INTO `logistics_pca` VALUES ('330000', '0', '1', '浙江', '浙江省', '');
 INSERT INTO `logistics_pca` VALUES ('330100', '330000', '2', '杭州', '杭州市', 'hangzhou');
 INSERT INTO `logistics_pca` VALUES ('330102', '330100', '3', '上城', '上城区', '');
 INSERT INTO `logistics_pca` VALUES ('330103', '330100', '3', '下城', '下城区', '');
@@ -2396,7 +2428,7 @@ INSERT INTO `logistics_pca` VALUES ('331207', '331200', '3', '朱家尖', '朱�
 INSERT INTO `logistics_pca` VALUES ('331208', '331200', '3', '洋山', '洋山岛', '');
 INSERT INTO `logistics_pca` VALUES ('331209', '331200', '3', '长涂', '长涂岛', '');
 INSERT INTO `logistics_pca` VALUES ('331210', '331200', '3', '虾峙', '虾峙岛', '');
-INSERT INTO `logistics_pca` VALUES ('340000', '100000', '1', '安徽', '安徽省', '');
+INSERT INTO `logistics_pca` VALUES ('340000', '0', '1', '安徽', '安徽省', '');
 INSERT INTO `logistics_pca` VALUES ('340100', '340000', '2', '合肥', '合肥市', 'hefei');
 INSERT INTO `logistics_pca` VALUES ('340102', '340100', '3', '瑶海', '瑶海区', '');
 INSERT INTO `logistics_pca` VALUES ('340103', '340100', '3', '庐阳', '庐阳区', '');
@@ -2518,7 +2550,7 @@ INSERT INTO `logistics_pca` VALUES ('341823', '341800', '3', '泾县', '泾县',
 INSERT INTO `logistics_pca` VALUES ('341824', '341800', '3', '绩溪', '绩溪县', '');
 INSERT INTO `logistics_pca` VALUES ('341825', '341800', '3', '旌德', '旌德县', '');
 INSERT INTO `logistics_pca` VALUES ('341881', '341800', '3', '宁国', '宁国市', '');
-INSERT INTO `logistics_pca` VALUES ('350000', '100000', '1', '福建', '福建省', '');
+INSERT INTO `logistics_pca` VALUES ('350000', '0', '1', '福建', '福建省', '');
 INSERT INTO `logistics_pca` VALUES ('350100', '350000', '2', '福州', '福州市', 'fuzhou');
 INSERT INTO `logistics_pca` VALUES ('350102', '350100', '3', '鼓楼', '鼓楼区', '');
 INSERT INTO `logistics_pca` VALUES ('350103', '350100', '3', '台江', '台江区', '');
@@ -2613,7 +2645,7 @@ INSERT INTO `logistics_pca` VALUES ('350925', '350900', '3', '周宁', '周宁�
 INSERT INTO `logistics_pca` VALUES ('350926', '350900', '3', '柘荣', '柘荣县', '');
 INSERT INTO `logistics_pca` VALUES ('350981', '350900', '3', '福安', '福安市', '');
 INSERT INTO `logistics_pca` VALUES ('350982', '350900', '3', '福鼎', '福鼎市', '');
-INSERT INTO `logistics_pca` VALUES ('360000', '100000', '1', '江西', '江西省', '');
+INSERT INTO `logistics_pca` VALUES ('360000', '0', '1', '江西', '江西省', '');
 INSERT INTO `logistics_pca` VALUES ('360100', '360000', '2', '南昌', '南昌市', 'nanchang');
 INSERT INTO `logistics_pca` VALUES ('360102', '360100', '3', '东湖', '东湖区', '');
 INSERT INTO `logistics_pca` VALUES ('360103', '360100', '3', '西湖', '西湖区', '');
@@ -2725,7 +2757,7 @@ INSERT INTO `logistics_pca` VALUES ('361128', '361100', '3', '鄱阳', '鄱阳�
 INSERT INTO `logistics_pca` VALUES ('361129', '361100', '3', '万年', '万年县', '');
 INSERT INTO `logistics_pca` VALUES ('361130', '361100', '3', '婺源', '婺源县', '');
 INSERT INTO `logistics_pca` VALUES ('361181', '361100', '3', '德兴', '德兴市', '');
-INSERT INTO `logistics_pca` VALUES ('370000', '100000', '1', '山东', '山东省', '');
+INSERT INTO `logistics_pca` VALUES ('370000', '0', '1', '山东', '山东省', '');
 INSERT INTO `logistics_pca` VALUES ('370100', '370000', '2', '济南', '济南市', 'jinan');
 INSERT INTO `logistics_pca` VALUES ('370102', '370100', '3', '历下', '历下区', '');
 INSERT INTO `logistics_pca` VALUES ('370103', '370100', '3', '市中区', '市中区', '');
@@ -2882,7 +2914,7 @@ INSERT INTO `logistics_pca` VALUES ('371725', '371700', '3', '郓城', '郓城�
 INSERT INTO `logistics_pca` VALUES ('371726', '371700', '3', '鄄城', '鄄城县', '');
 INSERT INTO `logistics_pca` VALUES ('371727', '371700', '3', '定陶', '定陶县', '');
 INSERT INTO `logistics_pca` VALUES ('371728', '371700', '3', '东明', '东明县', '');
-INSERT INTO `logistics_pca` VALUES ('410000', '100000', '1', '河南', '河南省', '');
+INSERT INTO `logistics_pca` VALUES ('410000', '0', '1', '河南', '河南省', '');
 INSERT INTO `logistics_pca` VALUES ('410100', '410000', '2', '郑州', '郑州市', 'zhengzhou');
 INSERT INTO `logistics_pca` VALUES ('410102', '410100', '3', '中原', '中原区', '');
 INSERT INTO `logistics_pca` VALUES ('410103', '410100', '3', '二七', '二七区', '');
@@ -3058,7 +3090,7 @@ INSERT INTO `logistics_pca` VALUES ('411727', '411700', '3', '汝南', '汝南�
 INSERT INTO `logistics_pca` VALUES ('411728', '411700', '3', '遂平', '遂平县', '');
 INSERT INTO `logistics_pca` VALUES ('411729', '411700', '3', '新蔡', '新蔡县', '');
 INSERT INTO `logistics_pca` VALUES ('419001', '419000', '3', '济源', '济源市', '');
-INSERT INTO `logistics_pca` VALUES ('420000', '100000', '1', '湖北', '湖北省', '');
+INSERT INTO `logistics_pca` VALUES ('420000', '0', '1', '湖北', '湖北省', '');
 INSERT INTO `logistics_pca` VALUES ('420100', '420000', '2', '武汉', '武汉市', 'wuhan');
 INSERT INTO `logistics_pca` VALUES ('420102', '420100', '3', '江岸', '江岸区', '');
 INSERT INTO `logistics_pca` VALUES ('420103', '420100', '3', '江汉', '江汉区', '');
@@ -3175,7 +3207,7 @@ INSERT INTO `logistics_pca` VALUES ('429004', '429000', '3', '仙桃', '仙桃�
 INSERT INTO `logistics_pca` VALUES ('429005', '429000', '3', '潜江', '潜江市', '');
 INSERT INTO `logistics_pca` VALUES ('429006', '429000', '3', '天门', '天门市', '');
 INSERT INTO `logistics_pca` VALUES ('429021', '429000', '3', '神农架', '神农架林区', '');
-INSERT INTO `logistics_pca` VALUES ('430000', '100000', '1', '湖南', '湖南省', '');
+INSERT INTO `logistics_pca` VALUES ('430000', '0', '1', '湖南', '湖南省', '');
 INSERT INTO `logistics_pca` VALUES ('430100', '430000', '2', '长沙', '长沙市', 'zhangsha');
 INSERT INTO `logistics_pca` VALUES ('430102', '430100', '3', '芙蓉', '芙蓉区', '');
 INSERT INTO `logistics_pca` VALUES ('430103', '430100', '3', '天心', '天心区', '');
@@ -3312,7 +3344,7 @@ INSERT INTO `logistics_pca` VALUES ('433125', '433100', '3', '保靖', '保靖�
 INSERT INTO `logistics_pca` VALUES ('433126', '433100', '3', '古丈', '古丈县', '');
 INSERT INTO `logistics_pca` VALUES ('433127', '433100', '3', '永顺', '永顺县', '');
 INSERT INTO `logistics_pca` VALUES ('433130', '433100', '3', '龙山', '龙山县', '');
-INSERT INTO `logistics_pca` VALUES ('440000', '100000', '1', '广东', '广东省', '');
+INSERT INTO `logistics_pca` VALUES ('440000', '0', '1', '广东', '广东省', '');
 INSERT INTO `logistics_pca` VALUES ('440100', '440000', '2', '广州', '广州市', 'guangzhou');
 INSERT INTO `logistics_pca` VALUES ('440103', '440100', '3', '荔湾', '荔湾区', '');
 INSERT INTO `logistics_pca` VALUES ('440104', '440100', '3', '越秀', '越秀区', '');
@@ -3510,7 +3542,7 @@ INSERT INTO `logistics_pca` VALUES ('445303', '445300', '3', '云安', '云安�
 INSERT INTO `logistics_pca` VALUES ('445321', '445300', '3', '新兴', '新兴县', '');
 INSERT INTO `logistics_pca` VALUES ('445322', '445300', '3', '郁南', '郁南县', '');
 INSERT INTO `logistics_pca` VALUES ('445381', '445300', '3', '罗定', '罗定市', '');
-INSERT INTO `logistics_pca` VALUES ('450000', '100000', '1', '广西', '广西壮族自治区', '');
+INSERT INTO `logistics_pca` VALUES ('450000', '0', '1', '广西', '广西壮族自治区', '');
 INSERT INTO `logistics_pca` VALUES ('450100', '450000', '2', '南宁', '南宁市', 'nanning');
 INSERT INTO `logistics_pca` VALUES ('450102', '450100', '3', '兴宁', '兴宁区', '');
 INSERT INTO `logistics_pca` VALUES ('450103', '450100', '3', '青秀', '青秀区', '');
@@ -3639,7 +3671,7 @@ INSERT INTO `logistics_pca` VALUES ('451423', '451400', '3', '龙州', '龙州�
 INSERT INTO `logistics_pca` VALUES ('451424', '451400', '3', '大新', '大新县', '');
 INSERT INTO `logistics_pca` VALUES ('451425', '451400', '3', '天等', '天等县', '');
 INSERT INTO `logistics_pca` VALUES ('451481', '451400', '3', '凭祥', '凭祥市', '');
-INSERT INTO `logistics_pca` VALUES ('460000', '100000', '1', '海南', '海南省', '');
+INSERT INTO `logistics_pca` VALUES ('460000', '0', '1', '海南', '海南省', '');
 INSERT INTO `logistics_pca` VALUES ('460100', '460000', '2', '海口', '海口市', 'haikou');
 INSERT INTO `logistics_pca` VALUES ('460105', '460100', '3', '秀英', '秀英区', '');
 INSERT INTO `logistics_pca` VALUES ('460106', '460100', '3', '龙华', '龙华区', '');
@@ -3670,7 +3702,7 @@ INSERT INTO `logistics_pca` VALUES ('469027', '469000', '3', '乐东', '乐东�
 INSERT INTO `logistics_pca` VALUES ('469028', '469000', '3', '陵水', '陵水黎族自治县', '');
 INSERT INTO `logistics_pca` VALUES ('469029', '469000', '3', '保亭', '保亭黎族苗族自治县', '');
 INSERT INTO `logistics_pca` VALUES ('469030', '469000', '3', '琼中', '琼中黎族苗族自治县', '');
-INSERT INTO `logistics_pca` VALUES ('500000', '100000', '1', '重庆', '重庆', '');
+INSERT INTO `logistics_pca` VALUES ('500000', '0', '1', '重庆', '重庆', '');
 INSERT INTO `logistics_pca` VALUES ('500100', '500000', '2', '重庆', '重庆市', 'zhongqing');
 INSERT INTO `logistics_pca` VALUES ('500101', '500100', '3', '万州', '万州区', '');
 INSERT INTO `logistics_pca` VALUES ('500102', '500100', '3', '涪陵', '涪陵区', '');
@@ -3714,7 +3746,7 @@ INSERT INTO `logistics_pca` VALUES ('500300', '500000', '2', '两江新区', '�
 INSERT INTO `logistics_pca` VALUES ('500301', '500300', '3', '北部新区', '北部新区', '');
 INSERT INTO `logistics_pca` VALUES ('500302', '500300', '3', '保税港区', '保税港区', '');
 INSERT INTO `logistics_pca` VALUES ('500303', '500300', '3', '工业园区', '工业园区', '');
-INSERT INTO `logistics_pca` VALUES ('510000', '100000', '1', '四川', '四川省', '');
+INSERT INTO `logistics_pca` VALUES ('510000', '0', '1', '四川', '四川省', '');
 INSERT INTO `logistics_pca` VALUES ('510100', '510000', '2', '成都', '成都市', 'chengdou');
 INSERT INTO `logistics_pca` VALUES ('510104', '510100', '3', '锦江', '锦江区', '');
 INSERT INTO `logistics_pca` VALUES ('510105', '510100', '3', '青羊', '青羊区', '');
@@ -3919,7 +3951,7 @@ INSERT INTO `logistics_pca` VALUES ('513434', '513400', '3', '越西', '越西�
 INSERT INTO `logistics_pca` VALUES ('513435', '513400', '3', '甘洛', '甘洛县', '');
 INSERT INTO `logistics_pca` VALUES ('513436', '513400', '3', '美姑', '美姑县', '');
 INSERT INTO `logistics_pca` VALUES ('513437', '513400', '3', '雷波', '雷波县', '');
-INSERT INTO `logistics_pca` VALUES ('520000', '100000', '1', '贵州', '贵州省', '');
+INSERT INTO `logistics_pca` VALUES ('520000', '0', '1', '贵州', '贵州省', '');
 INSERT INTO `logistics_pca` VALUES ('520100', '520000', '2', '贵阳', '贵阳市', 'guiyang');
 INSERT INTO `logistics_pca` VALUES ('520102', '520100', '3', '南明', '南明区', '');
 INSERT INTO `logistics_pca` VALUES ('520103', '520100', '3', '云岩', '云岩区', '');
@@ -4017,7 +4049,7 @@ INSERT INTO `logistics_pca` VALUES ('522729', '522700', '3', '长顺', '长顺�
 INSERT INTO `logistics_pca` VALUES ('522730', '522700', '3', '龙里', '龙里县', '');
 INSERT INTO `logistics_pca` VALUES ('522731', '522700', '3', '惠水', '惠水县', '');
 INSERT INTO `logistics_pca` VALUES ('522732', '522700', '3', '三都', '三都水族自治县', '');
-INSERT INTO `logistics_pca` VALUES ('530000', '100000', '1', '云南', '云南省', '');
+INSERT INTO `logistics_pca` VALUES ('530000', '0', '1', '云南', '云南省', '');
 INSERT INTO `logistics_pca` VALUES ('530100', '530000', '2', '昆明', '昆明市', 'kunming');
 INSERT INTO `logistics_pca` VALUES ('530102', '530100', '3', '五华', '五华区', '');
 INSERT INTO `logistics_pca` VALUES ('530103', '530100', '3', '盘龙', '盘龙区', '');
@@ -4163,7 +4195,7 @@ INSERT INTO `logistics_pca` VALUES ('533400', '530000', '2', '迪庆', '迪庆�
 INSERT INTO `logistics_pca` VALUES ('533421', '533400', '3', '香格里拉', '香格里拉市', '');
 INSERT INTO `logistics_pca` VALUES ('533422', '533400', '3', '德钦', '德钦县', '');
 INSERT INTO `logistics_pca` VALUES ('533423', '533400', '3', '维西', '维西傈僳族自治县', '');
-INSERT INTO `logistics_pca` VALUES ('540000', '100000', '1', '西藏', '西藏自治区', '');
+INSERT INTO `logistics_pca` VALUES ('540000', '0', '1', '西藏', '西藏自治区', '');
 INSERT INTO `logistics_pca` VALUES ('540100', '540000', '2', '拉萨', '拉萨市', 'lasa');
 INSERT INTO `logistics_pca` VALUES ('540102', '540100', '3', '城关', '城关区', '');
 INSERT INTO `logistics_pca` VALUES ('540121', '540100', '3', '林周', '林周县', '');
@@ -4245,7 +4277,7 @@ INSERT INTO `logistics_pca` VALUES ('542624', '542600', '3', '墨脱', '墨脱�
 INSERT INTO `logistics_pca` VALUES ('542625', '542600', '3', '波密', '波密县', '');
 INSERT INTO `logistics_pca` VALUES ('542626', '542600', '3', '察隅', '察隅县', '');
 INSERT INTO `logistics_pca` VALUES ('542627', '542600', '3', '朗县', '朗县', '');
-INSERT INTO `logistics_pca` VALUES ('610000', '100000', '1', '陕西', '陕西省', '');
+INSERT INTO `logistics_pca` VALUES ('610000', '0', '1', '陕西', '陕西省', '');
 INSERT INTO `logistics_pca` VALUES ('610100', '610000', '2', '西安', '西安市', 'xian');
 INSERT INTO `logistics_pca` VALUES ('610102', '610100', '3', '新城', '新城区', '');
 INSERT INTO `logistics_pca` VALUES ('610103', '610100', '3', '碑林', '碑林区', '');
@@ -4369,7 +4401,7 @@ INSERT INTO `logistics_pca` VALUES ('611102', '611100', '3', '沣东', '沣东�
 INSERT INTO `logistics_pca` VALUES ('611103', '611100', '3', '秦汉', '秦汉新城', '');
 INSERT INTO `logistics_pca` VALUES ('611104', '611100', '3', '沣西', '沣西新城', '');
 INSERT INTO `logistics_pca` VALUES ('611105', '611100', '3', '泾河', '泾河新城', '');
-INSERT INTO `logistics_pca` VALUES ('620000', '100000', '1', '甘肃', '甘肃省', '');
+INSERT INTO `logistics_pca` VALUES ('620000', '0', '1', '甘肃', '甘肃省', '');
 INSERT INTO `logistics_pca` VALUES ('620100', '620000', '2', '兰州', '兰州市', 'lanzhou');
 INSERT INTO `logistics_pca` VALUES ('620102', '620100', '3', '城关', '城关区', '');
 INSERT INTO `logistics_pca` VALUES ('620103', '620100', '3', '七里河', '七里河区', '');
@@ -4473,7 +4505,7 @@ INSERT INTO `logistics_pca` VALUES ('623024', '623000', '3', '迭部', '迭部�
 INSERT INTO `logistics_pca` VALUES ('623025', '623000', '3', '玛曲', '玛曲县', '');
 INSERT INTO `logistics_pca` VALUES ('623026', '623000', '3', '碌曲', '碌曲县', '');
 INSERT INTO `logistics_pca` VALUES ('623027', '623000', '3', '夏河', '夏河县', '');
-INSERT INTO `logistics_pca` VALUES ('630000', '100000', '1', '青海', '青海省', '');
+INSERT INTO `logistics_pca` VALUES ('630000', '0', '1', '青海', '青海省', '');
 INSERT INTO `logistics_pca` VALUES ('630100', '630000', '2', '西宁', '西宁市', 'xining');
 INSERT INTO `logistics_pca` VALUES ('630102', '630100', '3', '城东', '城东区', '');
 INSERT INTO `logistics_pca` VALUES ('630103', '630100', '3', '城中', '城中区', '');
@@ -4525,7 +4557,7 @@ INSERT INTO `logistics_pca` VALUES ('632802', '632800', '3', '德令哈', '德�
 INSERT INTO `logistics_pca` VALUES ('632821', '632800', '3', '乌兰', '乌兰县', '');
 INSERT INTO `logistics_pca` VALUES ('632822', '632800', '3', '都兰', '都兰县', '');
 INSERT INTO `logistics_pca` VALUES ('632823', '632800', '3', '天峻', '天峻县', '');
-INSERT INTO `logistics_pca` VALUES ('640000', '100000', '1', '宁夏', '宁夏回族自治区', '');
+INSERT INTO `logistics_pca` VALUES ('640000', '0', '1', '宁夏', '宁夏回族自治区', '');
 INSERT INTO `logistics_pca` VALUES ('640100', '640000', '2', '银川', '银川市', 'yinchuan');
 INSERT INTO `logistics_pca` VALUES ('640104', '640100', '3', '兴庆', '兴庆区', '');
 INSERT INTO `logistics_pca` VALUES ('640105', '640100', '3', '西夏', '西夏区', '');
@@ -4553,7 +4585,7 @@ INSERT INTO `logistics_pca` VALUES ('640500', '640000', '2', '中卫', '中卫�
 INSERT INTO `logistics_pca` VALUES ('640502', '640500', '3', '沙坡头', '沙坡头区', '');
 INSERT INTO `logistics_pca` VALUES ('640521', '640500', '3', '中宁', '中宁县', '');
 INSERT INTO `logistics_pca` VALUES ('640522', '640500', '3', '海原', '海原县', '');
-INSERT INTO `logistics_pca` VALUES ('650000', '100000', '1', '新疆', '新疆维吾尔自治区', '');
+INSERT INTO `logistics_pca` VALUES ('650000', '0', '1', '新疆', '新疆维吾尔自治区', '');
 INSERT INTO `logistics_pca` VALUES ('650100', '650000', '2', '乌鲁木齐', '乌鲁木齐市', 'wulumuqi');
 INSERT INTO `logistics_pca` VALUES ('650102', '650100', '3', '天山', '天山区', '');
 INSERT INTO `logistics_pca` VALUES ('650103', '650100', '3', '沙依巴克', '沙依巴克区', '');
@@ -4671,7 +4703,7 @@ INSERT INTO `logistics_pca` VALUES ('659004', '659000', '3', '五家渠', '五�
 INSERT INTO `logistics_pca` VALUES ('659005', '659000', '3', '北屯', '北屯市', '');
 INSERT INTO `logistics_pca` VALUES ('659006', '659000', '3', '铁门关', '铁门关市', '');
 INSERT INTO `logistics_pca` VALUES ('659007', '659000', '3', '双河', '双河市', '');
-INSERT INTO `logistics_pca` VALUES ('710000', '100000', '1', '台湾', '台湾', '');
+INSERT INTO `logistics_pca` VALUES ('710000', '0', '1', '台湾', '台湾', '');
 INSERT INTO `logistics_pca` VALUES ('710100', '710000', '2', '台北', '台北市', 'taibei');
 INSERT INTO `logistics_pca` VALUES ('710101', '710100', '3', '松山', '松山区', '');
 INSERT INTO `logistics_pca` VALUES ('710102', '710100', '3', '信义', '信义区', '');
@@ -5062,7 +5094,7 @@ INSERT INTO `logistics_pca` VALUES ('713801', '713800', '3', '南竿', '南竿�
 INSERT INTO `logistics_pca` VALUES ('713802', '713800', '3', '北竿', '北竿乡', '');
 INSERT INTO `logistics_pca` VALUES ('713803', '713800', '3', '莒光', '莒光乡', '');
 INSERT INTO `logistics_pca` VALUES ('713804', '713800', '3', '东引', '东引乡', '');
-INSERT INTO `logistics_pca` VALUES ('810000', '100000', '1', '香港', '香港特别行政区', '');
+INSERT INTO `logistics_pca` VALUES ('810000', '0', '1', '香港', '香港特别行政区', '');
 INSERT INTO `logistics_pca` VALUES ('810100', '810000', '2', '香港岛', '香港岛', 'xianggangdao');
 INSERT INTO `logistics_pca` VALUES ('810101', '810100', '3', '中西区', '中西区', '');
 INSERT INTO `logistics_pca` VALUES ('810102', '810100', '3', '湾仔区', '湾仔区', '');
@@ -5084,7 +5116,7 @@ INSERT INTO `logistics_pca` VALUES ('810306', '810300', '3', '西贡', '西贡�
 INSERT INTO `logistics_pca` VALUES ('810307', '810300', '3', '沙田', '沙田区', '');
 INSERT INTO `logistics_pca` VALUES ('810308', '810300', '3', '葵青', '葵青区', '');
 INSERT INTO `logistics_pca` VALUES ('810309', '810300', '3', '离岛', '离岛区', '');
-INSERT INTO `logistics_pca` VALUES ('820000', '100000', '1', '澳门', '澳门特别行政区', '');
+INSERT INTO `logistics_pca` VALUES ('820000', '0', '1', '澳门', '澳门特别行政区', '');
 INSERT INTO `logistics_pca` VALUES ('820100', '820000', '2', '澳门半岛', '澳门半岛', 'aomenbandao');
 INSERT INTO `logistics_pca` VALUES ('820101', '820100', '3', '花地玛堂区', '花地玛堂区', '');
 INSERT INTO `logistics_pca` VALUES ('820102', '820100', '3', '圣安多尼堂区', '圣安多尼堂区', '');
@@ -5109,7 +5141,7 @@ CREATE TABLE `logistics_picture` (
   `status` tinyint(2) NOT NULL default '0' COMMENT '状态',
   `create_time` int(10) unsigned NOT NULL default '0' COMMENT '创建时间',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of logistics_picture
@@ -5123,6 +5155,7 @@ INSERT INTO `logistics_picture` VALUES ('16', '/Uploads/Picture/license/2017-04-
 INSERT INTO `logistics_picture` VALUES ('17', '/Uploads/Picture/cover/2017-04-13/58ef35b411424.jpg', '', '94487115664764caf52736d6652f1b9f', 'dc095139e23814da27d331b4643ad2ee223633c3', '1', '1492071859');
 INSERT INTO `logistics_picture` VALUES ('18', '/Uploads/Picture/driver_license/2017-04-15/58f1ce9a03259.png', '', '94d635367e8c3804e3e32a94db5aca7d', 'a36089c42df45cf664bb074276b2c53e38b69869', '1', '1492242073');
 INSERT INTO `logistics_picture` VALUES ('19', '/Uploads/Picture/license/2017-04-15/58f1cea124349.png', '', '45e71d09946ad8edb9af61b0b031321f', 'baa8ce18c646b04af1dbedc51b32921adc0bfdbb', '1', '1492242081');
+INSERT INTO `logistics_picture` VALUES ('20', '/Uploads/Picture/cover/2017-04-18/58f5c3ddecce9.jpg', '', '2e12423ca35188d6aa834203010a6f52', '6c5ffb9d44eee2d0193d35031eeac5b736254500', '1', '1492501469');
 
 -- ----------------------------
 -- Table structure for logistics_ucenter_admin
@@ -5187,8 +5220,8 @@ CREATE TABLE `logistics_ucenter_member` (
 -- ----------------------------
 -- Records of logistics_ucenter_member
 -- ----------------------------
-INSERT INTO `logistics_ucenter_member` VALUES ('1', 'shexie303', '74512fad441da1d65478e0698d82386a', 'lc@qq.com', '', '1490319959', '2130706433', '1492418078', '2130706433', '1490319959', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('2', 'shexie33', '74512fad441da1d65478e0698d82386a', 'lc_php@126.com', '', '1490321367', '2130706433', '1492152897', '2130706433', '1490321367', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('1', 'shexie303', '74512fad441da1d65478e0698d82386a', 'lc@qq.com', '', '1490319959', '2130706433', '1492498728', '2130706433', '1490319959', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('2', 'shexie33', '74512fad441da1d65478e0698d82386a', 'lc_php@126.com', '', '1490321367', '2130706433', '1492498998', '2130706433', '1490321367', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('3', 'shexie44', '74512fad441da1d65478e0698d82386a', 'asd@qq.com', '', '1490582797', '2130706433', '1492312574', '2130706433', '1490582797', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('4', 'shexie55', '74512fad441da1d65478e0698d82386a', '112@126.com', '', '1490604355', '2130706433', '1491039189', '2130706433', '1490604355', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('5', 'shexie66', '74512fad441da1d65478e0698d82386a', '123@qq.com', '', '1490605123', '2130706433', '1491558501', '2130706433', '1490605123', '1');

@@ -408,7 +408,7 @@ class ArticleController extends AdminController {
         //获取表单字段排序
         $fields = get_model_attribute($model['id']);
         //获取省份列表
-        $province = province();
+        $province = getNextPca();
 
         $this->assign('info',       $info);
         $this->assign('fields',     $fields);
@@ -463,12 +463,35 @@ class ArticleController extends AdminController {
         $this->assign('fields',     $fields);
 
         //获取省份列表
-        $province = province();
-        $this->assign('province',      $province);
+        $province = getNextPca();
+        $this->assign('province', $province);
+        //获取城市列表
+        $city = getNextPca($data['location_p'], 2);
+        $this->assign('city', $city);
+        //获取县区列表
+        $area = getNextPca($data['location_c'], 3);
+        $this->assign('area', $area);
+
         //获取当前分类的文档类型
         $this->assign('type_list', get_type_bycate($data['category_id']));
         $this->meta_title   =   '编辑';
-        $this->display();
+        if($data['category_id'] == 2){
+            //直达专线分类
+            $s_cate = getNextCategory(2, $data['location_p']);
+            $this->assign('zdzx', $s_cate);
+            $jpzx = M('Jpzx')->where(array('wuliu_id'=>$data['id']))->select();
+            $jpzx_arr = array();
+            if($jpzx){
+                foreach($jpzx as $val){
+                    $jpzx_arr[] = $val['zdzx_id'];
+                }
+            }
+            $this->assign('jpzx_str', implode(',',$jpzx_arr));
+
+            $this->display('Article/edit_jpzx');
+        }else{
+            $this->display();
+        }
     }
 
     /**
@@ -492,6 +515,21 @@ class ArticleController extends AdminController {
         if(!$res){
             $this->error(D('Document')->getError());
         }else{
+            if($data['category_id'] == 2){
+                $jpzx = M('Jpzx');
+                if($res['id']){
+                    $jpzx->where(array('wuliu_id'=>$res['id']))->delete();
+                    $res['insert_id'] = $res['id'];
+                }
+                foreach($data['zdzx'] as $val){
+                    $zd_data = array(
+                        'wuliu_id' => $res['insert_id'],
+                        'zdzx_id' => $val,
+                        'city_id' => $data['location_c'],
+                    );
+                    $jpzx->add($zd_data);
+                }
+            }
             $this->success($res['id']?'更新成功':'新增成功', Cookie('__forward__'));
         }
     }
@@ -928,28 +966,14 @@ class ArticleController extends AdminController {
     public function getNextCategory(){
         $cate_id    =   I('post.cate_id',0);
         empty($cate_id) && $this->error('分类参数不能为空！');
-
+        $p_id    =   I('post.p_id',0);
+        empty($p_id) && $this->error('省份参数不能为空！');
         $return = array(
             'status' => 0,
             'data' => '',
             'info' => ''
         );
-        $s_cate = getNextCategory($cate_id);
-        if($cate_id == 2){
-            $p_id    =   I('post.p_id',0);
-            empty($p_id) && $this->error('省份参数不能为空！');
-            //直辖市
-            if(in_array($p_id, array(110000, 120000, 310000, 500000))){
-                unset($s_cate[$p_id]);
-                array_pop($s_cate);
-            //港澳台
-            }elseif(in_array($p_id, array(710000, 810000, 820000))){
-                array_shift($s_cate);
-            }else{
-                unset($s_cate[$p_id]);
-                array_shift($s_cate);
-            }
-        }
+        $s_cate = getNextCategory($cate_id, $p_id);
 
         if($s_cate){
             $return['data'] = $s_cate;

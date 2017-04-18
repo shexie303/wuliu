@@ -1028,3 +1028,16 @@ function province(){
     //todo 缓存
     return M('Pca')->field('id,name')->where(array('type'=>1))->select();
 }
+
+function getNextCategory($cate_id){
+    //todo 缓存
+    $data = M('Category')->field('id,title')->where(array('status'=>1,'pid'=>$cate_id))->order('sort asc')->select();
+    if($cate_id == 2){
+        $new = array();
+        foreach($data as $val){
+            $new[$val['id']] = $val['title'];
+        }
+        $data = $new;
+    }
+    return $data;
+}

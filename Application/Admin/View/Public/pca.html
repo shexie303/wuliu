@@ -1,4 +1,4 @@
-<select name="[project]_p" id="[project]_p" class="pca-select" onchange="pac_select(this,1)">
+<select name="[project]_p" id="[project]_p" class="pca-select" data-cate-id="[cate_id]" onchange="pac_select(this,1)">
     <option value="0">请选择</option>
     <foreach name="province" item="val">
         <option value="{$val.id}">{$val.name}</option>
@@ -15,11 +15,21 @@
     function pac_select(object,level){
         var obj = $('#'+object.id);
         var id = obj.val();
+        var cate_id = obj.data('cate-id');
         if(id > 0){
-            $.post("{:U('Public/getNextArea')}", {id : id}, function(e){
+            if(obj.data('cate-id') == 2){
+                $.post("{:U('Article/getNextCategory')}", {cate_id : cate_id, p_id : id}, function(e){
+                    if(e.status == 0){
+                        $('#zdzx').empty();
+                        $.each(e.data, function(n, item){
+                            $('#zdzx').append('<label class="checkbox"><input class="auth_rules" type="checkbox" name="zdzx[]" value="'+item.id+'">'+item.title+'</label>')
+                        });
+                    }
+                });
+            }
+            $.post("{:U('Article/getNextArea')}", {id : id}, function(e){
                 if(e.status == 0){
                     if(level == 1){
-                        //alert(11);
                         obj.siblings().hide().empty();
                     }else{
                         obj.next().hide().empty();

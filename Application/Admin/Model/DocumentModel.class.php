@@ -18,11 +18,20 @@ class DocumentModel extends Model{
 
     /* 自动验证规则 */
     protected $_validate = array(
-        array('name', '/^[a-zA-Z]\w{0,39}$/', '文档标识不合法', self::VALUE_VALIDATE, 'regex', self::MODEL_BOTH),
-        array('name', 'checkName', '标识已经存在', self::VALUE_VALIDATE, 'callback', self::MODEL_BOTH),
+//        array('name', '/^[a-zA-Z]\w{0,39}$/', '文档标识不合法', self::VALUE_VALIDATE, 'regex', self::MODEL_BOTH),
+//        array('name', 'checkName', '标识已经存在', self::VALUE_VALIDATE, 'callback', self::MODEL_BOTH),
         array('title', 'require', '标题不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
         array('title', '1,80', '标题长度不能超过80个字符', self::MUST_VALIDATE, 'length', self::MODEL_BOTH),
+        array('location_p', '/^[\d]+$/', '请选择所在地省份', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
+        array('location_c', '/^[\d]+$/', '请选择所在地城市', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
+        array('location_a', '/^[\d]+$/', '请选择所在地县区', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
+        array('destination_p', '/^[\d]+$/', '请选择目的地省份', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
+        array('destination_c', '/^[\d]+$/', '请选择目的地城市', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
+        array('destination_a', '/^[\d]+$/', '请选择目的地县区', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
+        array('address', 'require', '公司地址不能为空', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
     	array('level', '/^[\d]+$/', '优先级只能填正整数', self::VALUE_VALIDATE, 'regex', self::MODEL_BOTH),
+    	array('cover_id', '/^[\d]+$/', '请上传封面', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
+    	array('content', 'require', '详细内容不能为空', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
         //TODO: 外链编辑验证
         //array('link_id', 'url', '外链格式不正确', self::VALUE_VALIDATE, 'regex', self::MODEL_BOTH),
         //array('description', '1,140', '简介长度不能超过140个字符', self::VALUE_VALIDATE, 'length', self::MODEL_BOTH),
@@ -39,6 +48,7 @@ class DocumentModel extends Model{
         array('uid', 'is_login', self::MODEL_INSERT, 'function'),
         array('title', 'htmlspecialchars', self::MODEL_BOTH, 'function'),
         array('address', 'htmlspecialchars', self::MODEL_BOTH, 'function'),
+        array('content', 'htmlspecialchars', self::MODEL_BOTH, 'function'),
     	array('root', 'getRoot', self::MODEL_BOTH, 'callback'),
         array('link_id', 'getLink', self::MODEL_BOTH, 'callback'),
         array('attach', 0, self::MODEL_INSERT),

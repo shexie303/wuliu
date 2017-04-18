@@ -88,26 +88,4 @@ class PublicController extends \Think\Controller {
         $verify = new \Think\Verify();
         $verify->entry(1);
     }
-
-    public function getNextArea(){
-        $id = I('id', 0);
-        $return = array(
-            'status' => 0,
-            'data' => '',
-            'info' => ''
-        );
-        if(!$id){
-            $return['status'] = 1;
-            $return['info'] = '参数错误！';
-            $this->ajaxReturn($return);
-        }
-        $area = M('Pca')->field('id,name')->where(array('parent_id'=>$id))->select();
-        if($area){
-            $return['data'] = $area;
-        }else{
-            $return['status'] = 1;
-            $return['info'] = '暂无下级地区！';
-        }
-        $this->ajaxReturn($return);
-    }
 }

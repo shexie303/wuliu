@@ -32,17 +32,13 @@
             <div class="form-item cf">
                 <label class="item-label">所在地<span class="check-tips">（所在地）</span></label>
                 <div class="controls">
-                    <include file="Public:pca" project="location" />
+                    <include file="Public:pca" project="location" cate_id="{$info.category_id}"/>
                 </div>
             </div>
-            <if condition="$info['category_id'] eq 7">
-                <div class="form-item cf">
-                    <label class="item-label">目的地<span class="check-tips">（目的地）</span></label>
-                    <div class="controls">
-                        <include file="Public:pca" project="destination" />
-                    </div>
-                </div>
-            </if>
+            <div class="form-item cf">
+                <label class="item-label">直达专线<span class="check-tips">（请先选择所在地，直达专线可以多选）</span></label>
+                <div class="controls" id="zdzx"  style="width: 40%"></div>
+            </div>
             <div class="form-item cf">
                 <label class="item-label">公司地址<span class="check-tips">（详细地址）</span></label>
                 <div class="controls">

@@ -416,7 +416,11 @@ class ArticleController extends AdminController {
         $this->assign('model',      $model);
         $this->assign('province',      $province);
         $this->meta_title = '新增';
-        $this->display();
+        if($cate_id == 2){
+            $this->display('Article/add_jpzx');
+        }else{
+            $this->display();
+        }
     }
 
     /**
@@ -476,6 +480,12 @@ class ArticleController extends AdminController {
             $limit = checkCategoryPublish($_POST['category_id']);
             if($limit !== true){
                 USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+            }
+        }
+        $data = I('post.');
+        if($data['category_id'] == 2){
+            if(empty($data['zdzx']) || !is_array($data['zdzx'])){
+                $this->error('请选择直达专线');
             }
         }
         $res = D('Document')->update();
@@ -913,5 +923,63 @@ class ArticleController extends AdminController {
         }else{
             $this->error('非法请求！');
         }
+    }
+
+    public function getNextCategory(){
+        $cate_id    =   I('post.cate_id',0);
+        empty($cate_id) && $this->error('分类参数不能为空！');
+
+        $return = array(
+            'status' => 0,
+            'data' => '',
+            'info' => ''
+        );
+        $s_cate = getNextCategory($cate_id);
+        if($cate_id == 2){
+            $p_id    =   I('post.p_id',0);
+            empty($p_id) && $this->error('省份参数不能为空！');
+            //直辖市
+            if(in_array($p_id, array(110000, 120000, 310000, 500000))){
+                unset($s_cate[$p_id]);
+                array_pop($s_cate);
+            //港澳台
+            }elseif(in_array($p_id, array(710000, 810000, 820000))){
+                array_shift($s_cate);
+            }else{
+                unset($s_cate[$p_id]);
+                array_shift($s_cate);
+            }
+        }
+
+        if($s_cate){
+            $return['data'] = $s_cate;
+            $this->ajaxReturn($return);
+        }else{
+            $return['status'] = 1;
+            $return['info'] = '没有下级分类！';
+            $this->ajaxReturn($return);
+        }
+    }
+
+    public function getNextArea(){
+        $id = I('id', 0);
+        $return = array(
+            'status' => 0,
+            'data' => '',
+            'info' => ''
+        );
+        if(!$id){
+            $return['status'] = 1;
+            $return['info'] = '参数错误！';
+            $this->ajaxReturn($return);
+        }
+        $area = M('Pca')->field('id,name')->where(array('parent_id'=>$id))->select();
+        if($area){
+            $return['data'] = $area;
+        }else{
+            $return['status'] = 1;
+            $return['info'] = '暂无下级地区！';
+        }
+        $this->ajaxReturn($return);
     }
 }

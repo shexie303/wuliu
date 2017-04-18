@@ -31,6 +31,7 @@
 		<th class="">账号</th>
 		<th class="">会员等级</th>
 		<th class="">会员到期时间</th>
+		<th class="">最近登录</th>
 		<th class="">状态</th>
 		<th class="">操作</th>
 		</tr>
@@ -46,6 +47,13 @@
 			<td>
                 <if condition="$vo['vip_end']">
                     {$vo.vip_end|time_format='Y-m-d'}
+                </if>
+            </td>
+            <td>
+                <if condition="$vo['last_login_time']">
+                    {$vo.last_login_time|time_format='Y-m-d H:i'}
+                <else />
+                    从未登录
                 </if>
             </td>
 			<td>{$vo.status_text}</td>

@@ -465,12 +465,21 @@ class ArticleController extends AdminController {
         //获取省份列表
         $province = getNextPca();
         $this->assign('province', $province);
-        //获取城市列表
+        //获取所在地城市列表
         $city = getNextPca($data['location_p'], 2);
-        $this->assign('city', $city);
-        //获取县区列表
+        $this->assign('location_city', $city);
+        //获取所在地县区列表
         $area = getNextPca($data['location_c'], 3);
-        $this->assign('area', $area);
+        $this->assign('location_area', $area);
+
+        if($data['category_id'] == 7){
+            //获取目的地城市列表
+            $destination_city = getNextPca($data['destination_p'], 2);
+            $this->assign('destination_city', $destination_city);
+            //获取的地县区列表
+            $destination_area = getNextPca($data['destination_c'], 3);
+            $this->assign('destination_area', $destination_area);
+        }
 
         //获取当前分类的文档类型
         $this->assign('type_list', get_type_bycate($data['category_id']));

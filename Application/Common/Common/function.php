@@ -1046,6 +1046,7 @@ function getNextCategory($cate_id, $p_id){
     if($cate_id == 2){
         $s_cate = array();
         foreach($data as $val){
+            ($val['id'] == 31 || $val['id'] == 40)  ? $val['title'] .= '线' : $val['title'] .= '专线';
             $s_cate[$val['province_id']] = $val;
         }
         //直辖市

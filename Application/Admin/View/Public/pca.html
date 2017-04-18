@@ -1,22 +1,22 @@
 <select name="[project]_p" id="[project]_p" class="pca-select" data-cate-id="[cate_id]" onchange="pac_select(this,1)">
     <option value="">请选择</option>
     <foreach name="province" item="val">
-        <option value="{$val.id}" <eq name="data.location_p" value="$val.id">selected</eq> >{$val.name}</option>
+        <option value="{$val.id}" <eq name="data.[project]_p" value="$val.id">selected</eq> >{$val.name}</option>
     </foreach>
 </select>
-<select name="[project]_c" id="[project]_c" class="pca-select" <empty name="city">style="display: none"</empty> onchange="pac_select(this,2)" >
+<select name="[project]_c" id="[project]_c" class="pca-select" <empty name="[project]_city">style="display: none"</empty> onchange="pac_select(this,2)" >
     <option value="">请选择</option>
-    <notempty name="city">
-        <foreach name="city" item="val">
-            <option value="{$val.id}" <eq name="data.location_c" value="$val.id">selected</eq> >{$val.name}</option>
+    <notempty name="[project]_city">
+        <foreach name="[project]_city" item="val">
+            <option value="{$val.id}" <eq name="data.[project]_c" value="$val.id">selected</eq> >{$val.name}</option>
         </foreach>
     </notempty>
 </select>
-<select name="[project]_a" id="[project]_a" class="pca-select" <empty name="area">style="display: none"</empty> >
+<select name="[project]_a" id="[project]_a" class="pca-select" <empty name="[project]_area">style="display: none"</empty> >
     <option value="">请选择</option>
-    <notempty name="area">
-        <foreach name="area" item="val">
-            <option value="{$val.id}" <eq name="data.location_a" value="$val.id">selected</eq> >{$val.name}</option>
+    <notempty name="[project]_area">
+        <foreach name="[project]_area" item="val">
+            <option value="{$val.id}" <eq name="data.[project]_a" value="$val.id">selected</eq> >{$val.name}</option>
         </foreach>
     </notempty>
 </select>

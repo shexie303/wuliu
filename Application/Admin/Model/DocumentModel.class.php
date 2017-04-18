@@ -22,6 +22,7 @@ class DocumentModel extends Model{
 //        array('name', 'checkName', '标识已经存在', self::VALUE_VALIDATE, 'callback', self::MODEL_BOTH),
         array('title', 'require', '标题不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
         array('title', '1,80', '标题长度不能超过80个字符', self::MUST_VALIDATE, 'length', self::MODEL_BOTH),
+        array('title', 'checkTitle', '标题已经存在', self::VALUE_VALIDATE, 'callback', self::MODEL_BOTH),
         array('location_p', '/^[\d]+$/', '请选择所在地省份', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
         array('location_c', '/^[\d]+$/', '请选择所在地城市', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
         array('location_a', '/^[\d]+$/', '请选择所在地县区', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
@@ -45,7 +46,7 @@ class DocumentModel extends Model{
 
     /* 自动完成规则 */
     protected $_auto = array(
-        array('uid', 'is_login', self::MODEL_INSERT, 'function'),
+        array('uid', 'is_login', self::MODEL_INSERT, 'function'), //todo 管理员给会员发布
         array('title', 'htmlspecialchars', self::MODEL_BOTH, 'function'),
         array('address', 'htmlspecialchars', self::MODEL_BOTH, 'function'),
         array('content', 'htmlspecialchars', self::MODEL_BOTH, 'function'),
@@ -280,7 +281,8 @@ class DocumentModel extends Model{
         $cate = I('post.category_id');
         if(empty($id)){	//新增
         	$status = 0;
-        }else{				//更新
+        }else{
+            //更新 todo 编辑后是否为未审核
 			$status = $this->getFieldById($id, 'status');
 			//编辑草稿改变状态
 			if($status == 3){
@@ -377,8 +379,8 @@ class DocumentModel extends Model{
      * @return true无重复，false已存在
      * @author huajie <banhuajie@163.com>
      */
-    protected function checkName(){
-        $name = I('post.name');
+    protected function checkTitle(){
+        $title = I('post.title');
         $pid = I('post.pid', 0);
         $id = I('post.id', 0);
 
@@ -390,7 +392,7 @@ class DocumentModel extends Model{
         	$root = $root == 0 ? $pid : $root;
         }
 
-        $map = array('root'=>$root, 'name'=>$name, 'id'=>array('neq',$id));
+        $map = array('root'=>$root, 'title'=>$title, 'id'=>array('neq',$id));
         $res = $this->where($map)->getField('id');
         if($res){
         	return false;

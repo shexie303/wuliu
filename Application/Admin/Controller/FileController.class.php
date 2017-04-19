@@ -7,6 +7,9 @@
 // | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
 // +----------------------------------------------------------------------
 namespace Admin\Controller;
+use Think\Image;
+use Think\Image\Driver\Gd;
+
 /**
  * 文件控制器
  * 主要用于下载模型的文件上传和下载
@@ -82,6 +85,13 @@ class FileController extends AdminController {
         //TODO:上传到远程服务器
         /* 记录图片信息 */
         if($info){
+            if($save_path == 'cover'){
+                /*添加水印开始*/
+                $image = new \Think\Image();
+                $thumb_file = $info['imgFile']['path'];
+                $image->open('.'.$thumb_file)->water('.'.C('TMPL_PARSE_STRING.__IMG__').'/water.jpg',\Think\Image::IMAGE_WATER_SOUTHEAST)->save('.'.$thumb_file);
+                /*添加水印结束*/
+            }
             $return['error'] = 0;
             $return['cover_id'] = $info['imgFile']['id'];
             $return['url'] = $info['imgFile']['path'];

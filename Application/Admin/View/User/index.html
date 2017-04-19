@@ -61,7 +61,7 @@
                 <eq name="vo.status" value="1">
 				    <a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
 				    <a href="{:U('User/info?id='.$vo['uid'])}">编辑</a>
-				    <a href="{:U('User/manual_recharge?id='.$vo['uid'])}">会员升级</a>
+				    <a href="javascript:///" class="recharge">会员升级</a>
 				<else/>
 				    <a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get">启用</a>
 				</eq>
@@ -81,7 +81,8 @@
 </block>
 
 <block name="script">
-	<script type="text/javascript">
+    <script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+    <script type="text/javascript">
 	//搜索功能
 	$("#search").click(function(){
 		var url = $(this).attr('url');
@@ -103,16 +104,16 @@
 		}
 	});
     //导航高亮
-    highlight_subnav('{:U('User/index')}');
-//    $('.addition-button').click(function(){
-//        layer.open({
-//            type: 2,
-//            title: '特供线路添加',
-//            area: ['455px', '305px'],
-//            shade: 0.8,
-//            shadeClose: true,
-//            content: "index.php?app=my_manage&act=specialAddForm"
-//        });
-//    });
+    highlight_subnav("{:U('User/index')}");
+    $('.recharge').click(function(){
+        layer.open({
+            type: 2,
+            title: '会员升级',
+            area: ['380px', '350px'],
+            shade: 0.8,
+            shadeClose: true,
+            content: "{:U('User/recharge1')}"
+        });
+    });
 	</script>
 </block>

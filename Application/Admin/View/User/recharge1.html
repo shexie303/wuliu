@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>会员充值</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/hd_8264_global_2016.css" media="all">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+    <![endif]--><!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.mousewheel.js"></script>
+    <!--<![endif]-->
+    <script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+    <style type="text/css">
+        .dym-modal{position:relative}.dym-modal-content{position:relative;background-color:#fff}.dym-confirm-body{padding:40px 30px}.form-group{margin-bottom:8px;overflow:hidden}.control-label{float:left;width:130px;padding:7px 5px 0 0;text-align:right}.input-group{position:relative;float:left}.form-control{width:116px;height:20px;border:1px solid #dfdfdf;line-height:20px;padding:6px 0 6px 13px;vertical-align:middle}.mui-select{position:relative;width:120px;height:32px;line-height:32px;display:block;padding-left:8px;border:1px solid #dfdfdf}.mui-select .icon-arrow{position:absolute;width:12px;height:6px;background:url(http://static.8264.com/hd/pc/images/tps/v3/iconNew-430-261.png) no-repeat -48px -147px;right:8px;top:12px}.show-typebar{position:absolute;width:228px;height:32px;left:0;top:0;opacity:0;filter:alpha(opacity=0)}.dym-confirm-button{font-size:0;margin-top:20px;text-align:center}.dym-confirm-button a{display:inline-block;font-size:14px;border-radius:3px;width:110px;height:36px;line-height:36px}.dym-confirm-button .primary-button{background-color:#6da0fd;color:#fff}.dym-confirm-button .close-button{margin-left:6px;background-color:#e3e3e3}
+    </style>
+</head>
+<body>
+<div class="dym-modal-wrap">
+    <div class="dym-modal dym-widget-modal">
+        <div class="dym-modal-content">
+            <div class="dym-confirm-body">
+                <div class="dym-confirm-content">
+                    <div class="form-group">
+                        <label class="control-label">会员类型：</label>
+                        <div class="input-group">
+                            <select name="vip" class="mui-select">
+                                <option value="2">推荐会员</option>
+                                <option value="3">vip会员</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">会员期限：</label>
+                        <select name="month" class="mui-select">
+                            <option value="1">1个月</option>
+                            <option value="2">2个月</option>
+                            <option value="3">3个月</option>
+                            <option value="4">4个月</option>
+                            <option value="5">5个月</option>
+                            <option value="6">6个月</option>
+                            <option value="7">7个月</option>
+                            <option value="8">8个月</option>
+                            <option value="9">9个月</option>
+                            <option value="10">10个月</option>
+                            <option value="11">11个月</option>
+                            <option value="12">12个月</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">充值金额：</label>
+                        <div class="input-group">
+                            <input type="text" placeholder="请输入金额" name="money" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="dym-confirm-button">
+                    <a href="javascript:void(0);" class="primary-button">确定</a>
+                    <a href="javascript:void(0);" class="close-button">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var closeWindow = function(){
+        var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+        parent.layer.close(index);
+    };
+    $('.close-button').click(function(){
+        closeWindow();
+    });
+    $('.primary-button').click(function(){
+        var id = $('input[name=id]').val();
+        var discount = $('input[name=discount]').val();
+        if(id.length == 0){
+            layer.alert('线路链接或线路ID不能为空');
+            return false;
+        }
+        if(discount.length == 0){
+            layer.alert('折扣不能为空');
+            return false;
+        }
+        $.ajax({
+            url : "index.php?app=my_manage&act=addSpecialGoods",
+            type : "post",
+            dataType : "json",
+            data : {'id' : id, discount : discount},
+            success : function (data) {
+                if(data.retval.status){
+                    parent.location.reload();
+                }else{
+                    layer.alert(data.msg);
+                }
+            },
+            error : function (data) {}
+        });
+    });
+</script>
+</body>
+</html>

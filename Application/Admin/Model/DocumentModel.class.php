@@ -30,7 +30,9 @@ class DocumentModel extends Model{
         array('destination_c', '/^[\d]+$/', '请选择目的地城市', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
         array('destination_a', '/^[\d]+$/', '请选择目的地县区', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
         array('address', 'require', '公司地址不能为空', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
-    	array('level', '/^[\d]+$/', '优先级只能填正整数', self::VALUE_VALIDATE, 'regex', self::MODEL_BOTH),
+        array('uid', 'require', '用户名或者ID不能为空', self::EXISTS_VALIDATE, 'regex', self::MODEL_INSERT),
+        array('uid', 'checkUidNickname', '该用户不存在，请重新输入', self::EXISTS_VALIDATE, 'callback', self::MODEL_INSERT),
+        array('level', '/^[\d]+$/', '优先级只能填正整数', self::VALUE_VALIDATE, 'regex', self::MODEL_BOTH),
     	array('cover_id', '/^[\d]+$/', '请上传封面', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
     	array('content', 'require', '详细内容不能为空', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
         //TODO: 外链编辑验证
@@ -46,7 +48,7 @@ class DocumentModel extends Model{
 
     /* 自动完成规则 */
     protected $_auto = array(
-        array('uid', 'is_login', self::MODEL_INSERT, 'function'), //todo 管理员给会员发布
+        array('uid', 'checkUidNickname', self::MODEL_INSERT, 'callback'),
         array('title', 'htmlspecialchars', self::MODEL_BOTH, 'function'),
         array('address', 'htmlspecialchars', self::MODEL_BOTH, 'function'),
         array('content', 'htmlspecialchars', self::MODEL_BOTH, 'function'),
@@ -59,7 +61,7 @@ class DocumentModel extends Model{
         array('create_time', 'getCreateTime', self::MODEL_BOTH,'callback'),
 		array('reply_time', 'getCreateTime', self::MODEL_INSERT,'callback'),
         array('update_time', NOW_TIME, self::MODEL_BOTH),
-        array('status', 'getStatus', self::MODEL_BOTH, 'callback'),
+        array('status', 0, self::MODEL_BOTH),
         array('position', 'getPosition', self::MODEL_BOTH, 'callback'),
         array('deadline', 'strtotime', self::MODEL_BOTH, 'function'),
     );
@@ -278,7 +280,6 @@ class DocumentModel extends Model{
      */
     protected function getStatus(){
     	$id = I('post.id');
-        $cate = I('post.category_id');
         if(empty($id)){	//新增
         	$status = 0;
         }else{
@@ -398,6 +399,26 @@ class DocumentModel extends Model{
         	return false;
         }
         return true;
+    }
+
+    /*检测uid或者用户名是否存在*/
+    public function checkUidNickname(){
+        $str = I('post.uid');
+        if(empty($str)){
+            return is_login();
+        }
+        $map['status'] = 1;
+        if(is_numeric($str)){
+            $map['uid'] = $str;
+        }else{
+            $map['nickname'] = $str;
+        }
+        $res = M('Member')->where($map)->find();
+        if($res){
+            return $res['uid'];
+        }else{
+            return false;
+        }
     }
 
     /**

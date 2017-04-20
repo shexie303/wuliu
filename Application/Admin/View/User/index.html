@@ -61,7 +61,7 @@
                 <eq name="vo.status" value="1">
 				    <a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
 				    <a href="{:U('User/info?id='.$vo['uid'])}">编辑</a>
-				    <a href="javascript:///" class="recharge">会员升级</a>
+				    <a href="javascript:///" class="recharge" data-uid="{$vo.uid}">会员升级</a>
 				<else/>
 				    <a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get">启用</a>
 				</eq>
@@ -106,13 +106,14 @@
     //导航高亮
     highlight_subnav("{:U('User/index')}");
     $('.recharge').click(function(){
+        var uid = $(this).data('uid');
         layer.open({
             type: 2,
             title: '会员升级',
             area: ['380px', '350px'],
             shade: 0.8,
             shadeClose: true,
-            content: "{:U('User/recharge1')}"
+            content: "{:U('User/manual_recharge')}&uid="+uid
         });
     });
 	</script>

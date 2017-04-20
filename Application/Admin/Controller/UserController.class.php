@@ -91,7 +91,7 @@ class UserController extends AdminController {
 //    }
 
     /**
-     * 会员充值
+     * 会员充值 (自己支付)
      */
     public function recharge(){
         if(IS_POST){
@@ -156,6 +156,61 @@ class UserController extends AdminController {
             $user = D('Member')->getUserInfo(UID);
             $this->assign('user',$user);
             $this->meta_title = '会员充值';
+            $this->display();
+        }
+    }
+
+    /**
+     * 会员充值 (管理员手动升级会员)
+     */
+    public function manual_recharge(){
+        $uid = I('uid', 0);
+        if(!$uid){
+            $this->error('用户不存在');
+        }
+        $info = D('Member')->getUserInfo($uid);
+        if(!$info){
+            $this->error('用户不存在');
+        }
+        if($info['status'] != 1){
+            $this->error('用户不存在或者被禁用');
+        }
+        if(IS_AJAX && IS_POST){
+            $data = I('post.');
+            if(!in_array($data['vip'],array(2,3))){
+                $this->error('会员vip类型不正确');
+            }
+            if(!in_array($data['month'],range(1,12))){
+                $this->error('会员期限不正确');
+            }
+            if(is_numeric($data['money'])){
+                if(ceil($data['money']) != $data['money']){
+                    $this->error('输入金额为整数');
+                }
+            }else{
+                $this->error('输入金额为整数');
+            }
+            $data['order_number'] = random(32, 1);
+            $data['type'] = 1;
+            $data['create_time'] = time();
+            $log_id = M('PayLog')->add($data);
+            $start_time = strtotime(time_format($data['create_time'], 'Y-m-d'));
+            if($log_id){
+                $info = array(
+                    'uid' => $data['uid'],
+                    'vip' => $data['vip'],
+                    'vip_start' => $start_time,
+                    'vip_end' => strtotime('+'.$data['month'].' month', $start_time)
+                );
+                if(false === M('Member')->save($info)){
+                    M('PayLog')->delete($log_id);
+                    $this->error('操作失败！请稍后再试');
+                }else{
+                    $this->success('恭喜您，操作成功');
+                }
+            }
+        }else{
+            $this->assign('user', $info);
             $this->display();
         }
     }

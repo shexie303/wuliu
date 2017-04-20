@@ -44,7 +44,7 @@
                             <option value="9">9个月</option>
                             <option value="10">10个月</option>
                             <option value="11">11个月</option>
-                            <option value="12">12个月</option>
+                            <option value="12" selected>12个月</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -53,6 +53,7 @@
                             <input type="text" placeholder="请输入金额" name="money" class="form-control">
                         </div>
                     </div>
+                    <input type="hidden" name="uid" value="{$user.uid}">
                 </div>
                 <div class="dym-confirm-button">
                     <a href="javascript:void(0);" class="primary-button">确定</a>
@@ -71,26 +72,31 @@
         closeWindow();
     });
     $('.primary-button').click(function(){
-        var id = $('input[name=id]').val();
-        var discount = $('input[name=discount]').val();
-        if(id.length == 0){
-            layer.alert('线路链接或线路ID不能为空');
+        var uid = $('input[name=uid]').val();
+        var vip = $('select[name=vip]').val();
+        var month = $('select[name=month]').val();
+        var money = $('input[name=money]').val();
+        if(uid.length == 0){
+            layer.alert('用户不存在');
             return false;
         }
-        if(discount.length == 0){
-            layer.alert('折扣不能为空');
+        if(money.length == 0){
+            layer.alert('请输入金额');
             return false;
         }
         $.ajax({
-            url : "index.php?app=my_manage&act=addSpecialGoods",
+            url : "{:U('User/manual_recharge')}",
             type : "post",
             dataType : "json",
-            data : {'id' : id, discount : discount},
+            data : {'uid' : uid, vip : vip, month : month, money : money},
             success : function (data) {
-                if(data.retval.status){
-                    parent.location.reload();
+                if(data.status){
+                    layer.alert(data.info);
+                    setTimeout(function(){
+                        closeWindow();
+                    },2000);
                 }else{
-                    layer.alert(data.msg);
+                    layer.alert(data.info);
                 }
             },
             error : function (data) {}

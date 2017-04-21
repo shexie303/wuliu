@@ -15,6 +15,8 @@
 				<div class="name">
 					<span class="tab-sign"></span>
 					<input type="hidden" name="id" value="{$list.id}">
+					<input type="hidden" name="pid" value="{$list.pid}">
+					<input type="hidden" name="province_id" value="{$list.province_id}">
 					<input type="text" name="title" class="text" value="{$list.title}">
 					<a class="add-sub-cate" title="添加子分类" href="{:U('add?pid='.$list['id'])}">
 						<i class="icon-add"></i>

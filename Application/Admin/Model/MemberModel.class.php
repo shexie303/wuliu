@@ -18,6 +18,7 @@ use User\Api\UserApi;
 
 class MemberModel extends Model {
 
+    protected $_user_cache_prefix = 'sys_user_info_';
     protected $_validate = array(
         array('nickname', '3,30', '昵称长度为3-30个字符', self::EXISTS_VALIDATE, 'length'),
         array('nickname', '', '昵称被占用', self::EXISTS_VALIDATE, 'unique'), //用户名被占用
@@ -90,11 +91,21 @@ class MemberModel extends Model {
     }
 
     public function getNickName($uid){
-        return $this->where(array('uid'=>(int)$uid))->getField('nickname');
+        $info = $this->getUserInfo($uid);
+        return $info['nickname'];
     }
 
     public function getUserInfo($uid){
-        return $this->find($uid);
+        $key = $this->_user_cache_prefix . $uid;
+        $cache = S($key);
+        if(!$cache){
+            $cache = $this->find($uid);
+            if(!$cache){
+                $this->error('用户不存在');
+            }
+            S($key, $cache, 21600);
+        }
+        return $cache;
     }
 
     public function update(){
@@ -116,6 +127,8 @@ class MemberModel extends Model {
             $this->error = '完善资料出错！';
             return false;
         }
+        $key = $this->_user_cache_prefix . $_POST['uid'];
+        S($key, null);
         return $data;
     }
 

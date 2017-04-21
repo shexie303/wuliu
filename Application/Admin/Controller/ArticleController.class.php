@@ -486,17 +486,18 @@ class ArticleController extends AdminController {
         $this->meta_title   =   '编辑';
         if($data['category_id'] == 2){
             //直达专线分类
-            $s_cate = getNextCategory(2, $data['location_p']);
-            $this->assign('zdzx', $s_cate);
-            $jpzx = M('Jpzx')->where(array('wuliu_id'=>$data['id']))->select();
-            $jpzx_arr = array();
-            if($jpzx){
-                foreach($jpzx as $val){
-                    $jpzx_arr[] = $val['zdzx_id'];
+            if($data['location_p'] > 0){
+                $s_cate = getNextCategory(2, $data['location_p']);
+                $this->assign('zdzx', $s_cate);
+                $jpzx = M('Jpzx')->where(array('wuliu_id'=>$data['id']))->select();
+                $jpzx_arr = array();
+                if($jpzx){
+                    foreach($jpzx as $val){
+                        $jpzx_arr[] = $val['zdzx_id'];
+                    }
                 }
+                $this->assign('jpzx_str', implode(',',$jpzx_arr));
             }
-            $this->assign('jpzx_str', implode(',',$jpzx_arr));
-
             $this->display('Article/edit_jpzx');
         }else{
             $this->display();
@@ -973,9 +974,10 @@ class ArticleController extends AdminController {
     }
 
     public function getNextCategory(){
-        $cate_id    =   I('post.cate_id',0);
+        header("Content-type:text/html;charset=utf-8");
+        $cate_id    =   I('get.cate_id',0);
         empty($cate_id) && $this->error('分类参数不能为空！');
-        $p_id    =   I('post.p_id',0);
+        $p_id    =   I('get.p_id',0);
         empty($p_id) && $this->error('省份参数不能为空！');
         $return = array(
             'status' => 0,
@@ -983,7 +985,7 @@ class ArticleController extends AdminController {
             'info' => ''
         );
         $s_cate = getNextCategory($cate_id, $p_id);
-
+        //var_dump($s_cate);
         if($s_cate){
             $return['data'] = $s_cate;
             $this->ajaxReturn($return);
@@ -996,6 +998,7 @@ class ArticleController extends AdminController {
 
     public function getNextArea(){
         $id = I('id', 0);
+        $type = I('type', 0);
         $return = array(
             'status' => 0,
             'data' => '',
@@ -1006,7 +1009,12 @@ class ArticleController extends AdminController {
             $return['info'] = '参数错误！';
             $this->ajaxReturn($return);
         }
-        $area = M('Pca')->field('id,name')->where(array('parent_id'=>$id))->select();
+        if(!in_array($type, array(1,2))){
+            $return['status'] = 1;
+            $return['info'] = '参数错误！';
+            $this->ajaxReturn($return);
+        }
+        $area = getNextPca($id, $type + 1);
         if($area){
             $return['data'] = $area;
         }else{

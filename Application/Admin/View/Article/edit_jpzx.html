@@ -30,6 +30,12 @@
             </div>
         </div>
         <div class="form-item cf">
+            <label class="item-label">联系方式<span class="check-tips">（手机号或者座机号）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="contact" value="{$data.contact}">
+            </div>
+        </div>
+        <div class="form-item cf">
             <label class="item-label">所在地<span class="check-tips">（所在地）</span></label>
             <div class="controls">
                 <include file="Public:pca" project="location" cate_id="{$data.category_id}"/>
@@ -39,11 +45,11 @@
             <div class="form-item cf">
                 <label class="item-label">直达专线<span class="check-tips">（请先选择所在地，直达专线可以多选）</span></label>
                 <div class="controls" id="zdzx"  style="width: 40%">
-                    <foreach name="zdzx" item="val">
-                        <label class="checkbox">
-                            <input class="auth_rules" type="checkbox" name="zdzx[]" value="{$val.id}" <in name="val.id" value="$jpzx_str">checked</in> >{$val.title}
-                        </label>
-                    </foreach>
+                    <notempty name="zdzx">
+                        <foreach name="zdzx" item="val">
+                            <label class="checkbox"  style="margin-left: 15px"><input class="auth_rules" type="checkbox" name="zdzx[]" value="{$val.id}" <in name="val.id" value="$jpzx_str">checked</in> >{$val.title}</label>
+                        </foreach>
+                    </notempty>
                 </div>
             </div>
         </div>

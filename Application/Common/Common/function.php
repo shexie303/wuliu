@@ -408,7 +408,7 @@ function get_username($uid = 0){
             while ($count-- > $max) {
                 array_shift($list);
             }
-            S('sys_active_user_list', $list);
+            S('sys_active_user_list', $list, 7200);
         } else {
             $name = '';
         }
@@ -447,7 +447,7 @@ function get_nickname($uid = 0){
             while ($count-- > $max) {
                 array_shift($list);
             }
-            S('sys_user_nickname_list', $list);
+            S('sys_user_nickname_list', $list, 7200);
         } else {
             $name = '';
         }
@@ -522,7 +522,7 @@ function get_document_model($id = null, $field = null){
         foreach ($model as $value) {
             $list[$value['id']] = $value;
         }
-        S('DOCUMENT_MODEL_LIST', $list); //更新缓存
+        S('DOCUMENT_MODEL_LIST', $list, 7200); //更新缓存
     }
 
     /* 根据条件返回数据 */
@@ -792,7 +792,7 @@ function get_model_attribute($model_id, $group = true){
         }
         $info = M('Attribute')->where($map)->select();
         $list[$model_id] = $info;
-        //S('attribute_list', $list); //更新缓存
+        S('attribute_list', $list, 7200); //更新缓存
     }
 
     $attr = array();
@@ -1036,32 +1036,70 @@ function province(){
  * @return mixed\
  */
 function getNextPca($parent_id = 0, $type = 1){
-    //todo 缓存
-    return M('Pca')->field('id,name')->where(array('parent_id'=>$parent_id,'type'=>$type))->select();
+    $key = 'pca_' . $parent_id . '_' . $type;
+    $cache = S($key);
+    if(!$cache){
+        $cache = M('Pca')->field('id,name')->where(array('parent_id'=>$parent_id,'type'=>$type))->select();
+        if($cache){
+            S($key, $cache, 86400);
+        }else{
+           return false;
+        }
+    }
+    return $cache;
 }
 
-function getNextCategory($cate_id, $p_id){
-    //todo 缓存
-    $data = M('Category')->field('id,title,province_id')->where(array('status'=>1,'pid'=>$cate_id))->order('sort asc')->select();
-    if($cate_id == 2){
-        $s_cate = array();
-        foreach($data as $val){
-            ($val['id'] == 31 || $val['id'] == 40)  ? $val['title'] .= '线' : $val['title'] .= '专线';
-            $s_cate[$val['province_id']] = $val;
-        }
-        //直辖市
-        if(in_array($p_id, array(110000, 120000, 310000, 500000))){
-            unset($s_cate[$p_id]);
-            array_pop($s_cate);
-            //港澳台
-        }elseif(in_array($p_id, array(710000, 810000, 820000))){
-            array_shift($s_cate);
-        }else{
-            unset($s_cate[$p_id]);
-            array_shift($s_cate);
-        }
-        $data = $s_cate;
+/**
+ * 获取某分类的下级分类
+ * @param int $cate_id 为0 则取全部1级分类
+ * @param int $province_id 省份id
+ * @return mixed
+ *
+ */
+function getNextCategory($cate_id = 0, $province_id = 0){
+    $key = 'category_' . $cate_id;
+    if($province_id > 0 && $cate_id > 0){
+        $key .= '_' . $province_id;
     }
-
-    return $data;
+    //var_dump($key);
+    $cache = false;
+    if(!$cache){
+        $map = array(
+            'status' => 1,
+            'pid' => 0
+        );
+        if($cate_id){
+            $map['pid'] = $cate_id;
+        }
+        $cache = M('Category')->field('id,title,province_id')->where($map)->order('sort asc')->select();
+        if(!$cache){
+            return false;
+        }
+        //var_dump($cache);
+        if($cate_id == 2){
+            $s_cate = array();
+            foreach($cache as $val){
+                ($val['id'] == 31 || $val['id'] == 40)  ? $val['title'] .= '线' : $val['title'] .= '专线';
+                $s_cate[$val['province_id']] = $val;
+            }
+            //var_dump($s_cate);
+            //直辖市
+            if(in_array($province_id, array(110000, 120000, 310000, 500000))){
+//                unset($s_cate[$province_id]);
+//                array_pop($s_cate);
+                //var_dump($s_cate);exit;
+                //港澳台
+            }elseif(in_array($province_id, array(710000, 810000, 820000))){
+                array_shift($s_cate);
+            }else{
+                unset($s_cate[$province_id]);
+                array_shift($s_cate);
+            }
+            $cache = $s_cate;
+            //var_dump($cache);exit;
+        }
+        //S($key, $cache, 86400);
+    }
+    //var_dump($cache);
+    return $cache;
 }

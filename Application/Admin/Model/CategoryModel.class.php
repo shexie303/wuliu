@@ -116,6 +116,13 @@ class CategoryModel extends Model{
             $res = $this->add();
         }else{
             $res = $this->save();
+            if($data['pid']){
+                if($data['pid'] == 2){
+                    S('category_2_' . $data['province_id'], null);
+                }
+            }else{
+                S('category_0', null);
+            }
         }
 
         //更新分类缓存

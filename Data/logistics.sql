@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50086
 File Encoding         : 65001
 
-Date: 2017-04-20 14:53:55
+Date: 2017-04-21 11:28:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `logistics_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=289 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=307 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of logistics_action_log
@@ -355,6 +355,43 @@ INSERT INTO `logistics_action_log` VALUES ('285', '1', '1', '2130706433', 'membe
 INSERT INTO `logistics_action_log` VALUES ('286', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-20 09:58登录了后台', '1', '1492653485');
 INSERT INTO `logistics_action_log` VALUES ('287', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-20 10:54登录了后台', '1', '1492656845');
 INSERT INTO `logistics_action_log` VALUES ('288', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-20 13:47登录了后台', '1', '1492667274');
+INSERT INTO `logistics_action_log` VALUES ('289', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-21 09:30登录了后台', '1', '1492738215');
+INSERT INTO `logistics_action_log` VALUES ('290', '10', '1', '2130706433', 'Menu', '126', '操作url：/index.php?s=/Admin/Menu/add.html', '1', '1492739831');
+INSERT INTO `logistics_action_log` VALUES ('291', '10', '1', '2130706433', 'Menu', '127', '操作url：/index.php?s=/Admin/Menu/add.html', '1', '1492740066');
+INSERT INTO `logistics_action_log` VALUES ('292', '10', '1', '2130706433', 'Menu', '128', '操作url：/index.php?s=/Admin/Menu/add.html', '1', '1492740098');
+INSERT INTO `logistics_action_log` VALUES ('293', '10', '1', '2130706433', 'Menu', '76', '操作url：/index.php?s=/Admin/Menu/edit.html', '1', '1492740263');
+INSERT INTO `logistics_action_log` VALUES ('294', '10', '1', '2130706433', 'Menu', '129', '操作url：/index.php?s=/Admin/Menu/add.html', '1', '1492740411');
+INSERT INTO `logistics_action_log` VALUES ('295', '10', '1', '2130706433', 'Menu', '68', '操作url：/index.php?s=/Admin/Menu/edit.html', '1', '1492740515');
+INSERT INTO `logistics_action_log` VALUES ('296', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-21 10:09登录了后台', '1', '1492740571');
+INSERT INTO `logistics_action_log` VALUES ('297', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-21 10:10登录了后台', '1', '1492740630');
+INSERT INTO `logistics_action_log` VALUES ('298', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-21 10:11登录了后台', '1', '1492740699');
+INSERT INTO `logistics_action_log` VALUES ('299', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-21 10:14登录了后台', '1', '1492740851');
+INSERT INTO `logistics_action_log` VALUES ('300', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-21 10:16登录了后台', '1', '1492741012');
+INSERT INTO `logistics_action_log` VALUES ('301', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-21 10:18登录了后台', '1', '1492741103');
+INSERT INTO `logistics_action_log` VALUES ('302', '9', '1', '2130706433', 'channel', '0', '操作url：/index.php?s=/Admin/Channel/del/id/3.html', '1', '1492741543');
+INSERT INTO `logistics_action_log` VALUES ('303', '9', '1', '2130706433', 'channel', '1', '操作url：/index.php?s=/Admin/Channel/edit.html', '1', '1492741606');
+INSERT INTO `logistics_action_log` VALUES ('304', '9', '1', '2130706433', 'channel', '2', '操作url：/index.php?s=/Admin/Channel/edit.html', '1', '1492741634');
+INSERT INTO `logistics_action_log` VALUES ('305', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-21 10:28登录了后台', '1', '1492741725');
+INSERT INTO `logistics_action_log` VALUES ('306', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-21 10:41登录了后台', '1', '1492742461');
+
+-- ----------------------------
+-- Table structure for logistics_ad
+-- ----------------------------
+DROP TABLE IF EXISTS `logistics_ad`;
+CREATE TABLE `logistics_ad` (
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '频道ID',
+  `title` varchar(50) NOT NULL COMMENT '频道标题',
+  `ad_img` text NOT NULL COMMENT '频道连接',
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL default '0' COMMENT '更新时间',
+  `status` tinyint(3) unsigned NOT NULL default '0' COMMENT '状态 1-正常 0-隐藏',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of logistics_ad
+-- ----------------------------
+INSERT INTO `logistics_ad` VALUES ('6', '123', '<img src=\"/Uploads/Editor/2017-04-21/58f976971e74e.jpg\" alt=\"\" /><img src=\"/Uploads/Editor/2017-04-21/58f9776404ff5.jpg\" alt=\"\" />', '1492743832', '1492744861', '0');
 
 -- ----------------------------
 -- Table structure for logistics_addons
@@ -516,7 +553,7 @@ CREATE TABLE `logistics_auth_group` (
 -- ----------------------------
 -- Records of logistics_auth_group
 -- ----------------------------
-INSERT INTO `logistics_auth_group` VALUES ('1', 'admin', '1', '管理员', '', '1', '1,2,3,7,8,9,10,17,23,24,26,88,108,211,221,222');
+INSERT INTO `logistics_auth_group` VALUES ('1', 'admin', '1', '管理员', '', '1', '2,3,7,8,9,10,17,23,24,26,67,68,69,70,88,108,178,211,214,221,222,223,224,225,226');
 INSERT INTO `logistics_auth_group` VALUES ('2', 'admin', '1', '物流用户', '', '1', '2,3,7,10,17,108,218,221');
 INSERT INTO `logistics_auth_group` VALUES ('3', 'admin', '1', '生成厂家', '', '1', '2,3,7,10,17,108,218,221');
 
@@ -570,7 +607,7 @@ CREATE TABLE `logistics_auth_rule` (
   `condition` varchar(300) NOT NULL default '' COMMENT '规则附加条件',
   PRIMARY KEY  (`id`),
   KEY `module` (`module`,`status`,`type`)
-) ENGINE=MyISAM AUTO_INCREMENT=223 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=227 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of logistics_auth_rule
@@ -579,7 +616,7 @@ INSERT INTO `logistics_auth_rule` VALUES ('1', 'admin', '2', 'Admin/Index/index'
 INSERT INTO `logistics_auth_rule` VALUES ('2', 'admin', '2', 'Admin/Article/mydocument', '内容', '1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('3', 'admin', '2', 'Admin/User/index', '用户', '1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('4', 'admin', '2', 'Admin/Addons/index', '扩展', '1', '');
-INSERT INTO `logistics_auth_rule` VALUES ('5', 'admin', '2', 'Admin/Config/group', '系统', '1', '');
+INSERT INTO `logistics_auth_rule` VALUES ('5', 'admin', '2', 'Admin/Config/group', '系统', '-1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('7', 'admin', '1', 'Admin/article/add', '新增', '1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('8', 'admin', '1', 'Admin/article/edit', '编辑', '1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('9', 'admin', '1', 'Admin/article/setStatus', '改变状态', '1', '');
@@ -643,7 +680,7 @@ INSERT INTO `logistics_auth_rule` VALUES ('66', 'admin', '1', 'Admin/Config/inde
 INSERT INTO `logistics_auth_rule` VALUES ('67', 'admin', '1', 'Admin/Channel/add', '新增', '1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('68', 'admin', '1', 'Admin/Channel/edit', '编辑', '1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('69', 'admin', '1', 'Admin/Channel/del', '删除', '1', '');
-INSERT INTO `logistics_auth_rule` VALUES ('70', 'admin', '1', 'Admin/Channel/index', '导航管理', '1', '');
+INSERT INTO `logistics_auth_rule` VALUES ('70', 'admin', '1', 'Admin/Channel/index', '友链管理', '1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('71', 'admin', '1', 'Admin/Category/edit', '编辑', '1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('72', 'admin', '1', 'Admin/Category/add', '新增', '1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('73', 'admin', '1', 'Admin/Category/remove', '删除', '1', '');
@@ -750,7 +787,7 @@ INSERT INTO `logistics_auth_rule` VALUES ('174', 'admin', '2', 'Admin/Config/del
 INSERT INTO `logistics_auth_rule` VALUES ('175', 'admin', '2', 'Admin/Config/add', '新增', '-1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('176', 'admin', '2', 'Admin/Config/save', '保存', '-1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('177', 'admin', '2', 'Admin/Menu/index', '菜单管理', '-1', '');
-INSERT INTO `logistics_auth_rule` VALUES ('178', 'admin', '2', 'Admin/Channel/index', '导航管理', '-1', '');
+INSERT INTO `logistics_auth_rule` VALUES ('178', 'admin', '2', 'Admin/Channel/index', '系统', '1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('179', 'admin', '2', 'Admin/Channel/add', '新增', '-1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('180', 'admin', '2', 'Admin/Channel/edit', '编辑', '-1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('181', 'admin', '2', 'Admin/Channel/del', '删除', '-1', '');
@@ -793,6 +830,10 @@ INSERT INTO `logistics_auth_rule` VALUES ('218', 'admin', '1', 'Admin/User/recha
 INSERT INTO `logistics_auth_rule` VALUES ('220', 'admin', '2', 'Admin/Article/index?cate_id=2', '内容', '-1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('221', 'admin', '1', 'Admin/User/info', '完善资料', '1', '');
 INSERT INTO `logistics_auth_rule` VALUES ('222', 'admin', '1', 'Admin/User/manual_recharge', '手动充值', '1', '');
+INSERT INTO `logistics_auth_rule` VALUES ('223', 'admin', '1', 'Admin/Ad/add', '新增', '1', '');
+INSERT INTO `logistics_auth_rule` VALUES ('224', 'admin', '1', 'Admin/Ad/edit', '编辑', '1', '');
+INSERT INTO `logistics_auth_rule` VALUES ('225', 'admin', '1', 'Admin/Ad/index', '广告管理', '1', '');
+INSERT INTO `logistics_auth_rule` VALUES ('226', 'admin', '1', 'Admin/Ad/delete', '删除', '1', '');
 
 -- ----------------------------
 -- Table structure for logistics_category
@@ -896,9 +937,8 @@ CREATE TABLE `logistics_channel` (
 -- ----------------------------
 -- Records of logistics_channel
 -- ----------------------------
-INSERT INTO `logistics_channel` VALUES ('1', '0', '首页', 'Index/index', '1', '1379475111', '1379923177', '1', '0');
-INSERT INTO `logistics_channel` VALUES ('2', '0', '博客', 'Article/index?category=blog', '2', '1379475131', '1379483713', '1', '0');
-INSERT INTO `logistics_channel` VALUES ('3', '0', '官网', 'http://www.onethink.cn', '3', '1379475154', '1387163458', '1', '0');
+INSERT INTO `logistics_channel` VALUES ('1', '0', '百度', 'http://www.baidu.com', '1', '1379475111', '1492741606', '1', '0');
+INSERT INTO `logistics_channel` VALUES ('2', '0', '网易', 'http://www.163.com', '2', '1379475131', '1492741634', '1', '0');
 
 -- ----------------------------
 -- Table structure for logistics_config
@@ -940,7 +980,7 @@ INSERT INTO `logistics_config` VALUES ('21', 'HOOKS_TYPE', '3', '钩子的类型
 INSERT INTO `logistics_config` VALUES ('22', 'AUTH_CONFIG', '3', 'Auth配置', '4', '', '自定义Auth.class.php类配置', '1379409310', '1379409564', '1', 'AUTH_ON:1\r\nAUTH_TYPE:2', '8');
 INSERT INTO `logistics_config` VALUES ('23', 'OPEN_DRAFTBOX', '4', '是否开启草稿功能', '2', '0:关闭草稿功能\r\n1:开启草稿功能\r\n', '新增文章时的草稿功能配置', '1379484332', '1379484591', '1', '0', '1');
 INSERT INTO `logistics_config` VALUES ('24', 'DRAFT_AOTOSAVE_INTERVAL', '0', '自动保存草稿时间', '2', '', '自动保存草稿的时间间隔，单位：秒', '1379484574', '1386143323', '1', '60', '2');
-INSERT INTO `logistics_config` VALUES ('25', 'LIST_ROWS', '0', '后台每页记录数', '2', '', '后台数据每页显示记录数', '1379503896', '1380427745', '1', '15', '10');
+INSERT INTO `logistics_config` VALUES ('25', 'LIST_ROWS', '0', '后台每页记录数', '2', '', '后台数据每页显示记录数', '1379503896', '1380427745', '1', '20', '10');
 INSERT INTO `logistics_config` VALUES ('26', 'USER_ALLOW_REGISTER', '4', '是否允许用户注册', '3', '0:关闭注册\r\n1:允许注册', '是否开放用户注册', '1379504487', '1379504580', '1', '1', '3');
 INSERT INTO `logistics_config` VALUES ('27', 'CODEMIRROR_THEME', '4', '预览插件的CodeMirror主题', '4', '3024-day:3024 day\r\n3024-night:3024 night\r\nambiance:ambiance\r\nbase16-dark:base16 dark\r\nbase16-light:base16 light\r\nblackboard:blackboard\r\ncobalt:cobalt\r\neclipse:eclipse\r\nelegant:elegant\r\nerlang-dark:erlang-dark\r\nlesser-dark:lesser-dark\r\nmidnight:midnight', '详情见CodeMirror官网', '1379814385', '1384740813', '1', 'ambiance', '3');
 INSERT INTO `logistics_config` VALUES ('28', 'DATA_BACKUP_PATH', '1', '数据库备份根路径', '4', '', '路径必须以 / 结尾', '1381482411', '1381482411', '1', './Data/', '5');
@@ -1193,8 +1233,8 @@ CREATE TABLE `logistics_member` (
 -- ----------------------------
 -- Records of logistics_member
 -- ----------------------------
-INSERT INTO `logistics_member` VALUES ('1', 'shexie303', '0', '131128198911296612', '', '', '', '/Uploads/Picture/facade/2017-04-01/58df1a91bef87.jpg', '', '/Uploads/Picture/license/2017-04-01/58df1b8d7882c.jpg', '1', '1491494400', '1499356800', '70', '86', '0', '1490319959', '2130706433', '1492653452', '1');
-INSERT INTO `logistics_member` VALUES ('2', 'shexie33', '0', '', '', '', '', '', '', '', '3', '1492617600', '1503158400', '100', '50', '2130706433', '1490321384', '2130706433', '1492656845', '1');
+INSERT INTO `logistics_member` VALUES ('1', 'shexie303', '0', '131128198911296612', '', '', '', '/Uploads/Picture/facade/2017-04-01/58df1a91bef87.jpg', '', '/Uploads/Picture/license/2017-04-01/58df1b8d7882c.jpg', '1', '1491494400', '1499356800', '70', '90', '0', '1490319959', '2130706433', '1492741103', '1');
+INSERT INTO `logistics_member` VALUES ('2', 'shexie33', '0', '', '', '', '', '', '', '', '3', '1492617600', '1503158400', '100', '55', '2130706433', '1490321384', '2130706433', '1492742461', '1');
 INSERT INTO `logistics_member` VALUES ('3', 'shexie44', '0', '', '', '', '', '', '', '', '3', '1492617600', '1503158400', '20', '13', '2130706433', '1490582865', '2130706433', '1492312574', '1');
 INSERT INTO `logistics_member` VALUES ('4', 'shexie55', '0', '', '', '', '', '', '', '', '3', '1492617600', '1524153600', '20', '2', '0', '0', '2130706433', '1491039189', '1');
 INSERT INTO `logistics_member` VALUES ('5', 'shexie66', '0', '131128198911296613', '123456', '1333333333', '13333333333', '', '', '', '3', '1492617600', '1495209600', '40', '29', '0', '0', '2130706433', '1492667274', '1');
@@ -1226,7 +1266,7 @@ CREATE TABLE `logistics_menu` (
   `is_dev` tinyint(1) unsigned NOT NULL default '0' COMMENT '是否仅开发者模式可见',
   PRIMARY KEY  (`id`),
   KEY `pid` (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=126 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=130 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of logistics_menu
@@ -1298,7 +1338,7 @@ INSERT INTO `logistics_menu` VALUES ('64', '新增', '63', '0', 'Attribute/add',
 INSERT INTO `logistics_menu` VALUES ('65', '编辑', '63', '0', 'Attribute/edit', '0', '', '', '0');
 INSERT INTO `logistics_menu` VALUES ('66', '改变状态', '63', '0', 'Attribute/setStatus', '0', '', '', '0');
 INSERT INTO `logistics_menu` VALUES ('67', '保存数据', '63', '0', 'Attribute/update', '0', '', '', '0');
-INSERT INTO `logistics_menu` VALUES ('68', '系统', '0', '4', 'Config/group', '0', '', '', '0');
+INSERT INTO `logistics_menu` VALUES ('68', '系统', '0', '4', 'Channel/index', '0', '', '', '0');
 INSERT INTO `logistics_menu` VALUES ('69', '网站设置', '68', '1', 'Config/group', '0', '', '系统设置', '0');
 INSERT INTO `logistics_menu` VALUES ('70', '配置管理', '68', '4', 'Config/index', '0', '', '系统设置', '0');
 INSERT INTO `logistics_menu` VALUES ('71', '编辑', '70', '0', 'Config/edit', '0', '新增编辑和保存配置', '', '0');
@@ -1306,7 +1346,7 @@ INSERT INTO `logistics_menu` VALUES ('72', '删除', '70', '0', 'Config/del', '0
 INSERT INTO `logistics_menu` VALUES ('73', '新增', '70', '0', 'Config/add', '0', '新增配置', '', '0');
 INSERT INTO `logistics_menu` VALUES ('74', '保存', '70', '0', 'Config/save', '0', '保存配置', '', '0');
 INSERT INTO `logistics_menu` VALUES ('75', '菜单管理', '68', '5', 'Menu/index', '0', '', '系统设置', '0');
-INSERT INTO `logistics_menu` VALUES ('76', '导航管理', '68', '6', 'Channel/index', '0', '', '系统设置', '0');
+INSERT INTO `logistics_menu` VALUES ('76', '友链管理', '68', '6', 'Channel/index', '0', '', '系统设置', '0');
 INSERT INTO `logistics_menu` VALUES ('77', '新增', '76', '0', 'Channel/add', '0', '', '', '0');
 INSERT INTO `logistics_menu` VALUES ('78', '编辑', '76', '0', 'Channel/edit', '0', '', '', '0');
 INSERT INTO `logistics_menu` VALUES ('79', '删除', '76', '0', 'Channel/del', '0', '', '', '0');
@@ -1344,6 +1384,10 @@ INSERT INTO `logistics_menu` VALUES ('121', '排序', '76', '0', 'Channel/sort',
 INSERT INTO `logistics_menu` VALUES ('122', '会员充值', '16', '1', 'User/recharge', '0', '', '个人中心', '0');
 INSERT INTO `logistics_menu` VALUES ('124', '完善资料', '16', '0', 'User/info', '0', '', '个人中心', '0');
 INSERT INTO `logistics_menu` VALUES ('125', '手动充值', '16', '0', 'User/manual_recharge', '1', '', '个人中心', '0');
+INSERT INTO `logistics_menu` VALUES ('126', '广告管理', '68', '7', 'Ad/index', '0', '广告位管理', '系统设置', '0');
+INSERT INTO `logistics_menu` VALUES ('127', '新增', '126', '0', 'Ad/add', '0', '', '', '0');
+INSERT INTO `logistics_menu` VALUES ('128', '编辑', '126', '0', 'Ad/edit', '0', '', '', '0');
+INSERT INTO `logistics_menu` VALUES ('129', '删除', '126', '0', 'Ad/delete', '0', '', '', '0');
 
 -- ----------------------------
 -- Table structure for logistics_model
@@ -5191,18 +5235,6 @@ CREATE TABLE `logistics_picture` (
 -- ----------------------------
 -- Records of logistics_picture
 -- ----------------------------
-INSERT INTO `logistics_picture` VALUES ('26', '/Uploads/Picture/cover/2017-04-19/58f6f20992123.jpg', '', '2756b863c5402c565f82006907d31619', 'f21d86c69907bb8cd90dd58b4efe28778d4bb8d3', '1', '1492578825');
-INSERT INTO `logistics_picture` VALUES ('23', '/Uploads/Picture/cover/2017-04-19/58f6f11a7af50.jpg', '', '17e7c7fea9aa9d431e84bd6dba07eda4', 'a71cf434ad8260237eeb3918b064dbfa02f6bba1', '1', '1492578586');
-INSERT INTO `logistics_picture` VALUES ('7', '/Uploads/Picture/2017-03-30/58dc9ed226022.jpg', '', 'db1c9137a11e9844acd05fc615ceea83', '56ce4945a173df53b15ea801e62af1011be41f51', '1', '1490853586');
-INSERT INTO `logistics_picture` VALUES ('14', '/Uploads/Picture/facade/2017-04-01/58df1955e48d6.jpg', '', '445fc9b097ca109cd546c2eac4ea5300', '545cb246b9ba8cc62b779460f42dbedd4baee0ff', '1', '1491016021');
-INSERT INTO `logistics_picture` VALUES ('15', '/Uploads/Picture/facade/2017-04-01/58df1a91bef87.jpg', '', 'ea2b1510b6a795fac8a39ce27e9f9e3a', 'bdb41337dd6fde99572b35b3d0289d2442a901ae', '1', '1491016337');
-INSERT INTO `logistics_picture` VALUES ('16', '/Uploads/Picture/license/2017-04-01/58df1b8d7882c.jpg', '', '2378b85a5744dd800f74703b10e7f9c0', '7d95f5e9b44d0daa46c371c30096f5aa5a264ca3', '1', '1491016589');
-INSERT INTO `logistics_picture` VALUES ('24', '/Uploads/Picture/cover/2017-04-19/58f6f1963cb85.jpg', '', '94487115664764caf52736d6652f1b9f', 'dc095139e23814da27d331b4643ad2ee223633c3', '1', '1492578710');
-INSERT INTO `logistics_picture` VALUES ('18', '/Uploads/Picture/driver_license/2017-04-15/58f1ce9a03259.png', '', '94d635367e8c3804e3e32a94db5aca7d', 'a36089c42df45cf664bb074276b2c53e38b69869', '1', '1492242073');
-INSERT INTO `logistics_picture` VALUES ('19', '/Uploads/Picture/license/2017-04-15/58f1cea124349.png', '', '45e71d09946ad8edb9af61b0b031321f', 'baa8ce18c646b04af1dbedc51b32921adc0bfdbb', '1', '1492242081');
-INSERT INTO `logistics_picture` VALUES ('27', '/Uploads/Picture/cover/2017-04-19/58f6f235cfb96.jpg', '', '2e12423ca35188d6aa834203010a6f52', '6c5ffb9d44eee2d0193d35031eeac5b736254500', '1', '1492578869');
-INSERT INTO `logistics_picture` VALUES ('28', '/Uploads/Picture/id_card/2017-04-19/58f72343cc5fa.jpg', '', '0800f202e5801cf819d885119c482eda', '02139da3c8398a2865212dbec4905f9f1cc8f32d', '1', '1492591427');
-INSERT INTO `logistics_picture` VALUES ('29', '/Uploads/Picture/id_card/2017-04-19/58f723757859a.png', '', 'de98c847a29b3c34511565f3cede78f3', '738da7417c533519a96deb1f66bc8bdb528e7bea', '1', '1492591477');
 
 -- ----------------------------
 -- Table structure for logistics_ucenter_admin
@@ -5267,8 +5299,8 @@ CREATE TABLE `logistics_ucenter_member` (
 -- ----------------------------
 -- Records of logistics_ucenter_member
 -- ----------------------------
-INSERT INTO `logistics_ucenter_member` VALUES ('1', 'shexie303', '74512fad441da1d65478e0698d82386a', 'lc@qq.com', '', '1490319959', '2130706433', '1492653452', '2130706433', '1490319959', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('2', 'shexie33', '74512fad441da1d65478e0698d82386a', 'lc_php@126.com', '', '1492595010', '2130706433', '1492656845', '2130706433', '1492595010', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('1', 'shexie303', '74512fad441da1d65478e0698d82386a', 'lc@qq.com', '', '1490319959', '2130706433', '1492741103', '2130706433', '1490319959', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('2', 'shexie33', '74512fad441da1d65478e0698d82386a', 'lc_php@126.com', '', '1492595010', '2130706433', '1492742461', '2130706433', '1492595010', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('3', 'shexie44', '74512fad441da1d65478e0698d82386a', 'asd@qq.com', '', '1490582797', '2130706433', '1492312574', '2130706433', '1490582797', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('4', 'shexie55', '74512fad441da1d65478e0698d82386a', '112@126.com', '', '1490604355', '2130706433', '1491039189', '2130706433', '1490604355', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('5', 'shexie66', '74512fad441da1d65478e0698d82386a', '123@qq.com', '', '1490605123', '2130706433', '1492667274', '2130706433', '1490605123', '1');

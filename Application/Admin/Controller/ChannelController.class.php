@@ -10,30 +10,30 @@
 namespace Admin\Controller;
 
 /**
- * 后台频道控制器
+ * 后台友链控制器
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 
 class ChannelController extends AdminController {
 
     /**
-     * 频道列表
+     * 友链列表
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function index(){
         $pid = i('get.pid', 0);
-        /* 获取频道列表 */
+        /* 获取友链列表 */
         $map  = array('status' => array('gt', -1), 'pid'=>$pid);
         $list = M('Channel')->where($map)->order('sort asc,id asc')->select();
 
         $this->assign('list', $list);
         $this->assign('pid', $pid);
-        $this->meta_title = '导航管理';
+        $this->meta_title = '友链管理';
         $this->display();
     }
 
     /**
-     * 添加频道
+     * 添加友链
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function add(){
@@ -54,7 +54,7 @@ class ChannelController extends AdminController {
             }
         } else {
             $pid = i('get.pid', 0);
-            //获取父导航
+            //获取父友链
             if(!empty($pid)){
                 $parent = M('Channel')->where(array('id'=>$pid))->field('title')->find();
                 $this->assign('parent', $parent);
@@ -62,13 +62,13 @@ class ChannelController extends AdminController {
 
             $this->assign('pid', $pid);
             $this->assign('info',null);
-            $this->meta_title = '新增导航';
+            $this->meta_title = '新增友链';
             $this->display('edit');
         }
     }
 
     /**
-     * 编辑频道
+     * 编辑友链
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function edit($id = 0){
@@ -97,7 +97,7 @@ class ChannelController extends AdminController {
             }
 
             $pid = i('get.pid', 0);
-            //获取父导航
+            //获取父友链
             if(!empty($pid)){
             	$parent = M('Channel')->where(array('id'=>$pid))->field('title')->find();
             	$this->assign('parent', $parent);
@@ -105,13 +105,13 @@ class ChannelController extends AdminController {
 
             $this->assign('pid', $pid);
             $this->assign('info', $info);
-            $this->meta_title = '编辑导航';
+            $this->meta_title = '编辑友链';
             $this->display();
         }
     }
 
     /**
-     * 删除频道
+     * 删除友链
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function del(){
@@ -132,7 +132,7 @@ class ChannelController extends AdminController {
     }
 
     /**
-     * 导航排序
+     * 友链排序
      * @author huajie <banhuajie@163.com>
      */
     public function sort(){
@@ -152,7 +152,7 @@ class ChannelController extends AdminController {
             $list = M('Channel')->where($map)->field('id,title')->order('sort asc,id asc')->select();
 
             $this->assign('list', $list);
-            $this->meta_title = '导航排序';
+            $this->meta_title = '友链排序';
             $this->display();
         }elseif (IS_POST){
             $ids = I('post.ids');

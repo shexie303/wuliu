@@ -32,7 +32,7 @@
                     if(e.status == 0){
                         $('#zdzx').empty();
                         $.each(e.data, function(n, item){
-                            $('#zdzx').append('<label class="checkbox"><input class="auth_rules" type="checkbox" name="zdzx[]" value="'+item.id+'">'+item.title+'</label>')
+                            $('#zdzx').append('<label class="checkbox" style="margin-left: 15px;"><input class="auth_rules" type="checkbox" name="zdzx[]" value="'+item.id+'">'+item.title+'</label>')
                         });
                     }
                 });

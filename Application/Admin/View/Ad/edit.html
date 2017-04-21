@@ -1,0 +1,46 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<div class="main-title">
+		<h2>
+			{$info['id']?'编辑':'新增'}广告
+		</h2>
+	</div>
+	<form action="{:U()}" method="post" class="form-horizontal">
+		<div class="form-item">
+			<label class="item-label">广告位名称<span class="check-tips">（广告位名称）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="title" value="{$info.title|default=''}">
+			</div>
+		</div>
+        <div class="form-item">
+            <label class="item-label">广告位属性<span class="check-tips">（广告位属性）</span></label>
+            <div class="controls">
+                <select name="status">
+                    <option value="1" <eq name="info.status" value="1">selected</eq> >显示</option>
+                    <option value="0" <eq name="info.status" value="0">selected</eq> >隐藏</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">广告位图片<span class="check-tips">（广告位图片，可以上传多张）</span></label>
+            <div class="controls">
+                <label class="textarea">
+                    <textarea name="ad_img">{$info.ad_img}</textarea>
+                    {:hook('adminArticleEdit', array('name'=>'ad_img','value'=>$info['ad_img']))}
+                </label>
+            </div>
+        </div>
+		<div class="form-item">
+			<input type="hidden" name="id" value="{$info.id|default=''}">
+			<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+		</div>
+	</form>
+</block>
+<block name="script">
+<script type="text/javascript" charset="utf-8">
+	//广告高亮
+	highlight_subnav('{:U('index')}');
+</script>
+</block>

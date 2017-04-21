@@ -22,7 +22,7 @@ use Common\Controller\Addon;
 			'title'=>'后台编辑器',
 			'description'=>'用于增强整站长文本的输入和显示',
 			'status'=>1,
-			'author'=>'thinkphp',
+			'author'=>'yuanteng',
 			'version'=>'0.1'
 		);
 

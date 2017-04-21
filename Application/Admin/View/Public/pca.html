@@ -28,7 +28,7 @@
         var cate_id = obj.data('cate-id');
         if(id > 0){
             if(obj.data('cate-id') == 2){
-                $.get("{:U('Article/getNextCategory')}", {cate_id : cate_id, p_id : id}, function(e){
+                $.post("{:U('Article/getNextCategory')}", {cate_id : cate_id, p_id : id}, function(e){
                     if(e.status == 0){
                         $('#zdzx').empty();
                         $.each(e.data, function(n, item){

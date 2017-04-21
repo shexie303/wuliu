@@ -481,7 +481,7 @@ function get_category($id, $field = null){
             return '';
         }
         $list[$id] = $cate;
-        S('sys_category_list', $list); //更新缓存
+        S('sys_category_list', $list, 21600); //更新缓存
     }
     return is_null($field) ? $list[$id] : $list[$id][$field];
 }
@@ -1041,7 +1041,7 @@ function getNextPca($parent_id = 0, $type = 1){
     if(!$cache){
         $cache = M('Pca')->field('id,name')->where(array('parent_id'=>$parent_id,'type'=>$type))->select();
         if($cache){
-            S($key, $cache, 86400);
+            S($key, $cache, 21600);
         }else{
            return false;
         }
@@ -1061,8 +1061,7 @@ function getNextCategory($cate_id = 0, $province_id = 0){
     if($province_id > 0 && $cate_id > 0){
         $key .= '_' . $province_id;
     }
-    //var_dump($key);
-    $cache = false;
+    $cache = S($key);
     if(!$cache){
         $map = array(
             'status' => 1,
@@ -1075,19 +1074,17 @@ function getNextCategory($cate_id = 0, $province_id = 0){
         if(!$cache){
             return false;
         }
-        //var_dump($cache);
         if($cate_id == 2){
             $s_cate = array();
             foreach($cache as $val){
                 ($val['id'] == 31 || $val['id'] == 40)  ? $val['title'] .= '线' : $val['title'] .= '专线';
                 $s_cate[$val['province_id']] = $val;
             }
-            //var_dump($s_cate);
             //直辖市
             if(in_array($province_id, array(110000, 120000, 310000, 500000))){
-//                unset($s_cate[$province_id]);
-//                array_pop($s_cate);
-                //var_dump($s_cate);exit;
+                unset($s_cate[$province_id]);
+                array_pop($s_cate);
+                array_unshift($s_cate, array_shift($s_cate));
                 //港澳台
             }elseif(in_array($province_id, array(710000, 810000, 820000))){
                 array_shift($s_cate);
@@ -1096,10 +1093,8 @@ function getNextCategory($cate_id = 0, $province_id = 0){
                 array_shift($s_cate);
             }
             $cache = $s_cate;
-            //var_dump($cache);exit;
         }
-        //S($key, $cache, 86400);
+        S($key, $cache, 21600);
     }
-    //var_dump($cache);
     return $cache;
 }

@@ -1024,9 +1024,18 @@ function random( $length, $numeric = 0 )
 /**
  * 获取所有的省份
  */
-function province(){
-    //todo 缓存
-    return M('Pca')->field('id,name')->where(array('type'=>1))->select();
+function all_city(){
+    $key = 'all_city_pinyin';
+    $cache = S($key);
+    if(!$cache){
+        $data = M('Pca')->where(array('type'=>2))->select();
+        $cache = array();
+        foreach($data as $val){
+            $cache[$val['pinyin']] = $val;
+        }
+        S($key, $cache, 21600);
+    }
+    return $cache;
 }
 
 /**
@@ -1070,7 +1079,7 @@ function getNextCategory($cate_id = 0, $province_id = 0){
         if($cate_id){
             $map['pid'] = $cate_id;
         }
-        $cache = M('Category')->field('id,title,province_id')->where($map)->order('sort asc')->select();
+        $cache = M('Category')->field('id,name,title,province_id')->where($map)->order('sort asc')->select();
         if(!$cache){
             return false;
         }

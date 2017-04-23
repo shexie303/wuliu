@@ -1193,8 +1193,8 @@ function cookie($name, $value='', $option=null) {
     if ('' === $value) {
         if(isset($_COOKIE[$name])){
             $value =    $_COOKIE[$name];
-            if(0===strpos($value,'think:')){
-                $value  =   substr($value,6);
+            if(0===strpos($value,'yuanteng56:')){
+                $value  =   substr($value,11);
                 return array_map('urldecode',json_decode(MAGIC_QUOTES_GPC?stripslashes($value):$value,true));
             }else{
                 return $value;
@@ -1209,7 +1209,7 @@ function cookie($name, $value='', $option=null) {
         } else {
             // 设置cookie
             if(is_array($value)){
-                $value  = 'think:'.json_encode(array_map('urlencode',$value));
+                $value  = 'yuanteng56:'.json_encode(array_map('urlencode',$value));
             }
             $expire = !empty($config['expire']) ? time() + intval($config['expire']) : 0;
             setcookie($name, $value, $expire, $config['path'], $config['domain']);

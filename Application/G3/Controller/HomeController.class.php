@@ -7,7 +7,7 @@
 // | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
 // +----------------------------------------------------------------------
 
-namespace Home\Controller;
+namespace G3\Controller;
 use Think\Controller;
 
 /**
@@ -30,34 +30,8 @@ class HomeController extends Controller {
         if(!C('WEB_SITE_CLOSE')){
             $this->error('站点已经关闭，请稍后访问~');
         }
-
+        //
         $http_host = $_SERVER['HTTP_HOST'];
-        if($http_host == C('WWW_DOMAIN')){
-            $city = cookie('city');
-            if($city){
-                $redirect = 'http://' . $city['pinyin'] . '.' . C('DOMAIN') . $_SERVER['REQUEST_URI'];
-                send_http_status(302);
-                header('Location: ' . $redirect);
-            }else{
-                $redirect = 'http://' . C('DEFAULT_CITY') . '.' . C('DOMAIN');
-                send_http_status(302);
-                header('Location: ' . $redirect);
-            }
-        }else{
-            $city = cookie('city');
-            $host_arr = explode('.', $http_host);
-            if($host_arr[0] != $city['pinyin']){
-                $city_arr = all_city();
-                if(array_key_exists($host_arr[0], $city_arr)){
-                    $city = $city_arr[$host_arr[0]];
-                }else{
-                    $redirect = 'http://' . C('DEFAULT_CITY') . '.' . C('DOMAIN');
-                    send_http_status(302);
-                    header('Location: ' . $redirect);
-                }
-                cookie('city', $city, 86400);
-            }
-        }
     }
 
 	/* 用户登录检测 */

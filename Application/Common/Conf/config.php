@@ -13,14 +13,27 @@
  */
 return array(
     /*域名*/
-    'SITE_DOMAIN' => 'http://www.wuliu.com',
+    'DOMAIN'      => 'yuanteng56.com',
+    'SITE_DOMAIN' => 'http://www.yuanteng56.com',
+    'WWW_DOMAIN'  => 'www.yuanteng56.com',
+    'G3_DOMAIN'   => 'm.yuanteng56.com',
+    //默认城市
+    'DEFAULT_CITY' => 'langfang',
+    //cookie 有效域名
+    'COOKIE_DOMAIN'  => 'yuanteng56.com',
 
     /* 模块相关配置 */
     'AUTOLOAD_NAMESPACE' => array('Addons' => ONETHINK_ADDON_PATH), //扩展模块列表
     'DEFAULT_MODULE'     => 'Home',
     'MODULE_DENY_LIST'   => array('Common', 'User'),
-    //'MODULE_ALLOW_LIST'  => array('Home','Admin'),
-
+    'MODULE_ALLOW_LIST'  => array('Home','Admin','G3'),
+    'APP_SUB_DOMAIN_DEPLOY'   =>    1, // 开启子域名
+    'APP_SUB_DOMAIN_RULES'  => array(
+        'm'         => 'G3',                //指向3G模块
+        //'xiaoguotu' => 'Xiaoguotu',         // 指向Xiaoguotu模块的控制器
+        //'jiaju'      => 'News',         // 指向Home模块的News控制器
+        //'*'         => array('Subdomain','city_pinyin=*'), // 二级泛域名指向Subdomain模块
+    ),
     /* 系统数据加密设置 */
     'DATA_AUTH_KEY' => 'NEIn$Kgm",]u?<VHC`%vJ1WQ)q/28OGkB7+hU:6&', //默认数据加密KEY
 

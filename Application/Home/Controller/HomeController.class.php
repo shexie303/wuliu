@@ -65,5 +65,10 @@ class HomeController extends Controller {
 		/* 用户登录检测 */
 		is_login() || $this->error('您还没有登录，请先登录！', U('User/login'));
 	}
-
+    //404错误定向
+    public function _404() {
+        send_http_status(404);
+        $this->display(C('URL_404_REDIRECT'));
+        exit();
+    }
 }

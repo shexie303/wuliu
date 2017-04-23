@@ -16,9 +16,12 @@ return array(
     'DOMAIN'      => 'yuanteng56.com',
     'SITE_DOMAIN' => 'http://www.yuanteng56.com',
     'WWW_DOMAIN'  => 'www.yuanteng56.com',
+    'SITE_G3_DOMAIN'  => 'm.yuanteng56.com',
     'G3_DOMAIN'   => 'm.yuanteng56.com',
+
     //默认城市
     'DEFAULT_CITY' => 'langfang',
+
     //cookie 有效域名
     'COOKIE_DOMAIN'  => 'yuanteng56.com',
 

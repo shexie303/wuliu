@@ -1102,8 +1102,25 @@ function getNextCategory($cate_id = 0, $province_id = 0){
                 array_shift($s_cate);
             }
             $cache = $s_cate;
+        }elseif($cate_id == 0){
+            $new = array();
+            foreach($cache as $val){
+                $new[$val['id']] = $val;
+            }
+            $cache = $new;
         }
         S($key, $cache, 21600);
     }
     return $cache;
+}
+//
+function logistics_url($domain = 1, $uri){
+    if($domain == 1){
+        $domain = C('SITE_DOMAIN');
+    }elseif($domain == 2){
+        $domain = C('SITE_G3_DOMAIN');
+    }else{
+        return '';
+    }
+    return $domain . '/' .$uri;
 }

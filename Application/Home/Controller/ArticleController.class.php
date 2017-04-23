@@ -32,7 +32,6 @@ class ArticleController extends HomeController {
 	public function lists($p = 1){
 		/* 分类信息 */
 		$category = $this->category();
-
 		/* 获取当前分类列表 */
 		$Document = D('Document');
 		$list = $Document->page($p, $category['list_row'])->lists($category['id']);
@@ -92,20 +91,14 @@ class ArticleController extends HomeController {
 		/* 标识正确性检测 */
 		$id = $id ? $id : I('get.category', 0);
 		if(empty($id)){
-			$this->error('没有指定文档分类！');
+			$this->error('分类不存在');
 		}
 
 		/* 获取分类信息 */
-		$category = D('Category')->info($id);
-		if($category && 1 == $category['status']){
-			switch ($category['display']) {
-				case 0:
-					$this->error('该分类禁止显示！');
-					break;
-				//TODO: 更多分类显示状态判断
-				default:
-					return $category;
-			}
+		$category = getNextCategory(0);
+        $category = $category[$id];
+		if($category){
+            return $category;
 		} else {
 			$this->error('分类不存在或被禁用！');
 		}

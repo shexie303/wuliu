@@ -55,9 +55,10 @@ class HomeController extends Controller {
                     send_http_status(302);
                     header('Location: ' . $redirect);
                 }
-                cookie('city', $city, 86400);
+                cookie('city', $city, 604800); //3600*24*7
             }
         }
+        $this->assign('city_info', $city);
     }
 
 	/* 用户登录检测 */

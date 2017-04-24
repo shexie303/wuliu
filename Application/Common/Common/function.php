@@ -1048,7 +1048,7 @@ function getNextPca($parent_id = 0, $type = 1){
     $key = 'pca_' . $parent_id . '_' . $type;
     $cache = S($key);
     if(!$cache){
-        $cache = M('Pca')->field('id,name')->where(array('parent_id'=>$parent_id,'type'=>$type))->select();
+        $cache = M('Pca')->field('id,name,pinyin')->where(array('parent_id'=>$parent_id,'type'=>$type))->select();
         if($cache){
             S($key, $cache, 21600);
         }else{

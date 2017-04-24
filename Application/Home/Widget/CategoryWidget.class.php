@@ -19,13 +19,6 @@ class CategoryWidget extends Action{
 	
 	/* 显示指定分类的同级分类或子分类列表 */
 	public function lists($cate, $child = false){
-//		$field = 'id,name,pid,title,link_id';
-//		if($child){
-//			$category = D('Category')->getTree($cate, $field);
-//			$category = $category['_'];
-//		} else {
-//			$category = D('Category')->getSameLevel($cate, $field);
-//		}
         $category = getNextCategory(0);
 		$this->assign('category', $category);
 		$this->assign('current', $cate);

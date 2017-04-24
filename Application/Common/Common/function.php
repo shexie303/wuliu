@@ -1079,7 +1079,7 @@ function getNextCategory($cate_id = 0, $province_id = 0){
         if($cate_id){
             $map['pid'] = $cate_id;
         }
-        $cache = M('Category')->field('id,name,title,province_id')->where($map)->order('sort asc')->select();
+        $cache = M('Category')->field('id,name,title,list_row,province_id')->where($map)->order('sort asc')->select();
         if(!$cache){
             return false;
         }
@@ -1122,5 +1122,5 @@ function logistics_url($domain = 1, $uri){
     }else{
         return '';
     }
-    return $domain . '/' .$uri;
+    return $domain . '/' . $uri . '.' . C('URL_HTML_SUFFIX');
 }

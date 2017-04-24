@@ -1,47 +1,82 @@
-<!-- 导航条
-================================================== -->
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="brand" href="{:U('index/index')}">OneThink</a>
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <think:nav name="nav">
-                    	<eq name="nav.pid" value="0">
-                        <li>
-                            <a href="{$nav.url|get_nav_url}" target="<eq name='nav.target' value='1'>_blank<else/>_self</eq>">{$nav.title}</a>
-                        </li>
-                        </eq>
-                    </think:nav>
+<include file="Public/head"/>
+<body class="bg-alt">
+    <!--[if IE 6]>
+    <div class='browserHint'>
+        亲！您的浏览器版本太古老，该升级了~。<a href='http://www.microsoft.com/zh-cn/download/internet-explorer-7-details.aspx' target='_blank'>点击我体验最新的IE浏览器吧!</a>
+    </div><![endif]-->
+    <div id="header">
+        <div class="topbar_bg">
+            <div class="topbar">
+                <ul class="topnav">
+                    <li><a href="http://www.chawuliu.com/login" style="color: #FE8107;">登录</a></li>
+                    <li class="sepline">|</li>
+                    <li><a href="http://www.chawuliu.com/register">注册</a></li>
+                    <li class="sepline">|</li>
+                    <li><a href="http://www.chawuliu.com/ar/fastpost">快速发布</a></li>
+                    <li class="sepline">|</li>
+                    <li><a href="http://www.chawuliu.com/">网站首页</a></li>
+                    <li class="sepline">|</li>
+                    <li><a rel="sidebar" title="【查物流】让天下货主与物流实现更高效的链接！" href="#" onclick="jQuery.addFavorite('http://www.chawuliu.com/','【查物流】让天下货主与物流实现更高效的链接！');return false;">收藏我们</a></li>
+                    <li class="sepline">|</li>
+                    <li class="hover_li" onmouseover="this.className='hover'" onmouseout="this.className='hover_li'">
+                        <a href="http://www.chawuliu.com/page/help/tour" class="help" target="_blank">帮助中心<span class="down"></span></a>
+                        <div class="downlist">
+                            <a href="http://www.chawuliu.com/page/help/question" target="_blank">常见问题</a>
+                            <a href="http://www.chawuliu.com/page/help/feedback" target="_blank">意见反馈</a>
+                            <a href="http://www.chawuliu.com/page/sw/business" target="_blank">商务合作</a>
+                        </div>
+                    </li>
+                    <li class="sepline">|</li>
+                    <li><span class="sitenav-call">400-800-7756</span></li>
+                    <li class="sepline">|</li>
                 </ul>
+                <div class="c"></div>
             </div>
-            <div class="nav-collapse collapse pull-right">
-                <if condition="is_login()">
-                    <ul class="nav" style="margin-right:0">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:0;padding-right:0">{:get_username()} <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{:U('Admin/User/index')}">个人中心</a></li>
-                                <li><a href="{:U('User/logout')}">退出</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                <else/>
-                    <ul class="nav" style="margin-right:0">
-                        <li>
-                            <a href="{:U('User/login')}">登录</a>
-                        </li>
-                        <li>
-                            <a href="{:U('User/register')}" style="padding-left:0;padding-right:0">注册</a>
-                        </li>
-                    </ul>
-                </if>
+        </div>
+        <script type="text/javascript">
+            //添加到收藏夹方法
+            jQuery.addFavorite=function(sURL, sTitle){
+                try{
+                    window.external.addFavorite(sURL, sTitle);
+                }catch (e){
+                    try{
+                        window.sidebar.addPanel(sTitle, sURL, "");
+                    }catch (e){
+                        alert("加入收藏失败，请使用Ctrl+D进行添加");
+                    }
+                }
+            }
+        </script>
+        <div class="w">
+            <a href="http://www.chawuliu.com/" id="logo"><img alt="【查物流】让天下货主与物流实现更高效的链接！" src="__IMG__/logo2.gif"></a>
+            <div id="switch_city">
+                <strong class="city_name">上海</strong> <a href="http://www.chawuliu.com/switch">[切换分站]</a>
+            </div>
+            <div id="searhbar" class="rss">
+                <form id="indexSearchForm" method="get" action="http://www.chawuliu.com/search">
+                    <input type="text" id="searchW" name="searchName" value="请输入城市、名称、地址等关键字" class="kw" autocomplete="off">
+                    <input type="submit" name="button" value="搜索" class="searchbtn">
+                    <label for="searchW" class="searchico"></label>
+                </form>
+            </div>
+            <div class="c"></div>
+        </div>
+        <div class="nav_bj">	<!-- 主导航 -->
+            <div id="navbar">
+                <ul id="nav" class="nav">
+                    <li><a id="nav_0" href="http://www.chawuliu.com/lists/130" class="current"><span>精品专线</span></a></li><li><a id="nav_1" href="http://www.chawuliu.com/lists/564"><span>落地配</span></a></li><li><a id="nav_2" href="http://www.chawuliu.com/lists/926"><span>综合物流</span></a></li><li><a id="nav_3" href="http://www.chawuliu.com/lists/929"><span>推荐货车</span></a></li><li><a id="nav_4" href="http://www.chawuliu.com/express"><span>快递查询</span></a></li>				</ul>
+                <ul class="view_log">
+                    <li onmouseover="this.className='hover'" onmouseout="this.className=''">
+                        <a href="javascript:;" class="view_log_a">浏览记录</a>
+                        <div class="view_log_list">
+                            <div class="view_item_empty " style="">
+                                <p>还没有浏览记录</p>
+                            </div>
+                            <div class="empty_data_div"><a href="javascript:;" onclick="emptyData('http://www.chawuliu.com/portal/Index/deleteViewLog')">清空浏览记录</a></div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="c"></div>
             </div>
         </div>
     </div>
-</div>

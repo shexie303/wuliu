@@ -410,7 +410,7 @@ select {
 }
 #login-page .login-form .icon-login-user,
 #login-page .login-form .icon-login-pwd,
-.#login-page login-form .icon-login-verifycode {
+#login-page .login-form .icon-login-verifycode {
     background: url("../images/icon24_login.png") no-repeat;
 }
 #login-page .login-form .icon-login-user {
@@ -448,7 +448,7 @@ select {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 #login-page .logo-img {
-    background: url(../images/logo.png) no-repeat 0 center;
+    /*background: url(../images/logo.png) no-repeat 0 center;*/
 }
 
 #login-page .welcome{

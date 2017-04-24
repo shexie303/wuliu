@@ -1,45 +1,455 @@
-<extend name="Base/common"/>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" type="text/css" href="__CSS__/base.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/common.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/detail.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/lister.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/uc.css" media="all">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="__STATIC__/html5shiv.js"></script>
+    <![endif]-->
 
-<block name="header">
-    <header class="jumbotron subhead" id="overview">
-        <div class="container">
-            <h2>源自相同起点，演绎不同精彩！</h2>
-            <p class="lead"></p>
-        </div>
-    </header>
-</block>
-
-<block name="body">
-    <div class="span9">
-        <!-- Contents
-        ================================================== -->
-        <section id="contents">
-
-            <volist name="list" id="data">
-                <div class="">
-                    <h3 class="ellipsis">
-                        <a href="{:logistics_url(1,$data['id'])}">{$data.title}</a>
-                        <eq name="data.vip" value="2">推荐</eq>
-                        <eq name="data.vip" value="3">vip</eq>
-                    </h3>
-                </div>
-                <div>
-                    <p class="lead">{$data.description}</p>
-                </div>
-                <div>
-                    <span><a href="{:logistics_url(1,$data['id'])}">查看全文</a></span>
-					<span class="pull-right">
-						<span class="author">{$data.address}</span>&nbsp;&nbsp;
-						<span>发表于 {$data.create_time|date='Y-m-d H:i',###}</span>
-						<span>阅读({$data.view})</span>&nbsp;&nbsp;
-                </div>
-                <hr/>
-            </volist>
-
-            <div class="onethink pagination pagination-right pagination-large">
-                {$page}
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__STATIC__jquery-1.10.2.min.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+    <!--<script type="text/javascript" src="/Public/static/bootstrap/js/bootstrap.min.js"></script>-->
+    <!--<![endif]-->
+    <script type="text/javascript" src="__JS__/common.js"></script>
+    <script type="text/javascript" src="__JS__/scrolltopcontrol.js"></script>
+</head>
+<body class="bg-alt">
+    <!--[if IE 6]>
+    <div class='browserHint'>
+        亲！您的浏览器版本太古老，该升级了~。<a href='http://www.microsoft.com/zh-cn/download/internet-explorer-7-details.aspx' target='_blank'>点击我体验最新的IE浏览器吧!</a>
+    </div><![endif]-->
+    <div id="header">
+        <div class="topbar_bg">
+            <div class="topbar">
+                <ul class="topnav">
+                    <li><a href="http://www.chawuliu.com/login" style="color: #FE8107;">登录</a></li>
+                    <li class="sepline">|</li>
+                    <li><a href="http://www.chawuliu.com/register">注册</a></li>
+                    <li class="sepline">|</li>
+                    <li><a href="http://www.chawuliu.com/ar/fastpost">快速发布</a></li>
+                    <li class="sepline">|</li>
+                    <li><a href="http://www.chawuliu.com/">网站首页</a></li>
+                    <li class="sepline">|</li>
+                    <li><a rel="sidebar" title="【查物流】让天下货主与物流实现更高效的链接！" href="#" onclick="jQuery.addFavorite('http://www.chawuliu.com/','【查物流】让天下货主与物流实现更高效的链接！');return false;">收藏我们</a></li>
+                    <li class="sepline">|</li>
+                    <li class="hover_li" onmouseover="this.className='hover'" onmouseout="this.className='hover_li'">
+                        <a href="http://www.chawuliu.com/page/help/tour" class="help" target="_blank">帮助中心<span class="down"></span></a>
+                        <div class="downlist">
+                            <a href="http://www.chawuliu.com/page/help/question" target="_blank">常见问题</a>
+                            <a href="http://www.chawuliu.com/page/help/feedback" target="_blank">意见反馈</a>
+                            <a href="http://www.chawuliu.com/page/sw/business" target="_blank">商务合作</a>
+                        </div>
+                    </li>
+                    <li class="sepline">|</li>
+                    <li><span class="sitenav-call">400-800-7756</span></li>
+                    <li class="sepline">|</li>
+                </ul>
+                <div class="c"></div>
             </div>
-        </section>
+        </div>
+        <script type="text/javascript">
+            //添加到收藏夹方法
+            jQuery.addFavorite=function(sURL, sTitle){
+                try{
+                    window.external.addFavorite(sURL, sTitle);
+                }catch (e){
+                    try{
+                        window.sidebar.addPanel(sTitle, sURL, "");
+                    }catch (e){
+                        alert("加入收藏失败，请使用Ctrl+D进行添加");
+                    }
+                }
+            }
+        </script>
+        <div class="w">
+            <a href="http://www.chawuliu.com/" id="logo"><img alt="【查物流】让天下货主与物流实现更高效的链接！" src="__IMG__/logo2.gif"></a>
+            <div id="switch_city">
+                <strong class="city_name">上海</strong> <a href="http://www.chawuliu.com/switch">[切换分站]</a>
+            </div>
+            <div id="searhbar" class="rss">
+                <form id="indexSearchForm" method="get" action="http://www.chawuliu.com/search">
+                    <input type="text" id="searchW" name="searchName" value="请输入城市、名称、地址等关键字" class="kw" autocomplete="off">
+                    <input type="submit" name="button" value="搜索" class="searchbtn">
+                    <label for="searchW" class="searchico"></label>
+                </form>
+            </div>
+            <div class="c"></div>
+        </div>
+        <div class="nav_bj">	<!-- 主导航 -->
+            <div id="navbar">
+                <ul id="nav" class="nav">
+                    <li><a id="nav_0" href="http://www.chawuliu.com/lists/130" class="current"><span>精品专线</span></a></li><li><a id="nav_1" href="http://www.chawuliu.com/lists/564"><span>落地配</span></a></li><li><a id="nav_2" href="http://www.chawuliu.com/lists/926"><span>综合物流</span></a></li><li><a id="nav_3" href="http://www.chawuliu.com/lists/929"><span>推荐货车</span></a></li><li><a id="nav_4" href="http://www.chawuliu.com/express"><span>快递查询</span></a></li>				</ul>
+                <ul class="view_log">
+                    <li onmouseover="this.className='hover'" onmouseout="this.className=''">
+                        <a href="javascript:;" class="view_log_a">浏览记录</a>
+                        <div class="view_log_list">
+                            <div class="view_item_empty " style="">
+                                <p>还没有浏览记录</p>
+                            </div>
+                            <div class="empty_data_div"><a href="javascript:;" onclick="emptyData('http://www.chawuliu.com/portal/Index/deleteViewLog')">清空浏览记录</a></div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="c"></div>
+            </div>
+        </div>
     </div>
+    <div id="banner"><!-- banner广告横幅 -->
     </div>
-</block>
+    <div id="filter">
+
+        <dl class="selitem">
+            <dt></dt>
+            <dd row="2">
+                <!--<span class="sql_fold">更多</span>
+            -->
+                <!-- <span class="all"> -->
+                <a class="selectt" href="/lists/130">直达线路：</a>
+                <!-- </span> -->
+                <a href="/lists/130?sid238=275" class="">市内配送<span>(4)</span></a>
+                <a href="/lists/130?sid238=277" class="">北京专线<span>(35)</span></a>
+                <a href="/lists/130?sid238=278" class="">天津专线<span>(33)</span></a>
+                <a href="/lists/130?sid238=280" class="">重庆专线<span>(24)</span></a>
+                <a href="/lists/130?sid238=281" class="">浙江专线<span>(179)</span></a>
+                <a href="/lists/130?sid238=282" class="">江苏专线<span>(184)</span></a>
+                <a href="/lists/130?sid238=283" class="">山东专线<span>(84)</span></a>
+                <a href="/lists/130?sid238=284" class="">安徽专线<span>(70)</span></a>
+                <a href="/lists/130?sid238=285" class="">广东专线<span>(56)</span></a>
+                <a href="/lists/130?sid238=286" class="">福建专线<span>(41)</span></a>
+                <a href="/lists/130?sid238=287" class="">江西专线<span>(28)</span></a>
+                <a href="/lists/130?sid238=288" class="">湖南专线<span>(22)</span></a>
+                <a href="/lists/130?sid238=289" class="">湖北专线<span>(30)</span></a>
+                <a href="/lists/130?sid238=290" class="">河南专线<span>(33)</span></a>
+                <a href="/lists/130?sid238=291" class="">河北专线<span>(33)</span></a>
+                <a href="/lists/130?sid238=292" class="">山西专线<span>(14)</span></a>
+                <a href="/lists/130?sid238=293" class="">陕西专线<span>(19)</span></a>
+                <a href="/lists/130?sid238=294" class="">广西专线<span>(16)</span></a>
+                <a href="/lists/130?sid238=295" class="">云南专线<span>(21)</span></a>
+                <a href="/lists/130?sid238=296" class="">贵州专线<span>(15)</span></a>
+                <a href="/lists/130?sid238=297" class="">四川专线<span>(38)</span></a>
+                <a href="/lists/130?sid238=298" class="">吉林专线<span>(25)</span></a>
+                <a href="/lists/130?sid238=299" class="">黑龙江线<span>(19)</span></a>
+                <a href="/lists/130?sid238=300" class="">辽宁专线<span>(49)</span></a>
+                <a href="/lists/130?sid238=301" class="">新疆专线<span>(20)</span></a>
+                <a href="/lists/130?sid238=302" class="">宁夏专线<span>(15)</span></a>
+                <a href="/lists/130?sid238=303" class="">内蒙专线<span>(20)</span></a>
+                <a href="/lists/130?sid238=304" class="">甘肃专线<span>(16)</span></a>
+                <a href="/lists/130?sid238=305" class="">青海专线<span>(9)</span></a>
+                <a href="/lists/130?sid238=306" class="">西藏专线<span>(12)</span></a>
+                <a href="/lists/130?sid238=307" class="">海南专线<span>(6)</span></a>
+                <a href="/lists/130?sid238=308" class="">港澳台线<span>(5)</span></a>
+            </dd>
+        </dl>
+        <dl class="selitem">
+            <dt></dt>
+            <dd row="2">
+                <!--<span class="sql_fold">更多</span>
+            -->
+                <!-- <span class="all"> -->
+                <a class="selectt" href="/lists/130">所在区域：</a>
+                <!-- </span> -->
+                <a href="/lists/130?sid383=384" class="">闵行区<span>(192)</span></a>
+                <a href="/lists/130?sid383=385" class="">宝山区<span>(214)</span></a>
+                <a href="/lists/130?sid383=386" class="">普陀区<span>(96)</span></a>
+                <a href="/lists/130?sid383=387" class="">嘉定区<span>(295)</span></a>
+                <a href="/lists/130?sid383=389" class="">松江区<span>(160)</span></a>
+                <a href="/lists/130?sid383=390" class="">浦东区<span>(1)</span></a>
+                <a href="/lists/130?sid383=391" class="">清浦区<span>(1)</span></a>
+                <a href="/lists/130?sid383=392" class="">奉贤区<span>(0)</span></a>
+                <a href="/lists/130?sid383=397" class="">徐汇区<span>(4)</span></a>
+                <a href="/lists/130?sid383=403" class="">其他区<span>(1)</span></a>
+            </dd>
+        </dl>
+        <div class="sortbar"><!-- 排序方式 -->
+            <ul class="sortor">
+                <li class="cur"><a href="/lists/130?order=default">默认排序</a></li>
+                <li class=""><a href="/lists/130?order=hot">人气排序<i class="arrw arrwdown"></i></a></li>
+                <li class=""><a href="/lists/130?order=new">更新排序<i class="arrw arrwdown"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 内容  -->
+    <div id="main">
+        <div class="listerouter">
+            <div class="lister">
+                <div class="tuanitem">
+                    <img src="__IMG__/vip.png" class="vip-img">
+                    <a class="tuanitem-item">
+                        <div class="tuanitem-item-border"></div>
+                    </a>
+                    <div class="tuanitem-meta">
+                        <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/15572">
+                            <img alt="【双圆物流】上海至淮安、宿迁、徐州、盐城、连云港专线(苏北三线中转周边地区)" src="http://www.chawuliu.com/uploads/page/2015/0404/15/551f96e8f40cd9d665cfbf7bbd3834f7accbeaeea423b.jpg">
+                        </a>
+                        <div class="tuanitem-meta-title">
+                            <a target="_blank" href="http://www.chawuliu.com/detail/15572" title="【双圆物流】上海至淮安、宿迁、徐州、盐城、连云港专线(苏北三线中转周边地区)" class="c_b">【双圆物流】上海至淮安、宿迁、徐州、盐城、连云港专线(苏北三线中转周边地区)</a>
+                        </div>
+                    </div>
+                    <div class="gobuy">
+                        <div class="nprice"><img src="__IMG__/phone.png" class="mr5">021-51691330</div>
+                        <a target="_blank" href="http://www.chawuliu.com/detail/15572" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
+                        <div class="c"></div>
+                    </div><div class="hot_des">
+                    <div class="fl"><img src="__IMG__/address.png" class="mr5">上海市宝山区业绩路21号A区甲棚</div>
+                    <div class="fr"><strong>2856</strong>人浏览</div>
+                    <div class="c"></div>
+                </div>
+                </div>
+                <div class="tuanitem">
+                    <img src="__IMG__/vip.png" class="vip-img">
+                    <a class="tuanitem-item">
+                        <div class="tuanitem-item-border"></div>
+                    </a>
+                    <div class="tuanitem-meta">
+                        <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/20477">
+                            <img alt="【嘉泰物流】上海至合肥往返专线（中转安徽全境）" src="http://www.chawuliu.com/uploads/page/2017/0306/14/58bd022ab6a999d665cfbf7bbd3834f7accbeaeea423b.png">
+                        </a>
+                        <div class="tuanitem-meta-title">
+                            <a target="_blank" href="http://www.chawuliu.com/detail/20477" title="【嘉泰物流】上海至合肥往返专线（中转安徽全境）" class="c_b">【嘉泰物流】上海至合肥往返专线（中转安徽全境）</a>
+                        </div>
+                    </div>
+                    <div class="gobuy">
+                        <div class="nprice"><img src="__IMG__/phone.png" class="mr5">18918194338</div>
+                        <a target="_blank" href="http://www.chawuliu.com/detail/20477" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
+                        <div class="c"></div>
+                    </div><div class="hot_des">
+                    <div class="fl"><img src="__IMG__/address.png" class="mr5">上海市嘉定区浏翔公路纬五路60</div>
+                    <div class="fr"><strong>5010</strong>人浏览</div>
+                    <div class="c"></div>
+                </div>
+                </div>
+                <div class="tuanitem">
+                    <img src="__IMG__/vip.png" class="vip-img">
+                    <a class="tuanitem-item">
+                        <div class="tuanitem-item-border"></div>
+                    </a>
+                    <div class="tuanitem-meta">
+                        <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/20061">
+                            <img alt="【利钦物流】上海至宁波、慈溪、余姚、奉化专线（浙江全境）" src="http://www.chawuliu.com/uploads/page/2016/0722/11/579192530d7bb9d665cfbf7bbd3834f7accbeaeea423b.jpg">
+                        </a>
+                        <div class="tuanitem-meta-title">
+                            <a target="_blank" href="http://www.chawuliu.com/detail/20061" title="【利钦物流】上海至宁波、慈溪、余姚、奉化专线（浙江全境）" class="c_b">【利钦物流】上海至宁波、慈溪、余姚、奉化专线（浙江全境）</a>
+                        </div>
+                    </div>
+                    <div class="gobuy">
+                        <div class="nprice"><img src="__IMG__/phone.png" class="mr5">13818882958</div>
+                        <a target="_blank" href="http://www.chawuliu.com/detail/20061" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
+                        <div class="c"></div>
+                    </div><div class="hot_des">
+                    <div class="fl"><img src="__IMG__/address.png" class="mr5">上海市嘉定区敬学路199号</div>
+                    <div class="fr"><strong>2970</strong>人浏览</div>
+                    <div class="c"></div>
+                </div>
+                </div>
+                <div class="tuanitem">
+                    <img src="__IMG__/vip.png" class="vip-img">
+                    <a class="tuanitem-item">
+                        <div class="tuanitem-item-border"></div>
+                    </a>
+                    <div class="tuanitem-meta">
+                        <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/19838">
+                            <img alt="【锦沸物流】上海至台州、路桥、黄岩、椒江、临海、三门、温岭、玉环专线（辐射浙江全境）" src="http://www.chawuliu.com/uploads/page/2016/0605/11/5753a38bd6deb9d665cfbf7bbd3834f7accbeaeea423b.jpg">
+                        </a>
+                        <div class="tuanitem-meta-title">
+                            <a target="_blank" href="http://www.chawuliu.com/detail/19838" title="【锦沸物流】上海至台州、路桥、黄岩、椒江、临海、三门、温岭、玉环专线（辐射浙江全境）" class="c_b">【锦沸物流】上海至台州、路桥、黄岩、椒江、临海、三门、温岭、玉环专线（辐射浙江全境）</a>
+                        </div>
+                    </div>
+                    <div class="gobuy">
+                        <div class="nprice"><img src="__IMG__/phone.png" class="mr5">021-67654322</div>
+                        <a target="_blank" href="http://www.chawuliu.com/detail/19838" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
+                        <div class="c"></div>
+                    </div><div class="hot_des">
+                    <div class="fl"><img src="__IMG__/address.png" class="mr5">上海市松江区新车公路281号春强</div>
+                    <div class="fr"><strong>2397</strong>人浏览</div>
+                    <div class="c"></div>
+                </div>
+                </div>
+                <div class="tuanitem">
+                    <img src="__IMG__/vip.png" class="vip-img">
+                    <a class="tuanitem-item">
+                        <div class="tuanitem-item-border"></div>
+                    </a>
+                    <div class="tuanitem-meta">
+                        <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/19577">
+                            <img alt="【才邦物流】上海至南宁、柳州、桂林专线（广西全境）" src="http://www.chawuliu.com/uploads/page/2016/0507/12/572d764b52a539d665cfbf7bbd3834f7accbeaeea423b.jpg">
+                        </a>
+                        <div class="tuanitem-meta-title">
+                            <a target="_blank" href="http://www.chawuliu.com/detail/19577" title="【才邦物流】上海至南宁、柳州、桂林专线（广西全境）" class="c_b">【才邦物流】上海至南宁、柳州、桂林专线（广西全境）</a>
+                        </div>
+                    </div>
+                    <div class="gobuy">
+                        <div class="nprice"><img src="__IMG__/phone.png" class="mr5">021-64346779</div>
+                        <a target="_blank" href="http://www.chawuliu.com/detail/19577" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
+                        <div class="c"></div>
+                    </div><div class="hot_des">
+                    <div class="fl"><img src="__IMG__/address.png" class="mr5">上海市松江区茸华路1233号车新</div>
+                    <div class="fr"><strong>2410</strong>人浏览</div>
+                    <div class="c"></div>
+                </div>
+                </div>
+                <div class="tuanitem">
+                    <img src="__IMG__/vip.png" class="vip-img">
+                    <a class="tuanitem-item">
+                        <div class="tuanitem-item-border"></div>
+                    </a>
+                    <div class="tuanitem-meta">
+                        <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/19884">
+                            <img alt="【交渝物流】上海至成都、重庆专线（中转四川全境）" src="http://www.chawuliu.com/uploads/page/2016/0613/19/575e936ccba699d665cfbf7bbd3834f7accbeaeea423b.jpg">
+                        </a>
+                        <div class="tuanitem-meta-title">
+                            <a target="_blank" href="http://www.chawuliu.com/detail/19884" title="【交渝物流】上海至成都、重庆专线（中转四川全境）" class="c_b">【交渝物流】上海至成都、重庆专线（中转四川全境）</a>
+                        </div>
+                    </div>
+                    <div class="gobuy">
+                        <div class="nprice"><img src="__IMG__/phone.png" class="mr5">18817729928</div>
+                        <a target="_blank" href="http://www.chawuliu.com/detail/19884" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
+                        <div class="c"></div>
+                    </div><div class="hot_des">
+                    <div class="fl"><img src="__IMG__/address.png" class="mr5">松江区茸华公路1233号车新物流</div>
+                    <div class="fr"><strong>2006</strong>人浏览</div>
+                    <div class="c"></div>
+                </div>
+                </div>
+                <div class="c"></div>
+            </div>
+        </div>
+        <div class="page mt40 mb40"><div id="pagation"><span class="current">1</span><a href="/lists/130?page=2">2</a><a href="/lists/130?page=3">3</a><a href="/lists/130?page=4">4</a><a href="/lists/130?page=5">5</a><span class="PageMore">...</span><a href="/lists/130?page=17">17</a><a href="/lists/130?page=2">下一页</a><a href="/lists/130?page=17" class="down_pagination">尾页</a></div></div>
+    </div>
+
+    <!-- 友情链接 -->
+    <div class="friend-link">
+        <div class="fl-nav"><strong>友情链接</strong></div>
+        <ul>
+
+            <li><a href="http://suzhou.87756.com" title="苏州物流网" target="_blank">苏州物流网</a></li>
+
+            <li><a href="http://jinan.87756.com" title="济南物流网" target="_blank">济南物流网</a></li>
+
+            <li><a href="http://guangzhou.87756.com" title="广州物流网" target="_blank">广州物流网</a></li>
+
+            <li><a href="http://linyi.87756.com" title="临沂物流网" target="_blank">临沂物流网</a></li>
+
+            <li><a href="http://changzhou.87756.com" title="常州物流网" target="_blank">常州物流网</a></li>
+
+            <li><a href="http://yongkang.87756.com" title="永康物流网" target="_blank">永康物流网</a></li>
+
+            <li><a href="http://yiwu.87756.com" title="义乌物流网" target="_blank">义乌物流网</a></li>
+
+            <li><a href="http://wuxi.87756.com" title="无锡物流网" target="_blank">无锡物流网</a></li>
+
+            <li><a href="http://hangzhou.87756.com" title="杭州物流网" target="_blank">杭州物流网</a></li>
+
+            <li><a href="http://shanghai.87756.com" title="上海物流网" target="_blank">上海物流网</a></li>
+            <li><a href="http://www.ickd.cn" target="_blank">快递查询</a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div>
+    <!-- 页脚导航 -->
+    <div id="footer">
+        <div class="servicebox">
+            <div class="service">
+                <dl>
+                    <dt class="foot_help">用户帮助</dt>
+                    <dd><a href="http://www.chawuliu.com/page/help/tour" target="_blank">加入查物流</a></dd>
+                    <dd><a href="http://www.chawuliu.com/page/help/question" target="_blank">常见问题</a></dd>
+                    <dd><a href="http://www.chawuliu.com/page/help/feedback" target="_blank">意见反馈</a></dd>
+                </dl>
+                <dl>
+                    <dt class="foot_update">获取更新</dt>
+                    <dd><a href="#" target="_blank">邮件订阅</a></dd>
+                    <dd><a href="#" target="_blank">RSS订阅</a></dd>
+                </dl>
+                <dl>
+                    <dt class="foot_cooperation">商务合作</dt>
+                    <dd><a href="http://www.chawuliu.com/page/sw/business" target="_blank">商务合作</a></dd>
+                    <dd><a href="http://www.chawuliu.com/page/sw/link" target="_blank">友情链接</a></dd>
+                </dl>
+                <dl>
+                    <dt class="foot_info">公司信息</dt>
+                    <dd><a href="http://www.chawuliu.com/page/info/about" target="_blank">关于查物流</a></dd>
+                    <dd><a href="http://www.chawuliu.com/page/info/work" target="_blank">工作机会</a></dd>
+                    <dd><a href="http://www.chawuliu.com/page/info/linkman" target="_blank">联系方式</a></dd>
+                    <dd><a href="http://www.chawuliu.com/page/info/useragree" target="_blank">用户协议</a></dd>
+                </dl>
+                <dl class="kefu">
+                    <dt></dt>
+                </dl>
+                <i class="bgbtm"></i>
+                <i class="bgtop"></i>
+            </div>
+        </div>
+        <div class="copyright">
+            热门城市：
+            <a href="http://www.chawuliu.com/city/cixi">慈溪物流</a><span>|</span>
+            <a href="http://www.chawuliu.com/city/changsha">长沙物流</a><span>|</span>
+            <p>
+                <a href="http://www.gezitech.com" style="color:#FFFFFF">重庆软件公司</a>
+                © 2015查物流版权所有 &nbsp;&nbsp;浙ICP备14004390号
+            </p>
+        </div>
+    </div>
+    <!-- 客户联系方式  -->
+    <ul id="cs_navigation" style="position: absolute;margin:0;padding:0;top: 200px;left:0;list-style: none;z-index: 99999;">
+        <li class="cs_home" onmouseover="services_in()" onmouseout="services_out()">
+            <div id="cs_content_qq" style="float:left;width:212px;margin-left:-214px;">
+                <div style="width:212px;height:37px;background:url('__IMG__/Services.gif') 0 167px;"></div>
+                <div style="width:190px;padding:10px;font-size:12px;border-left:1px solid #194E19;border-right:1px solid #194E19;background-color:#fff;line-height: 15px;">
+                    &nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>
+                    <br><br>	               	               	&nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>
+                    <br><br>	               	               	&nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>
+                </div>
+                <div style="width:210px;border-left:1px solid #194E19;border-right:1px solid #194E19;">
+                    <img src="__IMG__/ServicesTime.gif">
+                </div>
+                <div style="width:212px;height:6px;margin-top:-4px;background:url('__IMG__/Services.gif') 0 109px;font-size:0;line-height:0;"></div>
+            </div>
+            <div id="cs_handle" style="float:left;margin-top:50px;padding:5px;width:18px;height:86px;font-size:14px;font-weight:600;line-height:1.4em;background:url('__IMG__/Services.gif') 0 96px;color:#fff;">咨询客服</div>
+        </li>
+    </ul>
+    <div class="weixin_code"><span class="close" onclick="close_weixin(this);"></span></div>
+    <script type="text/javascript">
+        function services_in(){
+            $('#cs_content_qq').css({'marginLeft':'0px'});
+            $('#cs_handle').css("background-position-x", "-56px");
+        }
+
+        function services_out(){
+            $('#cs_content_qq').css({'marginLeft':'-214px'});
+            $('#cs_handle').css("background-position-x", 0);
+        }
+
+        $(window).scroll(function(){
+            $("#cs_navigation").css("top", $(window).scrollTop() + 200);
+        });
+        //微信
+        function close_weixin(obj){
+            $(obj).parent().hide();
+        }
+        /*
+         $(function(){
+         var ajax_get;		//ajax的get请求
+         //刷新信息
+         function pushPage(){
+         if(ajax_get){ajax_get.abort();}
+         ajax_get = $.getJSON('http://www.chawuliu.com/pushPage',{},function(data){
+
+         });
+         }
+         setInterval(pushPage,5000);
+         });
+         */
+    </script>
+</body>
+</html>

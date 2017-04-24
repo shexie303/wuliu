@@ -23,13 +23,13 @@ class IndexController extends HomeController {
         $Document = D('Document');
         $list = $Document->page($p, $category['list_row'])->lists($category['id']);
         if(false === $list){
-            $this->error('获取列表数据失败！');
+            $this->error('暂无信息！');
         }
-        $page = new \Think\LogisticsPage(get_list_count($category['id']), $category['list_row'], "lists/{$category['id']}/");
+        $page = new \Think\LogisticsPage($list['count'], $category['list_row'], "lists/{$category['id']}/");
 
         /* 模板赋值并渲染模板 */
         $this->assign('category', $category);
-        $this->assign('list', $list);
+        $this->assign('list', $list['data']);
         $this->assign('page', $page->show());
         $this->display($category['template_lists']);
 	}
@@ -38,7 +38,7 @@ class IndexController extends HomeController {
 	public function detail($id = 0){
 		/* 标识正确性检测 */
 		if(!($id && is_numeric($id))){
-			$this->error('文档ID错误！');
+			$this->error('参数错误！');
 		}
 
 		/* 获取详细信息 */
@@ -61,9 +61,9 @@ class IndexController extends HomeController {
 	}
 
 	/* 文档分类检测 */
-	private function category(){
+	private function category($category_id = 0){
 		/* 标识正确性检测 */
-		$id = I('get.category', 2);
+		$id = $category_id ? $category_id : I('get.category', 2);
 		if(empty($id)){
 			$this->error('分类不存在');
 		}

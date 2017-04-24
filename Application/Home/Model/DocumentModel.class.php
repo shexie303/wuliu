@@ -49,15 +49,45 @@ class DocumentModel extends Model{
 	/**
 	 * 获取文档列表
 	 * @param  integer  $category 分类ID
-	 * @param  string   $order    排序规则
-	 * @param  integer  $status   状态
-	 * @param  boolean  $count    是否返回总数
-	 * @param  string   $field    字段 true-所有字段
+	 * @param  array    $ext    排序规则 精品专线的二级分类 组合ids 或者 搜索关键字
 	 * @return array              文档列表
 	 */
-	public function lists($category, $order = '`id` DESC', $status = 1, $field = true){
-		$map = $this->listMap($category, $status);
-		return $this->field($field)->where($map)->order($order)->select();
+	public function lists($category, $ext = array()){
+        $field = 'id,title,location_p,location_c,location_a,destination_p,destination_c,destination_a,address,cover_id,view,level,create_time,'.$this->tablePrefix.'document.contact,'.$this->tablePrefix.'member.uid,'.$this->tablePrefix.'member.vip';
+        $map = array(
+            $this->tablePrefix.'document.category_id' => $category,
+            $this->tablePrefix.'document.status' => 1,
+            $this->tablePrefix.'member.status' => 1,
+        );
+        if($ext['ids']){
+            $map[$this->tablePrefix.'document.id'] = array('in', $ext['ids']);
+        }
+        if($ext['ids']){
+            $map[$this->tablePrefix.'document.id'] = array('in', $ext['ids']);
+        }
+        if($ext['keywords']){
+            $map[$this->tablePrefix.'document.title'] = array('like', '%'.$ext['keywords'].'%');
+        }
+        $order = $this->tablePrefix.'member.vip desc,'.$this->tablePrefix.'document.level desc,'.$this->tablePrefix.'document.view desc,'.$this->tablePrefix.'document.id desc';
+
+        $key = md5(serialize($map).$this->options['page']);
+
+        $cache = S($key);
+        if(!false){
+            $cache = $this->field($field)->join('LEFT JOIN __MEMBER__ ON __DOCUMENT__.uid = __MEMBER__.uid')->where($map)->order($order)->select();
+            if($cache){
+                S($key, $cache, '7200');
+            }else{
+                return false;
+            }
+        }
+        $key_sum = md5(serialize($map));
+        $cache_sum = S($key_sum);
+        if(!$cache_sum){
+            $cache_sum = $this->join('LEFT JOIN __MEMBER__ ON __DOCUMENT__.uid = __MEMBER__.uid')->where($map)->count();
+            S($key_sum, $cache_sum, '7200');
+        }
+        return array('data'=>$cache,'count'=>$cache_sum);
 	}
 
 	/**
@@ -80,11 +110,12 @@ class DocumentModel extends Model{
 		/* 获取基础数据 */
 		$info = $this->field(true)->find($id);
 		if(!(is_array($info) || 1 !== $info['status'])){
-			$this->error = '文档被禁用或已删除！';
+			$this->error = '信息被禁用或已删除！';
 			return false;
 		}
 
 		/* 获取模型数据 */
+
 		$logic  = $this->logic($info['model_id']);
 		$detail = $logic->detail($id); //获取指定ID的数据
 		if(!$detail){

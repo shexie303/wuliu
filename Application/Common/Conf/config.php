@@ -35,7 +35,7 @@ return array(
         'm'         => 'G3',                //指向3G模块
         //'xiaoguotu' => 'Xiaoguotu',         // 指向Xiaoguotu模块的控制器
         //'jiaju'      => 'News',         // 指向Home模块的News控制器
-        //'*'         => array('Subdomain','city_pinyin=*'), // 二级泛域名指向Subdomain模块
+        //'*'         => array('Home','city_pinyin=*'), // 二级泛域名指向Home模块
     ),
     /* 系统数据加密设置 */
     'DATA_AUTH_KEY' => 'NEIn$Kgm",]u?<VHC`%vJ1WQ)q/28OGkB7+hU:6&', //默认数据加密KEY

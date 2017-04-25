@@ -70,13 +70,13 @@ class DocumentModel extends Model{
         }
         $order = $this->tablePrefix.'member.vip desc,'.$this->tablePrefix.'document.level desc,'.$this->tablePrefix.'document.view desc,'.$this->tablePrefix.'document.id desc';
 
-        $key = md5(serialize($map).$this->options['page']);
+        $cache_key = md5(serialize($map).$this->options['page']);
 
-        $cache = S($key);
+        $cache = S($cache_key);
         if(!false){
             $cache = $this->field($field)->join('LEFT JOIN __MEMBER__ ON __DOCUMENT__.uid = __MEMBER__.uid')->where($map)->order($order)->select();
             if($cache){
-                S($key, $cache, '7200');
+                S($cache_key, $cache, 7200);
             }else{
                 return false;
             }
@@ -85,7 +85,7 @@ class DocumentModel extends Model{
         $cache_sum = S($key_sum);
         if(!$cache_sum){
             $cache_sum = $this->join('LEFT JOIN __MEMBER__ ON __DOCUMENT__.uid = __MEMBER__.uid')->where($map)->count();
-            S($key_sum, $cache_sum, '7200');
+            S($key_sum, $cache_sum, 7200);
         }
         return array('data'=>$cache,'count'=>$cache_sum);
 	}

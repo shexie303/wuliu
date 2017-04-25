@@ -7,24 +7,9 @@
             <div class='lately_view lately_view_hot'>
                 <strong class='fl' style='background:#f00'>热门城市：<span>》</span></strong>
                 <div class='fl lately_view_list'>
-                    <a href="http://cixi.chawuliu.com/city/shanghai"><b>上海</b></a>
-                    <a href="http://cixi.chawuliu.com/city/tianjin"><b>天津</b></a>
-                    <a href="http://cixi.chawuliu.com/city/hangzhou"><b>杭州</b></a>
-                    <a href="http://cixi.chawuliu.com/city/yiwu"><b>义乌</b></a>
-                    <a href="http://cixi.chawuliu.com/city/cixi"><b>慈溪</b></a>
-                    <a href="http://cixi.chawuliu.com/city/jinan"><b>济南</b></a>
-                    <a href="http://cixi.chawuliu.com/city/linyi"><b>临沂</b></a>
-                    <a href="http://cixi.chawuliu.com/city/qingdao"><b>青岛</b></a>
-                    <a href="http://cixi.chawuliu.com/city/chengdu"><b>成都</b></a>
-                    <a href="http://cixi.chawuliu.com/city/guangzhou"><b>广州</b></a>
-                    <a href="http://cixi.chawuliu.com/city/wuxi"><b>无锡</b></a>
-                    <a href="http://cixi.chawuliu.com/city/suzhou"><b>苏州</b></a>
-                    <a href="http://cixi.chawuliu.com/city/zhengzhou"><b>郑州</b></a>
-                    <a href="http://cixi.chawuliu.com/city/changsha"><b>长沙</b></a>
-                    <a href="http://cixi.chawuliu.com/city/hefei"><b>合肥</b></a>
-                    <a href="http://cixi.chawuliu.com/city/changzhou"><b>常州</b></a>
-                    <a href="http://cixi.chawuliu.com/city/yongkang"><b>永康</b></a>
-                    <a href="http://cixi.chawuliu.com/city/ningbo"><b>宁波</b></a>
+                    <foreach name="hot_city" item="val">
+                        <a href="http://{$val.pinyin}.{:C('DOMAIN')}"><b>{$val.name}</b></a>
+                    </foreach>
                 </div>
                 <div class='c'></div>
             </div>
@@ -35,8 +20,12 @@
                     <div class="city_item_list">
                         <foreach name="zhixia" item="city">
                             <a href="http://{$city.pinyin}.{:C('DOMAIN')}">
-                                <b>{$city.name}</b>
-                                <span style="background:#f00;color:#fff;border-radius:2px;">hot</span>
+                                <if condition="$city['hot'] eq 1">
+                                    <b>{$city.name}</b>
+                                    <span style="background:#f00;color:#fff;border-radius:2px;">hot</span>
+                                <else/>
+                                    {$city.name}
+                                </if>
                             </a>
                         </foreach>
                     </div>
@@ -47,7 +36,14 @@
                         <a class="city_item_title"><strong>{$p.name}</strong></a>
                         <div class="city_item_list">
                             <foreach name="p.child" item="city">
-                                <a href="http://{$city.pinyin}.{:C('DOMAIN')}">{$city.name}</a>
+                                <a href="http://{$city.pinyin}.{:C('DOMAIN')}">
+                                    <if condition="$city['hot'] eq 1">
+                                        <b>{$city.name}</b>
+                                        <span style="background:#f00;color:#fff;border-radius:2px;">hot</span>
+                                    <else/>
+                                        {$city.name}
+                                    </if>
+                                </a>
                             </foreach>
                         </div>
                         <div class="c"></div>

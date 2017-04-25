@@ -16,18 +16,22 @@ class CityController extends HomeController {
 
 	public function index(){
         $pca_p = getNextPca(0);
-        $all = $zhixia = array();
+        $all = array();
         foreach($pca_p as $p){
-            $p['child'] = getNextPca($p['id'], 2);
-            if(in_array($p['id'], array(110000, 120000, 310000, 500000))){
-                $zhixia[] = $p;
-            }else{
+            if(!in_array($p['id'], array(110000, 120000, 310000, 500000))){
+                $p['child'] = getNextPca($p['id'], 2);
                 $all[] = $p;
             }
         }
-        //unset($pca_p[110000],$pca_p[120000],$pca_p[310000],$pca_p[500000]);
-        $this->assign('zhixia', $zhixia);
         $this->assign('pca_p', $all);
+
+        $hot_city = getHotCity();
+        $this->assign('hot_city', $hot_city);
+
+        $all_city = all_city();
+        $zhixia = array($all_city['beijing'],$all_city['tianjin'],$all_city['shanghai'],$all_city['chongqing']);
+        $this->assign('zhixia', $zhixia);
+
         $this->display();
 	}
 }

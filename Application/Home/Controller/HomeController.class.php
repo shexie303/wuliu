@@ -16,6 +16,8 @@ use Think\Controller;
  */
 class HomeController extends Controller {
 
+    protected $city;
+
 	/* 空操作，用于输出404页面 */
 	public function _empty(){
 
@@ -58,7 +60,12 @@ class HomeController extends Controller {
                 cookie('city', $city, 604800); //3600*24*7
             }
         }
+        $this->city = $city;
         $this->assign('city_info', $city);
+
+        //主导航
+        $nav = getNextCategory(0);
+        $this->assign('main_nav', $nav);
     }
 
 	/* 用户登录检测 */

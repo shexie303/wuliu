@@ -1022,18 +1022,35 @@ function random( $length, $numeric = 0 )
 }
 
 /**
- * 获取所有的省份
+ * 获取所有的城市
  */
 function all_city(){
-    $key = 'all_city_pinyin';
-    $cache = S($key);
+    $cache_key = 'all_city_pinyin';
+    $cache = S($cache_key);
     if(!$cache){
         $data = M('Pca')->where(array('type'=>2))->select();
         $cache = array();
         foreach($data as $val){
             $cache[$val['pinyin']] = $val;
         }
-        S($key, $cache, 21600);
+        S($cache_key, $cache, 21600);
+    }
+    return $cache;
+}
+
+/**
+ * 获取热门城市
+ * @return bool|mixed
+ */
+function getHotCity(){
+    $cache_key = 'hot_city';
+    $cache = S($cache_key);
+    if(!$cache){
+        $cache = M('Pca')->where(array('type'=>2,'hot'=>1))->select();
+        if(!$cache){
+            return false;
+        }
+        S($cache_key, $cache, 21600);
     }
     return $cache;
 }
@@ -1045,12 +1062,12 @@ function all_city(){
  * @return mixed\
  */
 function getNextPca($parent_id = 0, $type = 1){
-    $key = 'pca_' . $parent_id . '_' . $type;
-    $cache = S($key);
+    $cache_key = 'pca_' . $parent_id . '_' . $type;
+    $cache = S($cache_key);
     if(!$cache){
-        $cache = M('Pca')->field('id,name,pinyin')->where(array('parent_id'=>$parent_id,'type'=>$type))->select();
+        $cache = M('Pca')->field('id,name,pinyin,hot')->where(array('parent_id'=>$parent_id,'type'=>$type))->select();
         if($cache){
-            S($key, $cache, 21600);
+            S($cache_key, $cache, 21600);
         }else{
            return false;
         }
@@ -1066,11 +1083,11 @@ function getNextPca($parent_id = 0, $type = 1){
  *
  */
 function getNextCategory($cate_id = 0, $province_id = 0){
-    $key = 'category_' . $cate_id;
+    $cache_key = 'category_' . $cate_id;
     if($province_id > 0 && $cate_id > 0){
-        $key .= '_' . $province_id;
+        $cache_key .= '_' . $province_id;
     }
-    $cache = S($key);
+    $cache = S($cache_key);
     if(!$cache){
         $map = array(
             'status' => 1,
@@ -1109,11 +1126,17 @@ function getNextCategory($cate_id = 0, $province_id = 0){
             }
             $cache = $new;
         }
-        S($key, $cache, 21600);
+        S($cache_key, $cache, 21600);
     }
     return $cache;
 }
-//
+
+/**
+ * 自定义url方法
+ * @param int $domain
+ * @param $uri
+ * @return string
+ */
 function logistics_url($domain = 1, $uri){
     if($domain == 1){
         $domain = 'http://' . $_SERVER['HTTP_HOST'];
@@ -1122,5 +1145,29 @@ function logistics_url($domain = 1, $uri){
     }else{
         return '';
     }
+    if($uri == '/'){
+        return $domain;
+    }
     return $domain . '/' . $uri . '.' . C('URL_HTML_SUFFIX');
+}
+
+function getZdzxCityCount(array $city_zdzx, $city_id){
+    $cache_key = 'zdzx_' . $city_id;
+    $cache = S($cache_key);
+    if(!$cache){
+        $sql = "SELECT zdzx_id,count(*) as count from logistics_jpzx left join logistics_document on logistics_jpzx.wuliu_id = logistics_document.id  where city_id={$city_id} and status = 1 GROUP BY zdzx_id";
+        $jpzx = M('Jpzx')->query($sql);
+        $jpzx_arr = array();
+        if($jpzx){
+            foreach($jpzx as $val){
+                $jpzx_arr[$val['zdzx_id']] = $val['count'];
+            }
+        }
+        foreach($city_zdzx as $key => $val){
+            $city_zdzx[$key]['sum'] = $jpzx_arr[$val['id']] ? $jpzx_arr[$val['id']] : 0;
+        }
+        $cache = $city_zdzx;
+        S($cache_key, $cache, 7200);
+    }
+    return $cache;
 }

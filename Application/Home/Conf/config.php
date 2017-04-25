@@ -96,7 +96,7 @@ return array(
 
     'URL_ROUTER_ON'         =>  true,   // 是否开启URL路由
     'URL_ROUTE_RULES'       =>  array( // 默认路由规则 针对模块
-        'lists/:category' => array('Index/index'),
+        'list/:category' => array('Index/index'),
         'city' => array('City/index'),
         ':id' => array('Index/detail')
     ),

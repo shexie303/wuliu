@@ -17,20 +17,36 @@ class IndexController extends HomeController {
 
     /* 文档模型频道页 */
 	public function index($p = 1){
+
         /* 分类信息 */
         $category = $this->category();
+        if($category['id'] == 2){
+            $minor['name'] = '直达线路';
+            $city_zdzx = getNextCategory(2, $this->city['parent_id']);
+            $minor['data'] = getZdzxCityCount($city_zdzx, $this->city['id']);
+            $this->assign('minor', $minor);
+            //有地区分类则显示
+            $local_area = getNextPca($this->city['id'], 3);
+            if($local_area){
+                $this->assign('local_area', $local_area);
+            }
+        }elseif($category['id'] == 3){
+            $minor['name'] = '选择省份';
+            $minor['data'] = getNextCategory(2, $this->city['parent_id']);
+            $this->assign('minor', $minor);
+        }
+
         /* 获取当前分类列表 */
         $Document = D('Document');
         $list = $Document->page($p, $category['list_row'])->lists($category['id']);
-        if(false === $list){
-            $this->error('暂无信息！');
-        }
-        $page = new \Think\LogisticsPage($list['count'], $category['list_row'], "lists/{$category['id']}/");
+        if($list){
+            $page = new \Think\LogisticsPage($list['count'], $category['list_row'], "lists/{$category['id']}/");
 
-        /* 模板赋值并渲染模板 */
-        $this->assign('category', $category);
-        $this->assign('list', $list['data']);
-        $this->assign('page', $page->show());
+            /* 模板赋值并渲染模板 */
+            $this->assign('category', $category);
+            $this->assign('list', $list['data']);
+            $this->assign('page', $page->show());
+        }
         $this->display($category['template_lists']);
 	}
 

@@ -77,8 +77,8 @@
                 <div style="width:212px;height:37px;background:url('__IMG__/Services.gif') 0 167px;"></div>
                 <div style="width:190px;padding:10px;font-size:12px;border-left:1px solid #194E19;border-right:1px solid #194E19;background-color:#fff;line-height: 15px;">
                     &nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>
-                    <br><br>	               	               	&nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>
-                    <br><br>	               	               	&nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>
+                    <br><br>&nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>
+                    <br><br>&nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>
                 </div>
                 <div style="width:210px;border-left:1px solid #194E19;border-right:1px solid #194E19;">
                     <img src="__IMG__/ServicesTime.gif">
@@ -107,19 +107,14 @@
         function close_weixin(obj){
             $(obj).parent().hide();
         }
-        /*
-         $(function(){
-         var ajax_get;		//ajax的get请求
-         //刷新信息
-         function pushPage(){
-         if(ajax_get){ajax_get.abort();}
-         ajax_get = $.getJSON('http://www.chawuliu.com/pushPage',{},function(data){
 
-         });
-         }
-         setInterval(pushPage,5000);
-         });
-         */
+        $(function(){
+            var REQUEST_URI = "{$_SERVER['REQUEST_URI']}";
+            if(REQUEST_URI == '/'){
+                $('.nav li').eq(0).find('a').addClass('current');
+            }
+        });
+
     </script>
 </body>
 </html>

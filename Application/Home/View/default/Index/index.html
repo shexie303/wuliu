@@ -3,31 +3,28 @@
 
     </div>
     <div id="filter">
-        <dl class="selitem">
-            <dt></dt>
-            <dd row="2">
-                <a class="selectt" href="/lists/130">直达线路：</a>
-                <a href="/lists/130?sid238=275" class="">市内配送<span>(4)</span></a>
-                <a href="/lists/130?sid238=277" class="">北京专线<span>(35)</span></a>
-                <a href="/lists/130?sid238=278" class="">天津专线<span>(33)</span></a>
-            </dd>
-        </dl>
-        <dl class="selitem">
-            <dt></dt>
-            <dd row="2">
-                <a class="selectt" href="/lists/130">所在区域：</a>
-                <a href="/lists/130?sid383=384" class="">闵行区<span>(192)</span></a>
-                <a href="/lists/130?sid383=385" class="">宝山区<span>(214)</span></a>
-                <a href="/lists/130?sid383=386" class="">普陀区<span>(96)</span></a>
-                <a href="/lists/130?sid383=387" class="">嘉定区<span>(295)</span></a>
-                <a href="/lists/130?sid383=389" class="">松江区<span>(160)</span></a>
-                <a href="/lists/130?sid383=390" class="">浦东区<span>(1)</span></a>
-                <a href="/lists/130?sid383=391" class="">清浦区<span>(1)</span></a>
-                <a href="/lists/130?sid383=392" class="">奉贤区<span>(0)</span></a>
-                <a href="/lists/130?sid383=397" class="">徐汇区<span>(4)</span></a>
-                <a href="/lists/130?sid383=403" class="">其他区<span>(1)</span></a>
-            </dd>
-        </dl>
+        <notempty name="minor">
+            <dl class="selitem">
+                <dt></dt>
+                <dd row="2">
+                    <a class="selectt" href="/lists/130">{$minor.name}：</a>
+                    <foreach name="minor.data" item="val">
+                        <a href="/lists/130?sid238=275" class="">{$val.title}<span>({$val.sum})</span></a>
+                    </foreach>
+                </dd>
+            </dl>
+        </notempty>
+        <notempty name="local_area">
+            <dl class="selitem">
+                <dt></dt>
+                <dd row="2">
+                    <a class="selectt" href="/lists/130">所在区域：</a>
+                    <foreach name="local_area" item="val">
+                        <a href="/lists/130?sid383=384" class="">{$val.name}<span>(192)</span></a>
+                    </foreach>
+                </dd>
+            </dl>
+        </notempty>
         <div class="sortbar"><!-- 排序方式 -->
             <ul class="sortor">
                 <li class="cur"><a href="/lists/130?order=default">默认排序</a></li>

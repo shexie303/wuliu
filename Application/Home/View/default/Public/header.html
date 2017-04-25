@@ -48,7 +48,7 @@
             }
         </script>
         <div class="w">
-            <a href="http://www.chawuliu.com/" id="logo"><img alt="【查物流】让天下货主与物流实现更高效的链接！" src="__IMG__/logo2.gif"></a>
+            <a href="{:logistics_url(1,'/')}" id="logo"><img alt="【查物流】让天下货主与物流实现更高效的链接！" src="__IMG__/logo2.gif"></a>
             <div id="switch_city">
                 <strong class="city_name">{$city_info.name}</strong>
                 <a href="{:logistics_url(1,'city')}">[切换分站]</a>
@@ -65,17 +65,11 @@
         <div class="nav_bj">	<!-- 主导航 -->
             <div id="navbar">
                 <ul id="nav" class="nav">
-                    <li><a id="nav_0" href="http://www.chawuliu.com/lists/130" class="current"><span>精品专线</span></a></li><li><a id="nav_1" href="http://www.chawuliu.com/lists/564"><span>落地配</span></a></li><li><a id="nav_2" href="http://www.chawuliu.com/lists/926"><span>综合物流</span></a></li><li><a id="nav_3" href="http://www.chawuliu.com/lists/929"><span>推荐货车</span></a></li><li><a id="nav_4" href="http://www.chawuliu.com/express"><span>快递查询</span></a></li>				</ul>
-                <ul class="view_log">
-                    <li onmouseover="this.className='hover'" onmouseout="this.className=''">
-                        <a href="javascript:;" class="view_log_a">浏览记录</a>
-                        <div class="view_log_list">
-                            <div class="view_item_empty " style="">
-                                <p>还没有浏览记录</p>
-                            </div>
-                            <div class="empty_data_div"><a href="javascript:;" onclick="emptyData('http://www.chawuliu.com/portal/Index/deleteViewLog')">清空浏览记录</a></div>
-                        </div>
-                    </li>
+                    <foreach name="main_nav" item="val">
+                        <li>
+                            <a href="{:logistics_url(1,'list/'.$val['id'])}" <eq name="Think.get.category" value="$val['id']">class="current"</eq> ><span>{$val.title}</span></a>
+                        </li>
+                    </foreach>
                 </ul>
                 <div class="c"></div>
             </div>

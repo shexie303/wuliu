@@ -4,13 +4,6 @@
     </div>
     <div id="main">
         <div class='switch_city_page'>
-            <div class='lately_view'>
-                <strong class='fl'>最近访问：<span>》</span></strong>
-                <div class='fl lately_view_list'>
-                    <a href="http://cixi.chawuliu.com/city/cixi">慈溪</a>
-                </div>
-                <div class='c'></div>
-            </div>
             <div class='lately_view lately_view_hot'>
                 <strong class='fl' style='background:#f00'>热门城市：<span>》</span></strong>
                 <div class='fl lately_view_list'>
@@ -37,41 +30,25 @@
             </div>
             <h2 class='city_list_title'><strong>按省选择</strong><span>》</span></h2>
             <div class='hasallcity'>
+                <div class="city_item">
+                    <a class="city_item_title"><strong>直辖市</strong></a>
+                    <div class="city_item_list">
+                        <foreach name="zhixia" item="city">
+                            <a href="http://{$city.pinyin}.{:C('DOMAIN')}">
+                                <b>{$city.name}</b>
+                                <span style="background:#f00;color:#fff;border-radius:2px;">hot</span>
+                            </a>
+                        </foreach>
+                    </div>
+                    <div class="c"></div>
+                </div>
                 <foreach name="pca_p" item="p">
                     <div class="city_item">
                         <a class="city_item_title"><strong>{$p.name}</strong></a>
                         <div class="city_item_list">
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
-                            <a href="index.html">石家庄</a>
+                            <foreach name="p.child" item="city">
+                                <a href="http://{$city.pinyin}.{:C('DOMAIN')}">{$city.name}</a>
+                            </foreach>
                         </div>
                         <div class="c"></div>
                     </div>

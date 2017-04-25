@@ -617,7 +617,7 @@ a.par{background:url(../images/close.png) no-repeat right 4px;padding:0 12px 0 0
 .hasallcity .city_item .city_item_title{width:70px; height:30px; line-height:30px;text-align:center; display:block; background:#6CA8FA;float:left; font-size:16px; color:#fff;text-decoration: none;}
 .hasallcity .city_item .city_item_title:hover,.hasallcity .city_item:hover .city_item_title{background:#4496D2;}
 .hasallcity .city_item .city_item_list{float:left;margin-left:20px;width:800px;  }
-.hasallcity .city_item .city_item_list a{font-size:14px;margin-right:20px; white-space:nowrap; }
+.hasallcity .city_item .city_item_list a{font-size:14px;margin-right:20px; white-space:nowrap;display:inline;float:left;}
 
 /*微信的样式*/
 .weixin_code{

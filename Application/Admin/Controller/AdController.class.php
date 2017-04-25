@@ -74,7 +74,6 @@ class AdController extends AdminController {
                 $this->error($Ad->getError());
             }
         } else {
-            $info = array();
             /* 获取数据 */
             $info = M('Ad')->find($id);
 

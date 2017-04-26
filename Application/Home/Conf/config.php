@@ -98,6 +98,7 @@ return array(
     'URL_ROUTE_RULES'       =>  array( // 默认路由规则 针对模块
         'list/:category' => array('Index/index'),
         'city' => array('City/index'),
+        'login'=> array('User/login'),
         ':id' => array('Index/detail')
     ),
 );

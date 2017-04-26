@@ -67,7 +67,7 @@
                 <ul id="nav" class="nav">
                     <foreach name="main_nav" item="val">
                         <li>
-                            <a href="{:logistics_url(1,'list/'.$val['id'])}" <eq name="Think.get.category" value="$val['id']">class="current"</eq> ><span>{$val.title}</span></a>
+                            <a href="{:logistics_url(1,'list-'.$val['id'])}" <eq name="Think.get.category" value="$val['id']">class="current"</eq> ><span>{$val.title}</span></a>
                         </li>
                     </foreach>
                 </ul>

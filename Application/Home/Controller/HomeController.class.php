@@ -20,7 +20,7 @@ class HomeController extends Controller {
 
 	/* 空操作，用于输出404页面 */
 	public function _empty(){
-
+        $this->_404();
 	}
 
 
@@ -76,7 +76,8 @@ class HomeController extends Controller {
     //404错误定向
     public function _404() {
         send_http_status(404);
-        $this->display(C('URL_404_REDIRECT'));
+        //$this->display(C('URL_404_REDIRECT'));
+        echo '404';
         exit();
     }
 }

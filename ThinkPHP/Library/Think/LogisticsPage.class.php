@@ -26,8 +26,8 @@ class LogisticsPage{
 	// 分页显示定制
     private $config  = array(
         'header' => '<span class="rows">共 %TOTAL_ROW% 条记录</span>',
-        'prev'   => '<<',
-        'next'   => '>>',
+        'prev'   => '上一页',
+        'next'   => '下一页',
         'first'  => '1...',
         'last'   => '...%TOTAL_PAGE%',
         'theme'  => '%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%',
@@ -77,7 +77,7 @@ class LogisticsPage{
         if(0 == $this->totalRows) return '';
 
         /* 生成URL */
-        $this->parameter  .= $this->p.'/'.urlencode('[PAGE]');
+        $this->parameter  .= $this->p.urlencode('[PAGE]');
         $this->url = logistics_url(1, $this->parameter);
 
         /* 计算分页信息 */
@@ -93,22 +93,22 @@ class LogisticsPage{
 
         //上一页
         $up_row  = $this->nowPage - 1;
-        $up_page = $up_row > 0 ? '<a class="prev" href="' . $this->url($up_row) . '">' . $this->config['prev'] . '</a>' : '';
+        $up_page = $up_row > 0 ? '<a href="' . $this->url($up_row) . '">' . $this->config['prev'] . '</a>' : '';
 
         //下一页
         $down_row  = $this->nowPage + 1;
-        $down_page = ($down_row <= $this->totalPages) ? '<a class="next" href="' . $this->url($down_row) . '">' . $this->config['next'] . '</a>' : '';
+        $down_page = ($down_row <= $this->totalPages) ? '<a href="' . $this->url($down_row) . '">' . $this->config['next'] . '</a>' : '';
 
         //第一页
         $the_first = '';
         if($this->totalPages > $this->rollPage && ($this->nowPage - $now_cool_page) >= 1){
-            $the_first = '<a class="first" href="' . $this->url(1) . '">' . $this->config['first'] . '</a>';
+            $the_first = '<a href="' . $this->url(1) . '">' . $this->config['first'] . '</a>';
         }
 
         //最后一页
         $the_end = '';
         if($this->totalPages > $this->rollPage && ($this->nowPage + $now_cool_page) < $this->totalPages){
-            $the_end = '<a class="end" href="' . $this->url($this->totalPages) . '">' . $this->config['last'] . '</a>';
+            $the_end = '<a href="' . $this->url($this->totalPages) . '">' . $this->config['last'] . '</a>';
         }
 
         //数字连接
@@ -124,7 +124,7 @@ class LogisticsPage{
             if($page > 0 && $page != $this->nowPage){
 
                 if($page <= $this->totalPages){
-                    $link_page .= '<a class="num" href="' . $this->url($page) . '">' . $page . '</a>';
+                    $link_page .= '<a href="' . $this->url($page) . '">' . $page . '</a>';
                 }else{
                     break;
                 }
@@ -140,6 +140,6 @@ class LogisticsPage{
             array('%HEADER%', '%NOW_PAGE%', '%UP_PAGE%', '%DOWN_PAGE%', '%FIRST%', '%LINK_PAGE%', '%END%', '%TOTAL_ROW%', '%TOTAL_PAGE%'),
             array($this->config['header'], $this->nowPage, $up_page, $down_page, $the_first, $link_page, $the_end, $this->totalRows, $this->totalPages),
             $this->config['theme']);
-        return "<div>{$page_str}</div>";
+        return "<div id='pagation'>{$page_str}</div>";
     }
 }

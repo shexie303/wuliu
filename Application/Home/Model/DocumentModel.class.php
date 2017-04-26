@@ -50,27 +50,36 @@ class DocumentModel extends Model{
 	 * 获取文档列表
 	 * @param  integer  $category 分类ID
 	 * @param  array    $ext    排序规则 精品专线的二级分类 组合ids 或者 搜索关键字
+     * @param  integer  $order  排序ID
 	 * @return array              文档列表
 	 */
-	public function lists($category, $ext = array()){
+	public function lists($category, $ext = array(), $order = 1){
         $field = 'id,title,location_p,location_c,location_a,destination_p,destination_c,destination_a,address,cover_id,view,level,create_time,'.$this->tablePrefix.'document.contact,'.$this->tablePrefix.'member.uid,'.$this->tablePrefix.'member.vip';
         $map = array(
             $this->tablePrefix.'document.category_id' => $category,
             $this->tablePrefix.'document.status' => 1,
             $this->tablePrefix.'member.status' => 1,
         );
-        if($ext['ids']){
+        if(isset($ext['ids'])){
             $map[$this->tablePrefix.'document.id'] = array('in', $ext['ids']);
         }
-        if($ext['ids']){
-            $map[$this->tablePrefix.'document.id'] = array('in', $ext['ids']);
+        if($ext['l_area']){
+            $map[$this->tablePrefix.'document.location_a'] = $ext['l_area'];
         }
         if($ext['keywords']){
             $map[$this->tablePrefix.'document.title'] = array('like', '%'.$ext['keywords'].'%');
         }
-        $order = $this->tablePrefix.'member.vip desc,'.$this->tablePrefix.'document.level desc,'.$this->tablePrefix.'document.view desc,'.$this->tablePrefix.'document.id desc';
-
-        $cache_key = md5(serialize($map).$this->options['page']);
+        switch($order){
+            case 2:
+                $order = $this->tablePrefix.'document.view desc';
+                break;
+            case 3:
+                $order = $this->tablePrefix.'document.id desc';
+                break;
+            default:
+                $order = $this->tablePrefix.'member.vip desc,'.$this->tablePrefix.'document.level desc,'.$this->tablePrefix.'document.view desc,'.$this->tablePrefix.'document.id desc';
+        }
+        $cache_key = md5(serialize($map).$order.$this->options['page']);
 
         $cache = S($cache_key);
         if(!false){

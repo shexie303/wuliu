@@ -1151,6 +1151,12 @@ function logistics_url($domain = 1, $uri){
     return $domain . '/' . $uri . '.' . C('URL_HTML_SUFFIX');
 }
 
+/**
+ * 某个城市直达专线统计
+ * @param array $city_zdzx
+ * @param $city_id
+ * @return array|mixed
+ */
 function getZdzxCityCount(array $city_zdzx, $city_id){
     $cache_key = 'zdzx_' . $city_id;
     $cache = S($cache_key);
@@ -1168,6 +1174,54 @@ function getZdzxCityCount(array $city_zdzx, $city_id){
         }
         $cache = $city_zdzx;
         S($cache_key, $cache, 7200);
+    }
+    return $cache;
+}
+
+/**
+ * 某个地区精品专线统计
+ * @param $local_area
+ * @param $city_id
+ * @return mixed
+ */
+function getZdzxAreaCount($local_area, $city_id){
+    $cache_key = 'zdzx_' . $city_id . '_area';
+    $cache = S($cache_key);
+    if(!$cache){
+        $map = array(
+            'location_c' => $city_id,
+            'status' => 1
+        );
+        $res = M('Document')->field('location_a,count(*) as count')->where($map)->group('location_a')->select();
+        if($res){
+            foreach($res as $val){
+                $res_arr[$val['location_a']] = $val['count'];
+            }
+        }
+        foreach($local_area as $key => $val){
+            $local_area[$key]['sum'] = $res_arr[$val['id']] ? $res_arr[$val['id']] : 0;
+        }
+        $cache = $local_area;
+        S($cache_key, $cache, 7200);
+    }
+    return $cache;
+}
+
+function getZdzxJpzxIds($city_id, $zdzx_id){
+    $cache_key = 'zdzx_' . $city_id . '_' . $zdzx_id;
+    $cache = S($cache_key);
+    if(!$cache){
+        if($zdzx_id){
+            $map = "zdzx_id={$zdzx_id} and";
+        }
+        $sql = "SELECT wuliu_id from logistics_jpzx left join logistics_document on logistics_jpzx.wuliu_id = logistics_document.id  where ".$map." city_id={$city_id} and status = 1";
+        $data = M('Jpzx')->query($sql);
+        if($data){
+            foreach($data as $val){
+                $cache[] = $val['wuliu_id'];
+            }
+            S($cache_key, $cache, 7200);
+        }
     }
     return $cache;
 }

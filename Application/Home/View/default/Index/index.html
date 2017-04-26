@@ -7,9 +7,9 @@
             <dl class="selitem">
                 <dt></dt>
                 <dd row="2">
-                    <a class="selectt" href="/lists/130">{$minor.name}：</a>
+                    <a class="<eq name='zx' value="0">selectt</eq>" href="{:logistics_url(1,'list-'.$category['id'])}">{$minor.name}：</a>
                     <foreach name="minor.data" item="val">
-                        <a href="/lists/130?sid238=275" class="">{$val.title}<span>({$val.sum})</span></a>
+                        <a href="{:logistics_url(1,'list-'.$category['id'].'-'.$val['id'])}" class="<eq name='zx' value="$val['id']">selectt</eq>">{$val.title}<span>({$val.sum})</span></a>
                     </foreach>
                 </dd>
             </dl>
@@ -18,18 +18,18 @@
             <dl class="selitem">
                 <dt></dt>
                 <dd row="2">
-                    <a class="selectt" href="/lists/130">所在区域：</a>
+                    <a class="<eq name='l_area' value="0">selectt</eq>" href="{:logistics_url(1,'list-'.$category['id'].'-'.$zx)}">所在区域：</a>
                     <foreach name="local_area" item="val">
-                        <a href="/lists/130?sid383=384" class="">{$val.name}<span>(192)</span></a>
+                        <a href="{:logistics_url(1,'list-'.$category['id'].'-'.$zx.'-'.$val['id'])}" class="<eq name='l_area' value="$val['id']">selectt</eq>">{$val.name}<span>({$val.sum})</span></a>
                     </foreach>
                 </dd>
             </dl>
         </notempty>
         <div class="sortbar"><!-- 排序方式 -->
             <ul class="sortor">
-                <li class="cur"><a href="/lists/130?order=default">默认排序</a></li>
-                <li class=""><a href="/lists/130?order=hot">人气排序<i class="arrw arrwdown"></i></a></li>
-                <li class=""><a href="/lists/130?order=new">更新排序<i class="arrw arrwdown"></i></a></li>
+                <li class="<eq name='order_type' value="1">cur</eq>"><a href="{:logistics_url(1,$order_uri.'1')}">默认排序</a></li>
+                <li class="<eq name='order_type' value="2">cur</eq>"><a href="{:logistics_url(1,$order_uri.'2')}">人气排序<i class="arrw arrwdown"></i></a></li>
+                <li class="<eq name='order_type' value="3">cur</eq>"><a href="{:logistics_url(1,$order_uri.'3')}">更新排序<i class="arrw arrwdown"></i></a></li>
             </ul>
         </div>
     </div>
@@ -38,159 +38,42 @@
     <div id="main">
         <div class="listerouter">
             <div class="lister">
-                <div class="tuanitem">
-                    <img src="__IMG__/vip.png" class="vip-img">
-                    <a class="tuanitem-item">
-                        <div class="tuanitem-item-border"></div>
-                    </a>
-                    <div class="tuanitem-meta">
-                        <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/15572">
-                            <img alt="【双圆物流】上海至淮安、宿迁、徐州、盐城、连云港专线(苏北三线中转周边地区)" src="http://www.chawuliu.com/uploads/page/2015/0404/15/551f96e8f40cd9d665cfbf7bbd3834f7accbeaeea423b.jpg">
-                        </a>
-                        <div class="tuanitem-meta-title">
-                            <a target="_blank" href="http://www.chawuliu.com/detail/15572" title="【双圆物流】上海至淮安、宿迁、徐州、盐城、连云港专线(苏北三线中转周边地区)" class="c_b">【双圆物流】上海至淮安、宿迁、徐州、盐城、连云港专线(苏北三线中转周边地区)</a>
+                <empty name="list">
+                    暂无信息
+                <else />
+                    <foreach name="list" item="val">
+                        <div class="tuanitem">
+                            <img src="__IMG__/vip.png" class="vip-img">
+                            <a class="tuanitem-item">
+                                <div class="tuanitem-item-border"></div>
+                            </a>
+                            <div class="tuanitem-meta">
+                                <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/15572">
+                                    <img alt="{$val.title}" src="http://www.chawuliu.com/uploads/page/2015/0404/15/551f96e8f40cd9d665cfbf7bbd3834f7accbeaeea423b.jpg">
+                                </a>
+                                <div class="tuanitem-meta-title">
+                                    <a target="_blank" href="http://www.chawuliu.com/detail/15572" title="{$val.title}" class="c_b">{$val.title}</a>
+                                </div>
+                            </div>
+                            <div class="gobuy">
+                                <div class="nprice"><img src="__IMG__/phone.png" class="mr5">{$val.contact}</div>
+                                <a target="_blank" href="http://www.chawuliu.com/detail/15572" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
+                                <div class="c"></div>
+                            </div>
+                            <div class="hot_des">
+                                <div class="fl"><img src="__IMG__/address.png" class="mr5">{$val.address}</div>
+                                <div class="fr"><strong>{$val.view}</strong>人浏览</div>
+                                <div class="c"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="gobuy">
-                        <div class="nprice"><img src="__IMG__/phone.png" class="mr5">021-51691330</div>
-                        <a target="_blank" href="http://www.chawuliu.com/detail/15572" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
-                        <div class="c"></div>
-                    </div><div class="hot_des">
-                    <div class="fl"><img src="__IMG__/address.png" class="mr5">上海市宝山区业绩路21号A区甲棚</div>
-                    <div class="fr"><strong>2856</strong>人浏览</div>
-                    <div class="c"></div>
-                </div>
-                </div>
-                <div class="tuanitem">
-                    <img src="__IMG__/vip.png" class="vip-img">
-                    <a class="tuanitem-item">
-                        <div class="tuanitem-item-border"></div>
-                    </a>
-                    <div class="tuanitem-meta">
-                        <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/20477">
-                            <img alt="【嘉泰物流】上海至合肥往返专线（中转安徽全境）" src="http://www.chawuliu.com/uploads/page/2017/0306/14/58bd022ab6a999d665cfbf7bbd3834f7accbeaeea423b.png">
-                        </a>
-                        <div class="tuanitem-meta-title">
-                            <a target="_blank" href="http://www.chawuliu.com/detail/20477" title="【嘉泰物流】上海至合肥往返专线（中转安徽全境）" class="c_b">【嘉泰物流】上海至合肥往返专线（中转安徽全境）</a>
-                        </div>
-                    </div>
-                    <div class="gobuy">
-                        <div class="nprice"><img src="__IMG__/phone.png" class="mr5">18918194338</div>
-                        <a target="_blank" href="http://www.chawuliu.com/detail/20477" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
-                        <div class="c"></div>
-                    </div><div class="hot_des">
-                    <div class="fl"><img src="__IMG__/address.png" class="mr5">上海市嘉定区浏翔公路纬五路60</div>
-                    <div class="fr"><strong>5010</strong>人浏览</div>
-                    <div class="c"></div>
-                </div>
-                </div>
-                <div class="tuanitem">
-                    <img src="__IMG__/vip.png" class="vip-img">
-                    <a class="tuanitem-item">
-                        <div class="tuanitem-item-border"></div>
-                    </a>
-                    <div class="tuanitem-meta">
-                        <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/20061">
-                            <img alt="【利钦物流】上海至宁波、慈溪、余姚、奉化专线（浙江全境）" src="http://www.chawuliu.com/uploads/page/2016/0722/11/579192530d7bb9d665cfbf7bbd3834f7accbeaeea423b.jpg">
-                        </a>
-                        <div class="tuanitem-meta-title">
-                            <a target="_blank" href="http://www.chawuliu.com/detail/20061" title="【利钦物流】上海至宁波、慈溪、余姚、奉化专线（浙江全境）" class="c_b">【利钦物流】上海至宁波、慈溪、余姚、奉化专线（浙江全境）</a>
-                        </div>
-                    </div>
-                    <div class="gobuy">
-                        <div class="nprice"><img src="__IMG__/phone.png" class="mr5">13818882958</div>
-                        <a target="_blank" href="http://www.chawuliu.com/detail/20061" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
-                        <div class="c"></div>
-                    </div><div class="hot_des">
-                    <div class="fl"><img src="__IMG__/address.png" class="mr5">上海市嘉定区敬学路199号</div>
-                    <div class="fr"><strong>2970</strong>人浏览</div>
-                    <div class="c"></div>
-                </div>
-                </div>
-                <div class="tuanitem">
-                    <img src="__IMG__/vip.png" class="vip-img">
-                    <a class="tuanitem-item">
-                        <div class="tuanitem-item-border"></div>
-                    </a>
-                    <div class="tuanitem-meta">
-                        <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/19838">
-                            <img alt="【锦沸物流】上海至台州、路桥、黄岩、椒江、临海、三门、温岭、玉环专线（辐射浙江全境）" src="http://www.chawuliu.com/uploads/page/2016/0605/11/5753a38bd6deb9d665cfbf7bbd3834f7accbeaeea423b.jpg">
-                        </a>
-                        <div class="tuanitem-meta-title">
-                            <a target="_blank" href="http://www.chawuliu.com/detail/19838" title="【锦沸物流】上海至台州、路桥、黄岩、椒江、临海、三门、温岭、玉环专线（辐射浙江全境）" class="c_b">【锦沸物流】上海至台州、路桥、黄岩、椒江、临海、三门、温岭、玉环专线（辐射浙江全境）</a>
-                        </div>
-                    </div>
-                    <div class="gobuy">
-                        <div class="nprice"><img src="__IMG__/phone.png" class="mr5">021-67654322</div>
-                        <a target="_blank" href="http://www.chawuliu.com/detail/19838" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
-                        <div class="c"></div>
-                    </div><div class="hot_des">
-                    <div class="fl"><img src="__IMG__/address.png" class="mr5">上海市松江区新车公路281号春强</div>
-                    <div class="fr"><strong>2397</strong>人浏览</div>
-                    <div class="c"></div>
-                </div>
-                </div>
-                <div class="tuanitem">
-                    <img src="__IMG__/vip.png" class="vip-img">
-                    <a class="tuanitem-item">
-                        <div class="tuanitem-item-border"></div>
-                    </a>
-                    <div class="tuanitem-meta">
-                        <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/19577">
-                            <img alt="【才邦物流】上海至南宁、柳州、桂林专线（广西全境）" src="http://www.chawuliu.com/uploads/page/2016/0507/12/572d764b52a539d665cfbf7bbd3834f7accbeaeea423b.jpg">
-                        </a>
-                        <div class="tuanitem-meta-title">
-                            <a target="_blank" href="http://www.chawuliu.com/detail/19577" title="【才邦物流】上海至南宁、柳州、桂林专线（广西全境）" class="c_b">【才邦物流】上海至南宁、柳州、桂林专线（广西全境）</a>
-                        </div>
-                    </div>
-                    <div class="gobuy">
-                        <div class="nprice"><img src="__IMG__/phone.png" class="mr5">021-64346779</div>
-                        <a target="_blank" href="http://www.chawuliu.com/detail/19577" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
-                        <div class="c"></div>
-                    </div><div class="hot_des">
-                    <div class="fl"><img src="__IMG__/address.png" class="mr5">上海市松江区茸华路1233号车新</div>
-                    <div class="fr"><strong>2410</strong>人浏览</div>
-                    <div class="c"></div>
-                </div>
-                </div>
-                <div class="tuanitem">
-                    <img src="__IMG__/vip.png" class="vip-img">
-                    <a class="tuanitem-item">
-                        <div class="tuanitem-item-border"></div>
-                    </a>
-                    <div class="tuanitem-meta">
-                        <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/19884">
-                            <img alt="【交渝物流】上海至成都、重庆专线（中转四川全境）" src="http://www.chawuliu.com/uploads/page/2016/0613/19/575e936ccba699d665cfbf7bbd3834f7accbeaeea423b.jpg">
-                        </a>
-                        <div class="tuanitem-meta-title">
-                            <a target="_blank" href="http://www.chawuliu.com/detail/19884" title="【交渝物流】上海至成都、重庆专线（中转四川全境）" class="c_b">【交渝物流】上海至成都、重庆专线（中转四川全境）</a>
-                        </div>
-                    </div>
-                    <div class="gobuy">
-                        <div class="nprice"><img src="__IMG__/phone.png" class="mr5">18817729928</div>
-                        <a target="_blank" href="http://www.chawuliu.com/detail/19884" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
-                        <div class="c"></div>
-                    </div><div class="hot_des">
-                    <div class="fl"><img src="__IMG__/address.png" class="mr5">松江区茸华公路1233号车新物流</div>
-                    <div class="fr"><strong>2006</strong>人浏览</div>
-                    <div class="c"></div>
-                </div>
-                </div>
+                    </foreach>
+                </empty>
                 <div class="c"></div>
             </div>
         </div>
         <div class="page mt40 mb40">
-            <div id="pagation">
-                <span class="current">1</span>
-                <a href="/lists/130?page=2">2</a>
-                <a href="/lists/130?page=3">3</a>
-                <a href="/lists/130?page=4">4</a>
-                <a href="/lists/130?page=5">5</a>
-                <span class="PageMore">...</span>
-                <a href="/lists/130?page=17">17</a>
-                <a href="/lists/130?page=2">下一页</a>
-                <a href="/lists/130?page=17" class="down_pagination">尾页</a>
-            </div>
+            {$page}
+            <!--<div id="pagation"><a href="/?page=2">上一页</a><a href="/?page=1">1</a><a href="/?page=2">2</a><span class="current">3</span><a href="/?page=4">下一页</a></div>-->
         </div>
     </div>
 <include file="Public/footer"/>

@@ -51,6 +51,7 @@ class IndexController extends HomeController {
         }
         $this->assign('order_type', $order);
         /* 获取当前分类列表 */
+        $ext['l_city'] = $this->city['id'];
         $Document = D('Document');
         $list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, $order);
         $uri = 'list-'.$category['id'].'-';

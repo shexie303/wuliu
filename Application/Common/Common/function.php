@@ -1190,7 +1190,8 @@ function getZdzxAreaCount($local_area, $city_id){
     if(!$cache){
         $map = array(
             'location_c' => $city_id,
-            'status' => 1
+            'status' => 1,
+            'category_id' => 2
         );
         $res = M('Document')->field('location_a,count(*) as count')->where($map)->group('location_a')->select();
         if($res){

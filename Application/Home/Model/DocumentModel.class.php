@@ -49,7 +49,7 @@ class DocumentModel extends Model{
 	/**
 	 * 获取文档列表
 	 * @param  integer  $category 分类ID
-	 * @param  array    $ext    排序规则 精品专线的二级分类 组合ids 或者 搜索关键字
+	 * @param  array    $ext    排序规则 精品专线的二级分类 组合ids 或者 搜索关键字 城市id
      * @param  integer  $order  排序ID
 	 * @return array              文档列表
 	 */
@@ -62,6 +62,9 @@ class DocumentModel extends Model{
         );
         if(isset($ext['ids'])){
             $map[$this->tablePrefix.'document.id'] = array('in', $ext['ids']);
+        }
+        if($ext['l_city']){
+            $map[$this->tablePrefix.'document.location_c'] = $ext['l_city'];
         }
         if($ext['l_area']){
             $map[$this->tablePrefix.'document.location_a'] = $ext['l_area'];
@@ -82,7 +85,7 @@ class DocumentModel extends Model{
         $cache_key = md5(serialize($map).$order.$this->options['page']);
 
         $cache = S($cache_key);
-        if(!false){
+        if(!$cache){
             $cache = $this->field($field)->join('LEFT JOIN __MEMBER__ ON __DOCUMENT__.uid = __MEMBER__.uid')->where($map)->order($order)->select();
             if($cache){
                 S($cache_key, $cache, 7200);

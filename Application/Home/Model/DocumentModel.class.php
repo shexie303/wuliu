@@ -70,7 +70,7 @@ class DocumentModel extends Model{
             $map[$this->tablePrefix.'document.location_a'] = $ext['l_area'];
         }
         if($ext['keywords']){
-            $map[$this->tablePrefix.'document.title'] = array('like', '%'.$ext['keywords'].'%');
+            $map[$this->tablePrefix.'document.title|'.$this->tablePrefix.'document.address'] = array('like', '%'.$ext['keywords'].'%');
         }
         switch($order){
             case 2:

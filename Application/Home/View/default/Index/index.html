@@ -43,7 +43,8 @@
                 <else />
                     <foreach name="list" item="val">
                         <div class="tuanitem">
-                            <img src="__IMG__/vip.png" class="vip-img">
+                            <eq name="val.vip" value="2"><img src="__IMG__/tuijian.png" class="vip-img"></eq>
+                            <eq name="val.vip" value="3"><img src="__IMG__/vip.png" class="vip-img"></eq>
                             <a class="tuanitem-item">
                                 <div class="tuanitem-item-border"></div>
                             </a>
@@ -61,7 +62,7 @@
                                 <div class="c"></div>
                             </div>
                             <div class="hot_des">
-                                <div class="fl"><img src="__IMG__/address.png" class="mr5">{$val.address}</div>
+                                <div class="fl"><img src="__IMG__/address.png" class="mr5">{$val.address|msubstr=0,14}</div>
                                 <div class="fr"><strong>{$val.view}</strong>人浏览</div>
                                 <div class="c"></div>
                             </div>

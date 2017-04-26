@@ -54,7 +54,7 @@
                 <a href="{:logistics_url(1,'city')}">[切换分站]</a>
             </div>
             <div id="searhbar" class="rss">
-                <form id="indexSearchForm" method="get" action="{:logistics_url(1,'search')}">
+                <form id="indexSearchForm" method="get" action="{:logistics_url(1,'search-'.$category['id'])}">
                     <input type="text" id="searchW" name="keywords" value="请输入城市、名称、地址等关键字" class="kw" autocomplete="off">
                     <input type="submit" value="搜索" class="searchbtn">
                     <label for="searchW" class="searchico"></label>

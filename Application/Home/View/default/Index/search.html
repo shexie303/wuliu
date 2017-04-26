@@ -1,0 +1,52 @@
+<include file="Public/header"/>
+<div id="banner"><!-- banner广告横幅 -->
+
+</div>
+<!-- 内容  -->
+<div id="main">
+    <div class="words">
+        <div class="ml10 mb5">
+            找到<strong class="search_count">“{$search_keywords}”</strong>相关信息<strong class="search_count">{$list['count']?$list['count']:0}</strong>条
+        </div>
+    </div>
+    <div class="listerouter">
+        <div class="lister">
+            <empty name="list">
+                抱歉！还没有信息,请浏览其它的分类
+            <else />
+                <foreach name="list.data" item="val">
+                    <div class="tuanitem">
+                        <eq name="val.vip" value="2"><img src="__IMG__/tuijian.png" class="vip-img"></eq>
+                        <eq name="val.vip" value="3"><img src="__IMG__/vip.png" class="vip-img"></eq>
+                        <a class="tuanitem-item">
+                            <div class="tuanitem-item-border"></div>
+                        </a>
+                        <div class="tuanitem-meta">
+                            <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/15572">
+                                <img alt="{$val.title}" src="http://www.chawuliu.com/uploads/page/2015/0404/15/551f96e8f40cd9d665cfbf7bbd3834f7accbeaeea423b.jpg">
+                            </a>
+                            <div class="tuanitem-meta-title">
+                                <a target="_blank" href="http://www.chawuliu.com/detail/15572" title="{$val.title}" class="c_b">{$val.title}</a>
+                            </div>
+                        </div>
+                        <div class="gobuy">
+                            <div class="nprice"><img src="__IMG__/phone.png" class="mr5">{$val.contact}</div>
+                            <a target="_blank" href="http://www.chawuliu.com/detail/15572" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
+                            <div class="c"></div>
+                        </div>
+                        <div class="hot_des">
+                            <div class="fl"><img src="__IMG__/address.png" class="mr5">{$val.address|msubstr=0,14}</div>
+                            <div class="fr"><strong>{$val.view}</strong>人浏览</div>
+                            <div class="c"></div>
+                        </div>
+                    </div>
+                </foreach>
+            </empty>
+            <div class="c"></div>
+        </div>
+    </div>
+    <div class="page mt40 mb40">
+        {$page}
+    </div>
+</div>
+<include file="Public/footer"/>

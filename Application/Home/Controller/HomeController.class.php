@@ -66,6 +66,9 @@ class HomeController extends Controller {
         //主导航
         $nav = getNextCategory(0);
         $this->assign('main_nav', $nav);
+        //模块名 方法名
+        $this->assign('CONTROLLER_NAME', CONTROLLER_NAME);
+        $this->assign('ACTION_NAME', ACTION_NAME);
     }
 
 	/* 用户登录检测 */

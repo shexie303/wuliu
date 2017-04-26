@@ -99,6 +99,27 @@ class IndexController extends HomeController {
 		$this->display();
 	}
 
+    public function search($id = 0, $p = 1, $keywords = ''){
+        $category = $this->category($id);
+        $this->assign('category', $category);
+        $Document = D('Document');
+        $ext = array();
+        $uri = 'search-'. $category['id']. '-';
+        if($keywords){
+            $ext['keywords'] = $keywords;
+            $this->assign('search_keywords', $keywords);
+        }
+        $ext['l_city'] = $this->city['id'];
+        $list = $Document->page($p, 1)->lists($category['id'], $ext, 1);
+        if($list){
+            $page = new \Think\LogisticsPage($list['count'], 1, $uri);
+
+            /* 模板赋值并渲染模板 */
+            $this->assign('list', $list);
+            $this->assign('page', $page->show());
+        }
+        $this->display();
+    }
 	/* 文档分类检测 */
 	private function category($category_id = 0){
 		/* 标识正确性检测 */

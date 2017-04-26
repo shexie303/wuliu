@@ -96,17 +96,21 @@ return array(
 
     'URL_ROUTER_ON'         =>  true,   // 是否开启URL路由
     'URL_ROUTE_RULES'       =>  array( // 默认路由规则 针对模块
-        '/^list-([0-9]{1})-([0-9]{1,2})-([0-9]{6})-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&zx=:2&l_area=:3&p=:4&order=:5',
-        '/^list-([0-9]{1})-([0-9]{1,2})-([0-9]{6})-p([0-9]+)$/' => 'Index/index?category=:1&zx=:2&l_area=:3&p=:4',
-        '/^list-([0-9]{1})-([0-9]{1,2})-([0-9]{6})$/' => 'Index/index?category=:1&zx=:2&l_area=:3',
-        '/^list-([0-9]{1})-([0-9]{1,2})-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&zx=:2&p=:3&order=:4',
-        '/^list-([0-9]{1})-([0-9]{1,2})-p([0-9]+)$/' => 'Index/index?category=:1&zx=:2&p=:3',
-        '/^list-([0-9]{1})-([0-9]{1,2})$/' => 'Index/index?category=:1&zx=:2',
-        '/^list-([0-9]{1})-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&p=:2&order=:3',
-        '/^list-([0-9]{1})-p([0-9]+)$/' => 'Index/index?category=:1&p=:2',
-        '/^list-([0-9]{1})$/' => 'Index/index?category=:1',
+        //列表页
+        '/^list-([2-7]{1})-([0-9]{1,2})-([0-9]{6})-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&zx=:2&l_area=:3&p=:4&order=:5',
+        '/^list-([2-7]{1})-([0-9]{1,2})-([0-9]{6})-p([0-9]+)$/' => 'Index/index?category=:1&zx=:2&l_area=:3&p=:4',
+        '/^list-([2-7]{1})-([0-9]{1,2})-([0-9]{6})$/' => 'Index/index?category=:1&zx=:2&l_area=:3',
+        '/^list-([2-7]{1})-([0-9]{1,2})-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&zx=:2&p=:3&order=:4',
+        '/^list-([2-7]{1})-([0-9]{1,2})-p([0-9]+)$/' => 'Index/index?category=:1&zx=:2&p=:3',
+        '/^list-([2-7]{1})-([0-9]{1,2})$/' => 'Index/index?category=:1&zx=:2',
+        '/^list-([2-7]{1})-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&p=:2&order=:3',
+        '/^list-([2-7]{1})-p([0-9]+)$/' => 'Index/index?category=:1&p=:2',
+        '/^list-([2-7]{1})$/' => 'Index/index?category=:1',
+        //搜索页
+        '/^search-([2-7]{1})-p([0-9]+)$/' => 'Index/search?category=:1&p=:2',
+        '/^search-([2-7]{1})$/' => 'Index/search?category=:1',
         'city' => array('City/index'),
-        'login'=> array('User/login'),
+        'login' => array('User/login'),
         '/^([0-9]+)$/' => 'Index/detail?id=:1',
     ),
 );

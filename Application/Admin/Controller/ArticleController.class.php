@@ -419,6 +419,10 @@ class ArticleController extends AdminController {
         if($cate_id == 2){
             $this->display('Article/add_jpzx');
         }else{
+            if($cate_id == 6){
+                $s_cate = getNextCategory(6);
+                $this->assign('s_cate', $s_cate);
+            }
             $this->display();
         }
     }
@@ -472,7 +476,10 @@ class ArticleController extends AdminController {
         $area = getNextPca($data['location_c'], 3);
         $this->assign('location_area', $area);
 
-        if($data['category_id'] == 7){
+        if($data['category_id'] == 6){
+            $s_cate = getNextCategory(6);
+            $this->assign('s_cate', $s_cate);
+        }elseif($data['category_id'] == 7){
             //获取目的地城市列表
             $destination_city = getNextPca($data['destination_p'], 2);
             $this->assign('destination_city', $destination_city);

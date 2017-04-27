@@ -35,6 +35,18 @@
                     <input type="text" class="text input-large" name="contact" value="">
                 </div>
             </div>
+            <if condition="$info['category_id'] eq 6">
+                <div class="form-item cf">
+                    <label class="item-label">选择分类<span class="check-tips">（选择分类）</span></label>
+                    <div class="controls">
+                        <select name="cate_id">
+                            <volist name="s_cate" id="val">
+                                <option value="{$val.id}">{$val.title}</option>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
+            </if>
             <div class="form-item cf">
                 <label class="item-label">所在地<span class="check-tips">（所在地）</span></label>
                 <div class="controls">
@@ -46,16 +58,6 @@
                     <label class="item-label">目的地<span class="check-tips">（目的地）</span></label>
                     <div class="controls">
                         <include file="Public:pca" project="destination" />
-                    </div>
-                </div>
-                <div class="form-item cf">
-                    <label class="item-label">选择分类<span class="check-tips">（选择分类）</span></label>
-                    <div class="controls">
-                        <select name="type">
-                            <volist name="Think.config.CONFIG_TYPE_LIST" id="type">
-                                <option value="{$key}">{$type}</option>
-                            </volist>
-                        </select>
                     </div>
                 </div>
             </if>

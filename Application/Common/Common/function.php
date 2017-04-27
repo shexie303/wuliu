@@ -1022,6 +1022,25 @@ function random( $length, $numeric = 0 )
 }
 
 /**
+ * @param $str
+ * @return int
+ */
+function checkContact($str){
+    $p_phone = '/^1[3|4|5|7|8][0-9]\d{8}$/';
+    $p_tel_1 = '/^0[1-9]{2}-[0-9]{8}$/';
+    $p_tel_2 = '/^0[1-9]{3}-[0-9]{7}$/';
+    $p_400_1 = '/^400-\d{3}-\d{4}$/';
+    $p_400_2 = '/^400-\d{4}-\d{3}$/';
+    $arr = array(
+        preg_match($p_phone, $str),
+        preg_match($p_tel_1, $str),
+        preg_match($p_tel_2, $str),
+        preg_match($p_400_1, $str),
+        preg_match($p_400_2, $str)
+    );
+    return in_array(1,$arr) ? true : false;
+}
+/**
  * 获取所有的城市
  */
 function all_city(){

@@ -1086,6 +1086,7 @@ class Model {
     protected function _validationFieldItem($data,$val) {
         switch(strtolower(trim($val[4]))) {
             case 'function':// 使用函数进行验证
+                return call_user_func($val[1],$data[$val[0]]);
             case 'callback':// 调用方法进行验证
                 $args = isset($val[6])?(array)$val[6]:array();
                 if(is_string($val[0]) && strpos($val[0], ','))

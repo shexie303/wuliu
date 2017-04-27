@@ -19,6 +19,8 @@
 					</th>
 					<th>ID</th>
 					<th>广告名称</th>
+					<th>广告位置</th>
+					<th>优先级</th>
 					<th>状态</th>
 					<th>操作</th>
 				</tr>
@@ -29,7 +31,9 @@
 					<tr>
 						<td><input class="ids row-selected" type="checkbox" name="id[]" value="{$ad['id']}"> </td>
 						<td>{$ad.id}</td>
-						<td>{$ad.title}</td>
+						<td>{$ad.ad_title}</td>
+                        <td>{$cate[$ad['position']]['title']}</td>
+                        <td>{$ad.sort}</td>
                         <td>
                             <eq name="ad.status" value="1">正常</eq>
                             <eq name="ad.status" value="0">隐藏</eq>

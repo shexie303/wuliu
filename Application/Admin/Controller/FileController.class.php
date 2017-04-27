@@ -67,7 +67,7 @@ class FileController extends AdminController {
             $return['message'] = '请登录后再上传';
             exit(json_encode($return));
         }
-        if(!in_array($save_path, array('cover','id_card','driver_license','license'))){
+        if(!in_array($save_path, array('cover','id_card','driver_license','license','ad_img'))){
             $return['error'] = 1;
             $return['message'] = '非法路径,请联系管理员';
             exit(json_encode($return));
@@ -92,6 +92,15 @@ class FileController extends AdminController {
                 $image->open('.'.$thumb_file)->water('.'.C('TMPL_PARSE_STRING.__IMG__').'/water.jpg',\Think\Image::IMAGE_WATER_SOUTHEAST)->save('.'.$thumb_file);
                 /*添加水印结束*/
             }
+            if($save_path == 'ad_img'){
+                $size = getimagesize('.'.$info['imgFile']['path']);
+                if($size[0]/$size[1] != 6){
+                    $return['error'] = 1;
+                    $return['message']   = '请上传宽高比例为6:1的图片';
+                    /* 返回JSON数据 */
+                    exit(json_encode($return));
+                }
+            }
             $return['error'] = 0;
             $return['cover_id'] = $info['imgFile']['id'];
             $return['url'] = $info['imgFile']['path'];
@@ -99,7 +108,6 @@ class FileController extends AdminController {
             $return['error'] = 1;
             $return['message']   = $Picture->getError();
         }
-
         /* 返回JSON数据 */
         exit(json_encode($return));
     }

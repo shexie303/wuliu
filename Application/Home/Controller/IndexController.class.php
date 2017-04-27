@@ -17,13 +17,17 @@ class IndexController extends HomeController {
 
     /* 文档模型频道页 */
 	public function index($p = 1){
-        $zx = I('get.zx', 0);
-        $this->assign('zx', $zx);
         /* 分类信息 */
         $category = $this->category();
         $this->assign('category', $category);
+        //分页使用
+        $uri = 'list-'.$category['id'].'-';
+
         $ext = array();
-        if($category['id'] == 2){
+        if($category['id'] == 2){ //精品专线
+            $zx = I('get.zx', 0);
+            $this->assign('zx', $zx);
+
             $minor['name'] = '直达线路';
             $city_zdzx = getNextCategory(2, $this->city['parent_id']);
             $minor['data'] = getZdzxCityCount($city_zdzx, $this->city['id']);
@@ -36,40 +40,58 @@ class IndexController extends HomeController {
                 $local_area = getZdzxAreaCount($local_area, $this->city['id']);
                 $this->assign('local_area', $local_area);
             }
-        }elseif($category['id'] == 3){
-            $minor['name'] = '选择省份';
-            $minor['data'] = getNextCategory(2, $this->city['parent_id']);
-            $this->assign('minor', $minor);
-        }
-        $l_area = I('get.l_area', 0);
-        $ext['l_area'] = $l_area;
-        $this->assign('l_area', $l_area);
 
+            $l_area = I('get.l_area', 0);
+            $ext['l_area'] = $l_area;
+            $this->assign('l_area', $l_area);
+
+            $zx ? $uri .= $zx.'-' : false;
+
+            if($l_area){
+                if($zx == 0) $uri .= '0-';
+                $uri .= $l_area.'-';
+            }
+
+            $ext['l_city'] = $this->city['id'];
+
+        }elseif($category['id'] == 3){ //落地配
+            $minor['name'] = '选择省份';
+            $minor['data'] = getLdpCount();
+            $this->assign('minor', $minor);
+
+            $ldp_p = I('get.ldp_p', 0);
+            $this->assign('zx', $ldp_p);
+            if($ldp_p){
+                $uri .= $ldp_p.'-';
+                $ext['l_province'] = $ldp_p;
+            }
+        }
         $order = I('get.order', 1);
         if(!in_array($order, array(1,2,3))){
             $order = 1;
         }
         $this->assign('order_type', $order);
         /* 获取当前分类列表 */
-        $ext['l_city'] = $this->city['id'];
-        $Document = D('Document');
-        $list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, $order);
-        $uri = 'list-'.$category['id'].'-';
-        $zx ? $uri .= $zx.'-' : false;
 
-        if($l_area){
-            if($zx == 0) $uri .= '0-';
-            $uri .= $l_area.'-';
-        }
+        $Document = D('Document');
+        //$list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, $order);
+        $list = $Document->page($p, 1)->lists($category['id'], $ext, $order);
+
         $order_uri = $uri. 'p'. $p. '-';
         $this->assign('order_uri', $order_uri);
-        if($list){
-            $page = new \Think\LogisticsPage($list['count'], $category['list_row'], $uri);
 
+        if($list){
+            //$page = new \Think\LogisticsPage($list['count'], $category['list_row'], $uri);
+            $page = new \Think\LogisticsPage($list['count'], 1, $uri);
+            $page->setConfig('theme','%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%');
             /* 模板赋值并渲染模板 */
             $this->assign('list', $list['data']);
             $this->assign('page', $page->show());
         }
+        //banner
+        $banner = getCateBanner($category['id']);
+        $this->assign('banner', $banner);
+
         $this->display($category['template_lists']);
 	}
 
@@ -137,5 +159,4 @@ class IndexController extends HomeController {
 			$this->error('分类不存在或被禁用！');
 		}
 	}
-
 }

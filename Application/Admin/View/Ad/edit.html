@@ -7,11 +7,21 @@
 		</h2>
 	</div>
 	<form action="{:U()}" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">广告名称<span class="check-tips">（广告名称）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="ad_title" value="{$info.ad_title}">
+            </div>
+        </div>
 		<div class="form-item">
-			<label class="item-label">广告位名称<span class="check-tips">（广告位名称）</span></label>
+			<label class="item-label">广告位位置<span class="check-tips">（广告位位置）</span></label>
 			<div class="controls">
-				<input type="text" class="text input-large" name="title" value="{$info.title|default=''}">
-			</div>
+                <select name="position">
+                    <volist name="cate" id="val">
+                        <option value="{$val.id}" <eq name="info.position" value="$val['id']">selected</eq> >{$val.title}</option>
+                    </volist>
+                </select>
+            </div>
 		</div>
         <div class="form-item">
             <label class="item-label">广告位属性<span class="check-tips">（广告位属性）</span></label>
@@ -23,14 +33,32 @@
             </div>
         </div>
         <div class="form-item">
-            <label class="item-label">广告位图片<span class="check-tips">（广告位图片，可以上传多张）</span></label>
+            <label class="item-label">优先级<span class="check-tips">（越高排序越靠前）</span></label>
             <div class="controls">
-                <label class="textarea">
-                    <textarea name="ad_img">{$info.ad_img}</textarea>
-                    {:hook('adminArticleEdit', array('name'=>'ad_img','value'=>$info['ad_img']))}
-                </label>
+                <input type="text" class="text input-large" name="sort" value="{$info.sort}">
             </div>
         </div>
+        <div class="form-item cf">
+            <label class="item-label">广告链接<span class="check-tips">（广告链接格式：http://xxx 或者https://xxx）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="ad_url" value="{$info.ad_url}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">广告图片<span class="check-tips">（请上传宽高比例为6:1的图片）</span></label>
+            <input type="hidden" name="ad_img" id="ad_img_value" value="{$info.ad_img}">
+            <div class="controls">
+                <div id="upload_picture_ad_img" class="uploadify-button " style="height: 30px; line-height: 30px; width: 120px;">
+                    <span class="uploadify-button-text">上传广告图片</span>
+                </div>
+                <div class="upload-img-box img-ad-img">
+                    <notempty name="info['ad_img']">
+                        <div class="upload-pre-item"><img src="{$info.ad_img}"/></div>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+        
 		<div class="form-item">
 			<input type="hidden" name="id" value="{$info.id|default=''}">
 			<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
@@ -39,8 +67,33 @@
 	</form>
 </block>
 <block name="script">
-<script type="text/javascript" charset="utf-8">
-	//广告高亮
-	highlight_subnav('{:U('index')}');
-</script>
+    <link rel="stylesheet" href="__STATIC__/kindeditor/default/default.css" />
+    <script charset="utf-8" src="__STATIC__/kindeditor/kindeditor-min.js"></script>
+    <script charset="utf-8" src="__STATIC__/kindeditor/zh_CN.js"></script>
+    <script type="text/javascript" charset="utf-8">
+         KindEditor.ready(function(K) {
+                var upload_picture_ad_img = K.editor({
+                    allowFileManager: true,
+                    uploadJson: "{:U('File/uploadPicture',array('save_path'=>'ad_img'))}"
+                });
+                K('#upload_picture_ad_img').click(function () {
+                    upload_picture_ad_img.loadPlugin('image', function () {
+                        upload_picture_ad_img.plugin.imageDialog({
+                            showRemote: false,
+                            clickFn: function (url, title, width, height, border, align, error) {
+                                if (!error) {
+                                    $('.img-ad-img').html(
+                                            '<div class="upload-pre-item"><img src="__ROOT__' + url + '"/></div>'
+                                    );
+                                    $('#ad_img_value').val(url);
+                                    upload_picture_ad_img.hideDialog();
+                                }
+                            }
+                        });
+                    });
+                });
+            });
+        //广告高亮
+        highlight_subnav("{:U('index')}");
+    </script>
 </block>

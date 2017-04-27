@@ -1179,7 +1179,7 @@ function getZdzxCityCount(array $city_zdzx, $city_id){
 }
 
 /**
- * 某个地区精品专线统计
+ * 某个城市精品专线统计
  * @param $local_area
  * @param $city_id
  * @return mixed
@@ -1208,6 +1208,65 @@ function getZdzxAreaCount($local_area, $city_id){
     return $cache;
 }
 
+//某个城市落地配统计
+//function getLdpCount($city_id){
+//    $cache_key = 'ldp_' . $city_id . '_province';
+//    $cache = S($cache_key);
+//    if(!false){
+//        $map = array(
+//            'location_c' => $city_id,
+//            'status' => 1,
+//            'category_id' => 3
+//        );
+//        $res = M('Document')->field('location_p,count(*) as count')->where($map)->group('location_p')->select();
+//        if($res){
+//            foreach($res as $val){
+//                $res_arr[$val['location_p']] = $val['count'];
+//            }
+//        }
+//        $local_area = getNextPca();
+//        foreach($local_area as $key => $val){
+//            $local_area[$key]['title'] = $val['name'] . '落货';
+//            $local_area[$key]['sum'] = $res_arr[$val['id']] ? $res_arr[$val['id']] : 0;
+//        }
+//        $cache = $local_area;
+//        S($cache_key, $cache, 7200);
+//    }
+//    return $cache;
+//}
+
+//省份落地配统计
+function getLdpCount(){
+    $cache_key = 'ldp_province_count';
+    $cache = S($cache_key);
+    if(!false){
+        $map = array(
+            'status' => 1,
+            'category_id' => 3
+        );
+        $res = M('Document')->field('location_p,count(*) as count')->where($map)->group('location_p')->select();
+        if($res){
+            foreach($res as $val){
+                $res_arr[$val['location_p']] = $val['count'];
+            }
+        }
+        $local_area = getNextPca();
+        foreach($local_area as $key => $val){
+            $local_area[$key]['title'] = $val['name'] . '落货';
+            $local_area[$key]['sum'] = $res_arr[$val['id']] ? $res_arr[$val['id']] : 0;
+        }
+        $cache = $local_area;
+        S($cache_key, $cache, 7200);
+    }
+    return $cache;
+}
+
+/**
+ * 获取某个城市某个直达专线的物流id
+ * @param $city_id
+ * @param $zdzx_id
+ * @return array|mixed
+ */
 function getZdzxJpzxIds($city_id, $zdzx_id){
     $cache_key = 'zdzx_' . $city_id . '_' . $zdzx_id;
     $cache = S($cache_key);
@@ -1222,6 +1281,31 @@ function getZdzxJpzxIds($city_id, $zdzx_id){
                 $cache[] = $val['wuliu_id'];
             }
             S($cache_key, $cache, 7200);
+        }else{
+            return false;
+        }
+    }
+    return $cache;
+}
+
+/**
+ * 获取分类下的banner
+ * @param $category_id
+ * @return bool|mixed
+ */
+function getCateBanner($category_id){
+    $cache_key = 'banner_'.$category_id;
+    $cache = S($cache_key);
+    if(!$cache){
+        $map  = array(
+            'status' => 1,
+            'position' => $category_id
+        );
+        $cache = M('Ad')->where($map)->order('position asc,sort desc,id desc')->select();
+        if($cache){
+            S($cache_key, $cache, 43200); //3600*12
+        }else{
+            return false;
         }
     }
     return $cache;

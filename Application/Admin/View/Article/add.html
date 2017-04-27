@@ -48,6 +48,16 @@
                         <include file="Public:pca" project="destination" />
                     </div>
                 </div>
+                <div class="form-item cf">
+                    <label class="item-label">选择分类<span class="check-tips">（选择分类）</span></label>
+                    <div class="controls">
+                        <select name="type">
+                            <volist name="Think.config.CONFIG_TYPE_LIST" id="type">
+                                <option value="{$key}">{$type}</option>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
             </if>
             <div class="form-item cf">
                 <label class="item-label">详细地址<span class="check-tips">（详细地址）</span></label>

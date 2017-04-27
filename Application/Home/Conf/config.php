@@ -103,6 +103,8 @@ return array(
         '/^list-([2-7]{1})-([0-9]{1,2})-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&zx=:2&p=:3&order=:4',
         '/^list-([2-7]{1})-([0-9]{1,2})-p([0-9]+)$/' => 'Index/index?category=:1&zx=:2&p=:3',
         '/^list-([2-7]{1})-([0-9]{1,2})$/' => 'Index/index?category=:1&zx=:2',
+        '/^list-([2-7]{1})-([0-9]{6})-p([0-9]+)$/' => 'Index/index?category=:1&ldp_p=:2&p=:3',
+        '/^list-([2-7]{1})-([0-9]{6})$/' => 'Index/index?category=:1&ldp_p=:2',
         '/^list-([2-7]{1})-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&p=:2&order=:3',
         '/^list-([2-7]{1})-p([0-9]+)$/' => 'Index/index?category=:1&p=:2',
         '/^list-([2-7]{1})$/' => 'Index/index?category=:1',

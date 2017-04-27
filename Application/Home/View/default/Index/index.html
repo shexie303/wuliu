@@ -1,6 +1,19 @@
 <include file="Public/header"/>
     <div id="banner"><!-- banner广告横幅 -->
-
+        <notempty name="banner">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                <foreach name="banner" item="val">
+                    <div class="swiper-slide">
+                        <a href="{$val.ad_url}" title="{$val.ad_title}">
+                            <img src="{$val.ad_img}" alt="{$val.ad_title}" style="width: 960px">
+                        </a>
+                    </div>
+                </foreach>
+                </div>
+                <div class="pagination"></div>
+            </div>
+        </notempty>
     </div>
     <div id="filter">
         <notempty name="minor">
@@ -33,7 +46,6 @@
             </ul>
         </div>
     </div>
-
     <!-- 内容  -->
     <div id="main">
         <div class="listerouter">

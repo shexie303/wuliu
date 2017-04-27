@@ -23,9 +23,12 @@ class AdController extends AdminController {
     public function index(){
         /* 获取广告列表 */
         $map  = array('status' => array('gt', -1));
-        $list = M('Ad')->where($map)->order('id asc')->select();
-
+        $list = M('Ad')->where($map)->order('position asc,sort desc,id desc')->select();
         $this->assign('list', $list);
+
+        $cate = getNextCategory(0);
+        $this->assign('cate',$cate);
+
         $this->meta_title = '广告管理';
         $this->display();
     }
@@ -49,7 +52,10 @@ class AdController extends AdminController {
                 $this->error($Ad->getError());
             }
         } else {
+            $cate = getNextCategory(0);
+            $this->assign('cate',$cate);
             $this->assign('info',null);
+
             $this->meta_title = '新增广告';
             $this->display('edit');
         }
@@ -81,6 +87,10 @@ class AdController extends AdminController {
                 $this->error('广告位不存在');
             }
             $this->assign('info', $info);
+
+            $cate = getNextCategory(0);
+            $this->assign('cate',$cate);
+
             $this->meta_title = '编辑广告';
             $this->display();
         }

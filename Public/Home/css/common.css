@@ -520,3 +520,27 @@ dd.formbutton:focus{border-color:#000;}
 .disabled_style{
     background:#f5f5f5;
 }
+.swiper-container {
+    height: 180px;
+    width: 960px;
+}
+.pagination {
+    position: absolute;
+    left: 0;
+    text-align: right;
+    bottom:5px;
+    width: 100%;
+}
+.swiper-pagination-switch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: #999;
+    box-shadow: 0px 1px 2px #555 inset;
+    margin: 8px 4px;
+    cursor: pointer;
+}
+.swiper-active-switch {
+    background: #fff;
+}

@@ -16,7 +16,7 @@
         </notempty>
     </div>
     <div id="filter">
-        <notempty name="minor">
+        <notempty name="minor.data">
             <dl class="selitem">
                 <dt></dt>
                 <dd row="2">
@@ -61,16 +61,16 @@
                                 <div class="tuanitem-item-border"></div>
                             </a>
                             <div class="tuanitem-meta">
-                                <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/15572">
-                                    <img alt="{$val.title}" src="http://www.chawuliu.com/uploads/page/2015/0404/15/551f96e8f40cd9d665cfbf7bbd3834f7accbeaeea423b.jpg">
+                                <a class="tuanitem-meta-img" href="{:logistics_url(1,$val['id'])}">
+                                    <img alt="{$val.title}" src="{$val.cover_id|get_cover='path'}" />
                                 </a>
                                 <div class="tuanitem-meta-title">
-                                    <a target="_blank" href="http://www.chawuliu.com/detail/15572" title="{$val.title}" class="c_b">{$val.title}</a>
+                                    <a href="{:logistics_url(1,$val['id'])}" title="{$val.title}" class="c_b">{$val.title}</a>
                                 </div>
                             </div>
                             <div class="gobuy">
                                 <div class="nprice"><img src="__IMG__/phone.png" class="mr5">{$val.contact}</div>
-                                <a target="_blank" href="http://www.chawuliu.com/detail/15572" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
+                                <a href="{:logistics_url(1,$val['id'])}" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
                                 <div class="c"></div>
                             </div>
                             <div class="hot_des">
@@ -86,7 +86,6 @@
         </div>
         <div class="page mt40 mb40">
             {$page}
-            <!--<div id="pagation"><a href="/?page=2">上一页</a><a href="/?page=1">1</a><a href="/?page=2">2</a><span class="current">3</span><a href="/?page=4">下一页</a></div>-->
         </div>
     </div>
 <include file="Public/footer"/>

@@ -1,33 +1,213 @@
-<extend name="Base/common"/>
+<include file="Public/header"/>
+    <div id="main">
+        <div class="listerouter">
+            <div class="fl left">
+                <div class="left_item pl15">
+                    <div class="page_title" style="height: auto">{$info.title}</div>
+                    <div class="linkman_msg">
+                        <span><img src="__IMG__/phone.png" class="mr5" data-bd-imgshare-binded="1">{$info.contact}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span><img src="__IMG__/address.png" class="mr5" data-bd-imgshare-binded="1">{$info.address}</span>
+                    </div>
+                    <div style="height:340px;">
+                        <div class="fl" style="width:440px;">
+                            <div style="position:relative;">
+                                <!--<img src="__IMG__/vip.png" class="vip-img" style="top:7px;left:-3px;" data-bd-imgshare-binded="1">-->
+                                <eq name="info.vip" value="2"><img src="__IMG__/tuijian.png" class="vip-img" style="top:7px;left:-3px;" data-bd-imgshare-binded="1"></eq>
+                                <eq name="info.vip" value="3"><img src="__IMG__/vip.png" class="vip-img" style="top:7px;left:-3px;" data-bd-imgshare-binded="1"></eq>
+                                <img class="mt10 mb10" src="{$info.cover_id|get_cover='path'}" width="440px" height="312px" data-bd-imgshare-binded="1" />
+                            </div>
 
-<block name="header">
-    <header class="jumbotron subhead" id="overview">
-		<div class="container">
-			<h2>{$info.title}</h2>
-			<p>
-				<span  class="pull-left">
-					<span class="author">{$info.uid|get_username}</span>
-					<span> 发表于 {$info.create_time|date='Y-m-d H:i',###}</span>
-				</span>
-				<span class="pull-right">
-					<article:prev name="prev" info="info">
-                        <a href="{:U('?id='.$prev['id'])}">上一篇</a>
-                    </article:prev>
-                    <article:next name="next" info="info">
-                        <a href="{:U('?id='.$next['id'])}">下一篇</a>
-                    </article:next>
-				</span>
-			</p>
-		</div>
-	</header>
-</block>
+                        </div>
+                        <div class="fr mr15 deal-info mb20" style="position:relative;">
+                            <div class="mt10">
+                                <span>二维码名片分享</span>
+                                <img src="http://qr.liantu.com/api.php?bg=ffffff&amp;fg=000000&amp;gc=000000&amp;el=l&amp;w=132&amp;m=2&amp;text={$info.url}" width="132px" height="132px" data-bd-imgshare-binded="1">
+                            </div>
+                            <div class="mt5">
+                                <script type="text/javascript" charset="utf-8" src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js"></script>
+                                <script>
+                                    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"{$info.title}","bdMini":"1","bdMiniList":["mshare","weixin","kaixin001","tqf","tieba","douban","tsohu","taobao","baidu","mail"], "bdPic":"{:logistics_url(1,'/')}{$info.cover_id|get_cover='path'}", "bdStyle":"1","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["qzone","tsina","tqq"],"viewText":"分享：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","sqq","tqq"]}};
+                                </script>
+                                <div class="c"></div>
+                            </div>
+                            <div class="hot_count"><strong>{$info.view}</strong>&nbsp;浏览</div>
+                            <div class="bdsharebuttonbox bdshare-button-style1-16" id="bdsharebuttonbox" style="padding:5px 0px 0px 10px; margin-top:10px; border-top:1px solid #ededed;">
+                                <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间" style="color:#333">空间</a>
+                                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博" style="color:#333">微博</a>
+                                <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博" style="color:#333">腾讯微博</a>
+                            </div>
+                            <div class="time mt10"><i>发布时间: </i>{$info.create_time|date='Y-m-d H:i',###}</div>
 
-<block name="body">
-    <div class="span9 main-content">
-        <!-- Contents
-        ================================================== -->
-        <section id="contents">{$info.content}</section>
-        <hr/>
-        {:hook('documentDetailAfter',$info)}
+                        </div>
+                        <div class="c"></div>
+                    </div>
+                </div>
+                <div class="left_item mt10">
+                    <h2 class="item_title" style="text-align:left;">
+                        <a class="item_detail" id="item_detail" href="#item_detail">详情信息</a>
+                    </h2>
+                    <div id="baidu_map" style="width:100%;height:400px;"></div>
+                    <div class="ml15 mt10 mb10 mr15" style="overflow:hidden;font-size:16px;font-family:microsoft yahei,sans serif;">
+                        {$info.content}
+                        <p style="color:#FF8500;">
+                            <eq name="info.vip_zh" value="游客">
+                                联系我时，请说是{:C('WEB_SITE_TITLE')}看到的，谢谢！
+                            <else />
+                                本会员已升级为{$info.vip_zh}，联系我时，请说是在{:C('WEB_SITE_TITLE')}看到的，谢谢！
+                            </eq>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="fr right">
+                <!-- 有信息 -->
+                <div class="right_item right_item_no">
+                    <h2 class="item_title">推荐查看其它精品专线信息</h2>
+                    <div>
+                        <div class="tuanitem_mini">
+                            <img src="__IMG__/vip.png" class="vip-img" data-bd-imgshare-binded="1">
+                            <a class="tuanitem-item">
+                                <div class="tuanitem-item-border"></div>
+                            </a>
+                            <div class="tuanitem-meta">
+                                <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/20477">
+
+                                    <img alt="【嘉泰物流】上海至合肥往返专线（中转安徽全境）" src="http://www.chawuliu.com/uploads/page/2017/0306/14/58bd022ab6a999d665cfbf7bbd3834f7accbeaeea423b.png" data-bd-imgshare-binded="1">
+                                </a>
+                                <div class="tuanitem-meta-title">
+                                    <a target="_blank" href="http://www.chawuliu.com/detail/20477" title="【嘉泰物流】上海至合肥往返专线（中转安徽全境）" class="c_b">【嘉泰物流】上海至合肥往返专线（中转安徽全境）</a>
+                                </div>
+                            </div>
+                            <div class="gobuy">
+                                <span class="nprice"><img src="__IMG__/phone.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">18918194338</span>
+                                <a target="_blank" href="http://www.chawuliu.com/detail/20477" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px" data-bd-imgshare-binded="1"></a>
+                                <div class="c"></div>
+                            </div>
+                            <div class="hot_des">
+                                <div class="fl"><img src="__IMG__/address.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">上海市嘉定区浏翔公路纬</div>
+                                <div class="fr"><strong>109</strong>人推荐</div>
+                                <div class="c"></div>
+                            </div>
+                        </div>
+                        <div class="tuanitem_mini">
+                            <img src="__IMG__/vip.png" class="vip-img" data-bd-imgshare-binded="1">
+                            <a class="tuanitem-item">
+                                <div class="tuanitem-item-border"></div>
+                            </a>
+                            <div class="tuanitem-meta">
+                                <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/20061">
+
+                                    <img alt="【利钦物流】上海至宁波、慈溪、余姚、奉化专线（浙江全境）" src="http://www.chawuliu.com/uploads/page/2016/0722/11/579192530d7bb9d665cfbf7bbd3834f7accbeaeea423b.jpg" data-bd-imgshare-binded="1">
+                                </a>
+                                <div class="tuanitem-meta-title">
+                                    <a target="_blank" href="http://www.chawuliu.com/detail/20061" title="【利钦物流】上海至宁波、慈溪、余姚、奉化专线（浙江全境）" class="c_b">【利钦物流】上海至宁波、慈溪、余姚、奉化专线（浙江全境）</a>
+                                </div>
+                            </div>
+                            <div class="gobuy">
+                                <span class="nprice"><img src="__IMG__/phone.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">13818882958</span>
+                                <a target="_blank" href="http://www.chawuliu.com/detail/20061" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px" data-bd-imgshare-binded="1"></a>
+                                <div class="c"></div>
+                            </div>
+                            <div class="hot_des">
+                                <div class="fl"><img src="__IMG__/address.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">上海市嘉定区敬学路199号</div>
+                                <div class="fr"><strong>65</strong>人推荐</div>
+                                <div class="c"></div>
+                            </div>
+                        </div>
+                        <div class="tuanitem_mini">
+                            <img src="__IMG__/vip.png" class="vip-img" data-bd-imgshare-binded="1">
+                            <a class="tuanitem-item">
+                                <div class="tuanitem-item-border"></div>
+                            </a>
+                            <div class="tuanitem-meta">
+                                <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/19838">
+
+                                    <img alt="【锦沸物流】上海至台州、路桥、黄岩、椒江、临海、三门、温岭、玉环专线（辐射浙江全境）" src="http://www.chawuliu.com/uploads/page/2016/0605/11/5753a38bd6deb9d665cfbf7bbd3834f7accbeaeea423b.jpg" data-bd-imgshare-binded="1">
+                                </a>
+                                <div class="tuanitem-meta-title">
+                                    <a target="_blank" href="http://www.chawuliu.com/detail/19838" title="【锦沸物流】上海至台州、路桥、黄岩、椒江、临海、三门、温岭、玉环专线（辐射浙江全境）" class="c_b">【锦沸物流】上海至台州、路桥、黄岩、椒江、临海、三门、温岭、玉环专线（辐射浙江全境）</a>
+                                </div>
+                            </div>
+                            <div class="gobuy">
+                                <span class="nprice"><img src="__IMG__/phone.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">021-67654322</span>
+                                <a target="_blank" href="http://www.chawuliu.com/detail/19838" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px" data-bd-imgshare-binded="1"></a>
+                                <div class="c"></div>
+                            </div>
+                            <div class="hot_des">
+                                <div class="fl"><img src="__IMG__/address.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">上海市松江区新车公路281</div>
+                                <div class="fr"><strong>30</strong>人推荐</div>
+                                <div class="c"></div>
+                            </div>
+                        </div>
+                        <div class="tuanitem_mini">
+                            <img src="__IMG__/vip.png" class="vip-img" data-bd-imgshare-binded="1">
+                            <a class="tuanitem-item">
+                                <div class="tuanitem-item-border"></div>
+                            </a>
+                            <div class="tuanitem-meta">
+                                <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/19577">
+
+                                    <img alt="【才邦物流】上海至南宁、柳州、桂林专线（广西全境）" src="http://www.chawuliu.com/uploads/page/2016/0507/12/572d764b52a539d665cfbf7bbd3834f7accbeaeea423b.jpg" data-bd-imgshare-binded="1">
+                                </a>
+                                <div class="tuanitem-meta-title">
+                                    <a target="_blank" href="http://www.chawuliu.com/detail/19577" title="【才邦物流】上海至南宁、柳州、桂林专线（广西全境）" class="c_b">【才邦物流】上海至南宁、柳州、桂林专线（广西全境）</a>
+                                </div>
+                            </div>
+                            <div class="gobuy">
+                                <span class="nprice"><img src="__IMG__/phone.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">021-64346779</span>
+                                <a target="_blank" href="http://www.chawuliu.com/detail/19577" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px" data-bd-imgshare-binded="1"></a>
+                                <div class="c"></div>
+                            </div>
+                            <div class="hot_des">
+                                <div class="fl"><img src="__IMG__/address.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">上海市松江区茸华路1233号</div>
+                                <div class="fr"><strong>11</strong>人推荐</div>
+                                <div class="c"></div>
+                            </div>
+                        </div>
+                        <div class="tuanitem_mini">
+                            <img src="__IMG__/vip.png" class="vip-img" data-bd-imgshare-binded="1">
+                            <a class="tuanitem-item">
+                                <div class="tuanitem-item-border"></div>
+                            </a>
+                            <div class="tuanitem-meta">
+                                <a target="_blank" class="tuanitem-meta-img" href="http://www.chawuliu.com/detail/19884">
+
+                                    <img alt="【交渝物流】上海至成都、重庆专线（中转四川全境）" src="http://www.chawuliu.com/uploads/page/2016/0613/19/575e936ccba699d665cfbf7bbd3834f7accbeaeea423b.jpg" data-bd-imgshare-binded="1">
+                                </a>
+                                <div class="tuanitem-meta-title">
+                                    <a target="_blank" href="http://www.chawuliu.com/detail/19884" title="【交渝物流】上海至成都、重庆专线（中转四川全境）" class="c_b">【交渝物流】上海至成都、重庆专线（中转四川全境）</a>
+                                </div>
+                            </div>
+                            <div class="gobuy">
+                                <span class="nprice"><img src="__IMG__/phone.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">18817729928</span>
+                                <a target="_blank" href="http://www.chawuliu.com/detail/19884" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px" data-bd-imgshare-binded="1"></a>
+                                <div class="c"></div>
+                            </div>
+                            <div class="hot_des">
+                                <div class="fl"><img src="__IMG__/address.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">松江区茸华公路1233号车新</div>
+                                <div class="fr"><strong>10</strong>人推荐</div>
+                                <div class="c"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c"></div>
+            </div>
+            <div class="c"></div>
+        </div>
     </div>
-</block>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=dNcVKmvUBgsfAh2IKy72RTWYVtlrEpvf" type="text/javascript"></script>
+    <script type="text/javascript">
+        // 百度地图API功能
+        var map = new BMap.Map("baidu_map");
+        // 创建地址解析器实例
+        var myGeo = new BMap.Geocoder();
+        // 将地址解析结果显示在地图上,并调整地图视野
+        myGeo.getPoint("{$info.address}", function(point){
+            if (point) {
+                map.centerAndZoom(point, 16);
+                map.addOverlay(new BMap.Marker(point));
+            }
+        },'');
+    </script>
+<include file="Public/footer"/>

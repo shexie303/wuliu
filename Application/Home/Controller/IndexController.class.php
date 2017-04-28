@@ -8,6 +8,7 @@
 // +----------------------------------------------------------------------
 
 namespace Home\Controller;
+use Admin\Model\MemberModel;
 
 /**
  * 文档模型控制器
@@ -84,15 +85,13 @@ class IndexController extends HomeController {
         /* 获取当前分类列表 */
 
         $Document = D('Document');
-        //$list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, $order);
-        $list = $Document->page($p, 1)->lists($category['id'], $ext, $order);
+        $list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, $order);
 
         $order_uri = $uri. 'p'. $p. '-';
         $this->assign('order_uri', $order_uri);
 
         if($list){
-            //$page = new \Think\LogisticsPage($list['count'], $category['list_row'], $uri);
-            $page = new \Think\LogisticsPage($list['count'], 1, $uri);
+            $page = new \Think\LogisticsPage($list['count'], $category['list_row'], $uri);
             $page->setConfig('theme','%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%');
             /* 模板赋值并渲染模板 */
             $this->assign('list', $list['data']);
@@ -118,6 +117,13 @@ class IndexController extends HomeController {
 		if(!$info){
 			$this->error($Document->getError());
 		}
+        $info['url'] = urlencode(logistics_url(1,$info['id']));
+
+        $user_model = new MemberModel();
+        $user = $user_model->getUserInfo($info['uid']);
+        $info['vip'] = $user['vip'];
+        $info['vip_zh'] = vipZh($user['vip']);
+
 		/* 分类信息 */
 		$category = $this->category($info['category_id']);
 

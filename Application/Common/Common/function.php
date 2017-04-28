@@ -896,11 +896,18 @@ function get_link($link_id = null, $field = 'url'){
  * @author huajie <banhuajie@163.com>
  */
 function get_cover($cover_id, $field = null){
+    $default = C('TMPL_PARSE_STRING.__IMG__').'/default.jpg';
     if(empty($cover_id)){
-        return false;
+        return $default;
     }
-    $picture = M('Picture')->where(array('status'=>1))->getById($cover_id);
-    return empty($field) ? $picture : $picture[$field];
+    $cache_key = 'cover_' . $cover_id . '_' . $field;
+    $cache = S($cache_key);
+    if(!$cache){
+        $picture = M('Picture')->where(array('status'=>1))->getById($cover_id);
+        $cache = empty($field) ? $picture : ($picture[$field] ? $picture[$field] : $default);
+        S($cache_key, $cache, 21600);
+    }
+    return $cache;
 }
 
 /**

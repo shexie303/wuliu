@@ -65,6 +65,16 @@ class IndexController extends HomeController {
                 $uri .= $ldp_p.'-';
                 $ext['l_province'] = $ldp_p;
             }
+        }else{
+            $minor['name'] = '选择分类';
+            $minor['data'] = getNextCategory($category['id'], $this->city['parent_id']);
+            $this->assign('minor', $minor);
+            $cate_id = I('get.cate_id', 0);
+            $this->assign('zx', $cate_id);
+            if($cate_id){
+                $uri .= $cate_id.'-';
+                $ext['cate_id'] = $cate_id;
+            }
         }
         $order = I('get.order', 1);
         if(!in_array($order, array(1,2,3))){

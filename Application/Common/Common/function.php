@@ -1119,6 +1119,7 @@ function getNextCategory($cate_id = 0, $province_id = 0){
         if(!$cache){
             return false;
         }
+        $new = array();
         if($cate_id == 2){
             $s_cate = array();
             foreach($cache as $val){
@@ -1139,11 +1140,24 @@ function getNextCategory($cate_id = 0, $province_id = 0){
             }
             $cache = $s_cate;
         }elseif($cate_id == 0){
-            $new = array();
             foreach($cache as $val){
                 $new[$val['id']] = $val;
             }
             $cache = $new;
+        }elseif(in_array($cate_id, array(4,5,6))){
+            $where = array(
+                'status' => 1,
+                'category_id' => $cate_id
+            );
+            $res = M('Document')->field('cate_id,count(*) as count')->where($where)->group('cate_id')->select();
+            if($res){
+                foreach($res as $val){
+                    $new[$val['cate_id']] = $val['count'];
+                }
+            }
+            foreach($cache as $k => $v){
+                $cache[$k]['sum'] = $new[$v['id']]['count'] ? $new[$v['id']]['count'] : 0;
+            }
         }
         S($cache_key, $cache, 21600);
     }

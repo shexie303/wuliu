@@ -347,12 +347,14 @@ class UserController extends AdminController {
         $map['uid'] =   array('in',$id);
         switch ( strtolower($method) ){
             case 'forbiduser':
+                $this->forbidDocument($map);
                 $this->forbid('Member', $map );
                 break;
             case 'resumeuser':
                 $this->resume('Member', $map );
                 break;
             case 'deleteuser':
+                $this->forbidDocument($map);
                 $this->delete('Member', $map );
                 break;
             default:
@@ -416,4 +418,9 @@ class UserController extends AdminController {
         return $error;
     }
 
+    //禁用用户后该用户发布的信息都被禁
+    private function forbidDocument($map){
+        $data['status'] = 0;
+        M('Document')->where($map)->save($data);
+    }
 }

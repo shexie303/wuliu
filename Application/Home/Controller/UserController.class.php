@@ -65,7 +65,7 @@ class UserController extends HomeController {
 
 	/* 登录页面 */
 	public function login($username = '', $password = '', $verify = ''){
-        header('Location: ' . U('Admin/Public/login'));
+        //header('Location: ' . U('Admin/Public/login'));
 		if(IS_POST){ //登录验证
 			/* 检测验证码 */
 			if(!check_verify($verify)){

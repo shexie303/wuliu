@@ -1201,7 +1201,7 @@ function getZdzxCityCount(array $city_zdzx, $city_id){
     $cache_key = 'zdzx_' . $city_id;
     $cache = S($cache_key);
     if(!$cache){
-        $sql = "SELECT zdzx_id,count(*) as count from logistics_jpzx left join logistics_document on logistics_jpzx.wuliu_id = logistics_document.id  where city_id={$city_id} and status = 1 GROUP BY zdzx_id";
+        $sql = "SELECT zdzx_id,count(*) as count from logistics_jpzx left join logistics_document on logistics_jpzx.wuliu_id = logistics_document.id  where city_id={$city_id} and status = 1 and category_id = 2 GROUP BY zdzx_id";
         $jpzx = M('Jpzx')->query($sql);
         $jpzx_arr = array();
         if($jpzx){

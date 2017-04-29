@@ -26,6 +26,7 @@
 
         <!-- 主导航 -->
         <ul class="main-nav">
+            <li class><a href="{:C('SITE_DOMAIN')}">前台</a></li>
             <volist name="__MENU__.main" id="menu">
                 <li class="{$menu.class|default=''}"><a href="{$menu.url|U}">{$menu.title}</a></li>
             </volist>

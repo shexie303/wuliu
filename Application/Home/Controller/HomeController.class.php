@@ -79,8 +79,7 @@ class HomeController extends Controller {
     //404错误定向
     public function _404() {
         send_http_status(404);
-        //$this->display(C('URL_404_REDIRECT'));
-        echo '404';
+        $this->display('Public/404');
         exit();
     }
 }

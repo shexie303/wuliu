@@ -1182,6 +1182,8 @@ function logistics_url($domain = 1, $uri){
         $domain = 'http://' . $_SERVER['HTTP_HOST'];
     }elseif($domain == 2){
         $domain = C('SITE_G3_DOMAIN');
+    }elseif($domain == 3){
+        $domain = C('SITE_ADMIN_DOMAIN');
     }else{
         return '';
     }

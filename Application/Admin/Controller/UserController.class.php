@@ -24,7 +24,7 @@ class UserController extends AdminController {
         //更新到期会员状态
         D('Member')->updateOverdueVip();
         if(GROUP_ID > 1){
-            header('Location: ' . U('User/recharge'));
+            header('Location: ' . U('User/info'));
         }
         $nickname       =   I('nickname');
         $map['status']  =   array('egt',0);

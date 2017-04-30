@@ -42,6 +42,11 @@ class Verify {
         $this->config   =   array_merge($this->config, $config);
     }
 
+    public function setConfig($name,$value){
+        if(isset($this->config[$name])) {
+            $this->config[$name]    =   $value;
+        }
+    }
     /**
      * 使用 $this->name 获取配置
      * @param  string $name 配置名称

@@ -134,6 +134,8 @@ return array(
 
         'city' => array('City/index'), //切换城市页
         'login' => array('User/login'), //登录页
+        'register' => array('User/register'), //登录页
+        'verify' => array('User/verify'), //登录页
         '/^([0-9]+)$/' => 'Index/detail?id=:1', //详情页
     ),
 );

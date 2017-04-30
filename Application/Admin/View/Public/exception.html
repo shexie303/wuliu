@@ -7,7 +7,7 @@
 html{ overflow-y: scroll; }
 body{ background: #fff; font-family: '微软雅黑'; color: #333; font-size: 16px; }
 img{ border: 0; }
-.error{ padding: 24px 48px; }
+.error{ padding: 24px 48px;text-align: center }
 .face{ font-size: 100px; font-weight: normal; line-height: 120px; margin-bottom: 12px; }
 h1{ font-size: 32px; line-height: 48px; }
 .error .content{ padding-top: 10px}
@@ -21,7 +21,7 @@ h1{ font-size: 32px; line-height: 48px; }
 </head>
 <body>
 <div class="error">
-<p class="face">:(</p>
+<p class="face"></p>
 <h1><?php echo strip_tags($e['message']);?></h1>
 <div class="content">
 <?php if(isset($e['file'])) {?>
@@ -46,8 +46,6 @@ h1{ font-size: 32px; line-height: 48px; }
 <?php }?>
 </div>
 </div>
-<div class="copyright">
-<p><a title="官方网站" href="http://www.yuanteng56.com">源腾物流</a>信息平台<sup><?php echo ONETHINK_VERSION ?></sup>  [ 让物流变得更简单 ]</p>
-</div>
+
 </body>
 </html>

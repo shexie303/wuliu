@@ -65,7 +65,7 @@ class UserController extends HomeController {
 
 	/* 登录页面 */
 	public function login($username = '', $password = '', $verify = ''){
-        //header('Location: ' . U('Admin/Public/login'));
+        header('Location: ' . logistics_url(3,'login'));
 		if(IS_POST){ //登录验证
 			/* 检测验证码 */
 			if(!check_verify($verify)){
@@ -112,6 +112,8 @@ class UserController extends HomeController {
 	/* 验证码，用于登录和注册 */
 	public function verify(){
 		$verify = new \Think\Verify();
+        $verify->setConfig('useCurve',false);
+        $verify->setConfig('length',4);
 		$verify->entry(1);
 	}
 

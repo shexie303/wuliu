@@ -6,13 +6,13 @@
                 <h2>欢迎注册查物流网</h2>
             </div>
             <div class="ucon login">
-                <form id="signup-user-form" method="post" action="{:logistics_url(1,'register')}" class="validator">
+                <form id="signup-user-form" method="post" action="" class="validator">
                     <table width="100%">
                         <tbody>
                             <tr>
                                 <td style="width:70px;" class="input_title">用户名:</td>
-                                <td style="width:205px;"><input type="text" size="30" name="nickname" id="signup-nickname" class="i_text" value=""></td>
-                                <td><div class="Validform_checktip">昵称由3-30个字符组成</div></td>
+                                <td style="width:205px;"><input type="text" size="30" name="username" id="signup-nickname" class="i_text" value=""></td>
+                                <td><div class="Validform_checktip">用户名由3-30个字符组成</div></td>
                             </tr>
                             <tr>
                                 <td style="width:70px;" class="input_title">密码:</td>
@@ -21,18 +21,18 @@
                             </tr>
                             <tr>
                                 <td style="width:70px;" class="input_title">确认密码:</td>
-                                <td style="width:205px;"><input type="password" size="30" name="password2" id="signup-password-confirm" class="i_text" ></td>
+                                <td style="width:205px;"><input type="password" size="30" name="repassword" id="signup-re-password" class="i_text" ></td>
                                 <td><div class="Validform_checktip">确认密码</div></td>
                             </tr>
                             <tr>
                                 <td style="width:70px;" class="input_title">邮箱:</td>
-                                <td style="width:205px;"><input type="text" size="30" name="mail" id="signup-email-address" class="i_text" value="" ></td>
+                                <td style="width:205px;"><input type="text" size="30" name="email" id="signup-email" class="i_text" value="" ></td>
                                 <td><div class="Validform_checktip">邮箱地址用于密码找回(可选填)</div></td>
                             </tr>
                             <tr>
                                 <td style="width:70px;" class="input_title">验证码:</td>
                                 <td style="width:220px;">
-                                    <input type="text" size="30" name="vcaptcha" ajaxurl="http://www.chawuliu.com/verifyValue" id="signup-mobile" class="i_text i_yanz" maxlength="4" style="text-transform:uppercase;">
+                                    <input type="text" size="30" name="verify"  id="signup-mobile" class="i_text i_yanz" maxlength="4">
                                     <span class="captcha_box">
                                         <img src="{:logistics_url(1,'verify')}" style="width:100px;height:30px;order: 0; cursor: pointer;" alt="看不清？点击刷新" id="refresh_captcha">
                                     </span>
@@ -41,7 +41,7 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td colspan="2"><input type="submit" value="注册" name="commit" id="signup-submit" class="input input42"></td>
+                                <td colspan="2"><input type="button" value="注册" name="commit" id="signup-submit" class="input input42"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -54,6 +54,7 @@
         </div>
         <div class="clear"></div>
     </div>
+    <script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
     <script>
         $(function(){
             $('#refresh_captcha').click(function(){
@@ -65,7 +66,49 @@
                 }
             });
             $('#signup-submit').click(function(){
-               return false;
+
+                var nickname = $.trim($('#signup-nickname').val());
+                if(nickname.length == 0){
+                    layer.msg('用户名不能为空');
+                    return false;
+                }else if(nickname.length < 3 || nickname.length > 30){
+                    layer.msg('用户名长度不正确');
+                    return false;
+                }
+
+                var password = $.trim($('#signup-password').val());
+                var reg_pass = /^[0-9a-zA-Z]{6,20}$/;
+                if(!reg_pass.test(password)){
+                    layer.msg('密码格式不正确');
+                }
+
+                var re_password = $.trim($('#signup-re-password').val());
+                if(password != re_password){
+                    layer.msg('两次密码输入不一致');
+                    return false
+                }
+
+                var email = $.trim($('#signup-email').val());
+                if(email.length > 0){
+                    var reg_email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+                    if(!reg_email.test(email)){
+                        layer.msg('邮箱格式不正确');
+                        return false;
+                    }
+                }
+                var target = "{:logistics_url(1,'register')}";
+                var query = $('#signup-user-form').serialize();
+
+                $.post(target,query).success(function(data){
+                    console.log(data);
+                    if (data.status==1){
+                        layer.msg('恭喜您，注册成功！页面即将跳转~~');
+                    }else{
+                        layer.msg(data.info);
+                        $('#refresh_captcha').click();
+                    }
+                });
+                return false;
             });
         });
     </script>

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50086
 File Encoding         : 65001
 
-Date: 2017-05-01 21:43:21
+Date: 2017-05-01 23:06:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -664,6 +664,7 @@ INSERT INTO `logistics_auth_group_access` VALUES ('19', '2');
 INSERT INTO `logistics_auth_group_access` VALUES ('20', '2');
 INSERT INTO `logistics_auth_group_access` VALUES ('22', '2');
 INSERT INTO `logistics_auth_group_access` VALUES ('23', '1');
+INSERT INTO `logistics_auth_group_access` VALUES ('24', '2');
 
 -- ----------------------------
 -- Table structure for logistics_auth_rule
@@ -1364,6 +1365,7 @@ INSERT INTO `logistics_member` VALUES ('15', 'shexie93', '0', '', '789', '', '',
 INSERT INTO `logistics_member` VALUES ('16', '李二蛋', '0', '/Uploads/Picture/license/2017-04-15/58f1cea124349.png', '李二蛋', '13333333333', '13333333333', '', '', '/Uploads/Picture/driver_license/2017-04-15/58f1ce9a03259.png', '0', '0', '0', '30', '10', '0', '0', '2130706433', '1492249556', '1');
 INSERT INTO `logistics_member` VALUES ('17', '二蛋', '0', '131111111111111111', '12314563xx', '123sdf', '13302134562', '', '/Uploads/Picture/driver_license/2017-04-15/58f1ce9a03259.png', '/Uploads/Picture/license/2017-04-15/58f1cea124349.png', '2', '1492099200', '1499961600', '90', '34', '0', '0', '2130706433', '1493636650', '1');
 INSERT INTO `logistics_member` VALUES ('23', 'shexie777', '0', '', '', '', '', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_member` VALUES ('24', 'shexie667', '0', '', '', '', '', '', '', '', '0', '0', '0', '0', '0', '2130706433', '1493651097', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for logistics_menu
@@ -5407,7 +5409,7 @@ CREATE TABLE `logistics_ucenter_member` (
   `id` int(10) unsigned NOT NULL auto_increment COMMENT '用户ID',
   `username` char(16) NOT NULL COMMENT '用户名',
   `password` char(32) NOT NULL COMMENT '密码',
-  `email` char(32) NOT NULL COMMENT '用户邮箱',
+  `email` char(32) default '' COMMENT '用户邮箱',
   `mobile` char(15) NOT NULL COMMENT '用户手机',
   `reg_time` int(10) unsigned NOT NULL default '0' COMMENT '注册时间',
   `reg_ip` bigint(20) NOT NULL default '0' COMMENT '注册IP',
@@ -5417,9 +5419,9 @@ CREATE TABLE `logistics_ucenter_member` (
   `status` tinyint(4) default '0' COMMENT '用户状态',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`),
-  KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='用户表';
+  KEY `status` (`status`),
+  KEY `email` USING BTREE (`email`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of logistics_ucenter_member
@@ -5442,6 +5444,7 @@ INSERT INTO `logistics_ucenter_member` VALUES ('15', 'shexie93', '74512fad441da1
 INSERT INTO `logistics_ucenter_member` VALUES ('16', '李二蛋', '74512fad441da1d65478e0698d82386a', '123@22.com', '', '1490949511', '2130706433', '1492249556', '2130706433', '1490949511', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('17', '二蛋', '74512fad441da1d65478e0698d82386a', '123@123.com', '', '1491792443', '2130706433', '1493636650', '2130706433', '1491792443', '1');
 INSERT INTO `logistics_ucenter_member` VALUES ('23', 'shexie777', '74512fad441da1d65478e0698d82386a', '', '', '1493536930', '2130706433', '0', '0', '1493536930', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('24', 'shexie667', '74512fad441da1d65478e0698d82386a', '', '', '1493651097', '2130706433', '0', '0', '1493651097', '1');
 
 -- ----------------------------
 -- Table structure for logistics_ucenter_setting

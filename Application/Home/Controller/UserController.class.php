@@ -124,7 +124,7 @@ class UserController extends HomeController {
 	 */
 	private function showRegError($code = 0){
 		switch ($code) {
-			case -1:  $error = '用户名长度必须在16个字符以内！'; break;
+			case -1:  $error = '用户名长度必须在3-30个字符以内！'; break;
 			case -2:  $error = '用户名被禁止注册！'; break;
 			case -3:  $error = '用户名被占用！'; break;
 			case -4:  $error = '密码长度必须在6-30个字符之间！'; break;

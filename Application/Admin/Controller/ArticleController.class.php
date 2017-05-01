@@ -433,7 +433,8 @@ class ArticleController extends AdminController {
      */
     public function edit(){
         if(GROUP_ID > 1){
-            USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+            //USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+            $this->error('抱歉，请联系客服编辑信息');
         }
         //获取左边菜单
         $this->getMenu();
@@ -519,7 +520,8 @@ class ArticleController extends AdminController {
         if(GROUP_ID > 1){
             $limit = checkCategoryPublish($_POST['category_id']);
             if($limit !== true){
-                USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+//                USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
+                $this->error('抱歉，请联系客服编辑信息');
             }
         }
         $data = I('post.');

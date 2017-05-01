@@ -70,7 +70,7 @@
                         <ul id="sub-sch-menu" class="nav-list hidden">
                             <li><a href="javascript:;" value="">所有</a></li>
                             <li><a href="javascript:;" value="1">正常</a></li>
-                            <li><a href="javascript:;" value="0">禁用</a></li>
+                            <li><a href="javascript:;" value="0">未审核</a></li>
                             <!--<li><a href="javascript:;" value="2">待审核</a></li>-->
                         </ul>
                     </div>
@@ -123,8 +123,6 @@
                             <if condition="GROUP_ID lt 2">
                                 <a href="{:U('article/edit',array('cate_id'=>$cate_id,'id'=>$data['id']))}">编辑</a>
                                 <a href="{:U('article/setstatus',array('status'=>-1,'ids'=>$data['id']))}">删除</a>
-                            <elseif condition="USER_VIP gt 1" />
-                                <a href="{:U('article/edit',array('cate_id'=>$cate_id,'id'=>$data['id']))}">编辑</a>
                             </if>
                         </td>
                     </tr>

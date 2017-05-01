@@ -76,6 +76,9 @@ class IndexController extends HomeController {
                 $uri .= $cate_id.'-';
                 $ext['cate_id'] = $cate_id;
             }
+            if($category['id'] == 6){
+                $ext['l_city'] = $this->city['id'];
+            }
         }
         $order = I('get.order', 1);
         if(!in_array($order, array(1,2,3))){
@@ -147,10 +150,13 @@ class IndexController extends HomeController {
             $ext['keywords'] = $keywords;
             $this->assign('search_keywords', $keywords);
         }
-        $ext['l_city'] = $this->city['id'];
-        $list = $Document->page($p, 1)->lists($category['id'], $ext, 1);
+        if(in_array($category['id'],array(2,6))){
+            $ext['l_city'] = $this->city['id'];
+        }
+
+        $list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, 1);
         if($list){
-            $page = new \Think\LogisticsPage($list['count'], 1, $uri);
+            $page = new \Think\LogisticsPage($list['count'], $category['list_row'], $uri);
 
             /* 模板赋值并渲染模板 */
             $this->assign('list', $list);

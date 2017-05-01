@@ -40,8 +40,8 @@
                 <li class="manager">你好，<em title="{:session('user_auth.username')}">{:session('user_auth.username')}</em></li>
                 <li><a href="{:C('SITE_DOMAIN')}">前台访问</a></li>
                 <li><a href="{:U('User/updatePassword')}">修改密码</a></li>
-                <if condition="GROUP_ID eq 2">
-                    <li><a href="{:U('User/recharge')}">会员充值</a></li>
+                <if condition="GROUP_ID gt 1">
+                    <!--<li><a href="{:U('User/recharge')}">会员充值</a></li>-->
                     <li><a href="{:U('User/info')}">完善资料</a></li>
                 </if>
                 <li><a href="{:U('Public/logout')}">退出</a></li>

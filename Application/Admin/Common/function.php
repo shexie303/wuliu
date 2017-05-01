@@ -95,9 +95,9 @@ function get_status_title($status = null){
     }
     switch ($status){
         case -1 : return    '已删除';   break;
-        case 0  : return    '禁用';     break;
-        case 1  : return    '正常';     break;
-        case 2  : return    '待审核';   break;
+        case 0  : return    '待审核';     break;
+        case 1  : return    '已发布';     break;
+        case 2  : return    '未审核';   break;
         default : return    false;      break;
     }
 }
@@ -162,12 +162,12 @@ function get_config_group($group=0){
  * @return array
  *
  *  array(
- *      array('id'=>1,'title'=>'标题','status'=>'1','status_text'=>'正常')
+ *      array('id'=>1,'title'=>'标题','status'=>'1','status_text'=>'已发布')
  *      ....
  *  )
  *
  */
-function int_to_string(&$data,$map=array('status'=>array(1=>'正常',-1=>'删除',0=>'禁用',2=>'未审核',3=>'草稿'))) {
+function int_to_string(&$data,$map=array('status'=>array(1=>'已发布',-1=>'删除',0=>'待审核',2=>'未审核',3=>'草稿'))) {
     if($data === false || $data === null ){
         return $data;
     }

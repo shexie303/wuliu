@@ -38,8 +38,9 @@ class IndexController extends HomeController {
             //有地区分类则显示
             $local_area = getNextPca($this->city['id'], 3);
             if($local_area){
-                $local_area = getZdzxAreaCount($local_area, $this->city['id']);
-                $this->assign('local_area', $local_area);
+                $third['name'] = '所在区域';
+                $third['data'] = getZdzxAreaCount($local_area, $this->city['id']);
+                $this->assign('third', $third);
             }
 
             $l_area = I('get.l_area', 0);
@@ -66,15 +67,34 @@ class IndexController extends HomeController {
                 $uri .= $ldp_p.'-';
                 $ext['l_province'] = $ldp_p;
             }
-        }else{
+        }elseif($category['id'] == 6){
+            //二级分类数据
             $minor['name'] = '选择分类';
-            $minor['data'] = getNextCategory($category['id'], $this->city['parent_id']);
+            $cate_data = getNextCategory($category['id'], $this->city['parent_id']);
+            $minor['data'] = getCateCount($cate_data, $this->city['id']);
             $this->assign('minor', $minor);
+
+            //二级分类
             $cate_id = I('get.cate_id', 0);
             $this->assign('zx', $cate_id);
+
             if($cate_id){
                 $uri .= $cate_id.'-';
                 $ext['cate_id'] = $cate_id;
+                //三级分类数据
+                $third['name'] = '选择小类';
+                $third_data = getNextCategory($cate_id);
+                if($third_data){
+                    $third['data'] = getCateCount($third_data, $this->city['id'], 'c_id', $cate_id);
+                    $this->assign('third', $third);
+                }
+            }
+            //三级分类
+            $c_id = I('get.c_id', 0);
+            $this->assign('l_area', $c_id);
+            if($c_id){
+                $uri .= $c_id.'-';
+                $ext['c_id'] = $c_id;
             }
             if($category['id'] == 6){
                 $ext['l_city'] = $this->city['id'];

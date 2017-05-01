@@ -27,13 +27,13 @@
                 </dd>
             </dl>
         </notempty>
-        <notempty name="local_area">
+        <notempty name="third.data">
             <dl class="selitem">
                 <dt></dt>
                 <dd row="2">
-                    <a class="<eq name='l_area' value="0">selectt</eq>" href="{:logistics_url(1,'list-'.$category['id'].'-'.$zx)}">所在区域：</a>
-                    <foreach name="local_area" item="val">
-                        <a href="{:logistics_url(1,'list-'.$category['id'].'-'.$zx.'-'.$val['id'])}" class="<eq name='l_area' value="$val['id']">selectt</eq>">{$val.name}<span>({$val.sum})</span></a>
+                    <a class="<eq name='l_area' value="0">selectt</eq>" href="{:logistics_url(1,'list-'.$category['id'].'-'.$zx)}">{$third.name}：</a>
+                    <foreach name="third.data" item="val">
+                        <a href="{:logistics_url(1,'list-'.$category['id'].'-'.$zx.'-'.$val['id'])}" class="<eq name='l_area' value="$val['id']">selectt</eq>">{$val.title}<span>({$val.sum})</span></a>
                     </foreach>
                 </dd>
             </dl>
@@ -62,7 +62,7 @@
                             </a>
                             <div class="tuanitem-meta">
                                 <a class="tuanitem-meta-img" href="{:logistics_url(1,$val['id'])}">
-                                    <img alt="{$val.title}" src="{$val.cover_id|get_cover='path'}" />
+                                    <img alt="{$val.title}" src="{$val.cover_id|get_cover='path'}" onerror="javascript:this.src='__IMG__/default.jpg';"/>
                                 </a>
                                 <div class="tuanitem-meta-title">
                                     <a href="{:logistics_url(1,$val['id'])}" title="{$val.title}" class="c_b">{$val.title}</a>

@@ -1091,7 +1091,7 @@ function getNextPca($parent_id = 0, $type = 1){
     $cache_key = 'pca_' . $parent_id . '_' . $type;
     $cache = S($cache_key);
     if(!$cache){
-        $cache = M('Pca')->field('id,name,pinyin,hot')->where(array('parent_id'=>$parent_id,'type'=>$type))->select();
+        $cache = M('Pca')->field('id,name,name as title,pinyin,hot')->where(array('parent_id'=>$parent_id,'type'=>$type))->select();
         if($cache){
             S($cache_key, $cache, 21600);
         }else{
@@ -1151,20 +1151,6 @@ function getNextCategory($cate_id = 0, $province_id = 0){
                 $new[$val['id']] = $val;
             }
             $cache = $new;
-        }elseif(in_array($cate_id, array(4,5,6))){
-            $where = array(
-                'status' => 1,
-                'category_id' => $cate_id
-            );
-            $res = M('Document')->field('cate_id,count(*) as count')->where($where)->group('cate_id')->select();
-            if($res){
-                foreach($res as $val){
-                    $new[$val['cate_id']] = $val['count'];
-                }
-            }
-            foreach($cache as $k => $v){
-                $cache[$k]['sum'] = $new[$v['id']]['count'] ? $new[$v['id']]['count'] : 0;
-            }
         }
         S($cache_key, $cache, 21600);
     }
@@ -1330,6 +1316,36 @@ function getZdzxJpzxIds($city_id, $zdzx_id){
     return $cache;
 }
 
+function getCateCount($cate_data, $city_id = 0, $id_name = 'cate_id', $cate_id = 0, $category_id = 6){
+    $cache_key = $city_id . '_' . $id_name . '_' . $category_id . '_' . $cate_id;
+    $cache = S($cache_key);
+    if(!$cache){
+        $where = array(
+            'status' => 1,
+        );
+        if($city_id){
+            $where['location_c'] = $city_id;
+        }
+        if($id_name == 'cate_id'){
+            $where['category_id'] = $category_id;
+        }else{
+            $where['cate_id'] = $cate_id;
+        }
+        $res = M('Document')->field($id_name.',count(*) as count')->where($where)->group($id_name)->select();
+        $new = array();
+        if($res){
+            foreach($res as $val){
+                $new[$val[$id_name]] = $val['count'];
+            }
+        }
+        foreach($cate_data as $k => $v){
+            $cate_data[$k]['sum'] = $new[$v['id']]['count'] ? $new[$v['id']]['count'] : 0;
+        }
+        $cache = $cate_data;
+        S($cache_key, $cache, 7200);
+    }
+    return $cache;
+}
 /**
  * 获取分类下的banner
  * @param $category_id

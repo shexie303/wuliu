@@ -113,6 +113,12 @@ return array(
         '/^list-(3)-([0-9]{6})$/' => 'Index/index?category=:1&ldp_p=:2',
         /*列表页落地配二级开始*/
 
+        /*列表页除2、3分类以外的三级分类开始*/
+        '/^list-([4-6]){1}-([0-9]+)-([0-9]+)-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&cate_id=:2&c_id=:3&p=:4&order=:5',
+        '/^list-([4-6]){1}-([0-9]+)-([0-9]+)-p([0-9]+)$/' => 'Index/index?category=:1&cate_id=:2&c_id=:3&p=:4',
+        '/^list-([4-6]){1}-([0-9]+)-([0-9]+)$/' => 'Index/index?category=:1&cate_id=:2&c_id=:3',
+        /*列表页除2、3分类以外的三级开始*/
+
         /*列表页除2、3分类以外的二级分类开始*/
         '/^list-([4-6]){1}-([0-9]+)-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&cate_id=:2&p=:3&order=:4',
         '/^list-([4-6]){1}-([0-9]+)-p([0-9]+)$/' => 'Index/index?category=:1&cate_id=:2&p=:3',

@@ -66,6 +66,9 @@ class DocumentModel extends Model{
         if($ext['cate_id']){
             $map[$this->tablePrefix.'document.cate_id'] = $ext['cate_id'];
         }
+        if($ext['c_id']){
+            $map[$this->tablePrefix.'document.c_id'] = $ext['c_id'];
+        }
         if($ext['l_province']){
             $map[$this->tablePrefix.'document.location_p'] = $ext['l_province'];
         }

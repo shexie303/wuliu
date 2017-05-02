@@ -1,0 +1,116 @@
+<include file="Public/header"/>
+    <div id="banner"><!-- banner广告横幅 -->
+        <notempty name="banner">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                <foreach name="banner" item="val">
+                    <div class="swiper-slide">
+                        <a href="{$val.ad_url}" title="{$val.ad_title}">
+                            <img src="{$val.ad_img}" alt="{$val.ad_title}" style="width: 960px">
+                        </a>
+                    </div>
+                </foreach>
+                </div>
+                <div class="pagination"></div>
+            </div>
+        </notempty>
+    </div>
+    <div id="filter">
+        <dl class="selitem">
+            <dt></dt>
+            <dd row="2">
+                <a class="<eq name='zx' value="0">selectt</eq>" href="{:logistics_url(1,'list-'.$category['id'])}">始发地：</a>
+                <span class="pca">
+                    <include file="Public:pca" project="location" />
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="<eq name='zx' value="0">selectt</eq>" href="{:logistics_url(1,'list-'.$category['id'])}">目的地：</a>
+                 <span class="pca">
+                    <include file="Public:pca" project="destination" />
+                </span>
+                <button class="input input42" id="pca_search" style="height: 30px;line-height: 30px">查询</button>
+            </dd>
+        </dl>
+        <div class="sortbar"><!-- 排序方式 -->
+            <ul class="sortor">
+                <li class="<eq name='order_type' value="1">cur</eq>"><a href="{:logistics_url(1,$order_uri.'1')}">默认排序</a></li>
+                <li class="<eq name='order_type' value="2">cur</eq>"><a href="{:logistics_url(1,$order_uri.'2')}">人气排序<i class="arrw arrwdown"></i></a></li>
+                <li class="<eq name='order_type' value="3">cur</eq>"><a href="{:logistics_url(1,$order_uri.'3')}">更新排序<i class="arrw arrwdown"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 内容  -->
+    <div id="main">
+        <div class="listerouter">
+            <div class="lister">
+                <empty name="list">
+                    抱歉！还没有信息,请浏览其它的分类
+                <else />
+                    <foreach name="list" item="val">
+                        <div class="tuanitem">
+                            <eq name="val.vip" value="2"><img src="__IMG__/tuijian.png" class="vip-img"></eq>
+                            <eq name="val.vip" value="3"><img src="__IMG__/vip.png" class="vip-img"></eq>
+                            <a class="tuanitem-item">
+                                <div class="tuanitem-item-border"></div>
+                            </a>
+                            <div class="tuanitem-meta">
+                                <a class="tuanitem-meta-img" href="{:logistics_url(1,$val['id'])}">
+                                    <img alt="{$val.title}" src="{$val.cover_id|get_cover='path'}" onerror="javascript:this.src='__IMG__/default.jpg';"/>
+                                </a>
+                                <div class="tuanitem-meta-title">
+                                    <a href="{:logistics_url(1,$val['id'])}" title="{$val.title}" class="c_b">{$val.title}</a>
+                                </div>
+                            </div>
+                            <div class="gobuy">
+                                <div class="nprice"><img src="__IMG__/phone.png" class="mr5">{$val.contact}</div>
+                                <a href="{:logistics_url(1,$val['id'])}" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
+                                <div class="c"></div>
+                            </div>
+                            <div class="hot_des">
+                                <div class="fl"><img src="__IMG__/address.png" class="mr5">{$val.address|msubstr=0,14}</div>
+                                <div class="fr"><strong>{$val.view}</strong>人浏览</div>
+                                <div class="c"></div>
+                            </div>
+                        </div>
+                    </foreach>
+                </empty>
+                <div class="c"></div>
+            </div>
+        </div>
+        <div class="page mt40 mb40">
+            {$page}
+        </div>
+    </div>
+    <script>
+        $(function(){
+           $('#pca_search').click(function(){
+               var uri = 'list-7';
+               var location_p = $('#location_p').val();
+               var location_c = $('#location_c').val();
+               var location_a = $('#location_a').val();
+               var destination_p = $('#destination_p').val();
+               var destination_c = $('#destination_c').val();
+               var destination_a = $('#destination_a').val();
+               if(location_p > 0){
+                   uri += '-'+location_p;
+                   if(location_c > 0){
+                       uri += '-'+location_c;
+                       if(location_a > 0){
+                           uri += '-'+location_a;
+                       }
+                   }
+               }
+               if(destination_p > 0){
+                   uri += '-'+destination_p;
+                   if(destination_c > 0){
+                       uri += '-'+destination_c;
+                       if(destination_a > 0){
+                           uri += '-'+destination_a;
+                       }
+                   }
+               }
+               window.location.href = '{:logistics_url(1,'/')}/'+uri+'.html';
+           })
+        });
+    </script>
+<include file="Public/footer"/>

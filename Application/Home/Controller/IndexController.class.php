@@ -23,7 +23,6 @@ class IndexController extends HomeController {
         $this->assign('category', $category);
         //分页使用
         $uri = 'list-'.$category['id'].'-';
-
         $ext = array();
         if($category['id'] == 2){ //精品专线
             $zx = I('get.zx', 0);
@@ -99,6 +98,63 @@ class IndexController extends HomeController {
             if($category['id'] == 6){
                 $ext['l_city'] = $this->city['id'];
             }
+        }elseif($category['id'] == 7){
+            $province = getNextPca(0);
+            $this->assign('province', $province);
+
+            $l_province = I('location_p', 0);
+            if($l_province){
+                $ext['l_province'] = $l_province;
+                $uri .= $l_province .'-';
+                $this->assign('location_p', $l_province);
+
+                $location_city = getNextPca($l_province, 2);
+                $this->assign('location_city', $location_city);
+
+                $l_city = I('location_c', 0);
+                if($l_city){
+                    $ext['l_city'] = $l_city;
+                    $uri .= $l_city .'-';
+                    $this->assign('location_c', $l_city);
+
+                    $location_area = getNextPca($l_city, 3);
+                    $this->assign('location_area', $location_area);
+
+                    $l_area = I('location_a', 0);
+                    if($l_area){
+                        $ext['l_area'] = $l_area;
+                        $uri .= $l_area .'-';
+                        $this->assign('location_a', $l_area);
+                    }
+                }
+            }
+
+            $d_province = I('destination_p', 0);
+            if($d_province){
+                $ext['d_province'] = $d_province;
+                $uri .= $d_province .'-';
+                $this->assign('destination_p', $d_province);
+
+                $destination_city = getNextPca($d_province, 2);
+                $this->assign('destination_city', $destination_city);
+
+                $d_city = I('destination_c', 0);
+                if($d_city){
+                    $ext['d_city'] = $d_city;
+                    $uri .= $d_city .'-';
+                    $this->assign('destination_c', $d_city);
+
+                    $destination_area = getNextPca($d_city, 3);
+                    $this->assign('destination_area', $destination_area);
+
+                    $d_area = I('destination_a', 0);
+                    if($d_area){
+                        $ext['d_area'] = $d_area;
+                        $uri .= $d_area .'-';
+                        $this->assign('destination_a', $d_area);
+                    }
+                }
+            }
         }
         $order = I('get.order', 1);
         if(!in_array($order, array(1,2,3))){
@@ -109,7 +165,9 @@ class IndexController extends HomeController {
 
         $Document = D('Document');
         $list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, $order);
-
+        if(!$p){
+            $p = 1;
+        }
         $order_uri = $uri. 'p'. $p. '-';
         $this->assign('order_uri', $order_uri);
 
@@ -201,4 +259,32 @@ class IndexController extends HomeController {
 			$this->error('分类不存在或被禁用！');
 		}
 	}
+
+    public function getNextArea(){
+        $id = I('id', 0);
+        $type = I('type', 0);
+        $return = array(
+            'status' => 0,
+            'data' => '',
+            'info' => ''
+        );
+        if(!$id){
+            $return['status'] = 1;
+            $return['info'] = '参数错误！';
+            $this->ajaxReturn($return);
+        }
+        if(!in_array($type, array(1,2))){
+            $return['status'] = 1;
+            $return['info'] = '参数错误！';
+            $this->ajaxReturn($return);
+        }
+        $area = getNextPca($id, $type + 1);
+        if($area){
+            $return['data'] = $area;
+        }else{
+            $return['status'] = 1;
+            $return['info'] = '暂无下级地区！';
+        }
+        $this->ajaxReturn($return);
+    }
 }

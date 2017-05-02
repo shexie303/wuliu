@@ -78,6 +78,15 @@ class DocumentModel extends Model{
         if($ext['l_area']){
             $map[$this->tablePrefix.'document.location_a'] = $ext['l_area'];
         }
+        if($ext['d_province']){
+            $map[$this->tablePrefix.'document.destination_p'] = $ext['d_province'];
+        }
+        if($ext['d_city']){
+            $map[$this->tablePrefix.'document.destination_c'] = $ext['d_city'];
+        }
+        if($ext['d_area']){
+            $map[$this->tablePrefix.'document.destination_a'] = $ext['d_area'];
+        }
         if($ext['keywords']){
             $map[$this->tablePrefix.'document.title|'.$this->tablePrefix.'document.address'] = array('like', '%'.$ext['keywords'].'%');
         }

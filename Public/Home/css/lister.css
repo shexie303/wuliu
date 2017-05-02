@@ -375,3 +375,5 @@ p.quote_n strong,p.quote_n a{color:#285eb5;font-weight:700;padding:0 5px}
 #pagation span.current{border-color:#f96105;background:#f96105;color:#fff;}
 #pagation a:hover{background-color:#FFA37F;border-color:#FFA37F;color:#fff; }
 #pagation span.PageMore{border:0;font-size:12px;font-weight:700;}
+
+.pca-select{width: 80px;height: 30px;line-height: 30px;margin-right: 10px;}

@@ -1,0 +1,58 @@
+<select name="[project]_p" id="[project]_p" class="pca-select"  onchange="pac_select(this,1)">
+    <option value="">请选择</option>
+    <foreach name="province" item="val">
+        <option value="{$val.id}" <eq name="[project]_p" value="$val.id">selected</eq> >{$val.name}</option>
+    </foreach>
+</select>
+<select name="[project]_c" id="[project]_c" class="pca-select"  onchange="pac_select(this,2)" >
+<option value="">请选择</option>
+<notempty name="[project]_city">
+    <foreach name="[project]_city" item="val">
+        <option value="{$val.id}" <eq name="[project]_c" value="$val.id">selected</eq> >{$val.name}</option>
+    </foreach>
+</notempty>
+</select>
+<select name="[project]_a" id="[project]_a" class="pca-select" >
+<option value="">请选择</option>
+<notempty name="[project]_area">
+    <foreach name="[project]_area" item="val">
+        <option value="{$val.id}" <eq name="[project]_a" value="$val.id">selected</eq> >{$val.name}</option>
+    </foreach>
+</notempty>
+</select>
+
+<script>
+    function pac_select(object,level){
+        var obj = $('#'+object.id);
+        var id = obj.val();
+        if(id > 0){
+            $.post("{:logistics_url(1,'getNextArea')}", {id : id, type : level}, function(e){
+                if(e.status == 0){
+                    if(level == 1){
+                        obj.siblings().html('<option value="0">请选择</option>')
+                    }else{
+                        obj.next().html('<option value="0">请选择</option>')
+
+                    }
+                    $.each(e.data, function(n, item){
+                        obj.next().append('<option value="'+item.id+'">'+item.name+'</option>')
+                    });
+                    obj.next().show();
+                }else{
+                    if(level == 1){
+                        obj.siblings().html('<option value="0">请选择</option>')
+                    }else{
+                        obj.next().html('<option value="0">请选择</option>')
+                    }
+                }
+            });
+        }else{
+            if(level == 1){
+                obj.siblings().html('<option value="0">请选择</option>')
+            }else{
+                obj.next().html('<option value="0">请选择</option>')
+
+            }
+        }
+    }
+</script>

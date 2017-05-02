@@ -1122,7 +1122,7 @@ function getNextCategory($cate_id = 0, $province_id = 0){
         if($cate_id){
             $map['pid'] = $cate_id;
         }
-        $cache = M('Category')->field('id,name,title,list_row,province_id')->where($map)->order('sort asc')->select();
+        $cache = M('Category')->field('id,name,title,list_row,province_id,template_lists')->where($map)->order('sort asc')->select();
         if(!$cache){
             return false;
         }

@@ -8,11 +8,20 @@
         <div class="topbar_bg">
             <div class="topbar">
                 <ul class="topnav">
-                    <li><a href="{:logistics_url(3,'login')}" style="color: #FE8107;">登录</a></li>
+                    <empty name="user_info">
+                        <li><a href="{:logistics_url(1,'login')}" style="color: #FE8107;">登录</a></li>
+                        <li class="sepline">|</li>
+                        <li><a href="{:logistics_url(1,'register')}">注册</a></li>
+                    <else />
+                        <li>您好，{$user_info.username}</li>
+                        <li class="sepline">|</li>
+                        <li><a href="{:logistics_url(3,'/')}">内容管理</a></li>
+                        <li class="sepline">|</li>
+                        <li><a href="{:logistics_url(1,'logout')}">退出</a></li>
+                    </empty>
+
                     <li class="sepline">|</li>
-                    <li><a href="{:logistics_url(1,'register')}">注册</a></li>
-                    <li class="sepline">|</li>
-                    <li><a rel="sidebar" href="#" onclick="jQuery.addFavorite('http://www.yusnteng56.com/','源腾物流信息平台');return false;">收藏我们</a></li>
+                    <li><a rel="sidebar" href="#" onclick="jQuery.addFavorite('http://www.yuanteng56.com/','源腾物流信息平台');return false;">收藏我们</a></li>
                     <li class="sepline">|</li>
                     <li class="hover_li" onmouseover="this.className='hover'" onmouseout="this.className='hover_li'">
                         <a href="" class="help" target="_blank">帮助中心<span class="down"></span></a>
@@ -44,7 +53,7 @@
             }
         </script>
         <div class="w">
-            <a href="{:logistics_url(1,'/')}" id="logo"><img alt="【查物流】让天下货主与物流实现更高效的链接！" src="__IMG__/logo2.gif"></a>
+            <a href="{:logistics_url(1,'/')}" id="logo"><img alt="【源腾物流信息平台】让物流更简单！" src="__IMG__/logo2.gif"></a>
             <div id="switch_city">
                 <strong class="city_name">{$city_info.name}</strong>
                 <a href="{:logistics_url(1,'city')}">[切换分站]</a>
@@ -63,7 +72,7 @@
                 <ul id="nav" class="nav">
                     <foreach name="main_nav" item="val">
                         <li>
-                            <a href="{:logistics_url(1,'list-'.$val['id'])}" <eq name="Think.get.category" value="$val['id']">class="current"</eq> ><span>{$val.title}</span></a>
+                            <a href="{:logistics_url(1,'list-'.$val['id'])}" <eq name="category.id" value="$val['id']">class="current"</eq> ><span>{$val.title}</span></a>
                         </li>
                     </foreach>
                 </ul>

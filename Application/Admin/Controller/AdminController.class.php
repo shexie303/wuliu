@@ -225,10 +225,10 @@ class AdminController extends Controller {
                 $this->delete($Model, $map, array('success'=>'删除成功','error'=>'删除失败'));
                 break;
             case 0  :
-                $this->forbid($Model, $map, array('success'=>'禁用成功','error'=>'禁用失败'));
+                $this->forbid($Model, $map, array('success'=>'操作成功','error'=>'操作失败'));
                 break;
             case 1  :
-                $this->resume($Model, $map, array('success'=>'启用成功','error'=>'启用失败'));
+                $this->resume($Model, $map, array('success'=>'通过审核','error'=>'操作失败'));
                 break;
             default :
                 $this->error('参数错误');

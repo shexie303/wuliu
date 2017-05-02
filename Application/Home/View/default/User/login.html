@@ -1,89 +1,92 @@
+<include file="Public/header"/>
+<link rel="stylesheet" type="text/css" href="__CSS__/uc.css" media="all">
+<div class="wrap2">
+    <div class="uleft2 ul3">
+        <div class="utit">
+            <h2>欢迎登录源腾物流信息平台网</h2>
+        </div>
+        <div class="ucon login">
+            <form id="signup-user-form" method="post" action="" class="validator">
+                <table width="100%">
+                    <tbody>
+                    <tr>
+                        <td style="width:70px;" class="input_title">用户名:</td>
+                        <td style="width:205px;"><input type="text" size="30" name="username" id="signup-nickname" class="i_text" value=""></td>
+                        <td><div class="Validform_checktip"></div></td>
+                    </tr>
+                    <tr>
+                        <td style="width:70px;" class="input_title">密码:</td>
+                        <td style="width:205px;"><input type="password" size="30" name="password" id="signup-password" class="i_text" value=""></td>
+                        <td><div class="Validform_checktip"></div></td>
+                    </tr>
+                    <tr>
+                        <td style="width:70px;" class="input_title">验证码:</td>
+                        <td style="width:220px;">
+                            <input type="text" size="30" name="verify"  id="signup-verify" class="i_text i_yanz" maxlength="4">
+                            <span class="captcha_box">
+                                <img src="{:logistics_url(1,'verify')}" style="width:100px;height:30px;order: 0; cursor: pointer;" alt="看不清？点击刷新" id="refresh_captcha">
+                            </span>
+                        </td>
+                        <td><div class="Validform_checktip"></div></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="2"><input type="button" value="登录" name="commit" id="signup-submit" class="input input42"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div class="uright2 ur3">
+        <h3>没有源腾物流信息平台网账户？ 请直接 </h3>
+        <p><a href="{:logistics_url(1,'register')}" class="zhuce mt10">注册</a></p>
+    </div>
+    <div class="clear"></div>
+</div>
+<script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+<script>
+    $(function(){
+        $('#refresh_captcha').click(function(){
+            $('#signup-verify').val('');
+            var url = $(this).attr('src');
+            if( url.indexOf('?')>0){
+                $(this).attr("src", url.replace(/\?.*$/,'')+'?'+Math.random());
+            }else{
+                $(this).attr("src", url+'?'+Math.random());
+            }
+        });
 
-<header class="jumbotron subhead" id="overview">
-  <div class="container">
-    <h2>用户登录</h2>
-    <p><span><span class="pull-left"><span>还没有账号? <a href="{:U('User/register')}">立即注册</a></span> </span></p>
-  </div>
-</header>
+        $('#signup-submit').click(function(){
+            var nickname = $.trim($('#signup-nickname').val());
+            if(nickname.length == 0){
+                layer.msg('用户名不能为空');
+                return false;
+            }else if(nickname.length < 3 || nickname.length > 30){
+                layer.msg('用户名长度不正确');
+                return false;
+            }
 
+            var password = $.trim($('#signup-password').val());
+            var reg_pass = /^[0-9a-zA-Z]{6,20}$/;
+            if(!reg_pass.test(password)){
+                layer.msg('密码格式不正确');
+                return false;
+            }
+            var target = "{:logistics_url(1,'login')}";
+            var query = $('#signup-user-form').serialize();
 
-
-<section>
-	<div class="span12">
-        <form class="login-form" action="__SELF__" method="post">
-          <div class="control-group">
-            <label class="control-label" for="inputEmail">用户名</label>
-            <div class="controls">
-              <input type="text" id="inputEmail" class="span3" placeholder="请输入用户名"  ajaxurl="/member/checkUserNameUnique.html" errormsg="请填写1-16位用户名" nullmsg="请填写用户名" datatype="*1-16" value="" name="username">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="inputPassword">密码</label>
-            <div class="controls">
-              <input type="password" id="inputPassword"  class="span3" placeholder="请输入密码"  errormsg="密码为6-20位" nullmsg="请填写密码" datatype="*6-20" name="password">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="inputPassword">验证码</label>
-            <div class="controls">
-              <input type="text" id="inputPassword" class="span3" placeholder="请输入验证码"  errormsg="请填写5位验证码" nullmsg="请填写验证码" datatype="*5-5" name="verify">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label"></label>
-            <div class="controls">
-                <img class="verifyimg reloadverify" alt="点击切换" src="{:U('verify')}" style="cursor:pointer;">
-            </div>
-            <div class="controls Validform_checktip text-warning"></div>
-          </div>
-          <div class="control-group">
-            <div class="controls">
-              <label class="checkbox">
-                <input type="checkbox"> 自动登陆
-              </label>
-              <button type="submit" class="btn">登 陆</button>
-            </div>
-          </div>
-        </form>
-	</div>
-</section>
-
-
-	<script type="text/javascript">
-
-    	$(document)
-	    	.ajaxStart(function(){
-	    		$("button:submit").addClass("log-in").attr("disabled", true);
-	    	})
-	    	.ajaxStop(function(){
-	    		$("button:submit").removeClass("log-in").attr("disabled", false);
-	    	});
-
-
-    	$("form").submit(function(){
-    		var self = $(this);
-    		$.post(self.attr("action"), self.serialize(), success, "json");
-    		return false;
-
-    		function success(data){
-    			if(data.status){
-    				window.location.href = data.url;
-    			} else {
-    				self.find(".Validform_checktip").text(data.info);
-    				//刷新验证码
-    				$(".reloadverify").click();
-    			}
-    		}
-    	});
-
-		$(function(){
-			var verifyimg = $(".verifyimg").attr("src");
-            $(".reloadverify").click(function(){
-                if( verifyimg.indexOf('?')>0){
-                    $(".verifyimg").attr("src", verifyimg+'&random='+Math.random());
+            $.post(target,query).success(function(data){
+                if (data.status==1){
+                    layer.msg('恭喜您，登录成功！页面即将跳转~~');
                 }else{
-                    $(".verifyimg").attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());
+                    layer.msg(data.info);
+                    $('#refresh_captcha').click();
                 }
             });
-		});
-	</script>
+            return false;
+        });
+
+    });
+</script>
+<include file="Public/footer"/>

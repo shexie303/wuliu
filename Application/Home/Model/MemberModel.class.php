@@ -8,6 +8,7 @@
 // +----------------------------------------------------------------------
 
 namespace Home\Model;
+use Admin\Model\AuthGroupModel;
 use Think\Model;
 use User\Api\UserApi;
 
@@ -81,11 +82,14 @@ class MemberModel extends Model{
             'last_login_ip'   => get_client_ip(1),
         );
         $this->save($data);
+        $group = AuthGroupModel::getUserGroup($user['uid']);
 
         /* 记录登录SESSION和COOKIES */
         $auth = array(
             'uid'             => $user['uid'],
             'username'        => get_username($user['uid']),
+            'group_id'        => $group[0]['group_id'],
+            'vip'             => $user['vip'],
             'last_login_time' => $user['last_login_time'],
         );
 

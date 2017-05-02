@@ -91,24 +91,7 @@
                var destination_p = $('#destination_p').val();
                var destination_c = $('#destination_c').val();
                var destination_a = $('#destination_a').val();
-               if(location_p > 0){
-                   uri += '-'+location_p;
-                   if(location_c > 0){
-                       uri += '-'+location_c;
-                       if(location_a > 0){
-                           uri += '-'+location_a;
-                       }
-                   }
-               }
-               if(destination_p > 0){
-                   uri += '-'+destination_p;
-                   if(destination_c > 0){
-                       uri += '-'+destination_c;
-                       if(destination_a > 0){
-                           uri += '-'+destination_a;
-                       }
-                   }
-               }
+               uri += '-'+location_p+'-'+location_c+'-'+location_a+'-'+destination_p+'-'+destination_c+'-'+destination_a
                window.location.href = '{:logistics_url(1,'/')}/'+uri+'.html';
            })
         });

@@ -65,7 +65,9 @@ class UserController extends HomeController {
 
 	/* 登录页面 */
 	public function login($username = '', $password = '', $verify = ''){
-        header('Location: ' . logistics_url(3,'login'));
+        if(is_login()){
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
 		if(IS_POST){ //登录验证
 			/* 检测验证码 */
 			if(!check_verify($verify)){
@@ -79,8 +81,7 @@ class UserController extends HomeController {
 				/* 登录用户 */
 				$Member = D('Member');
 				if($Member->login($uid)){ //登录用户
-					//TODO:跳转到登录前页面
-					$this->success('登录成功！',U('Home/Index/index'));
+					$this->success('登录成功！',$_SERVER['HTTP_REFERER']);
 				} else {
 					$this->error($Member->getError());
 				}
@@ -105,7 +106,7 @@ class UserController extends HomeController {
 			D('Member')->logout();
 			$this->success('退出成功！', U('User/login'));
 		} else {
-			$this->redirect('User/login');
+			$this->redirect('user/login');
 		}
 	}
 

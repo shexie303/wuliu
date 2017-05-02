@@ -41,15 +41,15 @@
 				</gt>
                 <if condition="GROUP_ID gt 1">
                     <if condition="$cate_id eq 7">
-                        <eq name="USER_VIP" value="1">&nbsp;&nbsp;您可以发布20条货源信息。</eq>
+                        <eq name="USER_VIP" value="1">&nbsp;&nbsp;您可以发布20条货源信息。您可以加入推荐或vip会员，发布货源将不受限制。</eq>
                     <else />
                         &nbsp;&nbsp;您在该分类下只有一次发布机会，请谨慎填写信息。
                     </if>
                 </if>
 			</div>
             <if condition="GROUP_ID lt 2">
-                <button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>1))}">启 用</button>
-                <button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>0))}">禁 用</button>
+                <button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>1))}">通过审核</button>
+                <button class="btn ajax-post" target-form="ids" url="{:U("Article/setStatus",array("status"=>0))}">审核不通过</button>
                 <!--<button class="btn ajax-post" target-form="ids" url="{:U("Article/move")}">移 动</button>-->
                 <!--<button class="btn ajax-post" target-form="ids" url="{:U("Article/copy")}">复 制</button>-->
                 <!--<button class="btn ajax-post" target-form="ids" hide-data="true" url="{:U("Article/paste")}">粘 贴</button>-->
@@ -69,7 +69,7 @@
                         <i class="arrow arrow-down"></i>
                         <ul id="sub-sch-menu" class="nav-list hidden">
                             <li><a href="javascript:;" value="">所有</a></li>
-                            <li><a href="javascript:;" value="1">正常</a></li>
+                            <li><a href="javascript:;" value="1">已发布</a></li>
                             <li><a href="javascript:;" value="0">未审核</a></li>
                             <!--<li><a href="javascript:;" value="2">待审核</a></li>-->
                         </ul>

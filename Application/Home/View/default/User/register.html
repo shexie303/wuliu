@@ -3,7 +3,7 @@
     <div class="wrap2">
         <div class="uleft2 ul3">
             <div class="utit">
-                <h2>欢迎注册查物流网</h2>
+                <h2>欢迎注册源腾物流信息平台网</h2>
             </div>
             <div class="ucon login">
                 <form id="signup-user-form" method="post" action="" class="validator">
@@ -49,8 +49,8 @@
             </div>
         </div>
         <div class="uright2 ur3">
-            <h3>已有查物流网账户？ 请直接 </h3>
-            <p><a href="http://www.chawuliu.com/login" class="zhuce mt10">登录</a></p>
+            <h3>已有源腾物流信息平台网账户？ 请直接 </h3>
+            <p><a href="{:logistics_url(1,'login')}" class="zhuce mt10">登录</a></p>
         </div>
         <div class="clear"></div>
     </div>
@@ -80,6 +80,7 @@
                 var reg_pass = /^[0-9a-zA-Z]{6,20}$/;
                 if(!reg_pass.test(password)){
                     layer.msg('密码格式不正确');
+                    return false
                 }
 
                 var re_password = $.trim($('#signup-re-password').val());
@@ -100,7 +101,6 @@
                 var query = $('#signup-user-form').serialize();
 
                 $.post(target,query).success(function(data){
-                    console.log(data);
                     if (data.status==1){
                         layer.msg('恭喜您，注册成功！页面即将跳转~~');
                     }else{

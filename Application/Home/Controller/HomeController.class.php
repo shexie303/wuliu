@@ -69,6 +69,12 @@ class HomeController extends Controller {
         //模块名 方法名
         $this->assign('CONTROLLER_NAME', CONTROLLER_NAME);
         $this->assign('ACTION_NAME', ACTION_NAME);
+
+        //用户信息
+        $user_info = session('user_auth');
+        if($user_info){
+            $this->assign('user_info', $user_info);
+        }
     }
 
 	/* 用户登录检测 */

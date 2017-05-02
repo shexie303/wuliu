@@ -979,7 +979,7 @@ function checkCategoryPublish($cate_id){
         }
         $where['category_id'] = $cate_id;
         $res = M('Document')->where($where)->count();
-        if($res['tp_count'] > $num) return $num + 1;
+        if($res > $num) return $num + 1;
     }
     return true;
 }

@@ -103,58 +103,53 @@ class IndexController extends HomeController {
             $this->assign('province', $province);
 
             $l_province = I('location_p', 0);
-            if($l_province){
+            $l_city = I('location_c', 0);
+            $l_area = I('location_a', 0);
+            $d_province = I('destination_p', 0);
+            $d_city = I('destination_c', 0);
+            $d_area = I('destination_a', 0);
+            if($l_province > 0){
                 $ext['l_province'] = $l_province;
-                $uri .= $l_province .'-';
                 $this->assign('location_p', $l_province);
 
                 $location_city = getNextPca($l_province, 2);
                 $this->assign('location_city', $location_city);
 
-                $l_city = I('location_c', 0);
-                if($l_city){
+                if($l_city > 0){
                     $ext['l_city'] = $l_city;
-                    $uri .= $l_city .'-';
                     $this->assign('location_c', $l_city);
 
                     $location_area = getNextPca($l_city, 3);
                     $this->assign('location_area', $location_area);
 
-                    $l_area = I('location_a', 0);
-                    if($l_area){
+                    if($l_area > 0){
                         $ext['l_area'] = $l_area;
-                        $uri .= $l_area .'-';
                         $this->assign('location_a', $l_area);
                     }
                 }
             }
 
-            $d_province = I('destination_p', 0);
-            if($d_province){
+            if($d_province > 0){
                 $ext['d_province'] = $d_province;
-                $uri .= $d_province .'-';
                 $this->assign('destination_p', $d_province);
 
                 $destination_city = getNextPca($d_province, 2);
                 $this->assign('destination_city', $destination_city);
 
-                $d_city = I('destination_c', 0);
-                if($d_city){
+                if($d_city > 0){
                     $ext['d_city'] = $d_city;
-                    $uri .= $d_city .'-';
                     $this->assign('destination_c', $d_city);
 
                     $destination_area = getNextPca($d_city, 3);
                     $this->assign('destination_area', $destination_area);
 
-                    $d_area = I('destination_a', 0);
-                    if($d_area){
+                    if($d_area > 0){
                         $ext['d_area'] = $d_area;
-                        $uri .= $d_area .'-';
                         $this->assign('destination_a', $d_area);
                     }
                 }
             }
+            $uri .= $l_province .'-'.$l_city .'-'.$l_area .'-'.$d_province .'-'.$d_city .'-'.$d_area .'-';
         }
         $order = I('get.order', 1);
         if(!in_array($order, array(1,2,3))){
@@ -162,14 +157,12 @@ class IndexController extends HomeController {
         }
         $this->assign('order_type', $order);
         /* 获取当前分类列表 */
+        if(!$p) $p = 1;
+        $order_uri = $uri. 'p'. $p. '-';
+        $this->assign('order_uri', $order_uri);
 
         $Document = D('Document');
         $list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, $order);
-        if(!$p){
-            $p = 1;
-        }
-        $order_uri = $uri. 'p'. $p. '-';
-        $this->assign('order_uri', $order_uri);
 
         if($list){
             $page = new \Think\LogisticsPage($list['count'], $category['list_row'], $uri);

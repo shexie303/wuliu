@@ -1,13 +1,27 @@
-
-    <!-- 底部
-    ================================================== -->
-    <!--<footer class="footer">-->
-    <!--</footer>-->
-
-<include file="Public/var"/>
-<block name="script"></block> <!-- 用于加载js代码 -->
-<!-- 页面footer钩子，一般用于加载插件JS文件和JS代码 -->
-{:hook('pageFooter', 'widget')}
-<div class="hidden"><!-- 用于加载统计代码等隐藏元素 -->
-	<block name="hidden"></block>
-</div>
+    <img src="__IMG__/close.png" style="z-index: 25000; height: 20px; width: 20px; position: absolute; top: 15px; right: 10px; display: none;" onclick="closeSortSelect()" id="close_cross">
+    <footer>
+        <section>
+            <div class="plain_bar" style="padding:5px 0px 5px 0px;">
+                <span>全国统一客服热线：</span>
+                <a style="display:inline-block;" href="tel:400-800-7756"><span class="blue_12_label">400-800-7756</span></a>
+                    <span>
+                        <br>© 2015 查物流版权所有<br>
+                        <a style="color:#377ba6" href="http://mp.weixin.qq.com/s?__biz=MjM5OTM3OTQ2MQ==&amp;mid=204346358&amp;idx=1&amp;sn=b&#10;&#9;&#9;&#9;&#9;821194b67fc4e6a702844735cc39222#rd" target="_blank">
+                            <img style="width:100%;margin-top:10px;" src="__IMG__/bottom_guanzhu.jpg">
+                        </a>
+                    </span>
+            </div>
+        </section>
+    </footer>
+    <script>
+        var mySwiper = new Swiper('.swiper-container',{
+            pagination: '.pagination',
+            loop:true,
+            grabCursor: true,
+            paginationClickable: true,
+            autoplay : 2000,
+            speed: 800,
+        })
+    </script>
+</body>
+</html>

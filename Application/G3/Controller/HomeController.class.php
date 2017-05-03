@@ -18,7 +18,7 @@ class HomeController extends Controller {
 
 	/* 空操作，用于输出404页面 */
 	public function _empty(){
-		$this->redirect('Index/index');
+		//$this->redirect('Index/index');
 	}
 
 
@@ -32,6 +32,9 @@ class HomeController extends Controller {
         }
         //
         $http_host = $_SERVER['HTTP_HOST'];
+        //模块名 方法名
+        $this->assign('CONTROLLER_NAME', CONTROLLER_NAME);
+        $this->assign('ACTION_NAME', ACTION_NAME);
     }
 
 	/* 用户登录检测 */

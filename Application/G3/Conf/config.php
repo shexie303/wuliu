@@ -94,4 +94,8 @@ return array(
         'callback' => false, //检测文件是否存在回调函数，如果存在返回文件信息数组
     ), //附件上传配置（文件上传类配置）
 
+    'URL_ROUTER_ON'         =>  true,   // 是否开启URL路由
+    'URL_ROUTE_RULES'       =>  array( // 默认路由规则 针对模块
+        '/^([0-9]+)$/' => 'Index/detail?id=:1', //详情页
+    )
 );

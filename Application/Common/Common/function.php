@@ -896,7 +896,7 @@ function get_link($link_id = null, $field = 'url'){
  * @author huajie <banhuajie@163.com>
  */
 function get_cover($cover_id, $field = null){
-    $default = C('TMPL_PARSE_STRING.__STATIC__').'images/default.jpg';
+    $default = C('TMPL_PARSE_STRING.__STATIC__').'/images/default.jpg';
     if(empty($cover_id)){
         return $default;
     }

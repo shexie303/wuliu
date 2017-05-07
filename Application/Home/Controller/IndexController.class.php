@@ -205,9 +205,15 @@ class IndexController extends HomeController {
 		$map = array('id' => $id);
 		$Document->where($map)->setInc('view');
 
+        //推荐同分类其他数据
+        $Document = D('Document');
+        $ext['id'] = array('neq', $id);
+        $list = $Document->page(1, 5)->lists($category['id'], $ext, 1);
+        
 		/* 模板赋值并渲染模板 */
 		$this->assign('category', $category);
 		$this->assign('info', $info);
+		$this->assign('list', $list);
 		$this->display();
 	}
 

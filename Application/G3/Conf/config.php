@@ -96,6 +96,58 @@ return array(
 
     'URL_ROUTER_ON'         =>  true,   // 是否开启URL路由
     'URL_ROUTE_RULES'       =>  array( // 默认路由规则 针对模块
+        /*列表页开始*/
+
+        /*列表页精品专线二三级分类开始*/
+        '/^list-(2)-([0-9]{1,2})-([0-9]{6})-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&zx=:2&l_area=:3&p=:4&order=:5',
+        '/^list-(2)-([0-9]{1,2})-([0-9]{6})-p([0-9]+)$/' => 'Index/index?category=:1&zx=:2&l_area=:3&p=:4',
+        '/^list-(2)-([0-9]{1,2})-([0-9]{6})$/' => 'Index/index?category=:1&zx=:2&l_area=:3',
+        '/^list-(2)-([0-9]{1,2})-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&zx=:2&p=:3&order=:4',
+        '/^list-(2)-([0-9]{1,2})-p([0-9]+)$/' => 'Index/index?category=:1&zx=:2&p=:3',
+        '/^list-(2)-([0-9]{1,2})$/' => 'Index/index?category=:1&zx=:2',
+        /*列表页精品专线二三级开始*/
+
+        /*列表页落地配二级分类开始*/
+        '/^list-(3)-([0-9]{6})-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&ldp_p=:2&p=:3&order=:3',
+        '/^list-(3)-([0-9]{6})-p([0-9]+)$/' => 'Index/index?category=:1&ldp_p=:2&p=:3',
+        '/^list-(3)-([0-9]{6})$/' => 'Index/index?category=:1&ldp_p=:2',
+        /*列表页落地配二级开始*/
+
+        /*列表页货源分类开始*/
+        '/^list-7(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?(p([0-9]+))?(-)?([1-3]{1})?$/' => 'Index/index?category=7&location_p=:2&location_c=:4&location_a=:6&destination_p=:8&destination_c=:10&destination_a=:12&p=:15&order=:17',
+        /*列表页货源开始*/
+
+        /*列表页除2、3、7分类以外的三级分类开始*/
+        '/^list-([4-6]){1}-([0-9]+)-([0-9]+)-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&cate_id=:2&c_id=:3&p=:4&order=:5',
+        '/^list-([4-6]){1}-([0-9]+)-([0-9]+)-p([0-9]+)$/' => 'Index/index?category=:1&cate_id=:2&c_id=:3&p=:4',
+        '/^list-([4-6]){1}-([0-9]+)-([0-9]+)$/' => 'Index/index?category=:1&cate_id=:2&c_id=:3',
+        /*列表页除2、3、7分类以外的三级开始*/
+
+        /*列表页除2、3、7分类以外的二级分类开始*/
+        '/^list-([4-6]){1}-([0-9]+)-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&cate_id=:2&p=:3&order=:4',
+        '/^list-([4-6]){1}-([0-9]+)-p([0-9]+)$/' => 'Index/index?category=:1&cate_id=:2&p=:3',
+        '/^list-([4-6]){1}-([0-9]+)$/' => 'Index/index?category=:1&cate_id=:2',
+        /*列表页除2、3、7分类以外的二级开始*/
+
+        /*列表页一级分类开始*/
+        '/^list-([2-7]{1})-p([0-9]+)-([1-3]{1})$/' => 'Index/index?category=:1&p=:2&order=:3',
+        '/^list-([2-7]{1})-p([0-9]+)$/' => 'Index/index?category=:1&p=:2',
+        '/^list-([2-7]{1})$/' => 'Index/index?category=:1',
+        /*列表页一级分类结束*/
+
+        /*列表页结束*/
+
+        /*搜索页结束*/
+        '/^search-([2-7]{1})-p([0-9]+)$/' => 'Index/search?category=:1&p=:2',
+        '/^search-([2-7]{1})$/' => 'Index/search?category=:1',
+
+        /*搜索页结束*/
         '/^([0-9]+)$/' => 'Index/detail?id=:1', //详情页
+        'city' => array('City/index'), //切换城市页
+        'login' => array('User/login'), //登录页
+        'register' => array('User/register'), //注册页
+        'logout' => array('User/logout'), //注册页
+        'verify' => array('User/verify'), //验证码
+        'getNextArea' => array('Index/getNextArea'), //pca
     )
 );

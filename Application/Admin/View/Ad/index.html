@@ -32,7 +32,13 @@
 						<td><input class="ids row-selected" type="checkbox" name="id[]" value="{$ad['id']}"> </td>
 						<td>{$ad.id}</td>
 						<td>{$ad.ad_title}</td>
-                        <td>{$cate[$ad['position']]['title']}</td>
+                        <td>
+                            <eq name="ad.position" value="1">
+                                全局
+                            <else/>
+                                {$cate[$ad['position']]['title']}
+                            </eq>
+                        </td>
                         <td>{$ad.sort}</td>
                         <td>
                             <eq name="ad.status" value="1">正常</eq>

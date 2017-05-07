@@ -1351,7 +1351,7 @@ function getCateCount($cate_data, $city_id = 0, $id_name = 'cate_id', $cate_id =
  * @param $category_id
  * @return bool|mixed
  */
-function getCateBanner($category_id){
+function getCateBanner($category_id = 1){
     $cache_key = 'banner_'.$category_id;
     $cache = S($cache_key);
     if(!$cache){
@@ -1359,6 +1359,9 @@ function getCateBanner($category_id){
             'status' => 1,
             'position' => $category_id
         );
+        if($category_id > 1){
+            $map['position'] = array('in', '1,'.$category_id);
+        }
         $cache = M('Ad')->where($map)->order('position asc,sort desc,id desc')->select();
         if($cache){
             S($cache_key, $cache, 43200); //3600*12

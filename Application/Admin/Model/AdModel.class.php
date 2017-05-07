@@ -18,7 +18,7 @@ use Think\Model;
 class AdModel extends Model {
     protected $_validate = array(
         array('ad_title', 'require', '广告位名称不能为空', self::MUST_VALIDATE , 'regex', self::MODEL_BOTH),
-        array('position', '/^[2-7]{1}$/', '请选择广告位位置', self::MUST_VALIDATE , 'regex', self::MODEL_BOTH),
+        array('position', '/^[1-7]{1}$/', '请选择广告位位置', self::MUST_VALIDATE , 'regex', self::MODEL_BOTH),
         array('ad_img', 'require', '图片不能为空', self::MUST_VALIDATE , 'regex', self::MODEL_BOTH),
         array('sort', '/^[0-9]{1,9}$/', '请输入优先级', self::VALUE_VALIDATE , 'regex', self::MODEL_BOTH),
         array('ad_url', 'url', 'url格式不正确', self::VALUE_VALIDATE , 'regex', self::MODEL_BOTH),

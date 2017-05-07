@@ -63,6 +63,9 @@ class DocumentModel extends Model{
         if(isset($ext['ids'])){
             $map[$this->tablePrefix.'document.id'] = array('in', $ext['ids']);
         }
+        if($ext['id']){
+            $map[$this->tablePrefix.'document.id'] = $ext['id'];
+        }
         if($ext['cate_id']){
             $map[$this->tablePrefix.'document.cate_id'] = $ext['cate_id'];
         }
@@ -88,7 +91,11 @@ class DocumentModel extends Model{
             $map[$this->tablePrefix.'document.destination_a'] = $ext['d_area'];
         }
         if($ext['keywords']){
-            $map[$this->tablePrefix.'document.title|'.$this->tablePrefix.'document.address'] = array('like', '%'.$ext['keywords'].'%');
+            if($category == 2){
+                $map[$this->tablePrefix.'document.title|'.$this->tablePrefix.'document.search_k'] = array('like', '%'.$ext['keywords'].'%');
+            }else{
+                $map[$this->tablePrefix.'document.title'] = array('like', '%'.$ext['keywords'].'%');
+            }
         }
         switch($order){
             case 2:

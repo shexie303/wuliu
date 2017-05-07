@@ -211,22 +211,11 @@
     <section id="navi_top">
         <!-- 大类输出  -->
         <ul class="big-nav">
-
-            <li style="width:19%" onclick="doHREF('http://m.chawuliu.com/shanghai?sort=130');">
-                <div class="wrapper wrappered">精品专线</div>
-            </li>
-
-            <li style="width:19%" onclick="doHREF('http://m.chawuliu.com/shanghai?sort=564');">
-                <div class="wrapper ">落地配</div>
-            </li>
-
-            <li style="width:19%" onclick="doHREF('http://m.chawuliu.com/shanghai?sort=926');">
-                <div class="wrapper ">综合物流</div>
-            </li>
-
-            <li style="width:19%" onclick="doHREF('http://m.chawuliu.com/shanghai?sort=929');">
-                <div class="wrapper ">推荐货车</div>
-            </li>
+            <foreach name="main_nav" item="val">
+                <li style="width:19%" onclick='doHREF("{:logistics_url(2,'list-'.$val['id'])}");'>
+                    <div class="wrapper <eq name="category.id" value="$val['id']">wrappered</eq>">{$val.title}</div>
+                </li>
+            </foreach>
         </ul>
         <!-- 选中 -->
         <ul style="border-bottom:1px #cccccc solid;">

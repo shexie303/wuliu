@@ -16,9 +16,11 @@ use Think\Controller;
  */
 class HomeController extends Controller {
 
+    protected $city;
+
 	/* 空操作，用于输出404页面 */
 	public function _empty(){
-		//$this->redirect('Index/index');
+
 	}
 
 
@@ -31,7 +33,34 @@ class HomeController extends Controller {
             $this->error('站点已经关闭，请稍后访问~');
         }
         //
-        $http_host = $_SERVER['HTTP_HOST'];
+        $city = I('city', '');
+        $c_city = cookie('city');
+        if($_SERVER['REQUEST_URI'] == '/'){
+            if($c_city){
+                $this->city = $c_city;
+            }else{
+                send_http_status(302);
+                header('Location: ' . logistics_url(2,'city'));
+            }
+        }else{
+            if($city == $c_city['pinyin'] && $c_city){
+                $this->city = $c_city;
+            }else{
+                if($city){
+                    $city_arr = all_city();
+                    if(array_key_exists($city, $city_arr)){
+                        $this->city = $city_arr[$city];
+                        cookie('city', $this->city, 604800); //3600*24*7
+                    }else{
+                        send_http_status(302);
+                        header('Location: ' . logistics_url(2,'city'));
+                    }
+                }else{
+                    send_http_status(302);
+                    header('Location: ' . logistics_url(2,'city'));
+                }
+            }
+        }
         //主导航
         $nav = getNextCategory(0);
         unset($nav[6],$nav[7]);
@@ -40,6 +69,8 @@ class HomeController extends Controller {
         //模块名 方法名
         $this->assign('CONTROLLER_NAME', CONTROLLER_NAME);
         $this->assign('ACTION_NAME', ACTION_NAME);
+
+        $this->assign('CITY', $this->city);
     }
 
 	/* 用户登录检测 */

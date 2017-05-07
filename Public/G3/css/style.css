@@ -28,7 +28,7 @@ a:active{
 }
 
 /*changed*/
-.goods_list_item a, .navi_button a, .collapse_content a{
+.goods_list_item a, .navi_button a{
     /*for browser link drawing in container size*/
     height:100%;
     width:100%;
@@ -367,7 +367,7 @@ footer .plain_bar{
     border-bottom: 1px #ededed solid;
     padding:5px;
     margin:0px;
-
+    line-height: 40px;
 }
 
 .collapse_sub_content{
@@ -1123,21 +1123,23 @@ body:not(:-moz-handler-blocked) .blue_12_label{
     height:30px;
     line-height:30px;
 }
-.city_item_content a{
+.city_item a{
+    width: 33%;
     text-align:center;
     background:#fff;
     color:#333;
     display: block;
-    width: 0;
     border-right: 1px #EFEFEF solid;
+    border-bottom: 1px #EFEFEF solid;
     border-top: 0;
     border-left: 0;
     -webkit-box-flex: 1;
     -ms-flex: 1;
     box-flex: 1;
     font-weight:700;
+    float: left;
 }
-.city_item_content a.no_content{
+.city_item a.no_content{
     border:0;
 }
 /* 焦点图效果 */

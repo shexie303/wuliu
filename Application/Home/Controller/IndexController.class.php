@@ -156,16 +156,17 @@ class IndexController extends HomeController {
             $order = 1;
         }
         $this->assign('order_type', $order);
-        /* 获取当前分类列表 */
+
         if(!$p) $p = 1;
         $order_uri = $uri. 'p'. $p. '-';
         $this->assign('order_uri', $order_uri);
 
+        /* 获取当前分类列表 */
         $Document = D('Document');
         $list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, $order);
 
         if($list){
-            $page = new \Think\LogisticsPage($list['count'], $category['list_row'], $uri);
+            $page = new \Think\LogisticsPage($list['count'], $category['list_row'], $uri, $order);
             $page->setConfig('theme','%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%');
             /* 模板赋值并渲染模板 */
             $this->assign('list', $list['data']);
@@ -209,7 +210,7 @@ class IndexController extends HomeController {
         $Document = D('Document');
         $ext['id'] = array('neq', $id);
         $list = $Document->page(1, 5)->lists($category['id'], $ext, 1);
-        
+
 		/* 模板赋值并渲染模板 */
 		$this->assign('category', $category);
 		$this->assign('info', $info);

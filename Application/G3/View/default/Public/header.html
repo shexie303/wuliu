@@ -1,83 +1,81 @@
 <include file="Public/head"/>
 <body>
-    <neq name="ACTION_NAME" value="detail">
-        <header>
-            <!-- 头部广告  -->
-            <notempty name="banner">
-                <section id="slider">
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                            <foreach name="banner" item="val">
-                                <div class="swiper-slide">
-                                    <a href="{$val.ad_url}" title="{$val.ad_title}">
-                                        <img src="{$val.ad_img}" alt="{$val.ad_title}" style="width:100%;height: 60px;">
-                                    </a>
-                                </div>
-                            </foreach>
-                        </div>
-                        <div class="pagination"></div>
+    <header>
+        <!-- 头部广告  -->
+        <notempty name="banner">
+            <section id="slider">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <foreach name="banner" item="val">
+                            <div class="swiper-slide">
+                                <a href="{$val.ad_url}" title="{$val.ad_title}">
+                                    <img src="{$val.ad_img}" alt="{$val.ad_title}" style="width:100%;height: 60px;">
+                                </a>
+                            </div>
+                        </foreach>
                     </div>
-                </section>
-            </notempty>
-            <!-- 头部切换的布局  -->
-            <section id="top_bar" style="height:47px;padding:5px 0px 0px 10px;">
-                <ul>
-                    <li onclick="doHREF('http://m.chawuliu.com/')"><img style="width:100px;vertical-align:sub;" src="__IMG__/logo.png"></li>
-                    <li onclick="doHREF('http://m.chawuliu.com/switch_city');">
-                        <span style="" class="white_16_label" id="city_name">上海</span>
-                        <br><span class="white_12_label">[切换分站]</span>
-                    </li>
-                    <li style="float:right;position:relative;top:5px;right:15px;">
-                        <img src="__IMG__/account.jpg" class="header_button" onclick="doDropBox('account_box');">
-                        <span style="position:relative;top:20px;left:5px;" class="white_12_label" onclick="doDropBox('account_box');">账户</span>
-                    </li>
-                    <li style="float:right;position:relative;top:5px;right:20px;">
-                        <img src="__IMG__/search.jpg" class="header_button" onclick="checkRecord('search_record');doDropBox('search_box');">
-                        <span style="position:relative;top:20px;left:5px;" class="white_12_label" onclick="checkRecord('search_record');doDropBox('search_box');">搜索</span>
-                    </li>
-                </ul>
-            </section>
-            <!-- 搜索的框  -->
-            <section id="search_box" style="text-align:center;padding:5px;font-size:12px;background:#fe9417;border-top:1px #ffca8b dashed;display:none;">
-                <div style="padding:10px 15px 0px 15px;">
-                    <form id="search_form" action="http://m.chawuliu.com/search/1" method="get">
-                        <input id="search" class="input_field" type="text" name="kw" value="" placeholder="请输入城市、名称、地址等关键字">
-                        <input id="search_submit" style="display:inline-block;" type="button" value="搜索" onclick="submitSearch( this )">
-                    </form>
+                    <div class="pagination"></div>
                 </div>
-                <script type="text/javascript">
-                    function submitSearch( e ){
-                        var kw = $("#search").val();
-                        kw = $.trim( kw );
-                        if( !kw ){
-                            return false;
-                        }else{
-                            doRecord('search_record', 30);
-                            $("#search_form").submit();
-                        }
+            </section>
+        </notempty>
+        <!-- 头部切换的布局  -->
+        <section id="top_bar" style="height:47px;padding:5px 0px 0px 10px;">
+            <ul>
+                <li onclick="doHREF('{:logistics_url(2,'/')}')"><img style="width:100px;vertical-align:sub;" src="__IMG__/logo.png"></li>
+                <li onclick='doHREF("{:logistics_url(2,'city')}");'>
+                    <span style="" class="white_16_label" id="city_name">{$CITY.name}</span>
+                    <br><span class="white_12_label">[切换分站]</span>
+                </li>
+                <li style="float:right;position:relative;top:5px;right:15px;">
+                    <img src="__IMG__/account.jpg" class="header_button" onclick="doDropBox('account_box');">
+                    <span style="position:relative;top:20px;left:5px;" class="white_12_label" onclick="doDropBox('account_box');">账户</span>
+                </li>
+                <li style="float:right;position:relative;top:5px;right:20px;">
+                    <img src="__IMG__/search.jpg" class="header_button" onclick="checkRecord('search_record');doDropBox('search_box');">
+                    <span style="position:relative;top:20px;left:5px;" class="white_12_label" onclick="checkRecord('search_record');doDropBox('search_box');">搜索</span>
+                </li>
+            </ul>
+        </section>
+        <!-- 搜索的框  -->
+        <section id="search_box" style="text-align:center;padding:5px;font-size:12px;background:#fe9417;border-top:1px #ffca8b dashed;display:none;">
+            <div style="padding:10px 15px 0px 15px;">
+                <form id="search_form" action="http://m.chawuliu.com/search/1" method="get">
+                    <input id="search" class="input_field" type="text" name="kw" value="" placeholder="请输入城市、名称、地址等关键字">
+                    <input id="search_submit" style="display:inline-block;" type="button" value="搜索" onclick="submitSearch( this )">
+                </form>
+            </div>
+            <script type="text/javascript">
+                function submitSearch( e ){
+                    var kw = $("#search").val();
+                    kw = $.trim( kw );
+                    if( !kw ){
+                        return false;
+                    }else{
+                        doRecord('search_record', 30);
+                        $("#search_form").submit();
                     }
-                </script>
-                <!-- 搜索的记录 -->
-                <div id="search_record" style="padding:0px 0px 15px 0px;text-align:center;"></div>
-                <!-- 清除历史按钮  -->
-                <div style="height:20px;width:100%;padding:0px 0px 5px 0px;">
-                    <span onclick="cleanRecord('search_record');" style="float:right;color:#ffffff;margin-right:20px;">[清除历史]</span>
-                </div>
-            </section>
-            <!-- 账户操作  -->
-            <section id="account_box" style="padding:10px 0px 5px 0px;text-align:center;background-color:#fe9417;font-size:14px;border-top:1px #ffca8b dashed;display:none;">
-                <ul style="list-style:none;padding:0px;margin:0px;">
+                }
+            </script>
+            <!-- 搜索的记录 -->
+            <div id="search_record" style="padding:0px 0px 15px 0px;text-align:center;"></div>
+            <!-- 清除历史按钮  -->
+            <div style="height:20px;width:100%;padding:0px 0px 5px 0px;">
+                <span onclick="cleanRecord('search_record');" style="float:right;color:#ffffff;margin-right:20px;">[清除历史]</span>
+            </div>
+        </section>
+        <!-- 账户操作  -->
+        <section id="account_box" style="padding:10px 0px 5px 0px;text-align:center;background-color:#fe9417;font-size:14px;border-top:1px #ffca8b dashed;display:none;">
+            <ul style="list-style:none;padding:0px;margin:0px;">
 
-                    <!-- 登录 -->
-                    <li style="width:45%;display:inline-block;">
-                        <img onclick="doHREF('http://m.chawuliu.com/login')" style="width:48px;height:48px;" src="__IMG__/logon.jpg">
-                    </li>
-                    <!-- 注册 -->
-                    <li style="width:45%;display:inline-block;">
-                        <img onclick="doHREF('http://m.chawuliu.com/register');" style="width:48px;height:48px;" src="__IMG__/register.jpg">
-                    </li>
-                </ul>
-            </section>
-        </header>
-    </neq>
+                <!-- 登录 -->
+                <li style="width:45%;display:inline-block;">
+                    <img onclick="doHREF('http://m.chawuliu.com/login')" style="width:48px;height:48px;" src="__IMG__/logon.jpg">
+                </li>
+                <!-- 注册 -->
+                <li style="width:45%;display:inline-block;">
+                    <img onclick="doHREF('http://m.chawuliu.com/register');" style="width:48px;height:48px;" src="__IMG__/register.jpg">
+                </li>
+            </ul>
+        </section>
+    </header>
     <!-- 头部结束  -->

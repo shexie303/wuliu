@@ -8,13 +8,19 @@
 // +----------------------------------------------------------------------
 
 namespace G3\Controller;
-use OT\DataDictionary;
+use Home\Model\DocumentModel;
 
 /**
  * 前台首页控制器
  * 主要获取首页聚合数据
  */
 class IndexController extends HomeController {
+
+    protected $order = array(
+        1 => '默认排序',
+        2 => '人气排序',
+        3 => '更新排序'
+    );
 
     public function index($p = 1){
         /* 分类信息 */
@@ -30,20 +36,35 @@ class IndexController extends HomeController {
             $minor['name'] = '直达线路';
             $city_zdzx = getNextCategory(2, $this->city['parent_id']);
             $minor['data'] = getZdzxCityCount($city_zdzx, $this->city['id']);
+            if($minor['data']){
+                foreach($minor['data'] as $m_val){
+                    if($zx == $m_val['id']){
+                        $minor['name'] = $m_val['title'];
+                        break;
+                    }
+                }
+            }
             $ext['ids'] = getZdzxJpzxIds($this->city['id'],$zx);
             $this->assign('minor', $minor);
 
+            $l_area = I('get.l_area', 0);
+            $ext['l_area'] = $l_area;
+            $this->assign('l_area', $l_area);
             //有地区分类则显示
             $local_area = getNextPca($this->city['id'], 3);
             if($local_area){
                 $third['name'] = '所在区域';
                 $third['data'] = getZdzxAreaCount($local_area, $this->city['id']);
+                if($third['data']){
+                    foreach($third['data'] as $l_val){
+                        if($l_area == $l_val['id']){
+                            $third['name'] = $l_val['title'];
+                            break;
+                        }
+                    }
+                }
                 $this->assign('third', $third);
             }
-
-            $l_area = I('get.l_area', 0);
-            $ext['l_area'] = $l_area;
-            $this->assign('l_area', $l_area);
 
             $zx ? $uri .= $zx.'-' : false;
 
@@ -155,20 +176,24 @@ class IndexController extends HomeController {
             $order = 1;
         }
         $this->assign('order_type', $order);
+        $this->assign('order_name', $this->order[$order]);
         /* 获取当前分类列表 */
         if(!$p) $p = 1;
         $order_uri = $uri. 'p'. $p. '-';
         $this->assign('order_uri', $order_uri);
 
-        $Document = D('Document');
-        $list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, $order);
-
+        $Document = new DocumentModel();
+        $list = $Document->page($p, 1)->lists($category['id'], $ext, $order);
         if($list){
-            $page = new \Think\LogisticsPage($list['count'], $category['list_row'], $uri);
-            $page->setConfig('theme','%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%');
+            $page = new \Think\G3Page($list['count'], $category['list_row'], $this->city['pinyin'].'/'.$uri, $order);
+            $page->setConfig('theme','%UP_PAGE% <div style="width:31%;text-align:center; display:inline-block;"><span style="position:relative;top:8px;" class="dark_grey_14_label">%NOW_PAGE%/%TOTAL_ROW%</span></div> %DOWN_PAGE%');
+            $page->setConfig('prev','<span class="dark_grey_14_label">上一页</span>');
+            $page->setConfig('next','<span class="dark_grey_14_label">下一页</span>');
             /* 模板赋值并渲染模板 */
             $this->assign('list', $list['data']);
-            $this->assign('page', $page->show());
+            if($list['count'] > $category['list_row']){
+                $this->assign('page', $page->show());
+            }
         }
         //banner
         $banner = getCateBanner($category['id']);

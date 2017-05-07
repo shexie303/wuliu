@@ -10,7 +10,7 @@
 // +----------------------------------------------------------------------
 namespace Think;
 
-class LogisticsPage{
+class G3Page{
     public $firstRow; // 起始行数
     public $listRows; // 列表每页显示行数
     public $parameter; // 分页跳转时要带的参数
@@ -18,7 +18,7 @@ class LogisticsPage{
     public $totalPages; // 分页总页面数
     public $rollPage   = 11;// 分页栏每页显示的页数
 	public $lastSuffix = true; // 最后一页是否显示总页数
-    public $ext = 1; // 额外参数 排序
+	public $ext = 1; // 额外参数 排序
 
     private $p       = 'p'; //分页参数名
     private $url     = ''; //当前链接URL
@@ -39,7 +39,8 @@ class LogisticsPage{
      * @param array $totalRows  总的记录数
      * @param array $listRows  每页显示记录数
      * @param array $parameter  分页跳转的参数
-     */
+     * @param string $ext  ext 额外参数 排序
+     * */
     public function __construct($totalRows, $listRows, $parameter = array(), $ext = '') {
         C('VAR_PAGE') && $this->p = C('VAR_PAGE'); //设置分页参数名称
         /* 基础设置 */
@@ -98,11 +99,11 @@ class LogisticsPage{
 
         //上一页
         $up_row  = $this->nowPage - 1;
-        $up_page = $up_row > 0 ? '<a href="' . $this->url($up_row) . '">' . $this->config['prev'] . '</a>' : '';
+        $up_page = $up_row > 0 ? '<div class="navi_button" style="border-right:1px #ededed solid;"><a href="' . $this->url($up_row) . '">' . $this->config['prev'] . '</a></div>' : '<div class="navi_button" style="border-right:1px #ededed solid;"></div>';
 
         //下一页
         $down_row  = $this->nowPage + 1;
-        $down_page = ($down_row <= $this->totalPages) ? '<a href="' . $this->url($down_row) . '">' . $this->config['next'] . '</a>' : '';
+        $down_page = ($down_row <= $this->totalPages) ? '<div class="navi_button" style="border-left:1px #ededed solid;"><a href="' . $this->url($down_row) . '">' . $this->config['next'] . '</a></div>' : '<div class="navi_button" style="border-left:1px #ededed solid;"></div>';
 
         //第一页
         $the_first = '';
@@ -145,6 +146,6 @@ class LogisticsPage{
             array('%HEADER%', '%NOW_PAGE%', '%UP_PAGE%', '%DOWN_PAGE%', '%FIRST%', '%LINK_PAGE%', '%END%', '%TOTAL_ROW%', '%TOTAL_PAGE%'),
             array($this->config['header'], $this->nowPage, $up_page, $down_page, $the_first, $link_page, $the_end, $this->totalRows, $this->totalPages),
             $this->config['theme']);
-        return "<div id='pagation'>{$page_str}</div>";
+        return "{$page_str}";
     }
 }

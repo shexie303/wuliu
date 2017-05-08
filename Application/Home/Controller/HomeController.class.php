@@ -32,6 +32,11 @@ class HomeController extends Controller {
         if(!C('WEB_SITE_CLOSE')){
             $this->error('站点已经关闭，请稍后访问~');
         }
+        import('Vendor.Mobile_Detect','','.php');
+        $is_m = new \Mobile_Detect();
+        if($is_m->isMobile()){
+            $this->assign('is_m', 1);
+        }
 
         $http_host = $_SERVER['HTTP_HOST'];
         if($http_host == C('WWW_DOMAIN')){

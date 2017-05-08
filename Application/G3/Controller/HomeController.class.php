@@ -20,7 +20,7 @@ class HomeController extends Controller {
 
 	/* 空操作，用于输出404页面 */
 	public function _empty(){
-
+        var_dump(404);exit;
 	}
 
 
@@ -55,9 +55,6 @@ class HomeController extends Controller {
                         send_http_status(302);
                         header('Location: ' . logistics_url(2,'city'));
                     }
-                }else{
-                    send_http_status(302);
-                    header('Location: ' . logistics_url(2,'city'));
                 }
             }
         }

@@ -39,7 +39,7 @@
         <!-- 搜索的框  -->
         <section id="search_box" style="text-align:center;padding:5px;font-size:12px;background:#fe9417;border-top:1px #ffca8b dashed;display:none;">
             <div style="padding:10px 15px 0px 15px;">
-                <form id="search_form" action="http://m.chawuliu.com/search/1" method="get">
+                <form id="search_form" action="{:logistics_url(2,'search-'.$category['id'])}" method="get">
                     <input id="search" class="input_field" type="text" name="kw" value="" placeholder="请输入城市、名称、地址等关键字">
                     <input id="search_submit" style="display:inline-block;" type="button" value="搜索" onclick="submitSearch( this )">
                 </form>

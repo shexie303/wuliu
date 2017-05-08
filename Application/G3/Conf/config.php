@@ -138,10 +138,11 @@ return array(
         /*列表页结束*/
 
         /*搜索页结束*/
-        '/^search-([2-7]{1})-p([0-9]+)$/' => 'Index/search?category=:2&p=:2',
-        '/^search-([2-7]{1})$/' => 'Index/search?category=:2',
+        '/^search-([2-7]{1})-p([0-9]+)$/' => 'Index/search?category=:1&p=:2',
+        '/^search-([2-7]{1})$/' => 'Index/search?category=:1',
 
         /*搜索页结束*/
+
         '/^([a-z]+)\/([0-9]+)$/' => 'Index/detail?city=:1&id=:2', //详情页
         'city' => array('City/index'), //切换城市页
         'login' => array('User/login'), //登录页

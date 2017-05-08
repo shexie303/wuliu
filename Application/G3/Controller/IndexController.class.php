@@ -183,7 +183,7 @@ class IndexController extends HomeController {
         $this->assign('order_uri', $order_uri);
 
         $Document = new DocumentModel();
-        $list = $Document->page($p, 1)->lists($category['id'], $ext, $order);
+        $list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, $order);
         if($list){
             $page = new \Think\G3Page($list['count'], $category['list_row'], $this->city['pinyin'].'/'.$uri, $order);
             $page->setConfig('theme','%UP_PAGE% <div style="width:31%;text-align:center; display:inline-block;"><span style="position:relative;top:8px;" class="dark_grey_14_label">%NOW_PAGE%/%TOTAL_ROW%</span></div> %DOWN_PAGE%');
@@ -204,7 +204,6 @@ class IndexController extends HomeController {
 
     /* 文档模型详情页 */
     public function detail($id = 0){
-        $this->display();exit;
         /* 标识正确性检测 */
         if(!($id && is_numeric($id))){
             $this->error('参数错误！');
@@ -218,7 +217,7 @@ class IndexController extends HomeController {
         }
         $info['url'] = urlencode(logistics_url(1,$info['id']));
 
-        $user_model = new MemberModel();
+        $user_model = new \Admin\Model\MemberModel();
         $user = $user_model->getUserInfo($info['uid']);
         $info['vip'] = $user['vip'];
         $info['vip_zh'] = vipZh($user['vip']);

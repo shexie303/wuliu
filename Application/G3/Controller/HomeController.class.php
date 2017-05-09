@@ -55,6 +55,8 @@ class HomeController extends Controller {
                         send_http_status(302);
                         header('Location: ' . logistics_url(2,'city'));
                     }
+                }elseif($c_city){
+                    $this->city = $c_city;
                 }
             }
         }

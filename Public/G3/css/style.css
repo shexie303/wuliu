@@ -521,7 +521,7 @@ input[type=text], input[type=email], input[type=tel], input[type=password]{
 #search_box input[type=button]{
     position:absolute;
     right:15px;
-    top:70px;
+    top:128px;
     width:30px;
     height:30px;
     background:transparent url(../images/search_submit.png) no-repeat 0px 10px;

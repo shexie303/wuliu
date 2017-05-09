@@ -236,9 +236,10 @@ class IndexController extends HomeController {
     }
 
     public function search($id = 0, $p = 1, $keywords = ''){
+
         $category = $this->category($id);
         $this->assign('category', $category);
-        $Document = D('Document');
+        $Document = new DocumentModel();
         $ext = array();
         $uri = 'search-'. $category['id']. '-';
         if($keywords){
@@ -248,14 +249,18 @@ class IndexController extends HomeController {
         if(in_array($category['id'],array(2,6))){
             $ext['l_city'] = $this->city['id'];
         }
-
         $list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, 1);
         if($list){
-            $page = new \Think\LogisticsPage($list['count'], $category['list_row'], $uri);
+            $page = new \Think\G3Page($list['count'], $category['list_row'], $this->city['pinyin'].'/'.$uri);
+            $page->setConfig('theme','%UP_PAGE% <div style="width:31%;text-align:center; display:inline-block;"><span style="position:relative;top:8px;" class="dark_grey_14_label">%NOW_PAGE%/%TOTAL_ROW%</span></div> %DOWN_PAGE%');
+            $page->setConfig('prev','<span class="dark_grey_14_label">上一页</span>');
+            $page->setConfig('next','<span class="dark_grey_14_label">下一页</span>');
 
+            if($list['count'] > $category['list_row']){
+                $this->assign('page', $page->show());
+            }
             /* 模板赋值并渲染模板 */
             $this->assign('list', $list);
-            $this->assign('page', $page->show());
         }
         $this->display();
     }

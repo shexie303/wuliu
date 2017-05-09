@@ -684,8 +684,7 @@ function doRecord(id, dDay) {
 
 }
 
-function checkRecord(id) {
-    //alert(recordedWords[0]);
+function checkRecord(id, uri) {
     if (docCookies.getItem(id) != null) {
         recordedWords = docCookies.getItem(id).split("♥");
         recordedWords.pop();
@@ -719,7 +718,7 @@ function checkRecord(id) {
                     var textNode = document.createTextNode(recordedWords[incr]);
                     attribute = document.createAttribute("href");
                     //这里修改搜索的网络地址
-                    attribute.value = "http://" + window.location.host + "/search/1?kw=" + recordedWords[incr];
+                    attribute.value = "http://" + window.location.host + uri+"?keywords=" + recordedWords[incr];
                     aNode.setAttributeNode(attribute);
                     aNode.appendChild(textNode);
                     li2nd2Node.appendChild(aNode);

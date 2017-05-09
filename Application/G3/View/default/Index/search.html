@@ -1,85 +1,68 @@
-<include file="Public/header"/>
-    <!-- 背景 -->
-    <section id="screen_mask" style="position: absolute; top: 112px; width: 100%; height: 0px; background-color: black; opacity: 0.5; z-index: 20000; display: none;"></section>
-    <section id="top_bar_mask" style="position: absolute; top: 0px; width: 100%; height: 52px; background-color: black; opacity: 0.5; z-index: 20000; display: none;"></section>
-    <!-- 二级菜单选则  -->
-    <section id="popup_list" style="width: 100%; position: absolute; top: 112px; z-index: 30000; display: none;">
-        <!-- 细类的输出 -->
-        <notempty name="minor.data">
-            <div id="popup_list_left" class="sid238_nav nav_list" style="width: 100%; display: none;">
-                <ul style="border-top:1px #cccccc solid;">
-                    <foreach name="minor.data" item="val">
-                        <li onclick='doHREF("{:logistics_url(2,$CITY['pinyin'].'/list-'.$category['id'].'-'.$val['id'])}");' style="<eq name='zx' value="$val['id']">color:#1d1d1d;background-color:#ededed;border-left:3px #ed6d00 solid;</eq>">
-                            <div class="tag">{$val.title}({$val.sum})</div>
-                            <div class="quantity"></div>
-                        </li>
-                    </foreach>
-                </ul>
-            </div>
+<include file="Public/head"/>
+<body>
+    <header>
+        <!-- 头部广告  -->
+        <notempty name="banner">
+            <section id="slider">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <foreach name="banner" item="val">
+                            <div class="swiper-slide">
+                                <a href="{$val.ad_url}" title="{$val.ad_title}">
+                                    <img src="{$val.ad_img}" alt="{$val.ad_title}" style="width:100%;height: 60px;">
+                                </a>
+                            </div>
+                        </foreach>
+                    </div>
+                    <div class="pagination"></div>
+                </div>
+            </section>
         </notempty>
-        <notempty name="third.data">
-            <div id="popup_list_left" class="sid383_nav nav_list" style="width: 100%; display: none;">
-                <ul style="border-top:1px #cccccc solid;">
-                    <foreach name="third.data" item="val">
-                        <li onclick='doHREF("{:logistics_url(2,$CITY['pinyin'].'/list-'.$category['id'].'-'.$zx.'-'.$val['id'])}");' style="<eq name='zx' value="$val['id']">color:#1d1d1d;background-color:#ededed;border-left:3px #ed6d00 solid;</eq>">
-                        <div class="tag">{$val.title}({$val.sum})</div>
-                        <div class="quantity"></div>
-                        </li>
-                    </foreach>
-                </ul>
-            </div>
-        </notempty>
-        <!-- 排序的输出 -->
-        <div id="popup_list_left" class="order_nav nav_list" style="width: 100%; display: none;">
-            <ul style="border-top:1px #cccccc solid;">
-                <li onclick='doHREF("{:logistics_url(2,$CITY['pinyin'].'/'.$order_uri.'1')}");' style="<eq name='order_type' value="1">color:#1d1d1d;background-color:#ededed;border-left:3px #ed6d00 solid;</eq>">
-                    <div class="tag">默认排序</div>
-                    <div class="quantity"></div>
-                </li>
-                <li onclick='doHREF("{:logistics_url(2,$CITY['pinyin'].'/'.$order_uri.'2')}");' style="<eq name='order_type' value="2">color:#1d1d1d;background-color:#ededed;border-left:3px #ed6d00 solid;</eq>">
-                    <div class="tag">人气排序</div>
-                    <div class="quantity"></div>
-                </li>
-                <li onclick='doHREF("{:logistics_url(2,$CITY['pinyin'].'/'.$order_uri.'3')}");' style="<eq name='order_type' value="3">color:#1d1d1d;background-color:#ededed;border-left:3px #ed6d00 solid;</eq>">
-                    <div class="tag">更新排序</div>
-                    <div class="quantity"></div>
+        <!-- 头部切换的布局  -->
+        <section id="top_bar" style="height:47px;padding:5px 0px 0px 10px;">
+            <ul>
+                <li onclick="doHREF('{:logistics_url(2,'/')}')"><img style="width:100px;vertical-align:sub;" src="__IMG__/logo.png"></li>
+                <li style="float:right;position:relative;top:5px;right:20px;">
+                    <img src="__IMG__/search.jpg" class="header_button" onclick="checkRecord('search_record','/search-{$category[id]}');doDropBox('search_box');">
+                    <span style="position:relative;top:20px;left:5px;" class="white_12_label" onclick="checkRecord('search_record','/search-{$category[id]}');doDropBox('search_box');">搜索</span>
                 </li>
             </ul>
-        </div>
-    </section>
-    <!-- 导航栏  -->
-    <section id="navi_top">
-        <!-- 大类输出  -->
-        <ul class="big-nav">
-            <foreach name="main_nav" item="val">
-                <li style="width:19%" onclick='doHREF("{:logistics_url(2,$CITY['pinyin'].'/list-'.$val['id'])}");'>
-                    <div class="wrapper <eq name="category.id" value="$val['id']">wrappered</eq>">{$val.title}</div>
-                </li>
-            </foreach>
-        </ul>
-        <!-- 选中 -->
-        <ul style="border-bottom:1px #cccccc solid;">
-            <notempty name="minor.data">
-                <li style="width:32%" onclick="setSortClick('sid238')">
-                    <div class="wrapper two_wrapper"><div class="tag">{$minor.name}</div><div class="triangle_mark_down sid238_mark" style="border-color: rgb(237, 109, 0) transparent transparent;"></div></div>
-                </li>
-            </notempty>
-            <notempty name="third.data">
-                <li style="width:32%" onclick="setSortClick('sid383')">
-                    <div class="wrapper two_wrapper"><div class="tag">{$third.name}</div><div class="triangle_mark_down sid383_mark" style="border-color: rgb(135, 135, 135) transparent transparent;"></div></div>
-                </li>
-            </notempty>
-            <li style="width:32%" onclick="setSortClick('order')">
-                <div class="wrapper two_wrapper"><div class="tag">{$order_name}</div><div class="triangle_mark_down order_mark" style="border-color: rgb(135, 135, 135) transparent transparent;"></div></div>
-            </li>
-        </ul>
-    </section>
+        </section>
+        <!-- 搜索的框  -->
+        <section id="search_box" style="text-align:center;padding:5px;font-size:12px;background:#fe9417;border-top:1px #ffca8b dashed;display:none;">
+            <div style="padding:10px 15px 0px 15px;">
+                <form id="search_form" action="{:logistics_url(2,'search-'.$category['id'])}" method="get">
+                    <input id="search" class="input_field" type="text" name="keywords" value="" placeholder="请输入城市、名称、地址等关键字">
+                    <input id="search_submit" style="display:inline-block;" type="button" value="搜索" onclick="submitSearch( this )">
+                </form>
+            </div>
+            <script type="text/javascript">
+                function submitSearch( e ){
+                    var kw = $("#search").val();
+                    kw = $.trim( kw );
+                    if( !kw ){
+                        return false;
+                    }else{
+                        doRecord('search_record', 30);
+                        $("#search_form").submit();
+                    }
+                }
+            </script>
+            <!-- 搜索的记录 -->
+            <div id="search_record" style="padding:0px 0px 15px 0px;text-align:center;"></div>
+            <!-- 清除历史按钮  -->
+            <div style="height:20px;width:100%;padding:0px 0px 5px 0px;">
+                <span onclick="cleanRecord('search_record');" style="float:right;color:#ffffff;margin-right:20px;">[清除历史]</span>
+            </div>
+        </section>
+    </header>
+    <section class="notice_bar"><label>搜索 "{$search_keywords}" 共{$list['count']?$list['count']:0}条结果：</label></section>
     <empty name="list">
         <section style="background:#fff;height:200px;">
-            <div style="padding:20px;">抱歉！还没有名片,请浏览其它的分类</div>
+            <div style="padding:20px; text-align: center">抱歉！没有符合条件名片</div>
         </section>
     <else/>
-        <foreach name="list" item="val">
+        <foreach name="list.data" item="val">
             <section style="text-align:center;" class="goods_list_item">
                 <ul>
                     <li style="width:auto;vertical-align:top;position:relative;" onclick='doHREF("{:logistics_url(2,$CITY['pinyin'].'/'.$val['id'])}");'>

@@ -66,15 +66,25 @@
         <!-- 账户操作  -->
         <section id="account_box" style="padding:10px 0px 5px 0px;text-align:center;background-color:#fe9417;font-size:14px;border-top:1px #ffca8b dashed;display:none;">
             <ul style="list-style:none;padding:0px;margin:0px;">
+                <if condition="$user">
+                    <div style="display:block;padding:0px 30px 10px 30px;text-align:left;color:#ffffff;font-size:12px;"><span>欢迎您回来！{$user.username}</span></div>
+                    <li style="width:45%;display:inline-block;">
+                        <img onclick='doHREF("{:logistics_url(2,'logout')}");' style="width:48px;height:48px;" src="__IMG__/logoff.jpg">
+                    </li>
+                    <li style="width:45%;display:inline-block;">
+                        <img onclick='doHREF("{:logistics_url(2,'user')}");' style="width:48px;height:48px;" src="__IMG__/dimanagement.jpg">
+                    </li>
+                <else/>
 
-                <!-- 登录 -->
-                <li style="width:45%;display:inline-block;">
-                    <img onclick="doHREF('http://m.chawuliu.com/login')" style="width:48px;height:48px;" src="__IMG__/logon.jpg">
-                </li>
-                <!-- 注册 -->
-                <li style="width:45%;display:inline-block;">
-                    <img onclick="doHREF('http://m.chawuliu.com/register');" style="width:48px;height:48px;" src="__IMG__/register.jpg">
-                </li>
+                    <!-- 登录 -->
+                    <li style="width:45%;display:inline-block;">
+                        <img onclick='doHREF("{:logistics_url(2,'login')}");' style="width:48px;height:48px;" src="__IMG__/logon.jpg">
+                    </li>
+                    <!-- 注册 -->
+                    <li style="width:45%;display:inline-block;">
+                        <img onclick='doHREF("{:logistics_url(2,'register')}");' style="width:48px;height:48px;" src="__IMG__/register.jpg">
+                    </li>
+                </if>
             </ul>
         </section>
     </header>

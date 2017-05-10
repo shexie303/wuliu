@@ -70,6 +70,12 @@ class HomeController extends Controller {
         $this->assign('ACTION_NAME', ACTION_NAME);
 
         $this->assign('CITY', $this->city);
+
+        if(is_login()){
+            $user = session('user_auth');
+            $user['vip_zh'] = vipZh($user['vip']);
+            $this->assign('user', $user);
+        }
     }
 
 	/* 用户登录检测 */

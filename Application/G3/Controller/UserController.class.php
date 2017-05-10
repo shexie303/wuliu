@@ -20,8 +20,41 @@ class UserController extends HomeController {
 
 	/* 用户中心首页 */
 	public function index(){
-		
+        if(!is_login()){
+            header('Location: ' . logistics_url(2,'login'));
+        }
+        $this->display();
 	}
+
+    public function account(){
+        if(!is_login()){
+            header('Location: ' . logistics_url(2,'login'));
+        }
+        if ( IS_POST ) {
+            //获取参数
+            $uid        =   is_login();
+            $password   =   I('post.old');
+            $repassword = I('post.repassword');
+            $data['password'] = I('post.password');
+            empty($password) && $this->error('请输入原密码');
+            empty($data['password']) && $this->error('请输入新密码');
+            empty($repassword) && $this->error('请输入确认密码');
+
+            if($data['password'] !== $repassword){
+                $this->error('您输入的新密码与确认密码不一致');
+            }
+
+            $Api = new UserApi();
+            $res = $Api->updateInfo($uid, $password, $data);
+            if($res['status']){
+                $this->success('修改密码成功！');
+            }else{
+                $this->error($res['info']);
+            }
+        }else{
+            $this->display();
+        }
+    }
 
 	/* 注册页面 */
 	public function register($username = '', $password = '', $repassword = '', $email = '', $verify = ''){
@@ -50,7 +83,7 @@ class UserController extends HomeController {
                 if($member->add($info)){
                     $group = new AuthGroupModel();
                     $group->addToGroup($uid, 2);
-                    $this->success('注册成功！即将跳转登录页面', U('Admin/Public/login'), 2);
+                    $this->success('注册成功！即将跳转登录页面', logistics_url(2, 'login'));
                 }else{
                     $this->error($this->showRegError());
                 }
@@ -65,6 +98,9 @@ class UserController extends HomeController {
 
 	/* 登录页面 */
 	public function login($username = '', $password = '', $verify = ''){
+        if(is_login()){
+            header('Location: ' . logistics_url(2,'user'));
+        }
 		if(IS_POST){ //登录验证
 			/* 检测验证码 */
 			if(!check_verify($verify)){
@@ -76,10 +112,9 @@ class UserController extends HomeController {
 			$uid = $user->login($username, $password);
 			if(0 < $uid){ //UC登录成功
 				/* 登录用户 */
-				$Member = D('Member');
+				$Member = new MemberModel();;
 				if($Member->login($uid)){ //登录用户
-					//TODO:跳转到登录前页面
-					$this->success('登录成功！',U('Home/Index/index'));
+					$this->success('登录成功！',logistics_url(2, 'user'));
 				} else {
 					$this->error($Member->getError());
 				}
@@ -102,15 +137,17 @@ class UserController extends HomeController {
 	public function logout(){
 		if(is_login()){
 			D('Member')->logout();
-			$this->success('退出成功！', U('User/login'));
+            header('Location: ' . logistics_url(2,'login'));
 		} else {
-			$this->redirect('User/login');
+            header('Location: ' . logistics_url(2,'login'));
 		}
 	}
 
 	/* 验证码，用于登录和注册 */
 	public function verify(){
 		$verify = new \Think\Verify();
+        $verify->setConfig('useCurve',false);
+        $verify->setConfig('length',4);
 		$verify->entry(1);
 	}
 
@@ -121,7 +158,7 @@ class UserController extends HomeController {
 	 */
 	private function showRegError($code = 0){
 		switch ($code) {
-			case -1:  $error = '用户名长度必须在16个字符以内！'; break;
+			case -1:  $error = '用户名长度必须在3-30个字符以内！'; break;
 			case -2:  $error = '用户名被禁止注册！'; break;
 			case -3:  $error = '用户名被占用！'; break;
 			case -4:  $error = '密码长度必须在6-30个字符之间！'; break;
@@ -136,40 +173,5 @@ class UserController extends HomeController {
 		}
 		return $error;
 	}
-
-
-    /**
-     * 修改密码提交
-     * @author huajie <banhuajie@163.com>
-     */
-    public function profile(){
-		if ( !is_login() ) {
-			$this->error( '您还没有登陆',U('User/login') );
-		}
-        if ( IS_POST ) {
-            //获取参数
-            $uid        =   is_login();
-            $password   =   I('post.old');
-            $repassword = I('post.repassword');
-            $data['password'] = I('post.password');
-            empty($password) && $this->error('请输入原密码');
-            empty($data['password']) && $this->error('请输入新密码');
-            empty($repassword) && $this->error('请输入确认密码');
-
-            if($data['password'] !== $repassword){
-                $this->error('您输入的新密码与确认密码不一致');
-            }
-
-            $Api = new UserApi();
-            $res = $Api->updateInfo($uid, $password, $data);
-            if($res['status']){
-                $this->success('修改密码成功！');
-            }else{
-                $this->error($res['info']);
-            }
-        }else{
-            $this->display();
-        }
-    }
 
 }

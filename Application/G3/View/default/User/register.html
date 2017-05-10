@@ -13,35 +13,98 @@
         </section>
     </header>
     <content>
-            <section class="notice_bar" style="display:none;text-align:center;"></section>
-            <section style="text-align:center;padding:0px 10px 0px 10px;">
-                <form id="submit_form" action="" method="post">
-                    <ul style="list-style:none;padding:0px;margin:0px 0px 10px 0px;text-align:left;">
-                        <li>
-                            <input id="phone" class="input_field" type="text" name="phone" value="" placeholder="请输入手机号码">
-                        </li>
-                        <li>
-                            <input id="nickname" class="input_field" type="text" name="nickname" value="" placeholder="请输入昵称">
-                        </li>
-                        <li>
-                            <input id="wexin" class="input_field" type="text" name="wexin" value="" placeholder="请输入微信号">
-                        </li>
-                        <li>
-                            <input id="mail" class="input_field" type="email" name="mail" value="" placeholder="请输入邮箱（用于取回密码）">
-                        </li>
-                        <li>
-                            <input id="password" class="input_field" type="password" name="password" value="" placeholder="请输入密码（不低于6位的字母和数字）">
-                        </li>
-                        <li>
-                            <input id="verifycode" class="input_field" style="width:50%;" type="text" name="validate" placeholder="请输入验证码" value="">
-                            <span class="captcha_box" style="display:inline-block;height:32px;position:relative; top:12px;"><img src="http://www.chawuliu.com/captcha/1494383397.6102.jpg" width="100" height="32" style="border: 0px; cursor: pointer;" alt=" " id="refresh_captcha" title="看不清？点击刷新"></span>
-                        </li>
-                        <li style="margin-top:15px;">
-                            <div class="plain_button_orange" onclick="registerForm( this )"><a>确&nbsp;&nbsp;&nbsp;定</a></div>
-                        </li>
-                    </ul>
-                </form>
-                <a style="margin-bottom:10px;color:#377BA6;font-size:12px;text-decoration:underline;cursor:pointer;display:inline-block;" onclick='doHREF("{:logistics_url(2,'register')}")'>已经有帐号？请登录</a>
-            </section>
-        </content>
+        <section class="notice_bar" style="display:none;text-align:center;"></section>
+        <section style="text-align:center;padding:0px 10px 0px 10px;">
+            <form id="submit_form" action="" method="post">
+                <ul style="list-style:none;padding:0px;margin:0px 0px 10px 0px;text-align:left;">
+                    <li>
+                        <input id="nickname" class="input_field" type="text" name="username" value="" placeholder="请输入用户名，用户名由3-30个字符组成">
+                    </li>
+                    <li>
+                        <input id="password" class="input_field" type="password" name="password" value="" placeholder="请输入密码（不低于6位的字母和数字）">
+                    </li>
+                    <li>
+                        <input id="repassword" class="input_field" type="password" name="repassword" value="" placeholder="请确认密码（不低于6位的字母和数字）">
+                    </li>
+                    <li>
+                        <input id="email" class="input_field" type="text" name="email" value="" placeholder="请输入邮箱(选填)">
+                    </li>
+                    <li>
+                        <input id="verify" class="input_field" style="width:50%;" type="text" name="verify" placeholder="看不清？点击图片刷新" value="">
+                        <span class="captcha_box" style="display:inline-block;height:32px;position:relative; top:12px;"><img src="{:logistics_url(2,'verify')}" width="100" height="32" style="border: 0px; cursor: pointer;" alt=" " id="refresh_captcha" title="看不清？点击刷新"></span>
+                    </li>
+                    <li style="margin-top:15px;">
+                        <div class="plain_button_orange" id="signup-submit"><a>确&nbsp;&nbsp;&nbsp;定</a></div>
+                    </li>
+                </ul>
+            </form>
+            <a style="margin-bottom:10px;color:#377BA6;font-size:12px;text-decoration:underline;cursor:pointer;display:inline-block;" onclick='doHREF("{:logistics_url(2,'register')}")'>已经有帐号？请登录</a>
+        </section>
+    </content>
+    <script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+    <script>
+        $(function(){
+            $('#refresh_captcha').click(function(){
+                var url = $(this).attr('src');
+                if( url.indexOf('?')>0){
+                    $(this).attr("src", url.replace(/\?.*$/,'')+'?'+Math.random());
+                }else{
+                    $(this).attr("src", url+'?'+Math.random());
+                }
+            });
+            $('#signup-submit').click(function(){
+
+                var nickname = $.trim($('#nickname').val());
+                if(nickname.length == 0){
+                    layer.msg('用户名不能为空');
+                    return false;
+                }else if(nickname.length < 3 || nickname.length > 30){
+                    layer.msg('用户名长度不正确');
+                    return false;
+                }
+
+                var password = $.trim($('#password').val());
+                var reg_pass = /^[0-9a-zA-Z]{6,20}$/;
+                if(!reg_pass.test(password)){
+                    layer.msg('密码格式不正确');
+                    return false
+                }
+
+                var re_password = $.trim($('#repassword').val());
+                if(password != re_password){
+                    layer.msg('两次密码输入不一致');
+                    return false
+                }
+
+                var email = $.trim($('#email').val());
+                if(email.length > 0){
+                    var reg_email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+                    if(!reg_email.test(email)){
+                        layer.msg('邮箱格式不正确');
+                        return false;
+                    }
+                }
+                var verify = $.trim($('#verify').val());
+                if(verify.length == 0){
+                    layer.msg('验证码不能为空');
+                    return false;
+                }
+                var target = "{:logistics_url(2,'register')}";
+                var query = $('#submit_form').serialize();
+
+                $.post(target,query).success(function(data){
+                    if (data.status==1){
+                        layer.msg('恭喜您，注册成功！页面即将跳转~~');
+                        setTimeout(function(){
+                            window.location.href = data.url;
+                        },1300)
+                    }else{
+                        layer.msg(data.info);
+                        $('#refresh_captcha').click();
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
 <include file="Public/footer"/>

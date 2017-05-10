@@ -147,6 +147,8 @@ return array(
         'city' => array('City/index'), //切换城市页
         'login' => array('User/login'), //登录页
         'register' => array('User/register'), //注册页
+        'user/account' => array('User/account'), //帐号管理
+        'user' => array('User/index'), //个人中心
         'logout' => array('User/logout'), //注册页
         'verify' => array('User/verify'), //验证码
         'getNextArea' => array('Index/getNextArea'), //pca

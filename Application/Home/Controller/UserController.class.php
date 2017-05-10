@@ -28,6 +28,9 @@ class UserController extends HomeController {
         if(!C('USER_ALLOW_REGISTER')){
             $this->error('注册已关闭');
         }
+        if(is_login()){
+            header('Location: ' . logistics_url(1, 'list-2'));
+        }
 		if(IS_POST){ //注册用户
 			/* 检测验证码 */
 			if(!check_verify($verify)){
@@ -50,7 +53,7 @@ class UserController extends HomeController {
                 if($member->add($info)){
                     $group = new AuthGroupModel();
                     $group->addToGroup($uid, 2);
-                    $this->success('注册成功！即将跳转登录页面', U('Admin/Public/login'), 2);
+                    $this->success('注册成功！即将跳转登录页面', logistics_url(1, 'login'));
                 }else{
                     $this->error($this->showRegError());
                 }
@@ -96,6 +99,8 @@ class UserController extends HomeController {
 			}
 
 		} else { //显示登录表单
+            $refer = $_SERVER['HTTP_REFERER'] ? $_SERVER['HTTP_REFERER'] : logistics_url(1, 'list-2');
+            $this->assign('refer', $refer);
 			$this->display();
 		}
 	}
@@ -104,10 +109,9 @@ class UserController extends HomeController {
 	public function logout(){
 		if(is_login()){
 			D('Member')->logout();
-			$this->success('退出成功！', U('User/login'));
-		} else {
-			$this->redirect('user/login');
 		}
+        $_SERVER['HTTP_REFERER'] ? $refer = $_SERVER['HTTP_REFERER'] : $refer = logistics_url(1, 'login');
+        header('Location: ' . $refer);
 	}
 
 	/* 验证码，用于登录和注册 */

@@ -144,6 +144,7 @@ return array(
         /*搜索页结束*/
         '/^([0-9]+)$/' => 'Index/detail?id=:1', //详情页
         'city' => array('City/index'), //切换城市页
+        'gps_city' => array('City/check_city'), //切换城市页
         'login' => array('User/login'), //登录页
         'register' => array('User/register'), //注册页
         'logout' => array('User/logout'), //注册页

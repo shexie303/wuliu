@@ -79,6 +79,9 @@
             $.post(target,query).success(function(data){
                 if (data.status==1){
                     layer.msg('恭喜您，登录成功！页面即将跳转~~');
+                    setTimeout(function(){
+                        window.location.href = '{$refer}';
+                    },1300)
                 }else{
                     layer.msg(data.info);
                     $('#refresh_captcha').click();

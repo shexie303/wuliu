@@ -41,7 +41,7 @@ class CityController extends Controller {
         );
         if(IS_POST){
             $city = I('city','');
-            $data = M('Pca')->where(array('type'=>2,'full_name'=>$city))->select();
+            $data = M('Pca')->where(array('type'=>2,'full_name'=>$city))->find();
             if($data){
                 $res['data'] = $data;
                 $this->ajaxReturn($res, 'json');
@@ -50,5 +50,14 @@ class CityController extends Controller {
                 $this->ajaxReturn($res,'json');
             }
         }
+    }
+
+    public function wechat_jump(){
+        $category = I('category', 2);
+        if(!in_array($category, array(2,3,4,5,6,7))){
+            $category = 2;
+        }
+        $this->assign('category', $category);
+        $this->display();
     }
 }

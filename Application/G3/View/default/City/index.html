@@ -14,7 +14,9 @@
             <ul style="list-style: none;padding: 0px;margin: 0px;color: #000000;font-size: 14px;font-weight: bold;">
                 <li style="height:30px;line-height:30px;padding:0px;border:0px;background:transparent;">当前定位城市：</li>
                 <li style="padding:0px;height:auto;line-height:auto;border:0px;background:transparent;display: block">
-                    <div class="city_item" id="gps_city" style="line-height: 40px"></div>
+                    <div class="city_item" id="gps_city" style="line-height: 40px">
+
+                    </div>
                     <div class="c"></div>
                 </li>
             </ul>
@@ -66,7 +68,6 @@
         </foreach>
     </content>
     <script src="http://api.map.baidu.com/api?v=2.0&ak=dNcVKmvUBgsfAh2IKy72RTWYVtlrEpvf" type="text/javascript"></script>
-
     <script>
         $(function(){
             var geolocation = new BMap.Geolocation();
@@ -79,18 +80,21 @@
                         add_gps_city(addComp.city);
                     });
                 } else {
-                    document.querySelector('.gps_city').innerHTML = '定位失败，请手动选择城市';
+                    $('#gps_city').html('定位失败，请手动选择城市');
                 }
             });
             function add_gps_city(city){
                 var target = "{:logistics_url(2,'gps_city')}";
                 var query = {city:city};
+                var content;
+                var gps_city = $('#gps_city');
                 $.post(target,query).success(function(e){
                     if (e.status==1){
-                        $('#gps_city').html(e.data.name)
+                        content = '<a href="{:logistics_url(2,'/')}/'+e.data.pinyin+'">'+e.data.name+'</a>';
                     }else{
-                        $('#gps_city').html();
+                        content = '定位失败，请手动选择城市';
                     }
+                    gps_city.html(content);
                 });
             }
         });

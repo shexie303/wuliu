@@ -8,11 +8,11 @@
 // +----------------------------------------------------------------------
 
 namespace Home\Controller;
-
+use Think\Controller;
 /**
  * 切换城市
  */
-class CityController extends HomeController {
+class CityController extends Controller {
 
 	public function index(){
         $pca_p = getNextPca(0);
@@ -34,4 +34,22 @@ class CityController extends HomeController {
 
         $this->display();
 	}
+
+    public function check_city(){
+        $res = array(
+            'status' => 1,
+            'data' => ''
+        );
+        if(IS_POST){
+            $city = I('city','');
+            $data = M('Pca')->where(array('type'=>2,'full_name'=>$city))->find();
+            if($data){
+                $res['data'] = $data;
+                $this->ajaxReturn($res, 'json');
+            }else{
+                $res['res'] = 0;
+                $this->ajaxReturn($res,'json');
+            }
+        }
+    }
 }

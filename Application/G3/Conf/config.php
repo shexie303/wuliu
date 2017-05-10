@@ -142,6 +142,7 @@ return array(
         '/^search-([2-7]{1})$/' => 'Index/search?category=:1',
 
         /*搜索页结束*/
+        '/^wechat-([2-7]{1})$/' => 'City/wechat_jump?category=:1',//微信跳转页
 
         '/^([a-z]+)\/([0-9]+)$/' => 'Index/detail?city=:1&id=:2', //详情页
         'city' => array('City/index'), //切换城市页

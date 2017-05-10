@@ -4,6 +4,11 @@
     </div>
     <div id="main">
         <div class='switch_city_page'>
+            <div class="lately_view lately_view_hot">
+                <strong class="fl">当前定位城市：<span style="border-color:#FFF  #FFF #FFF #4496D2 ">》</span></strong>
+                <div class="fl lately_view_list" id="gps_city" style="width: 700px"></div>
+                <div class="c"></div>
+            </div>
             <div class='lately_view lately_view_hot'>
                 <strong class='fl' style='background:#f00'>热门城市：<span>》</span></strong>
                 <div class='fl lately_view_list'>
@@ -52,5 +57,36 @@
             </div>
         </div>
     </div>
-
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=dNcVKmvUBgsfAh2IKy72RTWYVtlrEpvf" type="text/javascript"></script>
+    <script>
+        $(function(){
+            var geolocation = new BMap.Geolocation();
+            geolocation.getCurrentPosition(function (r) {
+                if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+                    var geoc = new BMap.Geocoder();
+                    var pt = r.point;
+                    geoc.getLocation(pt, function (rs) {
+                        var addComp = rs.addressComponents;
+                        add_gps_city(addComp.city);
+                    });
+                } else {
+                    $('#gps_city').html('定位失败，请手动选择城市');
+                }
+            });
+            function add_gps_city(city){
+                var target = "{:logistics_url(1,'gps_city')}";
+                var query = {city:city};
+                var content;
+                var gps_city = $('#gps_city');
+                $.post(target,query).success(function(e){
+                    if (e.status==1){
+                        content = '<a href="http://'+e.data.pinyin+'.{:C('DOMAIN')}/"><b>'+e.data.name+'</b></a>';
+                    }else{
+                        content = '定位失败，请手动选择城市';
+                    }
+                    gps_city.html(content);
+                });
+            }
+        });
+    </script>
 <include file="Public/footer"/>

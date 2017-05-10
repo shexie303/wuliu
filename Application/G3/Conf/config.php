@@ -114,7 +114,7 @@ return array(
         /*列表页落地配二级开始*/
 
         /*列表页货源分类开始*/
-        '/^([a-z]+)\/list-7(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?(p([0-9]+))?(-)?([1-3]{1})?$/' => 'Index/index?city=:1&category=7&location_p=:3&location_c=:5&location_a=:7&destination_p=:9&destination_c=:11&destination_a=:13&p=:15&order=:17',
+        '/^([a-z]+)\/list-7(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?([0-9]{6})?(-)?(p([0-9]+))?(-)?([1-3]{1})?$/' => 'Index/index?city=:1&category=7&location_p=:3&location_c=:5&location_a=:7&destination_p=:9&destination_c=:11&destination_a=:13&p=:16&order=:18',
         /*列表页货源开始*/
 
         /*列表页除2、3、7分类以外的三级分类开始*/

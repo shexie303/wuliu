@@ -122,12 +122,18 @@ class IndexController extends HomeController {
             $province = getNextPca(0);
             $this->assign('province', $province);
 
-            $l_province = I('location_p', 0);
-            $l_city = I('location_c', 0);
-            $l_area = I('location_a', 0);
-            $d_province = I('destination_p', 0);
-            $d_city = I('destination_c', 0);
-            $d_area = I('destination_a', 0);
+            $l_province = I('location_p');
+            $l_province = $l_province ? $l_province : '000000';
+            $l_city = I('location_c');
+            $l_city = $l_city ? $l_city : '000000';
+            $l_area = I('location_a');
+            $l_area = $l_area ? $l_area : '000000';
+            $d_province = I('destination_p');
+            $d_province = $d_province ? $d_province : '000000';
+            $d_city = I('destination_c');
+            $d_city = $d_city ? $d_city : '000000';
+            $d_area = I('destination_a');
+            $d_area = $d_area ? $d_area : '000000';
             if($l_province > 0){
                 $ext['l_province'] = $l_province;
                 $this->assign('location_p', $l_province);
@@ -198,8 +204,11 @@ class IndexController extends HomeController {
         //banner
         $banner = getCateBanner($category['id']);
         $this->assign('banner', $banner);
-
-        $this->display($category['template_lists']);
+        if($category['id'] == 6){
+            $this->display('Index/index_6');
+        }else{
+            $this->display($category['template_lists']);
+        }
     }
 
     /* 文档模型详情页 */

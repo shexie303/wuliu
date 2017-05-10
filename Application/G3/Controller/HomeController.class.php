@@ -20,7 +20,7 @@ class HomeController extends Controller {
 
 	/* 空操作，用于输出404页面 */
 	public function _empty(){
-        var_dump(404);exit;
+        $this->_404();
 	}
 
 
@@ -77,5 +77,10 @@ class HomeController extends Controller {
 		/* 用户登录检测 */
 		is_login() || $this->error('您还没有登录，请先登录！', U('User/login'));
 	}
-
+    //404错误定向
+    public function _404() {
+        send_http_status(404);
+        $this->display('Public/404');
+        exit();
+    }
 }

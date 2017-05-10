@@ -10,6 +10,15 @@
         </section>
     </header>
     <content>
+        <section style="padding: 10px;">
+            <ul style="list-style: none;padding: 0px;margin: 0px;color: #000000;font-size: 14px;font-weight: bold;">
+                <li style="height:30px;line-height:30px;padding:0px;border:0px;background:transparent;">当前定位城市：</li>
+                <li style="padding:0px;height:auto;line-height:auto;border:0px;background:transparent;display: block">
+                    <div class="city_item" id="gps_city" style="line-height: 40px"></div>
+                    <div class="c"></div>
+                </li>
+            </ul>
+        </section>
         <section id="hot_city">
             <ul>
                 <li style="height:30px;line-height:30px;padding:0px;border:0px;background:transparent;">热门城市</li>
@@ -56,4 +65,34 @@
             </section>
         </foreach>
     </content>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=dNcVKmvUBgsfAh2IKy72RTWYVtlrEpvf" type="text/javascript"></script>
+
+    <script>
+        $(function(){
+            var geolocation = new BMap.Geolocation();
+            geolocation.getCurrentPosition(function (r) {
+                if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+                    var geoc = new BMap.Geocoder();
+                    var pt = r.point;
+                    geoc.getLocation(pt, function (rs) {
+                        var addComp = rs.addressComponents;
+                        add_gps_city(addComp.city);
+                    });
+                } else {
+                    document.querySelector('.gps_city').innerHTML = '定位失败，请手动选择城市';
+                }
+            });
+            function add_gps_city(city){
+                var target = "{:logistics_url(2,'gps_city')}";
+                var query = {city:city};
+                $.post(target,query).success(function(e){
+                    if (e.status==1){
+                        $('#gps_city').html(e.data.name)
+                    }else{
+                        $('#gps_city').html();
+                    }
+                });
+            }
+        });
+    </script>
 <include file="Public/footer"/>

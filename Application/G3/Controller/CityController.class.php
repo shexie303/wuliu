@@ -33,4 +33,22 @@ class CityController extends Controller {
 
         $this->display();
 	}
+
+    public function check_city(){
+        $res = array(
+            'status' => 1,
+            'data' => ''
+        );
+        if(IS_POST){
+            $city = I('city','');
+            $data = M('Pca')->where(array('type'=>2,'full_name'=>$city))->select();
+            if($data){
+                $res['data'] = $data;
+                $this->ajaxReturn($res, 'json');
+            }else{
+                $res['res'] = 0;
+                $this->ajaxReturn($res,'json');
+            }
+        }
+    }
 }

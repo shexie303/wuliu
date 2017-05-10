@@ -145,6 +145,7 @@ return array(
 
         '/^([a-z]+)\/([0-9]+)$/' => 'Index/detail?city=:1&id=:2', //详情页
         'city' => array('City/index'), //切换城市页
+        'gps_city' => array('City/check_city'), //切换城市页
         'login' => array('User/login'), //登录页
         'register' => array('User/register'), //注册页
         'user/account' => array('User/account'), //帐号管理

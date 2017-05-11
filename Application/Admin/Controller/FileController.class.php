@@ -89,7 +89,7 @@ class FileController extends AdminController {
                 /*添加水印开始*/
                 $image = new \Think\Image();
                 $thumb_file = $info['imgFile']['path'];
-                $image->open('.'.$thumb_file)->water('.'.C('TMPL_PARSE_STRING.__IMG__').'/water.jpg',\Think\Image::IMAGE_WATER_SOUTHEAST)->save('.'.$thumb_file);
+                $image->open('.'.$thumb_file)->water('.'.C('TMPL_PARSE_STRING.__STATIC__').'/images/water.png',\Think\Image::IMAGE_WATER_SOUTHEAST)->save('.'.$thumb_file);
                 /*添加水印结束*/
             }
             if($save_path == 'ad_img'){

@@ -5,7 +5,30 @@
                 <div class="left_item pl15">
                     <div class="page_title" style="height: auto">{$info.title}</div>
                     <div class="linkman_msg">
-                        <span><img src="__IMG__/phone.png" class="mr5" data-bd-imgshare-binded="1">{$info.contact}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span>
+                            <img src="__IMG__/phone.png" class="mr5" data-bd-imgshare-binded="1">
+                           <eq name="category.id" value="7">
+                               <eq name="user_info.vip" value="1">
+                                   <neq name="contact_res.contact_ids" value="no_limit">
+                                       <in name="info.id" value="$contact_res['contact_ids']">
+                                           {$info.contact}
+                                       <else/>
+                                           <eq name="contact_res.contact_limit" value="1">
+                                               <a data-id="{$info['id']}" class="show_contact" style="color: #FF8500">查看联系方式</a>
+                                           <else/>
+                                               {$info.contact}
+                                           </eq>
+                                       </in>
+                                   <else/>
+                                       {$info.contact}
+                                   </neq>
+                               </eq>
+                               <eq name="contact_res.contact_show" value="1">{$val.contact}</eq>
+                               <eq name="contact_res.contact_show" value="0"><a data-id="{$val['id']}" class="show_contact" style="color: #FF8500">点击查看联系方式</a></eq>
+                           <else/>
+                               {$info.contact}
+                           </eq>
+                        </span>&nbsp;&nbsp;&nbsp;&nbsp;
                         <span><img src="__IMG__/address.png" class="mr5" data-bd-imgshare-binded="1">{$info.address}</span>
                     </div>
                     <div style="height:340px;">
@@ -48,7 +71,7 @@
                     </h2>
                     <div id="baidu_map" style="width:100%;height:400px;"></div>
                     <div class="ml15 mt10 mb10 mr15" style="overflow:hidden;font-size:16px;font-family:microsoft yahei,sans serif;">
-                        {$info.content}
+                        <neq name="category.id" value="7">{$info.content}</neq>
                         <p style="color:#FF8500;">
                             <eq name="info.vip_zh" value="游客">
                                 联系我时，请说是{:C('WEB_SITE_TITLE')}看到的，谢谢！
@@ -80,7 +103,29 @@
                                     </div>
                                 </div>
                                 <div class="gobuy">
-                                    <span class="nprice"><img src="__IMG__/phone.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">{$val.contact}</span>
+                                    <span class="nprice"><img src="__IMG__/phone.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">
+                                        <eq name="category.id" value="7">
+                                            <eq name="user_info.vip" value="1">
+                                                <neq name="contact_res.contact_ids" value="no_limit">
+                                                    <in name="val.id" value="$contact_res['contact_ids']">
+                                                        {$val.contact}
+                                                    <else/>
+                                                        <eq name="contact_res.contact_limit" value="1">
+                                                            <a data-id="{$val['id']}" class="show_contact" style="color: #FF8500">查看联系方式</a>
+                                                        <else/>
+                                                            <a href="{:logistics_url(1,$val['id'])}" style="color: #FF8500">查看联系方式</a>
+                                                        </eq>
+                                                    </in>
+                                                <else/>
+                                                    <a href="{:logistics_url(1,$val['id'])}" style="color: #FF8500">查看联系方式</a>
+                                                </neq>
+                                            </eq>
+                                            <eq name="contact_res.contact_show" value="1">{$val.contact}</eq>
+                                            <eq name="contact_res.contact_show" value="0"><a data-id="{$val['id']}" class="show_contact" style="color: #FF8500">点击查看联系方式</a></eq>
+                                        <else/>
+                                            {$info.contact}
+                                        </eq>
+                                    </span>
                                     <a href="{:logistics_url(1,$val['id'])}" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px" data-bd-imgshare-binded="1"></a>
                                     <div class="c"></div>
                                 </div>
@@ -98,6 +143,7 @@
         </div>
     </div>
     <script src="http://api.map.baidu.com/api?v=2.0&ak=dNcVKmvUBgsfAh2IKy72RTWYVtlrEpvf" type="text/javascript"></script>
+    <script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
     <script type="text/javascript">
         // 百度地图API功能
         var map = new BMap.Map("baidu_map");
@@ -113,5 +159,24 @@
                 baidu_map.style.display = 'none';
             }
         },'');
+        $(function(){
+            var goto_login = "{$contact_res['goto_login']?1:0}";
+            var goto_vip = "{$contact_res['goto_vip']?1:0}";
+            var contact_limit = "{$contact_res['contact_limit']?1:0}";
+            $('.show_contact').click(function(){
+                if(goto_login == 1){
+                    layer.msg('请您先登录!');
+                    return false;
+                }
+                if(goto_vip == 1){
+                    if(contact_limit == 1){
+                        layer.msg('您已经查看了20次，提升会员等级，可以查看更多');
+                    }else{
+                        layer.msg('您是游客，提升会员等级，才可以查看');
+                    }
+                    return false;
+                }
+            });
+        });
     </script>
 <include file="Public/footer"/>

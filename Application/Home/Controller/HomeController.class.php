@@ -17,6 +17,7 @@ use Think\Controller;
 class HomeController extends Controller {
 
     protected $city;
+    protected $user;
 
 	/* 空操作，用于输出404页面 */
 	public function _empty(){
@@ -76,8 +77,9 @@ class HomeController extends Controller {
         $this->assign('ACTION_NAME', ACTION_NAME);
 
         //用户信息
-        $user_info = session('user_auth');
-        if($user_info){
+        if(is_login()){
+            $user_info = session('user_auth');
+            $this->user = $user_info;
             $this->assign('user_info', $user_info);
         }
     }

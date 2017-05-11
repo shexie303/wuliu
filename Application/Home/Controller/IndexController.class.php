@@ -156,6 +156,14 @@ class IndexController extends HomeController {
                 }
             }
             $uri .= $l_province .'-'.$l_city .'-'.$l_area .'-'.$d_province .'-'.$d_city .'-'.$d_area .'-';
+            //货源联系方式是否显示
+            if($this->user){
+                $contact_res = hyContactLimit($this->user['uid'], $this->user['vip']);
+            }else{
+                $contact_res['goto_login'] = 1;
+                $contact_res['contact_show'] = 0;
+            }
+            $this->assign('contact_res', $contact_res);
         }
         $order = I('get.order', 1);
         if(!in_array($order, array(1,2,3))){
@@ -219,10 +227,20 @@ class IndexController extends HomeController {
         $ext['id'] = array('neq', $id);
         $list = $Document->page(1, 5)->lists($category['id'], $ext, 1);
 
+        //货源联系方式是否显示
+        if($this->user){
+            $contact_res = hyContactLimit($this->user['uid'], $this->user['vip']);
+            if($this->user['vip'] == 1) AddHyContactLimit($this->user['uid'], $id);
+        }else{
+            $contact_res['goto_login'] = 1;
+            $contact_res['contact_show'] = 0;
+        }
+
 		/* 模板赋值并渲染模板 */
 		$this->assign('category', $category);
 		$this->assign('info', $info);
 		$this->assign('list', $list);
+        $this->assign('contact_res', $contact_res);
 		$this->display();
 	}
 

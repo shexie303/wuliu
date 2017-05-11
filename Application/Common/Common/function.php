@@ -1371,3 +1371,46 @@ function getCateBanner($category_id = 1){
     }
     return $cache;
 }
+
+//货源查看限制
+function hyContactLimit($uid,$vip){
+    $res = array();
+    if($vip > 1){
+        $res['contact_show'] = 1;
+    }elseif($vip == 1){
+        //
+        $cache_key = 'hy_contact_' . $uid;
+        $cache = S($cache_key);
+        if($cache){
+            if($cache['count'] >= 20){
+                $res['goto_vip'] = 1;
+                $res['contact_limit'] = 1;
+            }
+            $res['contact_ids'] = $cache['ids'];
+        }else{
+            $res['contact_ids'] = 'no_limit';
+        }
+
+    }else{
+        $res['goto_vip'] = 1;
+        $res['contact_show'] = 0;
+    }
+    return $res;
+}
+//试用期会员添加浏览限制
+function AddHyContactLimit($uid, $hy_id){
+    $cache_key = 'hy_contact_' . $uid;
+    $cache = S($cache_key);
+    if($cache){
+        if(!in_array($hy_id, explode(',', $cache['ids']))){
+            $cache['count'] += 1;
+            $cache['ids'] = $cache['ids'] . ',' . $hy_id;
+        }
+    }else{
+        $cache = array(
+            'count' => 1,
+            'ids' => $hy_id
+        );
+    }
+    if($cache['count'] < 21) S($cache_key, $cache);
+}

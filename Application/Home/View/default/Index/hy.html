@@ -62,7 +62,25 @@
                                 </div>
                             </div>
                             <div class="gobuy">
-                                <div class="nprice"><img src="__IMG__/phone.png" class="mr5">{$val.contact}</div>
+                                <div class="nprice"><img src="__IMG__/phone.png" class="mr5">
+                                    <eq name="user_info.vip" value="1">
+                                        <neq name="contact_res.contact_ids" value="no_limit">
+                                            <in name="val.id" value="$contact_res['contact_ids']">
+                                                {$val.contact}
+                                            <else/>
+                                                <eq name="contact_res.contact_limit" value="1">
+                                                    <a data-id="{$val['id']}" class="show_contact" style="color: #FF8500">点击查看联系方式</a>
+                                                <else/>
+                                                    <a href="{:logistics_url(1,$val['id'])}" style="color: #FF8500">点击查看联系方式</a>
+                                                </eq>
+                                            </in>
+                                        <else/>
+                                            <a href="{:logistics_url(1,$val['id'])}" style="color: #FF8500">点击查看联系方式</a>
+                                        </neq>
+                                    </eq>
+                                    <eq name="contact_res.contact_show" value="1">{$val.contact}</eq>
+                                    <eq name="contact_res.contact_show" value="0"><a data-id="{$val['id']}" class="show_contact" style="color: #FF8500">点击查看联系方式</a></eq>
+                                </div>
                                 <a href="{:logistics_url(1,$val['id'])}" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px"></a>
                                 <div class="c"></div>
                             </div>
@@ -81,19 +99,37 @@
             {$page}
         </div>
     </div>
+    <script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
     <script>
         $(function(){
-           $('#pca_search').click(function(){
-               var uri = 'list-7';
-               var location_p = $('#location_p').val();
-               var location_c = $('#location_c').val();
-               var location_a = $('#location_a').val();
-               var destination_p = $('#destination_p').val();
-               var destination_c = $('#destination_c').val();
-               var destination_a = $('#destination_a').val();
-               uri += '-'+location_p+'-'+location_c+'-'+location_a+'-'+destination_p+'-'+destination_c+'-'+destination_a
-               window.location.href = '{:logistics_url(1,'/')}/'+uri+'.html';
-           })
+            $('#pca_search').click(function(){
+                var uri = 'list-7';
+                var location_p = $('#location_p').val();
+                var location_c = $('#location_c').val();
+                var location_a = $('#location_a').val();
+                var destination_p = $('#destination_p').val();
+                var destination_c = $('#destination_c').val();
+                var destination_a = $('#destination_a').val();
+                uri += '-'+location_p+'-'+location_c+'-'+location_a+'-'+destination_p+'-'+destination_c+'-'+destination_a
+                window.location.href = '{:logistics_url(1,'/')}/'+uri+'.html';
+            });
+            var goto_login = "{$contact_res['goto_login']?1:0}";
+            var goto_vip = "{$contact_res['goto_vip']?1:0}";
+            var contact_limit = "{$contact_res['contact_limit']?1:0}";
+            $('.show_contact').click(function(){
+                if(goto_login == 1){
+                    layer.msg('请您先登录!');
+                    return false;
+                }
+                if(goto_vip == 1){
+                    if(contact_limit == 1){
+                        layer.msg('您已经查看了20次，提升会员等级，可以查看更多');
+                    }else{
+                        layer.msg('您是游客，提升会员等级，才可以查看');
+                    }
+                    return false;
+                }
+            });
         });
     </script>
 <include file="Public/footer"/>

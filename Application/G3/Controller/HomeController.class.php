@@ -17,6 +17,7 @@ use Think\Controller;
 class HomeController extends Controller {
 
     protected $city;
+    protected $user;
 
 	/* 空操作，用于输出404页面 */
 	public function _empty(){
@@ -71,9 +72,11 @@ class HomeController extends Controller {
 
         $this->assign('CITY', $this->city);
 
+        //用户信息
         if(is_login()){
             $user = session('user_auth');
             $user['vip_zh'] = vipZh($user['vip']);
+            $this->user = $user;
             $this->assign('user', $user);
         }
     }

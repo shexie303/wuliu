@@ -16,14 +16,68 @@
         <section id="goods_detail" style="margin-top:10px;">
             <ul style="box-shadow:0px 1px 2px 1px #ededed; border-radius:5px;border:1px #ededed solid;">
                 <li style="border-bottom:1px #ededed solid;padding:10px 0px 10px 0px;padding:10px;display:block;font-weight:bold;font-size:20px;" id="remainTime" class="dark_grey_14_label">{$info.title}</li>
-                <li class="orange_16_b_label" style="display:block; padding:5px 0 5px 10px; ">
-                    <a style="display:block;position:relative;" href="tel:{$info.contact}">
-                        <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1"><span style="color:#ed6d00;font-size:16px;font-weight:bold;margin-left:5px;">{$info.contact}</span>
-                    </a>
+                <li style="display:block; padding:5px 0 5px 10px; ">
+                    <eq name="category.id" value="7">
+                        <eq name="user.vip" value="1">
+                            <neq name="contact_res.contact_ids" value="no_limit">
+                                <in name="info.id" value="$contact_res['contact_ids']">
+                                    <a style="display:block;position:relative;" href="tel:{$info.contact}">
+                                        <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                                        <span style="color:#ed6d00;font-size:16px;font-weight:bold;margin-left:5px;">
+                                            {$info.contact}
+                                        </span>
+                                    </a>
+                                <else/>
+                                    <eq name="contact_res.contact_limit" value="1">
+                                        <a data-id="{$info['id']}" class="show_contact" style="display:block;margin-top:0;">
+                                            <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                                            <span style="color:#ed6d00;font-size:14px;font-weight:bold;margin-left:5px;">点击查看联系方式</span>
+                                        </a>
+                                    <else/>
+                                        <a style="display:block;position:relative;" href="tel:{$info.contact}">
+                                            <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                                            <span style="color:#ed6d00;font-size:16px;font-weight:bold;margin-left:5px;">
+                                                {$info.contact}
+                                            </span>
+                                        </a>
+                                    </eq>
+                                </in>
+                            <else/>
+                                <a style="display:block;position:relative;" href="tel:{$info.contact}">
+                                    <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                                    <span style="color:#ed6d00;font-size:16px;font-weight:bold;margin-left:5px;">
+                                        {$info.contact}
+                                    </span>
+                                </a>
+                            </neq>
+                        </eq>
+                        <eq name="contact_res.contact_show" value="1">
+                            <a style="display:block;position:relative;" href="tel:{$info.contact}">
+                                <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                                <span style="color:#ed6d00;font-size:16px;font-weight:bold;margin-left:5px;">
+                                    {$info.contact}
+                                </span>
+                            </a>
+                        </eq>
+                        <eq name="contact_res.contact_show" value="0">
+                            <a data-id="{$info['id']}" class="show_contact" style="display:block;margin-top:0;color: #FF8500">
+                                <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                                <span style="color:#ed6d00;font-size:14px;font-weight:bold;margin-left:5px;">点击查看联系方式</span>
+                            </a>
+                        </eq>
+                    <else/>
+                        <a style="display:block;position:relative;" href="tel:{$info.contact}">
+                            <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                            <span style="color:#ed6d00;font-size:16px;font-weight:bold;margin-left:5px;">
+                                {$info.contact}
+                            </span>
+                        </a>
+                    </eq>
                 </li>
                 <li style="display:block; padding:0 0 5px 10px; ">
                     <a style="display:block;margin-top:0px;" href="javascript:;">
-                        <img src="__IMG__/address.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1"><span style="color:#666;font-size:14px;margin-left:5px;">{$info.address}</span>
+                        <img src="__IMG__/address.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                        <span style="color:#666;font-size:14px;margin-left:5px;">{$info.address}</span>
                     </a>
                 </li>
                 <li style="padding:5px 10px 10px 10px; display:block;position:relative;">
@@ -64,6 +118,7 @@
         </section>
     </content>
     <script src="http://api.map.baidu.com/api?v=2.0&ak=dNcVKmvUBgsfAh2IKy72RTWYVtlrEpvf" type="text/javascript"></script>
+    <script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
     <script>
         function goToAddress(address,title){
             var myGeo = new BMap.Geocoder();
@@ -79,5 +134,24 @@
                 window.location.href=url;
             }, "");
         }
+        $(function(){
+            var goto_login = "{$contact_res['goto_login']?1:0}";
+            var goto_vip = "{$contact_res['goto_vip']?1:0}";
+            var contact_limit = "{$contact_res['contact_limit']?1:0}";
+            $('.show_contact').click(function(){
+                if(goto_login == 1){
+                    layer.msg('请您先登录!');
+                    return false;
+                }
+                if(goto_vip == 1){
+                    if(contact_limit == 1){
+                        layer.msg('您已经查看了20次，提升会员等级，可以查看更多');
+                    }else{
+                        layer.msg('您是游客，提升会员等级，才可以查看');
+                    }
+                    return false;
+                }
+            });
+        })
     </script>
 <include file="Public/footer"/>

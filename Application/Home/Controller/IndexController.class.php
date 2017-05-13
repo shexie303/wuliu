@@ -31,7 +31,9 @@ class IndexController extends HomeController {
             $minor['name'] = '直达线路';
             $city_zdzx = getNextCategory(2, $this->city['parent_id']);
             $minor['data'] = getZdzxCityCount($city_zdzx, $this->city['id']);
-            $ext['ids'] = getZdzxJpzxIds($this->city['id'],$zx);
+            if($zx){
+                $ext['ids'] = getZdzxJpzxIds($this->city['id'],$zx);
+            }
             $this->assign('minor', $minor);
 
             //有地区分类则显示
@@ -225,6 +227,9 @@ class IndexController extends HomeController {
         //推荐同分类其他数据
         $Document = D('Document');
         $ext['id'] = array('neq', $id);
+        if(in_array($category['id'],array(2,6))){
+            $ext['l_city'] = $this->city['id'];
+        }
         $list = $Document->page(1, 5)->lists($category['id'], $ext, 1);
 
         //货源联系方式是否显示

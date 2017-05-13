@@ -364,7 +364,7 @@ class UserController extends AdminController {
 
     public function add($username = '', $password = '', $repassword = '', $email = '', $group = ''){
         if(IS_POST){
-            if(!in_array($group, array(1,2))){
+            if(!in_array($group, array(1,2,3))){
                 $this->error('用户组不存在！');
             }
             /* 检测密码 */

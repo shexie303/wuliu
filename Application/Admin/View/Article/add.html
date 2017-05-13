@@ -39,11 +39,7 @@
                 <div class="form-item cf">
                     <label class="item-label">选择分类<span class="check-tips">（选择分类）</span></label>
                     <div class="controls">
-                        <select name="cate_id">
-                            <volist name="s_cate" id="val">
-                                <option value="{$val.id}">{$val.title}</option>
-                            </volist>
-                        </select>
+                        <include file="Public:select_cate"/>
                     </div>
                 </div>
             </if>

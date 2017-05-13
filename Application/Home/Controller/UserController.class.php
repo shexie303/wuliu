@@ -20,7 +20,7 @@ class UserController extends HomeController {
 
 	/* 用户中心首页 */
 	public function index(){
-		
+		echo time();
 	}
 
 	/* 注册页面 */

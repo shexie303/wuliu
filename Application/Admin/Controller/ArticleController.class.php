@@ -480,6 +480,10 @@ class ArticleController extends AdminController {
         if($data['category_id'] == 6){
             $s_cate = getNextCategory(6);
             $this->assign('s_cate', $s_cate);
+            if($data['cate_id']){
+                $third_cate = getNextCategory($data['cate_id']);
+                $this->assign('third_cate', $third_cate);
+            }
         }elseif($data['category_id'] == 7){
             //获取目的地城市列表
             $destination_city = getNextPca($data['destination_p'], 2);
@@ -986,7 +990,7 @@ class ArticleController extends AdminController {
         $cate_id = I('post.cate_id',0);
         empty($cate_id) && $this->error('分类参数不能为空！');
         $p_id = I('post.p_id',0);
-        empty($p_id) && $this->error('省份参数不能为空！');
+        //empty($p_id) && $this->error('省份参数不能为空！');
         $return = array(
             'status' => 0,
             'data' => '',

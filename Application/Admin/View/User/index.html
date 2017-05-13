@@ -56,7 +56,9 @@
                     从未登录
                 </if>
             </td>
-			<td>{$vo.status_text}</td>
+			<td>
+                <eq name="vo.status" value="1">正常<else/>禁用</eq>
+            </td>
 			<td>
                 <eq name="vo.status" value="1">
 				    <a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>

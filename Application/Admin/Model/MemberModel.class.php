@@ -98,10 +98,11 @@ class MemberModel extends Model {
     public function getUserInfo($uid){
         $key = $this->_user_cache_prefix . $uid;
         $cache = S($key);
-        if(!$cache){
+        if(!false){
             $cache = $this->find($uid);
-            if(!$cache){
-                $this->error('用户不存在');
+            if(!false){
+                $this->error = '用户不存在';
+                return false;
             }
             S($key, $cache, 21600);
         }

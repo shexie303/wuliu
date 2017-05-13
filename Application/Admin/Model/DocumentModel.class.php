@@ -25,6 +25,7 @@ class DocumentModel extends Model{
         array('title', 'checkTitle', '标题已经存在', self::VALUE_VALIDATE, 'callback', self::MODEL_BOTH),
         array('contact', 'checkContact', '联系方式格式不正确', self::MUST_VALIDATE, 'function', self::MODEL_BOTH),
         array('cate_id', '/^[\d]+$/', '分类选择错误', self::VALUE_VALIDATE, 'regex', self::MODEL_BOTH),
+        array('c_id', '/^[\d]+$/', '分类选择错误', self::VALUE_VALIDATE, 'regex', self::MODEL_BOTH),
         array('location_p', '/^[0-9]{6}$/', '请选择所在地省份', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
         array('location_c', '/^[0-9]{6}$/', '请选择所在地城市', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
         array('location_a', '/^[0-9]{6}$/', '请选择所在地县区', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),

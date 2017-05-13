@@ -902,7 +902,7 @@ function get_cover($cover_id, $field = null){
     }
     $cache_key = 'cover_' . $cover_id . '_' . $field;
     $cache = S($cache_key);
-    if(!$cache){
+    if(!false){
         $picture = M('Picture')->where(array('status'=>1))->getById($cover_id);
         $cache = empty($field) ? $picture : ($picture[$field] ? $picture[$field] : $default);
         S($cache_key, $cache, 21600);
@@ -1053,7 +1053,7 @@ function checkContact($str){
 function all_city(){
     $cache_key = 'all_city_pinyin';
     $cache = S($cache_key);
-    if(!$cache){
+    if(!false){
         $data = M('Pca')->where(array('type'=>2))->select();
         $cache = array();
         foreach($data as $val){
@@ -1071,9 +1071,9 @@ function all_city(){
 function getHotCity(){
     $cache_key = 'hot_city';
     $cache = S($cache_key);
-    if(!$cache){
+    if(!false){
         $cache = M('Pca')->where(array('type'=>2,'hot'=>1))->select();
-        if(!$cache){
+        if(!false){
             return false;
         }
         S($cache_key, $cache, 21600);
@@ -1090,7 +1090,7 @@ function getHotCity(){
 function getNextPca($parent_id = 0, $type = 1){
     $cache_key = 'pca_' . $parent_id . '_' . $type;
     $cache = S($cache_key);
-    if(!$cache){
+    if(!false){
         $cache = M('Pca')->field('id,name,name as title,pinyin,hot')->where(array('parent_id'=>$parent_id,'type'=>$type))->select();
         if($cache){
             S($cache_key, $cache, 21600);
@@ -1114,7 +1114,7 @@ function getNextCategory($cate_id = 0, $province_id = 0){
         $cache_key .= '_' . $province_id;
     }
     $cache = S($cache_key);
-    if(!$cache){
+    if(!false){
         $map = array(
             'status' => 1,
             'pid' => 0
@@ -1188,7 +1188,7 @@ function logistics_url($domain = 1, $uri){
 function getZdzxCityCount(array $city_zdzx, $city_id){
     $cache_key = 'zdzx_' . $city_id;
     $cache = S($cache_key);
-    if(!$cache){
+    if(!false){
         $sql = "SELECT zdzx_id,count(*) as count from logistics_jpzx left join logistics_document on logistics_jpzx.wuliu_id = logistics_document.id  where city_id={$city_id} and status = 1 and category_id = 2 GROUP BY zdzx_id";
         $jpzx = M('Jpzx')->query($sql);
         $jpzx_arr = array();
@@ -1215,7 +1215,7 @@ function getZdzxCityCount(array $city_zdzx, $city_id){
 function getZdzxAreaCount($local_area, $city_id){
     $cache_key = 'zdzx_' . $city_id . '_area';
     $cache = S($cache_key);
-    if(!$cache){
+    if(!false){
         $map = array(
             'location_c' => $city_id,
             'status' => 1,
@@ -1298,7 +1298,7 @@ function getLdpCount(){
 function getZdzxJpzxIds($city_id, $zdzx_id){
     $cache_key = 'zdzx_' . $city_id . '_' . $zdzx_id;
     $cache = S($cache_key);
-    if(!$cache){
+    if(!false){
         if($zdzx_id){
             $map = "zdzx_id={$zdzx_id} and";
         }
@@ -1319,7 +1319,7 @@ function getZdzxJpzxIds($city_id, $zdzx_id){
 function getCateCount($cate_data, $city_id = 0, $id_name = 'cate_id', $cate_id = 0, $category_id = 6){
     $cache_key = $city_id . '_' . $id_name . '_' . $category_id . '_' . $cate_id;
     $cache = S($cache_key);
-    if(!$cache){
+    if(!false){
         $where = array(
             'status' => 1,
         );
@@ -1354,7 +1354,7 @@ function getCateCount($cate_data, $city_id = 0, $id_name = 'cate_id', $cate_id =
 function getCateBanner($category_id = 1){
     $cache_key = 'banner_'.$category_id;
     $cache = S($cache_key);
-    if(!$cache){
+    if(!false){
         $map  = array(
             'status' => 1,
             'position' => $category_id

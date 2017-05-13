@@ -1,0 +1,37 @@
+<select name="cate_id" id="s_cate"  class="pca-select" onchange="cate_select()">
+    <option value="">请选择</option>
+    <foreach name="s_cate" item="val">
+        <option value="{$val.id}" <eq name="data.cate_id" value="$val.id">selected</eq> >{$val.title}</option>
+    </foreach>
+</select>
+<select name="c_id"  class="pca-select" <empty name="third_cate">style="display: none"</empty>>
+    <option value="">请选择</option>
+    <notempty name="third_cate">
+        <foreach name="third_cate" item="val">
+            <option value="{$val.id}" <eq name="data.c_id" value="$val.id">selected</eq> >{$val.title}</option>
+        </foreach>
+    </notempty>
+</select>
+
+<script>
+    function cate_select(){
+        var obj = $('#s_cate');
+        var id = obj.val();
+        if(id > 0){
+            $.post("{:U('Article/getNextCategory')}", {cate_id : id, pid : 0}, function(e){
+                if(e.status == 0){
+                    obj.next().hide().empty();
+                    obj.next().append('<option value="0">请选择</option>');
+                    $.each(e.data, function(n, item){
+                        obj.next().append('<option value="'+item.id+'">'+item.title+'</option>')
+                    });
+                    obj.next().show();
+                }else{
+                    obj.next().hide().empty();
+                }
+            });
+        }else{
+            obj.next().hide().empty();
+        }
+    }
+</script>

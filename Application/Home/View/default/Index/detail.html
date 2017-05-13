@@ -87,54 +87,58 @@
                 <div class="right_item right_item_no">
                     <h2 class="item_title">推荐查看其它{$category.title}信息</h2>
                     <div>
-                        <foreach name="list.data" item="val">
-                            <div class="tuanitem_mini">
-                                <eq name="val.vip" value="2"><img src="__IMG__/tuijian.png" class="vip-img"></eq>
-                                <eq name="val.vip" value="3"><img src="__IMG__/vip.png" class="vip-img"></eq>
-                                <a class="tuanitem-item">
-                                    <div class="tuanitem-item-border"></div>
-                                </a>
-                                <div class="tuanitem-meta">
-                                    <a class="tuanitem-meta-img" href="{:logistics_url(1,$val['id'])}">
-                                        <img alt="{$val.title}" src="{$val.cover_id|get_cover='path'}" onerror="javascript:this.src='__STATIC__/images/default.jpg';"/>
+                        <empty name="list.data">
+                            <div style="width: 100%;text-align: center">暂无推荐数据</div>
+                        <else/>
+                            <foreach name="list.data" item="val">
+                                <div class="tuanitem_mini">
+                                    <eq name="val.vip" value="2"><img src="__IMG__/tuijian.png" class="vip-img"></eq>
+                                    <eq name="val.vip" value="3"><img src="__IMG__/vip.png" class="vip-img"></eq>
+                                    <a class="tuanitem-item">
+                                        <div class="tuanitem-item-border"></div>
                                     </a>
-                                    <div class="tuanitem-meta-title">
-                                        <a href="{:logistics_url(1,$val['id'])}" title="{$val.title}" class="c_b">{$val.title}</a>
+                                    <div class="tuanitem-meta">
+                                        <a class="tuanitem-meta-img" href="{:logistics_url(1,$val['id'])}">
+                                            <img alt="{$val.title}" src="{$val.cover_id|get_cover='path'}" onerror="javascript:this.src='__STATIC__/images/default.jpg';"/>
+                                        </a>
+                                        <div class="tuanitem-meta-title">
+                                            <a href="{:logistics_url(1,$val['id'])}" title="{$val.title}" class="c_b">{$val.title}</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="gobuy">
+                                    <div class="gobuy">
                                     <span class="nprice"><img src="__IMG__/phone.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">
                                         <eq name="category.id" value="7">
                                             <eq name="user_info.vip" value="1">
                                                 <neq name="contact_res.contact_ids" value="no_limit">
                                                     <in name="val.id" value="$contact_res['contact_ids']">
                                                         {$val.contact}
-                                                    <else/>
+                                                        <else/>
                                                         <eq name="contact_res.contact_limit" value="1">
                                                             <a data-id="{$val['id']}" class="show_contact" style="color: #FF8500">查看联系方式</a>
-                                                        <else/>
+                                                            <else/>
                                                             <a href="{:logistics_url(1,$val['id'])}" style="color: #FF8500">查看联系方式</a>
                                                         </eq>
                                                     </in>
-                                                <else/>
+                                                    <else/>
                                                     <a href="{:logistics_url(1,$val['id'])}" style="color: #FF8500">查看联系方式</a>
                                                 </neq>
                                             </eq>
                                             <eq name="contact_res.contact_show" value="1">{$val.contact}</eq>
                                             <eq name="contact_res.contact_show" value="0"><a data-id="{$val['id']}" class="show_contact" style="color: #FF8500">点击查看联系方式</a></eq>
-                                        <else/>
+                                            <else/>
                                             {$info.contact}
                                         </eq>
                                     </span>
-                                    <a href="{:logistics_url(1,$val['id'])}" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px" data-bd-imgshare-binded="1"></a>
-                                    <div class="c"></div>
+                                        <a href="{:logistics_url(1,$val['id'])}" class="look-detail"><img src="__IMG__/btns.png" width="75px" height="32px" data-bd-imgshare-binded="1"></a>
+                                        <div class="c"></div>
+                                    </div>
+                                    <div class="hot_des">
+                                        <div class="fl"><img src="__IMG__/address.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">{$val.address|msubstr=0,14}</div>
+                                        <div class="c"></div>
+                                    </div>
                                 </div>
-                                <div class="hot_des">
-                                    <div class="fl"><img src="__IMG__/address.png" class="mr5" style="position:relative; top:3px;" data-bd-imgshare-binded="1">{$val.address|msubstr=0,14}</div>
-                                    <div class="c"></div>
-                                </div>
-                            </div>
-                        </foreach>
+                            </foreach>
+                        </empty>
                     </div>
                 </div>
                 <div class="c"></div>

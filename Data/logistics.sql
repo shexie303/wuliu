@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50086
 File Encoding         : 65001
 
-Date: 2017-05-13 23:35:05
+Date: 2017-05-15 00:30:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,417 +65,24 @@ CREATE TABLE `logistics_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=410 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of logistics_action_log
 -- ----------------------------
-INSERT INTO `logistics_action_log` VALUES ('1', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-24 10:01登录了后台', '1', '1490320910');
-INSERT INTO `logistics_action_log` VALUES ('2', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-24 10:09登录了后台', '1', '1490321384');
-INSERT INTO `logistics_action_log` VALUES ('3', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-24 10:12登录了后台', '1', '1490321528');
-INSERT INTO `logistics_action_log` VALUES ('4', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-24 10:14登录了后台', '1', '1490321655');
-INSERT INTO `logistics_action_log` VALUES ('5', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-24 10:27登录了后台', '1', '1490322438');
-INSERT INTO `logistics_action_log` VALUES ('6', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-24 10:28登录了后台', '1', '1490322480');
-INSERT INTO `logistics_action_log` VALUES ('7', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-24 10:35登录了后台', '1', '1490322909');
-INSERT INTO `logistics_action_log` VALUES ('8', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-24 10:35登录了后台', '1', '1490322931');
-INSERT INTO `logistics_action_log` VALUES ('9', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-24 10:36登录了后台', '1', '1490322977');
-INSERT INTO `logistics_action_log` VALUES ('10', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-24 10:36登录了后台', '1', '1490323010');
-INSERT INTO `logistics_action_log` VALUES ('11', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-24 10:37登录了后台', '1', '1490323037');
-INSERT INTO `logistics_action_log` VALUES ('12', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-24 10:52登录了后台', '1', '1490323954');
-INSERT INTO `logistics_action_log` VALUES ('13', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-24 10:53登录了后台', '1', '1490324014');
-INSERT INTO `logistics_action_log` VALUES ('14', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-24 11:09登录了后台', '1', '1490324940');
-INSERT INTO `logistics_action_log` VALUES ('15', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-24 11:11登录了后台', '1', '1490325070');
-INSERT INTO `logistics_action_log` VALUES ('16', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-24 11:13登录了后台', '1', '1490325224');
-INSERT INTO `logistics_action_log` VALUES ('17', '11', '1', '2130706433', 'category', '1', '操作url：/index.php?s=/admin/category/edit.html', '1', '1490325314');
-INSERT INTO `logistics_action_log` VALUES ('18', '11', '1', '2130706433', 'category', '39', '操作url：/index.php?s=/admin/category/add.html', '1', '1490325406');
-INSERT INTO `logistics_action_log` VALUES ('19', '11', '1', '2130706433', 'category', '1', '操作url：/index.php?s=/admin/category/edit.html', '1', '1490326791');
-INSERT INTO `logistics_action_log` VALUES ('20', '11', '1', '2130706433', 'category', '1', '操作url：/index.php?s=/admin/category/edit.html', '1', '1490326816');
-INSERT INTO `logistics_action_log` VALUES ('21', '11', '1', '2130706433', 'category', '39', '操作url：/index.php?s=/admin/category/add.html', '1', '1490326849');
-INSERT INTO `logistics_action_log` VALUES ('22', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-24 11:43登录了后台', '1', '1490327024');
-INSERT INTO `logistics_action_log` VALUES ('23', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-24 11:49登录了后台', '1', '1490327367');
-INSERT INTO `logistics_action_log` VALUES ('24', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-24 13:29登录了后台', '1', '1490333384');
-INSERT INTO `logistics_action_log` VALUES ('25', '11', '1', '2130706433', 'category', '1', '操作url：/index.php?s=/admin/category/edit.html', '1', '1490334576');
-INSERT INTO `logistics_action_log` VALUES ('26', '11', '1', '2130706433', 'category', '2', '操作url：/index.php?s=/admin/category/edit.html', '1', '1490334583');
-INSERT INTO `logistics_action_log` VALUES ('27', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-24 16:33登录了后台', '1', '1490344425');
-INSERT INTO `logistics_action_log` VALUES ('28', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-24 16:59登录了后台', '1', '1490345952');
-INSERT INTO `logistics_action_log` VALUES ('29', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-27 09:41登录了后台', '1', '1490578896');
-INSERT INTO `logistics_action_log` VALUES ('30', '11', '1', '2130706433', 'category', '1', '操作url：/index.php?s=/admin/category/edit.html', '1', '1490579429');
-INSERT INTO `logistics_action_log` VALUES ('31', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-27 10:15登录了后台', '1', '1490580927');
-INSERT INTO `logistics_action_log` VALUES ('32', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-27 10:19登录了后台', '1', '1490581175');
-INSERT INTO `logistics_action_log` VALUES ('33', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-27 10:21登录了后台', '1', '1490581277');
-INSERT INTO `logistics_action_log` VALUES ('34', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-27 10:21登录了后台', '1', '1490581294');
-INSERT INTO `logistics_action_log` VALUES ('35', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-27 10:23登录了后台', '1', '1490581439');
-INSERT INTO `logistics_action_log` VALUES ('36', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-27 10:40登录了后台', '1', '1490582459');
-INSERT INTO `logistics_action_log` VALUES ('37', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-03-27 10:47登录了后台', '1', '1490582865');
-INSERT INTO `logistics_action_log` VALUES ('38', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-27 10:48登录了后台', '1', '1490582922');
-INSERT INTO `logistics_action_log` VALUES ('39', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-27 10:49登录了后台', '1', '1490582949');
-INSERT INTO `logistics_action_log` VALUES ('40', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-03-27 10:50登录了后台', '1', '1490583029');
-INSERT INTO `logistics_action_log` VALUES ('41', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-27 10:56登录了后台', '1', '1490583415');
-INSERT INTO `logistics_action_log` VALUES ('42', '10', '1', '2130706433', 'Menu', '122', '操作url：/index.php?s=/admin/menu/add.html', '1', '1490584913');
-INSERT INTO `logistics_action_log` VALUES ('43', '10', '1', '2130706433', 'Menu', '123', '操作url：/index.php?s=/admin/menu/add.html', '1', '1490592505');
-INSERT INTO `logistics_action_log` VALUES ('44', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-27 13:30登录了后台', '1', '1490592640');
-INSERT INTO `logistics_action_log` VALUES ('45', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-27 13:35登录了后台', '1', '1490592944');
-INSERT INTO `logistics_action_log` VALUES ('46', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-03-27 13:36登录了后台', '1', '1490592965');
-INSERT INTO `logistics_action_log` VALUES ('47', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-03-27 13:40登录了后台', '1', '1490593208');
-INSERT INTO `logistics_action_log` VALUES ('48', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-27 13:41登录了后台', '1', '1490593277');
-INSERT INTO `logistics_action_log` VALUES ('49', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-03-27 13:42登录了后台', '1', '1490593366');
-INSERT INTO `logistics_action_log` VALUES ('50', '11', '1', '2130706433', 'category', '3', '操作url：/index.php?s=/admin/category/add.html', '1', '1490595686');
-INSERT INTO `logistics_action_log` VALUES ('51', '10', '1', '2130706433', 'Menu', '2', '操作url：/index.php?s=/admin/menu/edit.html', '1', '1490596859');
-INSERT INTO `logistics_action_log` VALUES ('52', '10', '1', '2130706433', 'Menu', '16', '操作url：/index.php?s=/admin/menu/edit.html', '1', '1490596881');
-INSERT INTO `logistics_action_log` VALUES ('53', '10', '1', '2130706433', 'Menu', '16', '操作url：/index.php?s=/admin/menu/edit.html', '1', '1490597071');
-INSERT INTO `logistics_action_log` VALUES ('54', '10', '1', '2130706433', 'Menu', '2', '操作url：/index.php?s=/admin/menu/edit.html', '1', '1490597134');
-INSERT INTO `logistics_action_log` VALUES ('55', '10', '1', '2130706433', 'Menu', '2', '操作url：/index.php?s=/admin/menu/edit.html', '1', '1490597231');
-INSERT INTO `logistics_action_log` VALUES ('56', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-03-27 15:03登录了后台', '1', '1490598234');
-INSERT INTO `logistics_action_log` VALUES ('57', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-03-27 15:04登录了后台', '1', '1490598286');
-INSERT INTO `logistics_action_log` VALUES ('58', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-03-27 15:05登录了后台', '1', '1490598357');
-INSERT INTO `logistics_action_log` VALUES ('59', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-03-27 15:06登录了后台', '1', '1490598412');
-INSERT INTO `logistics_action_log` VALUES ('60', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-03-27 15:30登录了后台', '1', '1490599810');
-INSERT INTO `logistics_action_log` VALUES ('64', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-27 16:22登录了后台', '1', '1490602955');
-INSERT INTO `logistics_action_log` VALUES ('65', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-03-27 17:04登录了后台', '1', '1490605499');
-INSERT INTO `logistics_action_log` VALUES ('66', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-27 17:11登录了后台', '1', '1490605867');
-INSERT INTO `logistics_action_log` VALUES ('67', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-27 17:12登录了后台', '1', '1490605926');
-INSERT INTO `logistics_action_log` VALUES ('68', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-27 17:12登录了后台', '1', '1490605946');
-INSERT INTO `logistics_action_log` VALUES ('69', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-27 17:13登录了后台', '1', '1490605998');
-INSERT INTO `logistics_action_log` VALUES ('70', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-27 17:24登录了后台', '1', '1490606642');
-INSERT INTO `logistics_action_log` VALUES ('71', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-27 17:32登录了后台', '1', '1490607148');
-INSERT INTO `logistics_action_log` VALUES ('72', '1', '4', '2130706433', 'member', '4', 'shexie55在2017-03-27 17:40登录了后台', '1', '1490607656');
-INSERT INTO `logistics_action_log` VALUES ('73', '1', '7', '2130706433', 'member', '7', 'shexie77在2017-03-27 17:53登录了后台', '1', '1490608386');
-INSERT INTO `logistics_action_log` VALUES ('74', '1', '9', '2130706433', 'member', '9', 'shexie99在2017-03-28 11:02登录了后台', '1', '1490670123');
-INSERT INTO `logistics_action_log` VALUES ('75', '1', '10', '2130706433', 'member', '10', 'shexie98在2017-03-28 11:03登录了后台', '1', '1490670236');
-INSERT INTO `logistics_action_log` VALUES ('76', '1', '10', '2130706433', 'member', '10', 'shexie98在2017-03-28 11:05登录了后台', '1', '1490670317');
-INSERT INTO `logistics_action_log` VALUES ('77', '1', '15', '2130706433', 'member', '15', 'shexie93在2017-03-28 11:24登录了后台', '1', '1490671452');
-INSERT INTO `logistics_action_log` VALUES ('78', '1', '14', '2130706433', 'member', '14', 'shexie94在2017-03-28 11:33登录了后台', '1', '1490672004');
-INSERT INTO `logistics_action_log` VALUES ('79', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-28 11:39登录了后台', '1', '1490672383');
-INSERT INTO `logistics_action_log` VALUES ('80', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-28 11:41登录了后台', '1', '1490672469');
-INSERT INTO `logistics_action_log` VALUES ('81', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-28 11:42登录了后台', '1', '1490672542');
-INSERT INTO `logistics_action_log` VALUES ('82', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-28 11:44登录了后台', '1', '1490672654');
-INSERT INTO `logistics_action_log` VALUES ('83', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-28 11:45登录了后台', '1', '1490672754');
-INSERT INTO `logistics_action_log` VALUES ('84', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-28 11:47登录了后台', '1', '1490672866');
-INSERT INTO `logistics_action_log` VALUES ('85', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-28 11:54登录了后台', '1', '1490673258');
-INSERT INTO `logistics_action_log` VALUES ('86', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-28 11:55登录了后台', '1', '1490673320');
-INSERT INTO `logistics_action_log` VALUES ('87', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-28 11:56登录了后台', '1', '1490673400');
-INSERT INTO `logistics_action_log` VALUES ('88', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-28 11:57登录了后台', '1', '1490673458');
-INSERT INTO `logistics_action_log` VALUES ('89', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-03-28 13:25登录了后台', '1', '1490678701');
-INSERT INTO `logistics_action_log` VALUES ('90', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-28 14:24登录了后台', '1', '1490682250');
-INSERT INTO `logistics_action_log` VALUES ('91', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-03-28 14:44登录了后台', '1', '1490683465');
-INSERT INTO `logistics_action_log` VALUES ('92', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-28 14:45登录了后台', '1', '1490683558');
-INSERT INTO `logistics_action_log` VALUES ('93', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-03-28 14:47登录了后台', '1', '1490683653');
-INSERT INTO `logistics_action_log` VALUES ('94', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-03-28 14:50登录了后台', '1', '1490683802');
-INSERT INTO `logistics_action_log` VALUES ('95', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-03-28 14:53登录了后台', '1', '1490684014');
-INSERT INTO `logistics_action_log` VALUES ('96', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-28 15:04登录了后台', '1', '1490684664');
-INSERT INTO `logistics_action_log` VALUES ('97', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-03-28 15:07登录了后台', '1', '1490684831');
-INSERT INTO `logistics_action_log` VALUES ('98', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-28 15:26登录了后台', '1', '1490685991');
-INSERT INTO `logistics_action_log` VALUES ('99', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-03-28 15:53登录了后台', '1', '1490687598');
-INSERT INTO `logistics_action_log` VALUES ('100', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-28 15:57登录了后台', '1', '1490687834');
-INSERT INTO `logistics_action_log` VALUES ('101', '7', '1', '2130706433', 'model', '1', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490688949');
-INSERT INTO `logistics_action_log` VALUES ('102', '7', '1', '2130706433', 'model', '1', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490689502');
-INSERT INTO `logistics_action_log` VALUES ('103', '7', '1', '2130706433', 'model', '1', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490689836');
-INSERT INTO `logistics_action_log` VALUES ('104', '7', '1', '2130706433', 'model', '1', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490689861');
-INSERT INTO `logistics_action_log` VALUES ('105', '7', '1', '2130706433', 'model', '1', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490689931');
-INSERT INTO `logistics_action_log` VALUES ('106', '7', '1', '2130706433', 'model', '1', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490689970');
-INSERT INTO `logistics_action_log` VALUES ('107', '7', '1', '2130706433', 'model', '1', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490690013');
-INSERT INTO `logistics_action_log` VALUES ('108', '7', '1', '2130706433', 'model', '1', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490690053');
-INSERT INTO `logistics_action_log` VALUES ('109', '7', '1', '2130706433', 'model', '1', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490690153');
-INSERT INTO `logistics_action_log` VALUES ('110', '7', '1', '2130706433', 'model', '1', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490690546');
-INSERT INTO `logistics_action_log` VALUES ('111', '7', '1', '2130706433', 'model', '1', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490690603');
-INSERT INTO `logistics_action_log` VALUES ('112', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-28 17:00登录了后台', '1', '1490691625');
-INSERT INTO `logistics_action_log` VALUES ('113', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-28 17:08登录了后台', '1', '1490692095');
-INSERT INTO `logistics_action_log` VALUES ('114', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-28 17:12登录了后台', '1', '1490692341');
-INSERT INTO `logistics_action_log` VALUES ('115', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-28 17:15登录了后台', '1', '1490692516');
-INSERT INTO `logistics_action_log` VALUES ('116', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-28 17:16登录了后台', '1', '1490692574');
-INSERT INTO `logistics_action_log` VALUES ('117', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-28 17:17登录了后台', '1', '1490692674');
-INSERT INTO `logistics_action_log` VALUES ('118', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-28 17:21登录了后台', '1', '1490692865');
-INSERT INTO `logistics_action_log` VALUES ('119', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-29 09:26登录了后台', '1', '1490750816');
-INSERT INTO `logistics_action_log` VALUES ('120', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-30 09:28登录了后台', '1', '1490837290');
-INSERT INTO `logistics_action_log` VALUES ('121', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-30 09:43登录了后台', '1', '1490838215');
-INSERT INTO `logistics_action_log` VALUES ('122', '7', '1', '2130706433', 'model', '2', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490839549');
-INSERT INTO `logistics_action_log` VALUES ('123', '7', '1', '2130706433', 'model', '1', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490840117');
-INSERT INTO `logistics_action_log` VALUES ('124', '7', '1', '2130706433', 'model', '2', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490842444');
-INSERT INTO `logistics_action_log` VALUES ('125', '7', '1', '2130706433', 'model', '2', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490842513');
-INSERT INTO `logistics_action_log` VALUES ('126', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-30 11:23登录了后台', '1', '1490844181');
-INSERT INTO `logistics_action_log` VALUES ('127', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-30 14:21登录了后台', '1', '1490854868');
-INSERT INTO `logistics_action_log` VALUES ('128', '7', '1', '2130706433', 'model', '2', '操作url：/index.php?s=/Admin/Model/update.html', '1', '1490859874');
-INSERT INTO `logistics_action_log` VALUES ('129', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-31 13:56登录了后台', '1', '1490939786');
-INSERT INTO `logistics_action_log` VALUES ('130', '10', '1', '2130706433', 'Menu', '124', '操作url：/index.php?s=/Admin/Menu/add.html', '1', '1490940181');
-INSERT INTO `logistics_action_log` VALUES ('131', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-31 14:07登录了后台', '1', '1490940429');
-INSERT INTO `logistics_action_log` VALUES ('132', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-31 14:08登录了后台', '1', '1490940506');
-INSERT INTO `logistics_action_log` VALUES ('133', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-03-31 15:36登录了后台', '1', '1490945761');
-INSERT INTO `logistics_action_log` VALUES ('134', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-31 15:37登录了后台', '1', '1490945827');
-INSERT INTO `logistics_action_log` VALUES ('135', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-03-31 15:57登录了后台', '1', '1490947020');
-INSERT INTO `logistics_action_log` VALUES ('136', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-03-31 16:36登录了后台', '1', '1490949382');
-INSERT INTO `logistics_action_log` VALUES ('137', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-01 10:12登录了后台', '1', '1491012740');
-INSERT INTO `logistics_action_log` VALUES ('138', '1', '16', '2130706433', 'member', '16', '李二蛋在2017-04-01 13:44登录了后台', '1', '1491025499');
-INSERT INTO `logistics_action_log` VALUES ('139', '1', '16', '2130706433', 'member', '16', '李二蛋在2017-04-01 13:51登录了后台', '1', '1491025889');
-INSERT INTO `logistics_action_log` VALUES ('140', '1', '16', '2130706433', 'member', '16', '李二蛋在2017-04-01 13:52登录了后台', '1', '1491025922');
-INSERT INTO `logistics_action_log` VALUES ('141', '1', '16', '2130706433', 'member', '16', '李二蛋在2017-04-01 13:52登录了后台', '1', '1491025975');
-INSERT INTO `logistics_action_log` VALUES ('142', '1', '16', '2130706433', 'member', '16', '李二蛋在2017-04-01 13:54登录了后台', '1', '1491026094');
-INSERT INTO `logistics_action_log` VALUES ('143', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-01 14:18登录了后台', '1', '1491027512');
-INSERT INTO `logistics_action_log` VALUES ('144', '1', '16', '2130706433', 'member', '16', '李二蛋在2017-04-01 14:52登录了后台', '1', '1491029559');
-INSERT INTO `logistics_action_log` VALUES ('145', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-01 14:53登录了后台', '1', '1491029605');
-INSERT INTO `logistics_action_log` VALUES ('146', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-01 14:54登录了后台', '1', '1491029661');
-INSERT INTO `logistics_action_log` VALUES ('147', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-01 14:59登录了后台', '1', '1491029955');
-INSERT INTO `logistics_action_log` VALUES ('148', '11', '1', '2130706433', 'category', '1', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1491029994');
-INSERT INTO `logistics_action_log` VALUES ('149', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-01 15:01登录了后台', '1', '1491030086');
-INSERT INTO `logistics_action_log` VALUES ('150', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-01 15:05登录了后台', '1', '1491030315');
-INSERT INTO `logistics_action_log` VALUES ('151', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-01 15:13登录了后台', '1', '1491030815');
-INSERT INTO `logistics_action_log` VALUES ('152', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-01 15:14登录了后台', '1', '1491030860');
-INSERT INTO `logistics_action_log` VALUES ('153', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-01 15:18登录了后台', '1', '1491031125');
-INSERT INTO `logistics_action_log` VALUES ('154', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-01 15:19登录了后台', '1', '1491031165');
-INSERT INTO `logistics_action_log` VALUES ('155', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-01 15:20登录了后台', '1', '1491031214');
-INSERT INTO `logistics_action_log` VALUES ('156', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-01 15:20登录了后台', '1', '1491031257');
-INSERT INTO `logistics_action_log` VALUES ('157', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-01 15:22登录了后台', '1', '1491031359');
-INSERT INTO `logistics_action_log` VALUES ('158', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-01 15:27登录了后台', '1', '1491031666');
-INSERT INTO `logistics_action_log` VALUES ('159', '1', '16', '2130706433', 'member', '16', '李二蛋在2017-04-01 15:32登录了后台', '1', '1491031933');
-INSERT INTO `logistics_action_log` VALUES ('160', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-01 15:33登录了后台', '1', '1491032021');
-INSERT INTO `logistics_action_log` VALUES ('161', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-01 15:55登录了后台', '1', '1491033337');
-INSERT INTO `logistics_action_log` VALUES ('162', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-01 15:57登录了后台', '1', '1491033424');
-INSERT INTO `logistics_action_log` VALUES ('163', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-01 16:24登录了后台', '1', '1491035081');
-INSERT INTO `logistics_action_log` VALUES ('164', '11', '1', '2130706433', 'category', '4', '操作url：/index.php?s=/Admin/Category/add.html', '1', '1491035129');
-INSERT INTO `logistics_action_log` VALUES ('165', '11', '1', '2130706433', 'category', '1', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1491035194');
-INSERT INTO `logistics_action_log` VALUES ('166', '11', '1', '2130706433', 'category', '1', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1491035237');
-INSERT INTO `logistics_action_log` VALUES ('167', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-01 16:33登录了后台', '1', '1491035587');
-INSERT INTO `logistics_action_log` VALUES ('168', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-01 17:23登录了后台', '1', '1491038598');
-INSERT INTO `logistics_action_log` VALUES ('169', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-01 17:24登录了后台', '1', '1491038686');
-INSERT INTO `logistics_action_log` VALUES ('170', '1', '4', '2130706433', 'member', '4', 'shexie55在2017-04-01 17:33登录了后台', '1', '1491039189');
-INSERT INTO `logistics_action_log` VALUES ('171', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-01 17:33登录了后台', '1', '1491039218');
-INSERT INTO `logistics_action_log` VALUES ('172', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-06 13:24登录了后台', '1', '1491456251');
-INSERT INTO `logistics_action_log` VALUES ('173', '1', '7', '2130706433', 'member', '7', 'shexie77在2017-04-06 17:02登录了后台', '1', '1491469359');
-INSERT INTO `logistics_action_log` VALUES ('174', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-06 17:04登录了后台', '1', '1491469467');
-INSERT INTO `logistics_action_log` VALUES ('175', '1', '7', '2130706433', 'member', '7', 'shexie77在2017-04-07 10:30登录了后台', '1', '1491532249');
-INSERT INTO `logistics_action_log` VALUES ('176', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-07 13:32登录了后台', '1', '1491543144');
-INSERT INTO `logistics_action_log` VALUES ('177', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-07 13:57登录了后台', '1', '1491544653');
-INSERT INTO `logistics_action_log` VALUES ('178', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-07 14:01登录了后台', '1', '1491544883');
-INSERT INTO `logistics_action_log` VALUES ('179', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-07 15:40登录了后台', '1', '1491550859');
-INSERT INTO `logistics_action_log` VALUES ('180', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:41登录了后台', '1', '1491550916');
-INSERT INTO `logistics_action_log` VALUES ('181', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:47登录了后台', '1', '1491551252');
-INSERT INTO `logistics_action_log` VALUES ('182', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:49登录了后台', '1', '1491551385');
-INSERT INTO `logistics_action_log` VALUES ('183', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:52登录了后台', '1', '1491551536');
-INSERT INTO `logistics_action_log` VALUES ('184', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:55登录了后台', '1', '1491551711');
-INSERT INTO `logistics_action_log` VALUES ('185', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:56登录了后台', '1', '1491551760');
-INSERT INTO `logistics_action_log` VALUES ('186', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 15:58登录了后台', '1', '1491551931');
-INSERT INTO `logistics_action_log` VALUES ('187', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 16:01登录了后台', '1', '1491552083');
-INSERT INTO `logistics_action_log` VALUES ('188', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 16:03登录了后台', '1', '1491552228');
-INSERT INTO `logistics_action_log` VALUES ('189', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 16:10登录了后台', '1', '1491552634');
-INSERT INTO `logistics_action_log` VALUES ('190', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 16:26登录了后台', '1', '1491553576');
-INSERT INTO `logistics_action_log` VALUES ('191', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-07 17:48登录了后台', '1', '1491558501');
-INSERT INTO `logistics_action_log` VALUES ('192', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-10 10:16登录了后台', '1', '1491790601');
-INSERT INTO `logistics_action_log` VALUES ('193', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 10:21登录了后台', '1', '1491790896');
-INSERT INTO `logistics_action_log` VALUES ('194', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 10:43登录了后台', '1', '1491792191');
-INSERT INTO `logistics_action_log` VALUES ('195', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-10 10:45登录了后台', '1', '1491792320');
-INSERT INTO `logistics_action_log` VALUES ('196', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 10:47登录了后台', '1', '1491792465');
-INSERT INTO `logistics_action_log` VALUES ('197', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-10 11:37登录了后台', '1', '1491795478');
-INSERT INTO `logistics_action_log` VALUES ('198', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 11:54登录了后台', '1', '1491796494');
-INSERT INTO `logistics_action_log` VALUES ('199', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 16:09登录了后台', '1', '1491811794');
-INSERT INTO `logistics_action_log` VALUES ('200', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-10 21:07登录了后台', '1', '1491829648');
-INSERT INTO `logistics_action_log` VALUES ('201', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-12 16:19登录了后台', '1', '1491985161');
-INSERT INTO `logistics_action_log` VALUES ('202', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-13 09:48登录了后台', '1', '1492048080');
-INSERT INTO `logistics_action_log` VALUES ('203', '11', '1', '2130706433', 'category', '5', '操作url：/index.php?s=/Admin/Category/add.html', '1', '1492065358');
-INSERT INTO `logistics_action_log` VALUES ('204', '11', '1', '2130706433', 'category', '6', '操作url：/index.php?s=/Admin/Category/add.html', '1', '1492065425');
-INSERT INTO `logistics_action_log` VALUES ('205', '11', '1', '2130706433', 'category', '2', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492065489');
-INSERT INTO `logistics_action_log` VALUES ('206', '11', '1', '2130706433', 'category', '3', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492065524');
-INSERT INTO `logistics_action_log` VALUES ('207', '11', '1', '2130706433', 'category', '4', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492065525');
-INSERT INTO `logistics_action_log` VALUES ('208', '11', '1', '2130706433', 'category', '5', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492065527');
-INSERT INTO `logistics_action_log` VALUES ('209', '11', '1', '2130706433', 'category', '6', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492065529');
-INSERT INTO `logistics_action_log` VALUES ('210', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-13 14:41登录了后台', '1', '1492065693');
-INSERT INTO `logistics_action_log` VALUES ('211', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-13 16:04登录了后台', '1', '1492070677');
-INSERT INTO `logistics_action_log` VALUES ('212', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-13 16:23登录了后台', '1', '1492071838');
-INSERT INTO `logistics_action_log` VALUES ('213', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-14 09:24登录了后台', '1', '1492133064');
-INSERT INTO `logistics_action_log` VALUES ('214', '11', '1', '2130706433', 'category', '7', '操作url：/index.php?s=/Admin/Category/add.html', '1', '1492133721');
-INSERT INTO `logistics_action_log` VALUES ('215', '11', '1', '2130706433', 'category', '7', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492133728');
-INSERT INTO `logistics_action_log` VALUES ('216', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-14 11:13登录了后台', '1', '1492139614');
-INSERT INTO `logistics_action_log` VALUES ('217', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-14 11:39登录了后台', '1', '1492141148');
-INSERT INTO `logistics_action_log` VALUES ('218', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-14 11:56登录了后台', '1', '1492142207');
-INSERT INTO `logistics_action_log` VALUES ('219', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-14 13:21登录了后台', '1', '1492147302');
-INSERT INTO `logistics_action_log` VALUES ('220', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-14 13:40登录了后台', '1', '1492148415');
-INSERT INTO `logistics_action_log` VALUES ('221', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-14 13:48登录了后台', '1', '1492148921');
-INSERT INTO `logistics_action_log` VALUES ('222', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-14 13:51登录了后台', '1', '1492149085');
-INSERT INTO `logistics_action_log` VALUES ('223', '1', '16', '2130706433', 'member', '16', '李二蛋在2017-04-14 13:56登录了后台', '1', '1492149368');
-INSERT INTO `logistics_action_log` VALUES ('224', '10', '1', '2130706433', 'Menu', '2', '操作url：/index.php?s=/Admin/Menu/edit.html', '1', '1492150809');
-INSERT INTO `logistics_action_log` VALUES ('225', '10', '1', '2130706433', 'Menu', '2', '操作url：/index.php?s=/Admin/Menu/edit.html', '1', '1492150936');
-INSERT INTO `logistics_action_log` VALUES ('226', '1', '16', '2130706433', 'member', '16', '李二蛋在2017-04-14 14:24登录了后台', '1', '1492151057');
-INSERT INTO `logistics_action_log` VALUES ('227', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-14 14:41登录了后台', '1', '1492152119');
-INSERT INTO `logistics_action_log` VALUES ('228', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-14 14:43登录了后台', '1', '1492152222');
-INSERT INTO `logistics_action_log` VALUES ('229', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-14 14:53登录了后台', '1', '1492152795');
-INSERT INTO `logistics_action_log` VALUES ('230', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-14 14:54登录了后台', '1', '1492152897');
-INSERT INTO `logistics_action_log` VALUES ('231', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-14 14:59登录了后台', '1', '1492153158');
-INSERT INTO `logistics_action_log` VALUES ('232', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-14 15:10登录了后台', '1', '1492153831');
-INSERT INTO `logistics_action_log` VALUES ('233', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-14 15:32登录了后台', '1', '1492155174');
-INSERT INTO `logistics_action_log` VALUES ('234', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-14 15:34登录了后台', '1', '1492155298');
-INSERT INTO `logistics_action_log` VALUES ('235', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-14 15:37登录了后台', '1', '1492155449');
-INSERT INTO `logistics_action_log` VALUES ('236', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-14 15:40登录了后台', '1', '1492155615');
-INSERT INTO `logistics_action_log` VALUES ('237', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-14 15:52登录了后台', '1', '1492156375');
-INSERT INTO `logistics_action_log` VALUES ('238', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-14 15:53登录了后台', '1', '1492156426');
-INSERT INTO `logistics_action_log` VALUES ('239', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-15 14:58登录了后台', '1', '1492239488');
-INSERT INTO `logistics_action_log` VALUES ('240', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-15 15:00登录了后台', '1', '1492239609');
-INSERT INTO `logistics_action_log` VALUES ('241', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-15 15:17登录了后台', '1', '1492240624');
-INSERT INTO `logistics_action_log` VALUES ('242', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-15 15:19登录了后台', '1', '1492240779');
-INSERT INTO `logistics_action_log` VALUES ('243', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-15 15:31登录了后台', '1', '1492241482');
-INSERT INTO `logistics_action_log` VALUES ('244', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-15 15:36登录了后台', '1', '1492241786');
-INSERT INTO `logistics_action_log` VALUES ('245', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-15 16:06登录了后台', '1', '1492243572');
-INSERT INTO `logistics_action_log` VALUES ('246', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-15 17:36登录了后台', '1', '1492248985');
-INSERT INTO `logistics_action_log` VALUES ('247', '1', '16', '2130706433', 'member', '16', '李二蛋在2017-04-15 17:45登录了后台', '1', '1492249556');
-INSERT INTO `logistics_action_log` VALUES ('248', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-16 11:01登录了后台', '1', '1492311702');
-INSERT INTO `logistics_action_log` VALUES ('249', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-16 11:15登录了后台', '1', '1492312531');
-INSERT INTO `logistics_action_log` VALUES ('250', '1', '3', '2130706433', 'member', '3', 'shexie44在2017-04-16 11:16登录了后台', '1', '1492312574');
-INSERT INTO `logistics_action_log` VALUES ('251', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-17 16:34登录了后台', '1', '1492418078');
-INSERT INTO `logistics_action_log` VALUES ('252', '11', '1', '2130706433', 'category', '8', '操作url：/index.php?s=/Admin/Category/add.html', '1', '1492419007');
-INSERT INTO `logistics_action_log` VALUES ('253', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-18 09:59登录了后台', '1', '1492480750');
-INSERT INTO `logistics_action_log` VALUES ('254', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-18 13:34登录了后台', '1', '1492493649');
-INSERT INTO `logistics_action_log` VALUES ('255', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-18 14:18登录了后台', '1', '1492496338');
-INSERT INTO `logistics_action_log` VALUES ('256', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-18 14:30登录了后台', '1', '1492497001');
-INSERT INTO `logistics_action_log` VALUES ('257', '6', '1', '2130706433', 'config', '33', '操作url：/index.php?s=/Admin/Config/edit.html', '1', '1492497121');
-INSERT INTO `logistics_action_log` VALUES ('258', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-18 14:32登录了后台', '1', '1492497142');
-INSERT INTO `logistics_action_log` VALUES ('259', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-18 14:58登录了后台', '1', '1492498728');
-INSERT INTO `logistics_action_log` VALUES ('260', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-18 15:03登录了后台', '1', '1492498998');
-INSERT INTO `logistics_action_log` VALUES ('261', '4', '2', '2130706433', 'document', '24', 'shexie33在2017-04-18 15:08发表了一篇文章。\r\n表document，记录编号24。', '1', '1492499325');
-INSERT INTO `logistics_action_log` VALUES ('262', '4', '2', '2130706433', 'document', '25', 'shexie33在2017-04-18 15:45发表了一篇文章。\r\n表document，记录编号25。', '1', '1492501511');
-INSERT INTO `logistics_action_log` VALUES ('263', '4', '2', '2130706433', 'document', '26', 'shexie33在2017-04-18 15:51发表了一篇文章。\r\n表document，记录编号26。', '1', '1492501892');
-INSERT INTO `logistics_action_log` VALUES ('264', '6', '1', '2130706433', 'config', '33', '操作url：/index.php?s=/Admin/Config/edit.html', '1', '1492573764');
-INSERT INTO `logistics_action_log` VALUES ('265', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-19 11:50登录了后台', '1', '1492573834');
-INSERT INTO `logistics_action_log` VALUES ('266', '6', '1', '2130706433', 'config', '33', '操作url：/index.php?s=/Admin/Config/edit.html', '1', '1492573998');
-INSERT INTO `logistics_action_log` VALUES ('267', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-19 11:53登录了后台', '1', '1492574025');
-INSERT INTO `logistics_action_log` VALUES ('268', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-19 11:57登录了后台', '1', '1492574268');
-INSERT INTO `logistics_action_log` VALUES ('269', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-19 13:21登录了后台', '1', '1492579262');
-INSERT INTO `logistics_action_log` VALUES ('270', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-19 14:55登录了后台', '1', '1492584936');
-INSERT INTO `logistics_action_log` VALUES ('271', '1', '22', '2130706433', 'member', '22', 'she<>\'\';在2017-04-19 15:21登录了后台', '1', '1492586463');
-INSERT INTO `logistics_action_log` VALUES ('272', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-19 15:55登录了后台', '1', '1492588556');
-INSERT INTO `logistics_action_log` VALUES ('273', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-19 16:14登录了后台', '1', '1492589662');
-INSERT INTO `logistics_action_log` VALUES ('274', '4', '17', '2130706433', 'document', '35', '二蛋在2017-04-19 16:24发表了一篇文章。\r\n表document，记录编号35。', '1', '1492590255');
-INSERT INTO `logistics_action_log` VALUES ('275', '4', '17', '2130706433', 'document', '36', '二蛋在2017-04-19 16:33发表了一篇文章。\r\n表document，记录编号36。', '1', '1492590781');
-INSERT INTO `logistics_action_log` VALUES ('276', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-19 16:34登录了后台', '1', '1492590888');
-INSERT INTO `logistics_action_log` VALUES ('277', '4', '2', '2130706433', 'document', '37', 'shexie33在2017-04-19 16:38发表了一篇文章。\r\n表document，记录编号37。', '1', '1492591127');
-INSERT INTO `logistics_action_log` VALUES ('278', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-19 16:41登录了后台', '1', '1492591306');
-INSERT INTO `logistics_action_log` VALUES ('279', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-19 16:42登录了后台', '1', '1492591353');
-INSERT INTO `logistics_action_log` VALUES ('280', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-19 16:52登录了后台', '1', '1492591940');
-INSERT INTO `logistics_action_log` VALUES ('281', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-19 16:56登录了后台', '1', '1492592217');
-INSERT INTO `logistics_action_log` VALUES ('282', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-19 17:39登录了后台', '1', '1492594761');
-INSERT INTO `logistics_action_log` VALUES ('283', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-20 09:17登录了后台', '1', '1492651048');
-INSERT INTO `logistics_action_log` VALUES ('284', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-20 09:49登录了后台', '1', '1492652940');
-INSERT INTO `logistics_action_log` VALUES ('285', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-20 09:57登录了后台', '1', '1492653452');
-INSERT INTO `logistics_action_log` VALUES ('286', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-20 09:58登录了后台', '1', '1492653485');
-INSERT INTO `logistics_action_log` VALUES ('287', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-20 10:54登录了后台', '1', '1492656845');
-INSERT INTO `logistics_action_log` VALUES ('288', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-04-20 13:47登录了后台', '1', '1492667274');
-INSERT INTO `logistics_action_log` VALUES ('289', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-21 09:30登录了后台', '1', '1492738215');
-INSERT INTO `logistics_action_log` VALUES ('290', '10', '1', '2130706433', 'Menu', '126', '操作url：/index.php?s=/Admin/Menu/add.html', '1', '1492739831');
-INSERT INTO `logistics_action_log` VALUES ('291', '10', '1', '2130706433', 'Menu', '127', '操作url：/index.php?s=/Admin/Menu/add.html', '1', '1492740066');
-INSERT INTO `logistics_action_log` VALUES ('292', '10', '1', '2130706433', 'Menu', '128', '操作url：/index.php?s=/Admin/Menu/add.html', '1', '1492740098');
-INSERT INTO `logistics_action_log` VALUES ('293', '10', '1', '2130706433', 'Menu', '76', '操作url：/index.php?s=/Admin/Menu/edit.html', '1', '1492740263');
-INSERT INTO `logistics_action_log` VALUES ('294', '10', '1', '2130706433', 'Menu', '129', '操作url：/index.php?s=/Admin/Menu/add.html', '1', '1492740411');
-INSERT INTO `logistics_action_log` VALUES ('295', '10', '1', '2130706433', 'Menu', '68', '操作url：/index.php?s=/Admin/Menu/edit.html', '1', '1492740515');
-INSERT INTO `logistics_action_log` VALUES ('296', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-21 10:09登录了后台', '1', '1492740571');
-INSERT INTO `logistics_action_log` VALUES ('297', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-21 10:10登录了后台', '1', '1492740630');
-INSERT INTO `logistics_action_log` VALUES ('298', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-21 10:11登录了后台', '1', '1492740699');
-INSERT INTO `logistics_action_log` VALUES ('299', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-21 10:14登录了后台', '1', '1492740851');
-INSERT INTO `logistics_action_log` VALUES ('300', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-21 10:16登录了后台', '1', '1492741012');
-INSERT INTO `logistics_action_log` VALUES ('301', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-21 10:18登录了后台', '1', '1492741103');
-INSERT INTO `logistics_action_log` VALUES ('302', '9', '1', '2130706433', 'channel', '0', '操作url：/index.php?s=/Admin/Channel/del/id/3.html', '1', '1492741543');
-INSERT INTO `logistics_action_log` VALUES ('303', '9', '1', '2130706433', 'channel', '1', '操作url：/index.php?s=/Admin/Channel/edit.html', '1', '1492741606');
-INSERT INTO `logistics_action_log` VALUES ('304', '9', '1', '2130706433', 'channel', '2', '操作url：/index.php?s=/Admin/Channel/edit.html', '1', '1492741634');
-INSERT INTO `logistics_action_log` VALUES ('305', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-21 10:28登录了后台', '1', '1492741725');
-INSERT INTO `logistics_action_log` VALUES ('306', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-21 10:41登录了后台', '1', '1492742461');
-INSERT INTO `logistics_action_log` VALUES ('307', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-21 14:21登录了后台', '1', '1492755674');
-INSERT INTO `logistics_action_log` VALUES ('308', '11', '1', '2130706433', 'category', '2', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492755766');
-INSERT INTO `logistics_action_log` VALUES ('309', '11', '1', '2130706433', 'category', '2', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492755826');
-INSERT INTO `logistics_action_log` VALUES ('310', '11', '1', '2130706433', 'category', '2', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492755877');
-INSERT INTO `logistics_action_log` VALUES ('311', '11', '1', '2130706433', 'category', '2', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492755916');
-INSERT INTO `logistics_action_log` VALUES ('312', '11', '1', '2130706433', 'category', '2', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492755922');
-INSERT INTO `logistics_action_log` VALUES ('313', '11', '1', '2130706433', 'category', '2', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492755931');
-INSERT INTO `logistics_action_log` VALUES ('314', '11', '1', '2130706433', 'category', '9', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492764935');
-INSERT INTO `logistics_action_log` VALUES ('315', '11', '1', '2130706433', 'category', '9', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1492764992');
-INSERT INTO `logistics_action_log` VALUES ('316', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-24 09:53登录了后台', '1', '1492998838');
-INSERT INTO `logistics_action_log` VALUES ('317', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-24 17:33登录了后台', '1', '1493026406');
-INSERT INTO `logistics_action_log` VALUES ('318', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-25 10:16登录了后台', '1', '1493086611');
-INSERT INTO `logistics_action_log` VALUES ('319', '10', '1', '2130706433', 'Menu', '130', '操作url：/index.php?s=/Admin/Menu/add.html', '1', '1493086865');
-INSERT INTO `logistics_action_log` VALUES ('320', '10', '1', '2130706433', 'Menu', '131', '操作url：/index.php?s=/Admin/Menu/add.html', '1', '1493086992');
-INSERT INTO `logistics_action_log` VALUES ('321', '10', '1', '2130706433', 'Menu', '132', '操作url：/index.php?s=/Admin/Menu/add.html', '1', '1493087014');
-INSERT INTO `logistics_action_log` VALUES ('322', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-25 10:24登录了后台', '1', '1493087054');
-INSERT INTO `logistics_action_log` VALUES ('323', '9', '2', '2130706433', 'channel', '0', '操作url：/index.php?s=/Admin/Channel/del.html', '1', '1493088932');
-INSERT INTO `logistics_action_log` VALUES ('324', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-25 10:57登录了后台', '1', '1493089035');
-INSERT INTO `logistics_action_log` VALUES ('325', '10', '1', '2130706433', 'Menu', '129', '操作url：/index.php?s=/Admin/Menu/edit.html', '1', '1493089152');
-INSERT INTO `logistics_action_log` VALUES ('326', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-25 13:57登录了后台', '1', '1493099866');
-INSERT INTO `logistics_action_log` VALUES ('327', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-25 14:04登录了后台', '1', '1493100278');
-INSERT INTO `logistics_action_log` VALUES ('328', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-25 14:43登录了后台', '1', '1493102637');
-INSERT INTO `logistics_action_log` VALUES ('329', '11', '1', '2130706433', 'category', '7', '操作url：/index.php?s=/Admin/Category/edit.html', '1', '1493102654');
-INSERT INTO `logistics_action_log` VALUES ('330', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-25 16:32登录了后台', '1', '1493109137');
-INSERT INTO `logistics_action_log` VALUES ('331', '4', '1', '2130706433', 'document', '38', 'shexie303在2017-04-25 16:33发表了一篇文章。\r\n表document，记录编号38。', '1', '1493109203');
-INSERT INTO `logistics_action_log` VALUES ('332', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-25 17:00登录了后台', '1', '1493110834');
-INSERT INTO `logistics_action_log` VALUES ('333', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-26 08:58登录了后台', '1', '1493168294');
-INSERT INTO `logistics_action_log` VALUES ('334', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-26 10:13登录了后台', '1', '1493172834');
-INSERT INTO `logistics_action_log` VALUES ('335', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-27 09:46登录了后台', '1', '1493257577');
-INSERT INTO `logistics_action_log` VALUES ('336', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-27 15:11登录了后台', '1', '1493277117');
-INSERT INTO `logistics_action_log` VALUES ('337', '11', '1', '2130706433', 'category', '42', '操作url：/index.php?s=/Category/add.html', '1', '1493284818');
-INSERT INTO `logistics_action_log` VALUES ('338', '11', '1', '2130706433', 'category', '43', '操作url：/index.php?s=/Category/add.html', '1', '1493284851');
-INSERT INTO `logistics_action_log` VALUES ('339', '11', '1', '2130706433', 'category', '44', '操作url：/index.php?s=/Category/add.html', '1', '1493284877');
-INSERT INTO `logistics_action_log` VALUES ('340', '11', '1', '2130706433', 'category', '45', '操作url：/index.php?s=/Category/add.html', '1', '1493284907');
-INSERT INTO `logistics_action_log` VALUES ('341', '11', '1', '2130706433', 'category', '42', '操作url：/index.php?s=/Category/edit.html', '1', '1493284920');
-INSERT INTO `logistics_action_log` VALUES ('342', '11', '1', '2130706433', 'category', '43', '操作url：/index.php?s=/Category/edit.html', '1', '1493284921');
-INSERT INTO `logistics_action_log` VALUES ('343', '11', '1', '2130706433', 'category', '44', '操作url：/index.php?s=/Category/edit.html', '1', '1493284922');
-INSERT INTO `logistics_action_log` VALUES ('344', '11', '1', '2130706433', 'category', '45', '操作url：/index.php?s=/Category/edit.html', '1', '1493284924');
-INSERT INTO `logistics_action_log` VALUES ('345', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-28 10:36登录了后台', '1', '1493347008');
-INSERT INTO `logistics_action_log` VALUES ('346', '11', '1', '2130706433', 'category', '46', '操作url：/index.php?s=/Category/add.html', '1', '1493351865');
-INSERT INTO `logistics_action_log` VALUES ('347', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-29 22:07登录了后台', '1', '1493474843');
-INSERT INTO `logistics_action_log` VALUES ('348', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-29 22:16登录了后台', '1', '1493475375');
-INSERT INTO `logistics_action_log` VALUES ('349', '6', '1', '2130706433', 'config', '13', '操作url：/index.php?s=/Admin/Config/edit.html', '1', '1493475462');
-INSERT INTO `logistics_action_log` VALUES ('350', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-29 22:21登录了后台', '1', '1493475711');
-INSERT INTO `logistics_action_log` VALUES ('351', '6', '1', '2130706433', 'config', '13', '操作url：/index.php?s=/Admin/Config/edit.html', '1', '1493475779');
-INSERT INTO `logistics_action_log` VALUES ('352', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-29 23:00登录了后台', '1', '1493478033');
-INSERT INTO `logistics_action_log` VALUES ('353', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-29 23:03登录了后台', '1', '1493478219');
-INSERT INTO `logistics_action_log` VALUES ('354', '10', '1', '2130706433', 'Menu', '1', '操作url：/index.php?s=/Admin/Menu/edit.html', '1', '1493478396');
-INSERT INTO `logistics_action_log` VALUES ('355', '10', '1', '2130706433', 'Menu', '1', '操作url：/index.php?s=/Admin/Menu/edit.html', '1', '1493478460');
-INSERT INTO `logistics_action_log` VALUES ('356', '10', '1', '2130706433', 'Menu', '0', '操作url：/index.php?s=/Admin/Menu/del/id/1.html', '1', '1493478646');
-INSERT INTO `logistics_action_log` VALUES ('357', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-30 13:24登录了后台', '1', '1493529862');
-INSERT INTO `logistics_action_log` VALUES ('358', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-30 14:27登录了后台', '1', '1493533650');
-INSERT INTO `logistics_action_log` VALUES ('359', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-04-30 14:52登录了后台', '1', '1493535173');
-INSERT INTO `logistics_action_log` VALUES ('360', '1', '17', '2130706433', 'member', '17', '二蛋在2017-04-30 15:06登录了后台', '1', '1493535986');
-INSERT INTO `logistics_action_log` VALUES ('361', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-04-30 15:17登录了后台', '1', '1493536623');
-INSERT INTO `logistics_action_log` VALUES ('362', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-01 11:19登录了后台', '1', '1493608799');
-INSERT INTO `logistics_action_log` VALUES ('363', '1', '17', '2130706433', 'member', '17', '二蛋在2017-05-01 11:35登录了后台', '1', '1493609743');
-INSERT INTO `logistics_action_log` VALUES ('364', '4', '17', '2130706433', 'document', '39', '二蛋在2017-05-01 11:41发表了一篇文章。\r\n表document，记录编号39。', '1', '1493610067');
-INSERT INTO `logistics_action_log` VALUES ('365', '4', '17', '2130706433', 'document', '40', '二蛋在2017-05-01 11:46发表了一篇文章。\r\n表document，记录编号40。', '1', '1493610412');
-INSERT INTO `logistics_action_log` VALUES ('366', '1', '17', '2130706433', 'member', '17', '二蛋在2017-05-01 18:43登录了后台', '1', '1493635407');
-INSERT INTO `logistics_action_log` VALUES ('367', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-01 18:45登录了后台', '1', '1493635551');
-INSERT INTO `logistics_action_log` VALUES ('368', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-01 18:50登录了后台', '1', '1493635805');
-INSERT INTO `logistics_action_log` VALUES ('369', '8', '1', '2130706433', 'attribute', '22', '操作url：/index.php?s=/attribute/update.html', '1', '1493635953');
-INSERT INTO `logistics_action_log` VALUES ('370', '1', '17', '2130706433', 'member', '17', '二蛋在2017-05-01 19:04登录了后台', '1', '1493636650');
-INSERT INTO `logistics_action_log` VALUES ('371', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-01 20:29登录了后台', '1', '1493641753');
-INSERT INTO `logistics_action_log` VALUES ('372', '11', '1', '2130706433', 'category', '46', '操作url：/index.php?s=/Category/add.html', '1', '1493641934');
-INSERT INTO `logistics_action_log` VALUES ('373', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-01 21:28登录了后台', '1', '1493645319');
-INSERT INTO `logistics_action_log` VALUES ('374', '11', '1', '2130706433', 'category', '47', '操作url：/index.php?s=/Category/add.html', '1', '1493645349');
-INSERT INTO `logistics_action_log` VALUES ('375', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-02 10:13登录了后台', '1', '1493691215');
-INSERT INTO `logistics_action_log` VALUES ('376', '1', '6', '2130706433', 'member', '6', 'shexie67在2017-05-02 19:28登录了后台', '1', '1493724489');
-INSERT INTO `logistics_action_log` VALUES ('377', '1', '6', '2130706433', 'member', '6', 'shexie67在2017-05-02 19:39登录了后台', '1', '1493725196');
-INSERT INTO `logistics_action_log` VALUES ('378', '4', '6', '2130706433', 'document', '41', 'shexie67在2017-05-02 19:45发表了一篇文章。\r\n表document，记录编号41。', '1', '1493725548');
-INSERT INTO `logistics_action_log` VALUES ('379', '4', '6', '2130706433', 'document', '42', 'shexie67在2017-05-02 19:48发表了一篇文章。\r\n表document，记录编号42。', '1', '1493725682');
-INSERT INTO `logistics_action_log` VALUES ('380', '4', '6', '2130706433', 'document', '43', 'shexie67在2017-05-02 19:49发表了一篇文章。\r\n表document，记录编号43。', '1', '1493725745');
-INSERT INTO `logistics_action_log` VALUES ('381', '4', '6', '2130706433', 'document', '44', 'shexie67在2017-05-02 19:50发表了一篇文章。\r\n表document，记录编号44。', '1', '1493725807');
-INSERT INTO `logistics_action_log` VALUES ('382', '4', '6', '2130706433', 'document', '45', 'shexie67在2017-05-02 19:53发表了一篇文章。\r\n表document，记录编号45。', '1', '1493726027');
-INSERT INTO `logistics_action_log` VALUES ('383', '1', '6', '2130706433', 'member', '6', 'shexie67在2017-05-02 19:58登录了后台', '1', '1493726325');
-INSERT INTO `logistics_action_log` VALUES ('384', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-02 20:04登录了后台', '1', '1493726647');
-INSERT INTO `logistics_action_log` VALUES ('385', '1', '2', '2130706433', 'member', '2', 'shexie33在2017-05-02 20:04登录了后台', '1', '1493726690');
-INSERT INTO `logistics_action_log` VALUES ('386', '1', '7', '2130706433', 'member', '7', 'shexie77在2017-05-02 21:50登录了后台', '1', '1493733004');
-INSERT INTO `logistics_action_log` VALUES ('387', '1', '16', '2130706433', 'member', '16', '李二蛋在2017-05-02 21:52登录了后台', '1', '1493733170');
-INSERT INTO `logistics_action_log` VALUES ('388', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-05-02 21:54登录了后台', '1', '1493733274');
-INSERT INTO `logistics_action_log` VALUES ('389', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-05-02 22:27登录了后台', '1', '1493735238');
-INSERT INTO `logistics_action_log` VALUES ('390', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-05-02 22:44登录了后台', '1', '1493736257');
-INSERT INTO `logistics_action_log` VALUES ('391', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-05-02 22:45登录了后台', '1', '1493736307');
-INSERT INTO `logistics_action_log` VALUES ('392', '1', '5', '2130706433', 'member', '5', 'shexie66在2017-05-02 22:50登录了后台', '1', '1493736606');
-INSERT INTO `logistics_action_log` VALUES ('393', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-05 20:44登录了后台', '1', '1493988267');
-INSERT INTO `logistics_action_log` VALUES ('394', '1', '17', '2130706433', 'member', '17', '二蛋在2017-05-07 13:34登录了后台', '1', '1494135243');
-INSERT INTO `logistics_action_log` VALUES ('395', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-07 13:53登录了后台', '1', '1494136420');
-INSERT INTO `logistics_action_log` VALUES ('396', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-07 14:38登录了后台', '1', '1494139099');
-INSERT INTO `logistics_action_log` VALUES ('397', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-13 19:16登录了后台', '1', '1494674188');
-INSERT INTO `logistics_action_log` VALUES ('398', '1', '85', '2130706433', 'member', '85', 'yuantengadmin在2017-05-13 19:55登录了后台', '1', '1494676537');
-INSERT INTO `logistics_action_log` VALUES ('399', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-13 21:38登录了后台', '1', '1494682706');
-INSERT INTO `logistics_action_log` VALUES ('400', '4', '85', '2130706433', 'document', '95', 'yuantengadmin在2017-05-13 22:09发表了一篇文章。\r\n表document，记录编号95。', '1', '1494684596');
-INSERT INTO `logistics_action_log` VALUES ('401', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-13 22:20登录了后台', '1', '1494685252');
-INSERT INTO `logistics_action_log` VALUES ('402', '1', '85', '2130706433', 'member', '85', 'yuantengadmin在2017-05-13 22:24登录了后台', '1', '1494685450');
-INSERT INTO `logistics_action_log` VALUES ('403', '11', '85', '2130706433', 'category', '48', '操作url：/index.php?s=/Category/add.html', '1', '1494685550');
-INSERT INTO `logistics_action_log` VALUES ('404', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-13 22:27登录了后台', '1', '1494685621');
-INSERT INTO `logistics_action_log` VALUES ('405', '10', '1', '2130706433', 'Menu', '133', '操作url：/index.php?s=/Menu/add.html', '1', '1494686017');
-INSERT INTO `logistics_action_log` VALUES ('406', '1', '85', '2130706433', 'member', '85', 'yuantengadmin在2017-05-13 22:34登录了后台', '1', '1494686085');
-INSERT INTO `logistics_action_log` VALUES ('407', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-13 22:41登录了后台', '1', '1494686486');
-INSERT INTO `logistics_action_log` VALUES ('408', '1', '96', '2130706433', 'member', '96', 'test在2017-05-13 22:57登录了后台', '1', '1494687479');
-INSERT INTO `logistics_action_log` VALUES ('409', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-13 23:30登录了后台', '1', '1494689444');
+INSERT INTO `logistics_action_log` VALUES ('1', '1', '86', '2130706433', 'member', '86', 'adminyuanteng在2017-05-14 22:03登录了后台', '1', '1494770615');
+INSERT INTO `logistics_action_log` VALUES ('2', '1', '86', '2130706433', 'member', '86', 'adminyuanteng在2017-05-14 22:05登录了后台', '1', '1494770757');
+INSERT INTO `logistics_action_log` VALUES ('3', '1', '67', '2130706433', 'member', '67', '0316-5328497在2017-05-14 22:10登录了后台', '1', '1494771003');
+INSERT INTO `logistics_action_log` VALUES ('4', '1', '97', '2130706433', 'member', '97', 'shexie960在2017-05-14 22:45登录了后台', '1', '1494773154');
+INSERT INTO `logistics_action_log` VALUES ('5', '1', '97', '2130706433', 'member', '97', 'shexie960在2017-05-14 22:47登录了后台', '1', '1494773255');
+INSERT INTO `logistics_action_log` VALUES ('6', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-14 23:31登录了后台', '1', '1494775879');
+INSERT INTO `logistics_action_log` VALUES ('7', '1', '98', '2130706433', 'member', '98', 'shexie961在2017-05-15 00:01登录了后台', '1', '1494777663');
+INSERT INTO `logistics_action_log` VALUES ('8', '1', '98', '2130706433', 'member', '98', 'shexie961在2017-05-15 00:03登录了后台', '1', '1494777787');
+INSERT INTO `logistics_action_log` VALUES ('9', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-15 00:14登录了后台', '1', '1494778460');
+INSERT INTO `logistics_action_log` VALUES ('10', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-15 00:17登录了后台', '1', '1494778657');
+INSERT INTO `logistics_action_log` VALUES ('11', '1', '1', '2130706433', 'member', '1', 'shexie303在2017-05-15 00:21登录了后台', '1', '1494778866');
+INSERT INTO `logistics_action_log` VALUES ('12', '6', '1', '2130706433', 'config', '20', '操作url：/index.php?s=/config/edit.html', '1', '1494779230');
+INSERT INTO `logistics_action_log` VALUES ('13', '1', '85', '2130706433', 'member', '85', 'yuantengadmin在2017-05-15 00:29登录了后台', '1', '1494779344');
 
 -- ----------------------------
 -- Table structure for logistics_ad
@@ -492,14 +99,11 @@ CREATE TABLE `logistics_ad` (
   `update_time` int(10) unsigned NOT NULL default '0' COMMENT '更新时间',
   `status` tinyint(3) unsigned NOT NULL default '0' COMMENT '状态 1-正常 0-隐藏',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of logistics_ad
 -- ----------------------------
-INSERT INTO `logistics_ad` VALUES ('6', '8264落地配', '3', '/Uploads/Picture/ad_img/2017-05-07/590ebd27f1fa0.png', 'https://www.baidu.com', '0', '1492743832', '1494138152', '1');
-INSERT INTO `logistics_ad` VALUES ('7', '心愿落地配', '3', '/Uploads/Picture/ad_img/2017-05-07/590ebd145c887.png', '', '0', '1493273485', '1494138133', '1');
-INSERT INTO `logistics_ad` VALUES ('8', '落地配阿萨德发射点发', '1', '/Uploads/Picture/ad_img/2017/0513/591726bec77d5.png', '', '3', '1493274290', '1494689472', '1');
 
 -- ----------------------------
 -- Table structure for logistics_addons
@@ -659,7 +263,7 @@ CREATE TABLE `logistics_auth_group` (
 -- ----------------------------
 -- Records of logistics_auth_group
 -- ----------------------------
-INSERT INTO `logistics_auth_group` VALUES ('1', 'admin', '1', '管理员', '', '1', '2,3,7,8,9,10,17,23,24,26,67,68,69,70,71,72,74,88,108,178,211,214,221,222,223,224,225,226,227,228,229,230');
+INSERT INTO `logistics_auth_group` VALUES ('1', 'admin', '1', '管理员', '', '1', '2,3,7,8,9,10,17,23,24,26,65,67,68,69,70,71,72,74,88,108,178,211,214,221,222,223,224,225,226,227,228,229,230');
 INSERT INTO `logistics_auth_group` VALUES ('2', 'admin', '1', '物流用户', '', '1', '2,3,7,10,17,108,218,221');
 INSERT INTO `logistics_auth_group` VALUES ('3', 'admin', '1', '生成厂家', '', '1', '2,3,7,10,17,108,218,221');
 
@@ -783,6 +387,8 @@ INSERT INTO `logistics_auth_group_access` VALUES ('93', '3');
 INSERT INTO `logistics_auth_group_access` VALUES ('94', '2');
 INSERT INTO `logistics_auth_group_access` VALUES ('95', '2');
 INSERT INTO `logistics_auth_group_access` VALUES ('96', '3');
+INSERT INTO `logistics_auth_group_access` VALUES ('97', '3');
+INSERT INTO `logistics_auth_group_access` VALUES ('98', '2');
 
 -- ----------------------------
 -- Table structure for logistics_auth_rule
@@ -1040,7 +646,7 @@ CREATE TABLE `logistics_category` (
   `title` varchar(50) NOT NULL COMMENT '标题',
   `pid` int(10) unsigned NOT NULL default '0' COMMENT '上级分类ID',
   `sort` int(10) unsigned NOT NULL default '0' COMMENT '排序（同级有效）',
-  `list_row` tinyint(3) unsigned NOT NULL default '45' COMMENT '列表每页行数',
+  `list_row` tinyint(3) unsigned NOT NULL default '30' COMMENT '列表每页行数',
   `meta_title` varchar(50) NOT NULL default '' COMMENT 'SEO的网页标题',
   `keywords` varchar(255) NOT NULL default '' COMMENT '关键字',
   `description` varchar(255) NOT NULL default '' COMMENT '描述',
@@ -1070,53 +676,53 @@ CREATE TABLE `logistics_category` (
 -- ----------------------------
 -- Records of logistics_category
 -- ----------------------------
-INSERT INTO `logistics_category` VALUES ('5', 'tjhc', '推荐货车', '0', '4', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492065358', '1492065527', '1', '0', '0');
-INSERT INTO `logistics_category` VALUES ('2', 'jpzx', '精品专线', '0', '1', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '1', '1', '0', '1', '', '', '1490326849', '1492755931', '1', '0', '0');
-INSERT INTO `logistics_category` VALUES ('3', 'ldp', '落地配', '0', '2', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1490595686', '1492065524', '1', '0', '0');
-INSERT INTO `logistics_category` VALUES ('4', 'zhwl', '综合物流', '0', '3', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1491035129', '1492065525', '1', '0', '0');
-INSERT INTO `logistics_category` VALUES ('6', 'sccj', '生产厂家', '0', '5', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492065425', '1492065529', '1', '0', '0');
-INSERT INTO `logistics_category` VALUES ('7', 'fbhy', '货源', '0', '6', '45', '', '', '', '', 'Index/hy', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492133721', '1493102654', '1', '0', '0');
-INSERT INTO `logistics_category` VALUES ('8', 'sn', '市内', '2', '1', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '100000');
-INSERT INTO `logistics_category` VALUES ('9', 'bj', '北京', '2', '2', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492764992', '1', '0', '110000');
-INSERT INTO `logistics_category` VALUES ('10', 'tj', '天津', '2', '3', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '120000');
-INSERT INTO `logistics_category` VALUES ('11', 'sh', '上海', '2', '4', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '310000');
-INSERT INTO `logistics_category` VALUES ('12', 'cq', '重庆', '2', '5', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '500000');
-INSERT INTO `logistics_category` VALUES ('13', 'zj', '浙江', '2', '6', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '330000');
-INSERT INTO `logistics_category` VALUES ('14', 'js', '江苏', '2', '7', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '320000');
-INSERT INTO `logistics_category` VALUES ('15', 'sd', '山东', '2', '8', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '370000');
-INSERT INTO `logistics_category` VALUES ('16', 'ah', '安徽', '2', '9', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '340000');
-INSERT INTO `logistics_category` VALUES ('17', 'gd', '广东', '2', '10', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '440000');
-INSERT INTO `logistics_category` VALUES ('18', 'fj', '福建', '2', '11', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '350000');
-INSERT INTO `logistics_category` VALUES ('19', 'jx', '江西', '2', '12', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '360000');
-INSERT INTO `logistics_category` VALUES ('20', 'hn', '湖南', '2', '13', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '430000');
-INSERT INTO `logistics_category` VALUES ('21', 'hb', '湖北', '2', '14', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '420000');
-INSERT INTO `logistics_category` VALUES ('22', 'hen', '河南', '2', '15', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '410000');
-INSERT INTO `logistics_category` VALUES ('23', 'heb', '河北', '2', '16', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '130000');
-INSERT INTO `logistics_category` VALUES ('24', 'sx', '山西', '2', '17', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '140000');
-INSERT INTO `logistics_category` VALUES ('25', 'shx', '陕西', '2', '18', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '610000');
-INSERT INTO `logistics_category` VALUES ('26', 'gx', '广西', '2', '19', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '450000');
-INSERT INTO `logistics_category` VALUES ('27', 'yn', '云南', '2', '20', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '530000');
-INSERT INTO `logistics_category` VALUES ('28', 'gz', '贵州', '2', '21', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '520000');
-INSERT INTO `logistics_category` VALUES ('29', 'sc', '四川', '2', '22', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '510000');
-INSERT INTO `logistics_category` VALUES ('30', 'jl', '吉林', '2', '23', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '220000');
-INSERT INTO `logistics_category` VALUES ('31', 'hlj', '黑龙江', '2', '24', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '230000');
-INSERT INTO `logistics_category` VALUES ('32', 'ln', '辽宁', '2', '25', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '210000');
-INSERT INTO `logistics_category` VALUES ('33', 'xj', '新疆', '2', '26', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '650000');
-INSERT INTO `logistics_category` VALUES ('34', 'nx', '宁夏', '2', '27', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '630000');
-INSERT INTO `logistics_category` VALUES ('35', 'nm', '内蒙', '2', '28', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '150000');
-INSERT INTO `logistics_category` VALUES ('36', 'gs', '甘肃', '2', '29', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '620000');
-INSERT INTO `logistics_category` VALUES ('37', 'qh', '青海', '2', '30', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '630000');
-INSERT INTO `logistics_category` VALUES ('38', 'xz', '西藏', '2', '31', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '540000');
-INSERT INTO `logistics_category` VALUES ('39', 'hain', '海南', '2', '32', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '460000');
-INSERT INTO `logistics_category` VALUES ('40', 'gat', '港澳台', '2', '33', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '850000');
-INSERT INTO `logistics_category` VALUES ('41', 'shengn', '省内', '2', '34', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '900000');
-INSERT INTO `logistics_category` VALUES ('42', 'wjzp', '五金制品', '6', '1', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1493284818', '1493284920', '1', '0', '0');
-INSERT INTO `logistics_category` VALUES ('43', 'gcgj', '管材管件', '6', '2', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1493284851', '1493284921', '1', '0', '0');
-INSERT INTO `logistics_category` VALUES ('44', 'dlqj', '电缆桥架', '6', '3', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1493284877', '1493284922', '1', '0', '0');
-INSERT INTO `logistics_category` VALUES ('45', 'zxjc', '装修建材', '6', '4', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1493284907', '1493284924', '1', '0', '0');
-INSERT INTO `logistics_category` VALUES ('46', 'yyyj', '液压元件', '42', '0', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1493641934', '1493641934', '0', '0', '0');
-INSERT INTO `logistics_category` VALUES ('47', 'clyq', '测量仪器', '42', '0', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1493645349', '1493645349', '0', '0', '0');
-INSERT INTO `logistics_category` VALUES ('48', 'lsdtz', '螺丝刀套装', '42', '0', '45', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1494685550', '1494685550', '0', '0', '0');
+INSERT INTO `logistics_category` VALUES ('5', 'tjhc', '推荐货车', '0', '4', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492065358', '1492065527', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('2', 'jpzx', '精品专线', '0', '1', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '1', '1', '0', '1', '', '', '1490326849', '1492755931', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('3', 'ldp', '落地配', '0', '2', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1490595686', '1492065524', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('4', 'zhwl', '综合物流', '0', '3', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1491035129', '1492065525', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('6', 'sccj', '生产厂家', '0', '5', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492065425', '1492065529', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('7', 'fbhy', '货源', '0', '6', '30', '', '', '', '', 'Index/hy', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492133721', '1493102654', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('8', 'sn', '市内', '2', '1', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '100000');
+INSERT INTO `logistics_category` VALUES ('9', 'bj', '北京', '2', '2', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492764992', '1', '0', '110000');
+INSERT INTO `logistics_category` VALUES ('10', 'tj', '天津', '2', '3', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '120000');
+INSERT INTO `logistics_category` VALUES ('11', 'sh', '上海', '2', '4', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '310000');
+INSERT INTO `logistics_category` VALUES ('12', 'cq', '重庆', '2', '5', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '500000');
+INSERT INTO `logistics_category` VALUES ('13', 'zj', '浙江', '2', '6', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '330000');
+INSERT INTO `logistics_category` VALUES ('14', 'js', '江苏', '2', '7', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '320000');
+INSERT INTO `logistics_category` VALUES ('15', 'sd', '山东', '2', '8', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '370000');
+INSERT INTO `logistics_category` VALUES ('16', 'ah', '安徽', '2', '9', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '340000');
+INSERT INTO `logistics_category` VALUES ('17', 'gd', '广东', '2', '10', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '440000');
+INSERT INTO `logistics_category` VALUES ('18', 'fj', '福建', '2', '11', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '350000');
+INSERT INTO `logistics_category` VALUES ('19', 'jx', '江西', '2', '12', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '360000');
+INSERT INTO `logistics_category` VALUES ('20', 'hn', '湖南', '2', '13', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '430000');
+INSERT INTO `logistics_category` VALUES ('21', 'hb', '湖北', '2', '14', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '420000');
+INSERT INTO `logistics_category` VALUES ('22', 'hen', '河南', '2', '15', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '410000');
+INSERT INTO `logistics_category` VALUES ('23', 'heb', '河北', '2', '16', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '130000');
+INSERT INTO `logistics_category` VALUES ('24', 'sx', '山西', '2', '17', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '140000');
+INSERT INTO `logistics_category` VALUES ('25', 'shx', '陕西', '2', '18', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '610000');
+INSERT INTO `logistics_category` VALUES ('26', 'gx', '广西', '2', '19', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '450000');
+INSERT INTO `logistics_category` VALUES ('27', 'yn', '云南', '2', '20', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '530000');
+INSERT INTO `logistics_category` VALUES ('28', 'gz', '贵州', '2', '21', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '520000');
+INSERT INTO `logistics_category` VALUES ('29', 'sc', '四川', '2', '22', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '510000');
+INSERT INTO `logistics_category` VALUES ('30', 'jl', '吉林', '2', '23', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '220000');
+INSERT INTO `logistics_category` VALUES ('31', 'hlj', '黑龙江', '2', '24', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '230000');
+INSERT INTO `logistics_category` VALUES ('32', 'ln', '辽宁', '2', '25', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '210000');
+INSERT INTO `logistics_category` VALUES ('33', 'xj', '新疆', '2', '26', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '650000');
+INSERT INTO `logistics_category` VALUES ('34', 'nx', '宁夏', '2', '27', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '630000');
+INSERT INTO `logistics_category` VALUES ('35', 'nm', '内蒙', '2', '28', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '150000');
+INSERT INTO `logistics_category` VALUES ('36', 'gs', '甘肃', '2', '29', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '620000');
+INSERT INTO `logistics_category` VALUES ('37', 'qh', '青海', '2', '30', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '630000');
+INSERT INTO `logistics_category` VALUES ('38', 'xz', '西藏', '2', '31', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '540000');
+INSERT INTO `logistics_category` VALUES ('39', 'hain', '海南', '2', '32', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '460000');
+INSERT INTO `logistics_category` VALUES ('40', 'gat', '港澳台', '2', '33', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '850000');
+INSERT INTO `logistics_category` VALUES ('41', 'shengn', '省内', '2', '34', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1492419007', '1492419007', '1', '0', '900000');
+INSERT INTO `logistics_category` VALUES ('42', 'wjzp', '五金制品', '6', '1', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1493284818', '1493284920', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('43', 'gcgj', '管材管件', '6', '2', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1493284851', '1493284921', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('44', 'dlqj', '电缆桥架', '6', '3', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1493284877', '1493284922', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('45', 'zxjc', '装修建材', '6', '4', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1493284907', '1493284924', '1', '0', '0');
+INSERT INTO `logistics_category` VALUES ('46', 'yyyj', '液压元件', '42', '0', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1493641934', '1493641934', '0', '0', '0');
+INSERT INTO `logistics_category` VALUES ('47', 'clyq', '测量仪器', '42', '0', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1493645349', '1493645349', '0', '0', '0');
+INSERT INTO `logistics_category` VALUES ('48', 'lsdtz', '螺丝刀套装', '42', '0', '30', '', '', '', '', '', '', '', '2', '2,1', '0', '2', '1', '0', '1', '', '', '1494685550', '1494685550', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for logistics_channel
@@ -1134,11 +740,13 @@ CREATE TABLE `logistics_channel` (
   `target` tinyint(2) unsigned NOT NULL default '0' COMMENT '新窗口打开',
   PRIMARY KEY  (`id`),
   KEY `pid` (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of logistics_channel
 -- ----------------------------
+INSERT INTO `logistics_channel` VALUES ('4', '0', '百度', 'http://www.baidu.com', '1', '1494776584', '1494776584', '1', '1');
+INSERT INTO `logistics_channel` VALUES ('5', '0', '搜狗', 'http://www.sogou.com', '2', '1494776816', '1494776816', '1', '1');
 
 -- ----------------------------
 -- Table structure for logistics_config
@@ -1175,7 +783,7 @@ INSERT INTO `logistics_config` VALUES ('10', 'WEB_SITE_ICP', '1', '网站备案�
 INSERT INTO `logistics_config` VALUES ('11', 'DOCUMENT_POSITION', '3', '文档推荐位', '2', '', '文档推荐位，推荐到多个位置KEY值相加即可', '1379053380', '1379235329', '1', '1:列表页推荐\r\n2:频道页推荐\r\n4:网站首页推荐', '3');
 INSERT INTO `logistics_config` VALUES ('12', 'DOCUMENT_DISPLAY', '3', '文档可见性', '2', '', '文章可见性仅影响前台显示，后台不收影响', '1379056370', '1379235322', '1', '0:所有人可见\r\n1:仅注册会员可见\r\n2:仅管理员可见', '4');
 INSERT INTO `logistics_config` VALUES ('13', 'COLOR_STYLE', '4', '后台色系', '1', 'default_color:默认\r\nblue_color:紫罗兰\r\nqing_color:青', '后台颜色风格', '1379122533', '1493475779', '1', 'qing_color', '10');
-INSERT INTO `logistics_config` VALUES ('20', 'CONFIG_GROUP_LIST', '3', '配置分组', '4', '', '配置分组', '1379228036', '1384418383', '1', '1:基本\r\n2:内容\r\n3:用户\r\n4:系统', '4');
+INSERT INTO `logistics_config` VALUES ('20', 'CONFIG_GROUP_LIST', '3', '配置分组', '4', '', '配置分组', '1379228036', '1494779230', '1', '1:基本', '4');
 INSERT INTO `logistics_config` VALUES ('21', 'HOOKS_TYPE', '3', '钩子的类型', '4', '', '类型 1-用于扩展显示内容，2-用于扩展业务处理', '1379313397', '1379313407', '1', '1:视图\r\n2:控制器', '6');
 INSERT INTO `logistics_config` VALUES ('22', 'AUTH_CONFIG', '3', 'Auth配置', '4', '', '自定义Auth.class.php类配置', '1379409310', '1379409564', '1', 'AUTH_ON:1\r\nAUTH_TYPE:2', '8');
 INSERT INTO `logistics_config` VALUES ('23', 'OPEN_DRAFTBOX', '4', '是否开启草稿功能', '2', '0:关闭草稿功能\r\n1:开启草稿功能\r\n', '新增文章时的草稿功能配置', '1379484332', '1379484591', '1', '0', '1');
@@ -1242,13 +850,13 @@ CREATE TABLE `logistics_document` (
 -- ----------------------------
 INSERT INTO `logistics_document` VALUES ('1', '95', '', '沈阳 长春 哈尔滨', '0316-5328878', '', '4', '102', '0', '130000', '131000', '131026', '0', '0', '0', '河北省文安县围河道口 岛川物流B区13号23号库房', '0', '0', '2', '2', '0', '0', '1', '1', '0', '0', '149', '0', '0', '600', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('2', '2', '', '吉轩格栅厂', '13932662063', '', '6', '114', '0', '130000', '131000', '131026', '0', '0', '0', '河北省文安县新镇工业区', '0', '0', '2', '2', '0', '0', '2', '1', '0', '0', '145', '0', '0', '0', '0', '1494672983', '1');
-INSERT INTO `logistics_document` VALUES ('3', '3', '', '文安出租4.25米奥铃货车，主发京津冀鲁', '18931649415', '', '5', '88', '0', '130000', '131000', '131026', '0', '0', '0', '河北文安', '0', '0', '2', '2', '0', '0', '3', '1', '0', '0', '148', '0', '0', '0', '0', '1494672983', '1');
+INSERT INTO `logistics_document` VALUES ('3', '3', '', '文安出租4.25米奥铃货车，主发京津冀鲁', '18931649415', '', '5', '88', '0', '130000', '131000', '131026', '0', '0', '0', '河北文安', '0', '0', '2', '2', '0', '0', '3', '1', '0', '0', '149', '0', '0', '0', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('4', '4', '', '轻钢龙骨，卡式龙骨,全丝吊杆，龙骨配件，金属格栅，三角龙骨', '0316-5310982', '', '6', '116', '0', '130000', '131000', '131026', '0', '0', '0', '河北省廊坊市文安县新镇工业区', '0', '0', '2', '2', '0', '0', '4', '1', '0', '0', '138', '0', '0', '0', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('5', '5', '', '北京华旗 灯具 投光灯', '13315605505', '', '6', '116', '0', '130000', '131000', '131026', '0', '0', '0', '河北文安', '0', '0', '2', '2', '0', '0', '5', '1', '0', '0', '126', '0', '0', '0', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('6', '6', '', '大连，营口专线', '0316-2626044', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '106国道107公里处岛川物流A区20（库房7号）', '0', '0', '2', '2', '0', '0', '6', '1', '0', '0', '127', '0', '0', '0', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('7', '7', '', '河北文安-大连专线', '0316-5314522', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '文安新镇小桥101-102公里处', '0', '0', '2', '2', '0', '0', '7', '1', '0', '0', '121', '0', '0', '100', '0', '1494672983', '1');
-INSERT INTO `logistics_document` VALUES ('8', '8', '', '顺发 主要生产：预埋件，大理石干挂件，角码，垫片，塑料垫块及各种异型冲加工', '15930643072', '', '6', '113', '0', '130000', '131000', '131026', '0', '0', '0', '河北省文安县新镇工业区', '0', '0', '2', '2', '0', '0', '8', '1', '0', '0', '235', '0', '0', '0', '0', '1494672983', '1');
-INSERT INTO `logistics_document` VALUES ('9', '9', '', '顺通物流 上海专线', '0316-7966966', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '106国道文安收费站南800米（东海实业院内）', '0', '0', '2', '2', '0', '0', '9', '1', '0', '0', '192', '0', '0', '997', '1494681944', '1494681944', '1');
+INSERT INTO `logistics_document` VALUES ('8', '8', '', '顺发 主要生产：预埋件，大理石干挂件，角码，垫片，塑料垫块及各种异型冲加工', '15930643072', '', '6', '113', '0', '130000', '131000', '131026', '0', '0', '0', '河北省文安县新镇工业区', '0', '0', '2', '2', '0', '0', '8', '1', '0', '0', '236', '0', '0', '0', '0', '1494672983', '1');
+INSERT INTO `logistics_document` VALUES ('9', '9', '', '顺通物流 上海专线', '0316-7966966', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '106国道文安收费站南800米（东海实业院内）', '0', '0', '2', '2', '0', '0', '9', '1', '0', '0', '193', '0', '0', '997', '1494681944', '1494681944', '1');
 INSERT INTO `logistics_document` VALUES ('10', '10', '', '万通物流 河南 湖北专线 南阳 襄阳 十堰', '0316-7986476', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北省廊坊市文安县王村交警中队对过106国道110公里处', '0', '0', '2', '2', '0', '0', '10', '1', '0', '0', '150', '0', '0', '100', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('11', '11', '', '轻钢龙骨 主要生产：主吊;付挂；支卡，快吊；付接；.反烤漆挂件；50支托等各种冲压备套件', '15076605987', '', '6', '116', '0', '130000', '131000', '131026', '0', '0', '0', '河北省文安县大围河乡高头村', '0', '0', '2', '2', '0', '0', '11', '1', '0', '0', '126', '0', '0', '0', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('12', '12', '', '1+1物流（江苏专线）文安-南京 常州 苏州', '0316-5670010', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北省文安县106国道109.6公里处（宏义物流院内01号库）', '0', '0', '2', '2', '0', '0', '12', '1', '0', '0', '155', '0', '0', '500', '0', '1494672983', '1');
@@ -1270,7 +878,7 @@ INSERT INTO `logistics_document` VALUES ('27', '27', '', '北京贝斯特科技�
 INSERT INTO `logistics_document` VALUES ('28', '28', '', '联通快运 文安-廊坊 北京 保定 白沟 天津', '0316-5320993', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '文安县106国道110.5公里处', '0', '0', '2', '2', '0', '0', '28', '1', '0', '0', '135', '0', '0', '30', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('29', '29', '', '济南专线 主发 济南 章丘 济阳 临邑 泰安 肥城 长清 山东全境', '13785661313', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北省文安县106国道世纪大道口', '0', '0', '2', '2', '0', '0', '29', '1', '0', '0', '124', '0', '0', '100', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('30', '30', '', '永安物流中心 庆云 菏泽专线', '0316-5321008', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '106国道史各庄新桥北头路东', '0', '0', '2', '2', '0', '0', '30', '1', '0', '0', '120', '0', '0', '100', '0', '1494672983', '1');
-INSERT INTO `logistics_document` VALUES ('31', '31', '', '平安物流 临沂专线 青岛专线 太原专线', '0316-5313316', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '文安新镇106国道101.2公里处路西', '0', '0', '2', '2', '0', '0', '31', '1', '0', '0', '188', '0', '0', '998', '1494681918', '1494681918', '1');
+INSERT INTO `logistics_document` VALUES ('31', '31', '', '平安物流 临沂专线 青岛专线 太原专线', '0316-5313316', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '文安新镇106国道101.2公里处路西', '0', '0', '2', '2', '0', '0', '31', '1', '0', '0', '189', '0', '0', '998', '1494681918', '1494681918', '1');
 INSERT INTO `logistics_document` VALUES ('32', '32', '', '廊坊凯美星装饰材料 烤漆龙骨 三角龙骨', '0316-5018225', '', '6', '116', '0', '130000', '131000', '131026', '0', '0', '0', '河北省文安县新镇西庄头工业区', '0', '0', '2', '2', '0', '0', '32', '1', '0', '0', '131', '0', '0', '0', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('33', '33', '', '宏发 苏北专线 (江苏) 主发: 宿迁 淮安 连云港 盐城 新沂 扬州 泰州 南通', '0316-5326388', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北文安106国道109.8公里处', '0', '0', '2', '2', '0', '0', '33', '1', '0', '0', '148', '0', '0', '0', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('34', '34', '', '文安县芦阜庄益发钢铁经销部', '15030666770', '', '6', '113', '0', '130000', '131000', '131026', '0', '0', '0', '文安县芦阜庄钢材市场C6西区2056号', '0', '0', '2', '2', '0', '0', '34', '1', '0', '0', '166', '0', '0', '500', '0', '1494672983', '1');
@@ -1295,11 +903,11 @@ INSERT INTO `logistics_document` VALUES ('52', '52', '', '胜发物流山西全�
 INSERT INTO `logistics_document` VALUES ('53', '53', '', '文安县（彩明塑业）京花线盒管件厂', '0316-5321670', '', '6', '114', '0', '130000', '131000', '131026', '0', '0', '0', '106国道111公里处文安县王村道口西行200米路南', '0', '0', '2', '2', '0', '0', '53', '1', '0', '0', '134', '0', '0', '0', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('54', '54', '', '建材市场测试', '15531613668', '', '90', '0', '0', '130000', '131000', '131026', '0', '0', '0', '河北省廊坊市浙商广场', '0', '0', '2', '2', '0', '0', '54', '1', '0', '0', '117', '0', '0', '0', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('55', '55', '', '雨洁物流唐山专线', '0316-5016618', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '106国道105.5公里处路西史各庄大桥北头', '0', '0', '2', '2', '0', '0', '55', '1', '0', '0', '138', '0', '0', '500', '0', '1494672983', '1');
-INSERT INTO `logistics_document` VALUES ('56', '56', '', '兴达主发：青岛 平度 即墨 胶州 泰安 肥城 莱芜 新泰', '0316-5018718', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '106国道108.9公里处（世纪大道东200米）', '0', '0', '2', '2', '0', '0', '56', '1', '0', '0', '124', '0', '0', '100', '0', '1494672983', '1');
+INSERT INTO `logistics_document` VALUES ('56', '56', '', '兴达主发：青岛 平度 即墨 胶州 泰安 肥城 莱芜 新泰', '0316-5018718', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '106国道108.9公里处（世纪大道东200米）', '0', '0', '2', '2', '0', '0', '56', '1', '0', '0', '130', '0', '0', '100', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('57', '57', '', '高迅网络广告', '18631682688', '', '2', '111', '0', '130000', '131000', '131026', '0', '0', '0', '106国道110公里处农业银行旁', '0', '0', '2', '2', '0', '0', '57', '1', '0', '0', '132', '0', '0', '100', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('58', '58', '', '华通主发：东胜 包头 呼市 集宁 锡林浩特', '0316-5328141', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北省文安县王村道口农业银行对过', '0', '0', '2', '2', '0', '0', '58', '1', '0', '0', '143', '0', '0', '0', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('59', '59', '', '江苏专线  常州  无锡  苏州 昆山', '0316-8656303', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '文安县106国道110公里处路南', '0', '0', '2', '2', '0', '0', '59', '1', '0', '0', '135', '0', '0', '10', '0', '1494672983', '1');
-INSERT INTO `logistics_document` VALUES ('60', '60', '', '西藏专线 拉萨 那曲  山南 昌都 阿里  林芝  日喀则', '13731630046', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北106国道107公里岛川物流园B区11号', '0', '0', '2', '2', '0', '0', '60', '1', '0', '0', '157', '0', '0', '620', '0', '1494672983', '1');
+INSERT INTO `logistics_document` VALUES ('60', '60', '', '西藏专线 拉萨 那曲  山南 昌都 阿里  林芝  日喀则', '13731630046', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北106国道107公里岛川物流园B区11号', '0', '0', '2', '2', '0', '0', '60', '1', '0', '0', '158', '0', '0', '620', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('61', '61', '', '安徽专线  安庆 桐城 六安 舒城 合肥 铜陵池州', '0316-5327738', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北廊坊文安王村道口110.5公里', '0', '0', '2', '2', '0', '0', '61', '1', '0', '0', '120', '0', '0', '0', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('62', '62', '', '海山承德 赤峰专线 主发：承德 围场 平泉 赤峰 乌丹 大板 敖汉 林东 林西 克旗', '0316-5321497', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北文安106国道110公里处王村道口', '0', '0', '2', '2', '0', '0', '62', '1', '0', '0', '132', '0', '0', '100', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('63', '63', '', '山东专线  潍坊  临朐  寿光     青州   昌乐', '0316-2626030', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '文安县106国道107公里处（岛川物流A区30号）', '0', '0', '2', '2', '0', '0', '63', '1', '0', '0', '121', '0', '0', '13', '0', '1494672983', '1');
@@ -1311,20 +919,20 @@ INSERT INTO `logistics_document` VALUES ('68', '68', '', '旺通物流   新疆�
 INSERT INTO `logistics_document` VALUES ('69', '69', '', '兴邦物流  商丘 周口 宿州 淮北 滁州 芜湖 宣城 黄山', '0316-2785288', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '文安106国道106.6公里处（岛川物流院内A区28号）', '0', '0', '2', '2', '0', '0', '69', '1', '0', '0', '168', '0', '0', '500', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('70', '70', '', '文安-廊坊 香河 三河 燕郊 大厂 北京 通州 顺义 平谷 怀柔 昌平 东坝 小汤山 密云', '15133600323', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '文安县围河路口北20米', '0', '0', '2', '2', '0', '0', '70', '1', '0', '0', '137', '0', '0', '500', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('71', '71', '', '邯郸-邢台 安阳 及周边县市', '0316-7986666', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '106国道107公里处（川岛院内）A区8号库房（12.13号）', '0', '0', '2', '2', '0', '0', '71', '1', '0', '0', '166', '0', '0', '996', '1494682165', '1494682165', '1');
-INSERT INTO `logistics_document` VALUES ('72', '72', '', '宏盛物流-湖南专线  长沙 岳阳 怀化 铜仁 郴州', '0316-5328554', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '106国道109.7公里处交警队东侧50米宏义物流院内19,20号库房', '0', '0', '2', '2', '0', '0', '72', '1', '0', '0', '156', '0', '0', '298', '0', '1494672983', '1');
+INSERT INTO `logistics_document` VALUES ('72', '72', '', '宏盛物流-湖南专线  长沙 岳阳 怀化 铜仁 郴州', '0316-5328554', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '106国道109.7公里处交警队东侧50米宏义物流院内19,20号库房', '0', '0', '2', '2', '0', '0', '72', '1', '0', '0', '160', '0', '0', '298', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('73', '73', '', '青海全境 文安-西宁', '0316-5322625', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '106国道107公里处岛川物流B区11号', '0', '0', '2', '2', '0', '0', '73', '1', '0', '0', '393', '0', '0', '300', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('74', '74', '', '益发物流（专线直达）', '0312-5722733', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '十间房红绿灯往南1000米路西', '0', '0', '2', '2', '0', '0', '74', '1', '0', '0', '127', '0', '0', '0', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('75', '75', '', '江苏 浙江 西安专线 主发：西安 嘉兴 南京 无锡 常州 杭州 宁波 义务', '0316-5322734', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北省文安县王村道口106国道110公里处', '0', '0', '2', '2', '0', '0', '75', '1', '0', '0', '138', '0', '0', '500', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('76', '76', '', '合肥专线 主发：合肥 蚌阜 宿州 阜阳 淮南 安庆 铜陵', '0316-5018788', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北文安106国道109公里处', '0', '0', '2', '2', '0', '0', '76', '1', '0', '0', '136', '0', '0', '500', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('77', '77', '', '文安-湖南长沙 株洲 湘潭 衡阳 邵阳岳阳 常德 张家界 益阳 怀化 娄底 贵阳 遵义 安顺', '0316-2626036', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '106国道107公里处岛川物流B区3号', '0', '0', '2', '2', '0', '0', '77', '1', '0', '0', '151', '0', '0', '600', '0', '1494672983', '1');
-INSERT INTO `logistics_document` VALUES ('78', '78', '', '亿隆主发：福州 福清 长乐 莆田 惠安 泉州 晋江 厦门 漳州 三明 龙岩 南平 宁德 福安 沙县', '18531635305', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北省文安县岛川物流园B区12号', '0', '0', '2', '2', '0', '0', '78', '1', '0', '0', '129', '0', '0', '100', '0', '1494672983', '1');
+INSERT INTO `logistics_document` VALUES ('78', '78', '', '亿隆主发：福州 福清 长乐 莆田 惠安 泉州 晋江 厦门 漳州 三明 龙岩 南平 宁德 福安 沙县', '18531635305', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北省文安县岛川物流园B区12号', '0', '0', '2', '2', '0', '0', '78', '1', '0', '0', '130', '0', '0', '100', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('79', '79', '', '衡水专线', '0316-2785299', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '岛川物流大院B区2号', '0', '0', '2', '2', '0', '0', '79', '1', '0', '0', '127', '0', '0', '500', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('80', '80', '', '元亨西安兰州专线', '0316-5327892', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '文安县106国道110.5公里处王村道口', '0', '0', '2', '2', '0', '0', '80', '1', '0', '0', '154', '0', '0', '800', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('81', '81', '', '日照专线 诸城 五莲 莒县 沂水 沂南 临沂', '0316-5327885', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '河北文安', '0', '0', '2', '2', '0', '0', '81', '1', '0', '0', '131', '0', '0', '100', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('82', '82', '', '中利烤漆龙骨', '0316-7343760', '', '6', '42', '0', '130000', '131000', '131081', '0', '0', '0', '河北省霸州市霸州镇工业区', '0', '0', '2', '2', '0', '0', '82', '1', '0', '0', '124', '0', '0', '0', '1494681404', '1494681404', '1');
 INSERT INTO `logistics_document` VALUES ('83', '83', '', '北京通汇坤宇电线有限公司', '0316-5322491', '', '6', '113', '0', '130000', '131000', '131026', '0', '0', '0', '106国道108公里处文安县新村工业区', '0', '0', '2', '2', '0', '0', '83', '1', '0', '0', '138', '0', '0', '0', '0', '1494672983', '1');
-INSERT INTO `logistics_document` VALUES ('84', '84', '', '鑫源武汉专线 主发：武汉 湖北全境中转', '0316-2785281', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '文安县106国道106公里处岛川物流B区4号', '0', '0', '2', '2', '0', '0', '84', '1', '0', '0', '166', '0', '0', '999', '1494681896', '1494681896', '1');
-INSERT INTO `logistics_document` VALUES ('85', '85', '', '鑫源物流 榆林 神木 府谷 乌审旗 店塔 靖边 定边 大柳塔 米脂 绥德 吴堡 清涧 镇川', '0316-5327711', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '文安世纪大道口106国道东200米108公里处', '0', '0', '2', '2', '0', '0', '85', '1', '0', '0', '246', '0', '0', '1000', '1494681869', '1494681869', '1');
+INSERT INTO `logistics_document` VALUES ('84', '84', '', '鑫源武汉专线 主发：武汉 湖北全境中转', '0316-2785281', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '文安县106国道106公里处岛川物流B区4号', '0', '0', '2', '2', '0', '0', '84', '1', '0', '0', '168', '0', '0', '999', '1494681896', '1494681896', '1');
+INSERT INTO `logistics_document` VALUES ('85', '85', '', '鑫源物流 榆林 神木 府谷 乌审旗 店塔 靖边 定边 大柳塔 米脂 绥德 吴堡 清涧 镇川', '0316-5327711', '', '2', '112', '0', '130000', '131000', '131026', '0', '0', '0', '文安世纪大道口106国道东200米108公里处', '0', '0', '2', '2', '0', '0', '85', '1', '0', '0', '247', '0', '0', '1000', '1494681869', '1494681869', '1');
 INSERT INTO `logistics_document` VALUES ('86', '86', '', '鑫源物流 张家口专线 榆林 神木专线 延安专线', '0316-5327711', '', '4', '102', '0', '130000', '131000', '131026', '0', '0', '0', '文安世纪大道口106国道东200米108公里处', '0', '0', '2', '2', '0', '0', '86', '1', '0', '0', '126', '0', '0', '0', '0', '1494672983', '1');
 INSERT INTO `logistics_document` VALUES ('87', '87', '', '宜昌三峡 轻钢龙骨 卡式龙骨 三角龙骨 龙骨配件 吊杆 石膏板等装饰材料', '18871718899', '', '6', '42', '0', '420000', '420500', '420502', '0', '0', '0', '宜昌市沙河村88号钟宜实业公司院内', '0', '0', '2', '2', '0', '0', '87', '1', '0', '0', '38', '0', '0', '100', '1494680647', '1494680647', '1');
 INSERT INTO `logistics_document` VALUES ('88', '88', '', '阻燃、耐火、低烟无卤、辐照电线电缆、高低压交联电力电缆、KVV控制电缆、架空绝缘导线、民用电线系列', '0316-7987009', '', '6', '115', '0', '130000', '131000', '131026', '0', '0', '0', '河北省廊坊市文安县西桥工业区', '0', '0', '2', '2', '0', '0', '88', '1', '0', '0', '26', '0', '0', '0', '0', '1494672983', '1');
@@ -1573,12 +1181,12 @@ CREATE TABLE `logistics_member` (
   `status` tinyint(4) NOT NULL default '0' COMMENT '会员状态',
   PRIMARY KEY  (`uid`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=97 DEFAULT CHARSET=utf8 COMMENT='会员表';
+) ENGINE=MyISAM AUTO_INCREMENT=99 DEFAULT CHARSET=utf8 COMMENT='会员表';
 
 -- ----------------------------
 -- Records of logistics_member
 -- ----------------------------
-INSERT INTO `logistics_member` VALUES ('1', 'shexie303', '0', '131128198911296612', '', '', 'shexie303', '/Uploads/Picture/facade/2017-04-01/58df1a91bef87.jpg', '', '/Uploads/Picture/license/2017-04-01/58df1b8d7882c.jpg', '3', '1491494400', '1499356800', '130', '127', '0', '1490319959', '2130706433', '1494689444', '1');
+INSERT INTO `logistics_member` VALUES ('1', 'shexie303', '0', '', '', '', '', '', '', '', '3', '1491494400', '1499356800', '140', '131', '0', '1490319959', '2130706433', '1494778866', '1');
 INSERT INTO `logistics_member` VALUES ('2', '13932662063', '吉轩格栅厂', '', '', '', '13932662063', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
 INSERT INTO `logistics_member` VALUES ('3', '18931649415', '文安出租4.25米奥铃货车，主发京津冀鲁', '', '', '', '18931649415', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
 INSERT INTO `logistics_member` VALUES ('4', '0316-5310982', '轻钢龙骨，卡式龙骨,全丝吊杆，龙骨配件，金属格栅，三角龙骨', '', '', '', '0316-5310982', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
@@ -1644,7 +1252,7 @@ INSERT INTO `logistics_member` VALUES ('63', '0316-2626030', '山东专线  潍�
 INSERT INTO `logistics_member` VALUES ('64', '0316-7983373', '名洋主发：章丘   济阳  临邑  德州 泰安  淄博   东营  潍坊  日照 莱芜', '', '', '', '0316-7983373', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
 INSERT INTO `logistics_member` VALUES ('65', '0316-5019775', '鹏程 石家庄 专线', '', '', '', '0316-5019775', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
 INSERT INTO `logistics_member` VALUES ('66', '0316-5321991', '乾源物流 西北专线  银川  乌海   临河', '', '', '', '0316-5321991', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_member` VALUES ('67', '0316-5328497', '濮阳专线 主发：文安 濮阳 新乡漯河', '', '', '', '0316-5328497', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_member` VALUES ('67', '0316-5328497', '濮阳专线 主发：文安 濮阳 新乡漯河', '', '', '', '0316-5328497', '', '', '', '0', '0', '0', '10', '1', '0', '0', '2130706433', '1494771003', '1');
 INSERT INTO `logistics_member` VALUES ('68', '0316-5317360', '旺通物流   新疆专线  酒泉  嘉峪关  张掖  武威', '', '', '', '0316-5317360', '', '', '', '2', '1464192000', '1495987200', '0', '0', '0', '0', '0', '0', '1');
 INSERT INTO `logistics_member` VALUES ('69', '0316-2785288', '兴邦物流  商丘 周口 宿州 淮北 滁州 芜湖 宣城 黄山', '', '', '', '0316-2785288', '', '', '', '2', '1464537600', '1496160000', '0', '0', '0', '0', '0', '0', '1');
 INSERT INTO `logistics_member` VALUES ('70', '15133600323', '文安-廊坊 香河 三河 燕郊 大厂 北京 通州 顺义 平谷 怀柔 昌平 东坝 小汤山 密云', '', '', '', '15133600323', '', '', '', '2', '1464537600', '1496160000', '0', '0', '0', '0', '0', '0', '1');
@@ -1662,8 +1270,8 @@ INSERT INTO `logistics_member` VALUES ('81', '0316-5327885', '日照专线 诸�
 INSERT INTO `logistics_member` VALUES ('82', '0316-7343760', '中利烤漆龙骨', '', '', '', '0316-7343760', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
 INSERT INTO `logistics_member` VALUES ('83', '0316-5322491', '北京通汇坤宇电线有限公司', '', '', '', '0316-5322491', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
 INSERT INTO `logistics_member` VALUES ('84', '0316-2785281', '鑫源武汉专线 主发：武汉 湖北全境中转', '', '', '', '0316-2785281', '', '', '', '3', '1464624000', '1496332800', '0', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_member` VALUES ('85', 'yuantengadmin', '鑫源物流 榆林 神木 府谷 乌审旗 店塔 靖边 定边 大柳塔 米脂 绥德 吴堡 清涧 镇川', '', '', '', '0316-5327711', '', '', '', '2', '1464624000', '1496332800', '20', '3', '0', '0', '2130706433', '1494686085', '1');
-INSERT INTO `logistics_member` VALUES ('86', 'adminyuanteng', '鑫源物流 张家口专线 榆林 神木专线 延安专线', '', '', '', '0316-5327711', '', '', '', '3', '1464710400', '1496419200', '0', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_member` VALUES ('85', 'yuantengadmin', '鑫源物流 榆林 神木 府谷 乌审旗 店塔 靖边 定边 大柳塔 米脂 绥德 吴堡 清涧 镇川', '', '', '', '0316-5327711', '', '', '', '3', '1464624000', '1496332800', '30', '4', '0', '0', '2130706433', '1494779344', '1');
+INSERT INTO `logistics_member` VALUES ('86', 'adminyuanteng', '鑫源物流 张家口专线 榆林 神木专线 延安专线', '', '', '', '0316-5327711', '', '', '', '3', '1464710400', '1496419200', '10', '2', '0', '0', '2130706433', '1494770757', '1');
 INSERT INTO `logistics_member` VALUES ('87', '18871718899', '宜昌三峡 轻钢龙骨 卡式龙骨 三角龙骨 龙骨配件 吊杆 石膏板等装饰材料', '', '', '', '18871718899', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
 INSERT INTO `logistics_member` VALUES ('88', '0316-7987009', '阻燃、耐火、低烟无卤、辐照电线电缆、高低压交联电力电缆、KVV控制电缆、架空绝缘导线、民用电线系列', '', '', '', '0316-7987009', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
 INSERT INTO `logistics_member` VALUES ('89', '0316-7981116', '金属电缆桥架、防火电缆桥架、梯式电缆桥架、大跨距电缆桥架、一次成型电缆桥架及金属穿线管配件', '', '', '', '0316-7981116', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
@@ -1673,7 +1281,6 @@ INSERT INTO `logistics_member` VALUES ('92', '0316-5333458', '河北中利线缆
 INSERT INTO `logistics_member` VALUES ('93', '15030450752', '洪季缘 制作各种档次牛皮纸箱，各种彩箱', '', '', '', '15030450752', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
 INSERT INTO `logistics_member` VALUES ('94', '13933930320', '河北文安网通货站 江苏，浙江专线每天有多部9.6米-13米车发往泰州，镇江，靖江，江阴，常州，无锡，苏州，张家港，常熟，宜兴，昆山，等周边地区，杭州，嘉兴，宁波，义乌，等周边地区', '', '', '', '13933930320', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
 INSERT INTO `logistics_member` VALUES ('95', '0316-5328878', '沈阳 长春 哈尔滨', '', '', '', '0316-5328878', '', '', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_member` VALUES ('96', 'test', '', '', '', '', '', '', '', '', '1', '1494604800', '1502553600', '10', '1', '0', '0', '2130706433', '1494687479', '1');
 
 -- ----------------------------
 -- Table structure for logistics_menu
@@ -1865,22 +1472,11 @@ CREATE TABLE `logistics_pay_log` (
   `create_time` int(10) unsigned NOT NULL default '0' COMMENT '生成时间',
   PRIMARY KEY  (`id`),
   KEY `module` (`order_number`,`create_time`,`type`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of logistics_pay_log
 -- ----------------------------
-INSERT INTO `logistics_pay_log` VALUES ('2', '66837239298008686269686760860866', '0', '0', '17', '3', '1491790908');
-INSERT INTO `logistics_pay_log` VALUES ('3', '34066882868400566959625989462140', '0', '0', '17', '3', '1492153845');
-INSERT INTO `logistics_pay_log` VALUES ('4', '71442825005285565650320555628856', '0', '0', '17', '3', '1492154901');
-INSERT INTO `logistics_pay_log` VALUES ('5', '81666404688891784149006447126668', '0', '0', '17', '3', '1492156390');
-INSERT INTO `logistics_pay_log` VALUES ('6', '68220086645782796897882859846532', '1', '300', '7', '6', '1492666864');
-INSERT INTO `logistics_pay_log` VALUES ('7', '68398048945864549546312106926606', '1', '100', '5', '1', '1492666905');
-INSERT INTO `logistics_pay_log` VALUES ('8', '85546214685843760628555148674656', '1', '10', '4', '1', '1492667016');
-INSERT INTO `logistics_pay_log` VALUES ('9', '84955395181587048622212346623864', '1', '290', '3', '4', '1492667075');
-INSERT INTO `logistics_pay_log` VALUES ('10', '93563686262037646209262422845686', '1', '120', '2', '4', '1492667129');
-INSERT INTO `logistics_pay_log` VALUES ('11', '30390226222242024268625216047004', '1', '588', '4', '12', '1492667173');
-INSERT INTO `logistics_pay_log` VALUES ('12', '33146654766671284208488426446485', '0', '0', '96', '3', '1494688355');
 
 -- ----------------------------
 -- Table structure for logistics_pca
@@ -5821,107 +5417,106 @@ CREATE TABLE `logistics_ucenter_member` (
   UNIQUE KEY `username` (`username`),
   KEY `status` (`status`),
   KEY `email` USING BTREE (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=97 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=MyISAM AUTO_INCREMENT=99 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of logistics_ucenter_member
 -- ----------------------------
-INSERT INTO `logistics_ucenter_member` VALUES ('1', 'shexie303', '74512fad441da1d65478e0698d82386a', 'lc@qq.com', '', '1490319959', '2130706433', '1494689444', '2130706433', '1490319959', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('2', '13932662063', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('3', '18931649415', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('4', '0316-5310982', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('5', '13315605505', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('6', '0316-2626044', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('7', '0316-5314522', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('8', '15930643072', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('9', '0316-7966966', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('10', '0316-7986476', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('11', '15076605987', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('12', '0316-5670010', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('13', '0316-5316710', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('14', '0316-5322104', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('15', '0312-2858312', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('16', '0316-5322666', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('17', '0316-5322268', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('18', '0316-5321020', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('19', '0316-5328572', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('20', '0316-5327711', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('21', '15832657222', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('22', '0316-5314286', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('23', '0316-5322345', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('24', '0316-5328470', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('25', '0316-5328305', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('26', '0316-7860274', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('27', '0316-5320516', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('28', '0316-5320993', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('29', '13785661313', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('30', '0316-5321008', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('31', '0316-5313316', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('32', '0316-5018225', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('33', '0316-5326388', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('34', '15030666770', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('35', '0316-5310418', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('36', '0316-5323693', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('37', '0316-5312639', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('38', '15630610666', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('39', '0316-5310761', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('40', '0312-5711997', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('41', '13833622077', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('42', '0316-2626091', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('43', '0316-5328658', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('44', '0316-2626060', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('45', '0316-5322026', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('46', '18832666333', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('47', '0316-5313615', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('48', '18731670898', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('49', '15081661826', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('50', '13931636035', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('51', '0316-8100888', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('52', '0316-5328760', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('53', '0316-5321670', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('54', '15531613668', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('55', '0316-5016618', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('56', '0316-5018718', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('57', '18631682688', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('58', '0316-5328141', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('59', '0316-8656303', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('60', '13731630046', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('61', '0316-5327738', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('62', '0316-5321497', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('63', '0316-2626030', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('64', '0316-7983373', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('65', '0316-5019775', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('66', '0316-5321991', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('67', '0316-5328497', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('68', '0316-5317360', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('69', '0316-2785288', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('70', '15133600323', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('71', '0316-7986666', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('72', '0316-5328554', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('73', '0316-5322625', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('74', '0312-5722733', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('75', '0316-5322734', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('76', '0316-5018788', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('77', '0316-2626036', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('78', '18531635305', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('79', '0316-2785299', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('80', '0316-5327892', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('81', '0316-5327885', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('82', '0316-7343760', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('83', '0316-5322491', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('84', '0316-2785281', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('85', 'yuantengadmin', '74512fad441da1d65478e0698d82386a', '', '', '0', '0', '1494686085', '2130706433', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('86', 'adminyuanteng', '74512fad441da1d65478e0698d82386a', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('87', '18871718899', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('88', '0316-7987009', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('89', '0316-7981116', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('90', '0316-2308088', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('91', '0316-5312928', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('92', '0316-5333458', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('93', '15030450752', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('94', '13933930320', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('95', '0316-5328878', '', '', '', '0', '0', '0', '0', '0', '1');
-INSERT INTO `logistics_ucenter_member` VALUES ('96', 'test', '69f15e2f13961056644d2127bac2bc82', '', '', '1494687445', '2130706433', '1494687479', '2130706433', '1494687445', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('1', 'shexie303', '65b5375e3ee5cc2cd02c91363d8d8ab4', 'lc@qq.com', '', '1494778491', '2130706433', '1494778866', '2130706433', '1494778491', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('2', '13932662063', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('3', '18931649415', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('4', '0316-5310982', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('5', '13315605505', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('6', '0316-2626044', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('7', '0316-5314522', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('8', '15930643072', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('9', '0316-7966966', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('10', '0316-7986476', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('11', '15076605987', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('12', '0316-5670010', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('13', '0316-5316710', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('14', '0316-5322104', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('15', '0312-2858312', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('16', '0316-5322666', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('17', '0316-5322268', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('18', '0316-5321020', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('19', '0316-5328572', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('20', '0316-5327711', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('21', '15832657222', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('22', '0316-5314286', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('23', '0316-5322345', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('24', '0316-5328470', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('25', '0316-5328305', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('26', '0316-7860274', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('27', '0316-5320516', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('28', '0316-5320993', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('29', '13785661313', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('30', '0316-5321008', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('31', '0316-5313316', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('32', '0316-5018225', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('33', '0316-5326388', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('34', '15030666770', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('35', '0316-5310418', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('36', '0316-5323693', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('37', '0316-5312639', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('38', '15630610666', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('39', '0316-5310761', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('40', '0312-5711997', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('41', '13833622077', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('42', '0316-2626091', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('43', '0316-5328658', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('44', '0316-2626060', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('45', '0316-5322026', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('46', '18832666333', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('47', '0316-5313615', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('48', '18731670898', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('49', '15081661826', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('50', '13931636035', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('51', '0316-8100888', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('52', '0316-5328760', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('53', '0316-5321670', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('54', '15531613668', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('55', '0316-5016618', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('56', '0316-5018718', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('57', '18631682688', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('58', '0316-5328141', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('59', '0316-8656303', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('60', '13731630046', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('61', '0316-5327738', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('62', '0316-5321497', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('63', '0316-2626030', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('64', '0316-7983373', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('65', '0316-5019775', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('66', '0316-5321991', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('67', '0316-5328497', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '1494771003', '2130706433', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('68', '0316-5317360', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('69', '0316-2785288', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('70', '15133600323', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('71', '0316-7986666', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('72', '0316-5328554', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('73', '0316-5322625', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('74', '0312-5722733', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('75', '0316-5322734', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('76', '0316-5018788', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('77', '0316-2626036', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('78', '18531635305', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('79', '0316-2785299', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('80', '0316-5327892', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('81', '0316-5327885', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('82', '0316-7343760', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('83', '0316-5322491', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('84', '0316-2785281', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('85', 'yuantengadmin', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '1494779344', '2130706433', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('86', 'adminyuanteng', '92a31aa2a091a78072cfbc4948096588', '', '', '1494770713', '2130706433', '1494770757', '2130706433', '1494770713', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('87', '18871718899', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('88', '0316-7987009', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('89', '0316-7981116', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('90', '0316-2308088', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('91', '0316-5312928', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('92', '0316-5333458', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('93', '15030450752', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('94', '13933930320', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
+INSERT INTO `logistics_ucenter_member` VALUES ('95', '0316-5328878', '92a31aa2a091a78072cfbc4948096588', '', '', '0', '0', '0', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for logistics_ucenter_setting

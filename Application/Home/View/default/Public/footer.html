@@ -2,93 +2,65 @@
     <div class="friend-link">
         <div class="fl-nav"><strong>友情链接</strong></div>
         <ul>
-
-            <li><a href="http://suzhou.87756.com" title="苏州物流网" target="_blank">苏州物流网</a></li>
-
-            <li><a href="http://jinan.87756.com" title="济南物流网" target="_blank">济南物流网</a></li>
-
-            <li><a href="http://guangzhou.87756.com" title="广州物流网" target="_blank">广州物流网</a></li>
-
-            <li><a href="http://linyi.87756.com" title="临沂物流网" target="_blank">临沂物流网</a></li>
-
-            <li><a href="http://changzhou.87756.com" title="常州物流网" target="_blank">常州物流网</a></li>
-
-            <li><a href="http://yongkang.87756.com" title="永康物流网" target="_blank">永康物流网</a></li>
-
-            <li><a href="http://yiwu.87756.com" title="义乌物流网" target="_blank">义乌物流网</a></li>
-
-            <li><a href="http://wuxi.87756.com" title="无锡物流网" target="_blank">无锡物流网</a></li>
-
-            <li><a href="http://hangzhou.87756.com" title="杭州物流网" target="_blank">杭州物流网</a></li>
-
-            <li><a href="http://shanghai.87756.com" title="上海物流网" target="_blank">上海物流网</a></li>
-            <li><a href="http://www.ickd.cn" target="_blank">快递查询</a></li>
+            <foreach name="href" item="val">
+                <li><a href="{$val.url}" title="{$val.title}" <eq name="val.target" value="1">target="_blank"</eq>>{$val.title}</a></li>
+            </foreach>
         </ul>
         <div style="clear: both"></div>
     </div>
     <!-- 页脚导航 -->
     <div id="footer">
-        <div class="servicebox">
-            <div class="service">
-                <dl>
-                    <dt class="foot_help">用户帮助</dt>
-                    <dd><a href="http://www.chawuliu.com/page/help/tour" target="_blank">加入查物流</a></dd>
-                    <dd><a href="http://www.chawuliu.com/page/help/question" target="_blank">常见问题</a></dd>
-                    <dd><a href="http://www.chawuliu.com/page/help/feedback" target="_blank">意见反馈</a></dd>
-                </dl>
-                <dl>
-                    <dt class="foot_update">获取更新</dt>
-                    <dd><a href="#" target="_blank">邮件订阅</a></dd>
-                    <dd><a href="#" target="_blank">RSS订阅</a></dd>
-                </dl>
-                <dl>
-                    <dt class="foot_cooperation">商务合作</dt>
-                    <dd><a href="http://www.chawuliu.com/page/sw/business" target="_blank">商务合作</a></dd>
-                    <dd><a href="http://www.chawuliu.com/page/sw/link" target="_blank">友情链接</a></dd>
-                </dl>
-                <dl>
-                    <dt class="foot_info">公司信息</dt>
-                    <dd><a href="http://www.chawuliu.com/page/info/about" target="_blank">关于查物流</a></dd>
-                    <dd><a href="http://www.chawuliu.com/page/info/work" target="_blank">工作机会</a></dd>
-                    <dd><a href="http://www.chawuliu.com/page/info/linkman" target="_blank">联系方式</a></dd>
-                    <dd><a href="http://www.chawuliu.com/page/info/useragree" target="_blank">用户协议</a></dd>
-                </dl>
-                <dl class="kefu">
-                    <dt></dt>
-                </dl>
-                <i class="bgbtm"></i>
-                <i class="bgtop"></i>
-            </div>
-        </div>
+        <!--<div class="servicebox">-->
+            <!--<div class="service">-->
+                <!--<dl>-->
+                    <!--<dt class="foot_help">用户帮助</dt>-->
+                    <!--<dd><a href="" target="_blank">加入源腾物流</a></dd>-->
+                    <!--<dd><a href="" target="_blank">常见问题</a></dd>-->
+                <!--</dl>-->
+                <!--<dl>-->
+                    <!--<dt class="foot_cooperation">商务合作</dt>-->
+                    <!--<dd><a href="" target="_blank">商务合作</a></dd>-->
+                    <!--<dd><a href="" target="_blank">友情链接</a></dd>-->
+                <!--</dl>-->
+                <!--<dl>-->
+                    <!--<dt class="foot_info">公司信息</dt>-->
+                    <!--<dd><a href="" target="_blank">关于源腾物流</a></dd>-->
+                    <!--<dd><a href="" target="_blank">工作机会</a></dd>-->
+                    <!--<dd><a href="" target="_blank">联系方式</a></dd>-->
+                    <!--<dd><a href="" target="_blank">用户协议</a></dd>-->
+                <!--</dl>-->
+                <!--<dl class="kefu">-->
+                    <!--<dt></dt>-->
+                <!--</dl>-->
+                <!--<i class="bgbtm"></i>-->
+                <!--<i class="bgtop"></i>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="copyright">
-            热门城市：
-            <a href="http://www.chawuliu.com/city/cixi">慈溪物流</a><span>|</span>
-            <a href="http://www.chawuliu.com/city/changsha">长沙物流</a><span>|</span>
             <p>
-                <a href="http://www.gezitech.com" style="color:#FFFFFF">重庆软件公司</a>
-                © 2015查物流版权所有 &nbsp;&nbsp;浙ICP备14004390号
+                © 2017源腾物流版权所有 &nbsp;&nbsp;
             </p>
         </div>
     </div>
     <!-- 客户联系方式  -->
-    <ul id="cs_navigation" style="position: absolute;margin:0;padding:0;top: 200px;left:0;list-style: none;z-index: 99999;">
-        <li class="cs_home" onmouseover="services_in()" onmouseout="services_out()">
-            <div id="cs_content_qq" style="float:left;width:212px;margin-left:-214px;">
-                <div style="width:212px;height:37px;background:url('__IMG__/Services.gif') 0 167px;"></div>
-                <div style="width:190px;padding:10px;font-size:12px;border-left:1px solid #194E19;border-right:1px solid #194E19;background-color:#fff;line-height: 15px;">
-                    &nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>
-                    <br><br>&nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>
-                    <br><br>&nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>
-                </div>
-                <div style="width:210px;border-left:1px solid #194E19;border-right:1px solid #194E19;">
-                    <img src="__IMG__/ServicesTime.gif">
-                </div>
-                <div style="width:212px;height:6px;margin-top:-4px;background:url('__IMG__/Services.gif') 0 109px;font-size:0;line-height:0;"></div>
-            </div>
-            <div id="cs_handle" style="float:left;margin-top:50px;padding:5px;width:18px;height:86px;font-size:14px;font-weight:600;line-height:1.4em;background:url('__IMG__/Services.gif') 0 96px;color:#fff;">咨询客服</div>
-        </li>
-    </ul>
-    <div class="weixin_code"><span class="close" onclick="close_weixin(this);"></span></div>
+    <!--<ul id="cs_navigation" style="position: absolute;margin:0;padding:0;top: 200px;left:0;list-style: none;z-index: 99999;">-->
+        <!--<li class="cs_home" onmouseover="services_in()" onmouseout="services_out()">-->
+            <!--<div id="cs_content_qq" style="float:left;width:212px;margin-left:-214px;">-->
+                <!--<div style="width:212px;height:37px;background:url('__IMG__/Services.gif') 0 167px;"></div>-->
+                <!--<div style="width:190px;padding:10px;font-size:12px;border-left:1px solid #194E19;border-right:1px solid #194E19;background-color:#fff;line-height: 15px;">-->
+                    <!--&nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>-->
+                    <!--<br><br>&nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>-->
+                    <!--<br><br>&nbsp;客服QQ：&nbsp;<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2705780578&amp;site=qq&amp;menu=yes" target="_blank"><img style="vertical-align: top;" alt="" src="http://wpa.qq.com/pa?p=2:2705780578:41"></a>-->
+                <!--</div>-->
+                <!--<div style="width:210px;border-left:1px solid #194E19;border-right:1px solid #194E19;">-->
+                    <!--<img src="__IMG__/ServicesTime.gif">-->
+                <!--</div>-->
+                <!--<div style="width:212px;height:6px;margin-top:-4px;background:url('__IMG__/Services.gif') 0 109px;font-size:0;line-height:0;"></div>-->
+            <!--</div>-->
+            <!--<div id="cs_handle" style="float:left;margin-top:50px;padding:5px;width:18px;height:86px;font-size:14px;font-weight:600;line-height:1.4em;background:url('__IMG__/Services.gif') 0 96px;color:#fff;">咨询客服</div>-->
+        <!--</li>-->
+    <!--</ul>-->
+    <!--<div class="weixin_code"><span class="close" onclick="close_weixin(this);"></span></div>-->
     <script type="text/javascript">
         function services_in(){
             $('#cs_content_qq').css({'marginLeft':'0px'});

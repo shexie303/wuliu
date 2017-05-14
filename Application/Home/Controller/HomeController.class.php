@@ -82,6 +82,9 @@ class HomeController extends Controller {
             $this->user = $user_info;
             $this->assign('user_info', $user_info);
         }
+        //友情链接
+        $href = D('Channel')->where(array('status'=>1))->order('sort asc')->select();
+        $this->assign('href', $href);
     }
 
 	/* 用户登录检测 */

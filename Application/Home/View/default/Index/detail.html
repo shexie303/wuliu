@@ -71,7 +71,7 @@
                     </h2>
                     <div id="baidu_map" style="width:100%;height:400px;"></div>
                     <div class="ml15 mt10 mb10 mr15" style="overflow:hidden;font-size:16px;font-family:microsoft yahei,sans serif;">
-                        <neq name="category.id" value="7">{$info.content}</neq>
+                        {$info.content|htmlspecialchars_decode}
                         <p style="color:#FF8500;">
                             <eq name="info.vip_zh" value="游客">
                                 联系我时，请说是{:C('WEB_SITE_TITLE')}看到的，谢谢！

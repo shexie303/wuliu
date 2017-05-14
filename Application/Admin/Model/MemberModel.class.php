@@ -100,7 +100,7 @@ class MemberModel extends Model {
         $cache = S($key);
         if(!false){
             $cache = $this->find($uid);
-            if(!false){
+            if(!$cache){
                 $this->error = '用户不存在';
                 return false;
             }

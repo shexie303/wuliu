@@ -25,6 +25,14 @@
                                 <td><div class="Validform_checktip">确认密码</div></td>
                             </tr>
                             <tr>
+                                <td style="width:70px;" class="input_title">用户类型:</td>
+                                <td style="width:205px;">
+                                    <input type="radio" name="group"  class="i_radio" value="2" checked>物流 &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="group"  class="i_radio" value="3" >厂家
+                                </td>
+                                <td><div class="Validform_checktip">选择用户类型</div></td>
+                            </tr>
+                            <tr>
                                 <td style="width:70px;" class="input_title">邮箱:</td>
                                 <td style="width:205px;"><input type="text" size="30" name="email" id="signup-email" class="i_text" value="" ></td>
                                 <td><div class="Validform_checktip">邮箱地址用于密码找回(可选填)</div></td>
@@ -66,7 +74,6 @@
                 }
             });
             $('#signup-submit').click(function(){
-
                 var nickname = $.trim($('#signup-nickname').val());
                 if(nickname.length == 0){
                     layer.msg('用户名不能为空');

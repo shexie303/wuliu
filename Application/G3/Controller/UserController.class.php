@@ -57,7 +57,7 @@ class UserController extends HomeController {
     }
 
 	/* 注册页面 */
-	public function register($username = '', $password = '', $repassword = '', $email = '', $verify = ''){
+	public function register($username = '', $password = '', $repassword = '', $group = 2, $email = '', $verify = ''){
         if(!C('USER_ALLOW_REGISTER')){
             $this->error('注册已关闭');
         }
@@ -81,8 +81,11 @@ class UserController extends HomeController {
                 $info = $member->create(array('nickname' => $username, 'status' => 1));
                 $info['uid'] = $uid;
                 if($member->add($info)){
-                    $group = new AuthGroupModel();
-                    $group->addToGroup($uid, 2);
+                    if(!in_array($group, array(2,3))){
+                        $group = 2;
+                    }
+                    $group_obj = new AuthGroupModel();
+                    $group_obj->addToGroup($uid, $group);
                     $this->success('注册成功！即将跳转登录页面', logistics_url(2, 'login'));
                 }else{
                     $this->error($this->showRegError());

@@ -1073,7 +1073,7 @@ function getHotCity(){
     $cache = S($cache_key);
     if(!false){
         $cache = M('Pca')->where(array('type'=>2,'hot'=>1))->select();
-        if(!false){
+        if(!$cache){
             return false;
         }
         S($cache_key, $cache, 21600);

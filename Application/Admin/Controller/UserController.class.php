@@ -33,7 +33,7 @@ class UserController extends AdminController {
         }else{
             $map['nickname']    =   array('like', '%'.(string)$nickname.'%');
         }
-
+        $map['uid'] = array('gt', 1);
         $list   = $this->lists('Member', $map);
         int_to_string($list);
         // 记录当前列表页的cookie

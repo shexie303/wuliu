@@ -112,7 +112,14 @@
             </div>
             <div id="tips_collapse_content" class="collapse_content" style="display:block;padding:10px 10px 10px 10px;list-style:square;color:#1d1d1d;font-size:12px;">
                 <div class="content_item" style="font-size:16px;font-family:&quot;microsoft yahei&quot;,sans serif;">
-                    {$info.content}
+                    {$info.content|htmlspecialchars_decode}
+                    <p style="color:#FF8500;">
+                        <eq name="info.vip_zh" value="游客">
+                            联系我时，请说是{:C('WEB_SITE_TITLE')}看到的，谢谢！
+                            <else />
+                            本会员已升级为{$info.vip_zh}，联系我时，请说是在{:C('WEB_SITE_TITLE')}看到的，谢谢！
+                        </eq>
+                    </p>
                 </div>
             </div>
         </section>

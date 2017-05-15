@@ -68,10 +68,9 @@
             }
 
             var password = $.trim($('#signup-password').val());
-            var reg_pass = /^[0-9a-zA-Z]{6,20}$/;
-            if(!reg_pass.test(password)){
-                layer.msg('密码格式不正确');
-                return false;
+            if(password.length == 0){
+                layer.msg('密码不能为空');
+                return false
             }
             var target = "{:logistics_url(1,'login')}";
             var query = $('#signup-user-form').serialize();

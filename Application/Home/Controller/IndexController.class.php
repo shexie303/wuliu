@@ -271,6 +271,10 @@ class IndexController extends HomeController {
             $this->assign('list', $list);
             $this->assign('page', $page->show());
         }
+        //banner
+        $banner = getCateBanner($category['id']);
+        $this->assign('banner', $banner);
+
         $this->display();
     }
 	/* 文档分类检测 */

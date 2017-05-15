@@ -31,8 +31,8 @@
                     <span style="position:relative;top:20px;left:5px;" class="white_12_label" onclick="doDropBox('account_box');">账户</span>
                 </li>
                 <li style="float:right;position:relative;top:5px;right:20px;">
-                    <img src="__IMG__/search.jpg" class="header_button" onclick="checkRecord('search_record');doDropBox('search_box');">
-                    <span style="position:relative;top:20px;left:5px;" class="white_12_label" onclick="checkRecord('search_record');doDropBox('search_box');">搜索</span>
+                    <img src="__IMG__/search.jpg" class="header_button" onclick="checkRecord('search_record','/search-{$category[id]}');doDropBox('search_box');">
+                    <span style="position:relative;top:20px;left:5px;" class="white_12_label" onclick="checkRecord('search_record','/search-{$category[id]}');doDropBox('search_box');">搜索</span>
                 </li>
             </ul>
         </section>

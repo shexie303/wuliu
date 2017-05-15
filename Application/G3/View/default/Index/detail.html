@@ -7,7 +7,7 @@
             <ul>
                 <li style="padding-top:10px;width:20%;text-align:left;vertical-align:middle;">
                     <img onclick="window.history.back(-1);" style="width:30px;height:30px;margin-left: 15px" src="__IMG__/back_new.jpg" data-bd-imgshare-binded="1"></li>
-                <li style="width:56%;"><span class="header_title_text">我的电子名片</span>({$info.view}次查看)</li>
+                <li style="width:56%;"><span class="header_title_text">我的电子名片</span></li>
                 <li style="width:20%;"></li>
             </ul>
         </section>
@@ -15,7 +15,7 @@
     <content>
         <section id="goods_detail" style="margin-top:10px;">
             <ul style="box-shadow:0px 1px 2px 1px #ededed; border-radius:5px;border:1px #ededed solid;">
-                <li style="border-bottom:1px #ededed solid;padding:10px 0px 10px 0px;padding:10px;display:block;font-weight:bold;font-size:20px;" id="remainTime" class="dark_grey_14_label">{$info.title}</li>
+                <li style="border-bottom:1px #ededed solid;padding:10px 0px 10px 0px;padding:10px;display:block;font-weight:bold;font-size:20px;" id="remainTime" class="dark_grey_14_label">{$info.title}({$info.view}次查看)</li>
                 <li style="display:block; padding:5px 0 5px 10px; ">
                     <eq name="category.id" value="7">
                         <eq name="user.vip" value="1">

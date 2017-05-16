@@ -232,7 +232,7 @@ class UserController extends AdminController {
             if(!$res){
                 $this->error(D('Member')->getError());
             }else{
-                $this->success('资料已完善！');
+                $this->success('资料已完善！即将跳转去发布信息', U('Article/mydocument'));
             }
         }else{
             $info = D('Member')->getUserInfo($id);

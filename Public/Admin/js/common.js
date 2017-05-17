@@ -63,6 +63,7 @@
     $('.ajax-post').click(function(){
         var target,query,form;
         var target_form = $(this).attr('target-form');
+        var layer_recharge = $(this).data('goto_recharge');
         var that = this;
         var nead_confirm=false;
         if( ($(this).attr('type')=='submit') || (target = $(this).attr('href')) || (target = $(this).attr('url')) ){
@@ -108,21 +109,38 @@
             $(that).addClass('disabled').attr('autocomplete','off').prop('disabled',true);
             $.post(target,query).success(function(data){
                 if (data.status==1) {
-                    if (data.url) {
-                        updateAlert(data.info + ' 页面即将自动跳转~','alert-success');
+                    if(layer_recharge == 1){
+                        layer.confirm('当前信息处于待审核状态，充值成为会员才可以通过审核！', {
+                            btn: ['去充值', '取消'] //按钮
+                        }, function(){
+                            window.location.href = recharge_url;
+                        },function() {
+                            if (data.url) {
+                                location.href=data.url;
+                            }else if( $(that).hasClass('no-refresh')){
+                                $('#top-alert').find('button').click();
+                                $(that).removeClass('disabled').prop('disabled',false);
+                            }else{
+                                location.reload();
+                            }
+                        });
                     }else{
-                        updateAlert(data.info ,'alert-success');
-                    }
-                    setTimeout(function(){
                         if (data.url) {
-                            location.href=data.url;
-                        }else if( $(that).hasClass('no-refresh')){
-                            $('#top-alert').find('button').click();
-                            $(that).removeClass('disabled').prop('disabled',false);
+                            updateAlert(data.info + ' 页面即将自动跳转~','alert-success');
                         }else{
-                            location.reload();
+                            updateAlert(data.info ,'alert-success');
                         }
-                    },1500);
+                        setTimeout(function(){
+                            if (data.url) {
+                                location.href=data.url;
+                            }else if( $(that).hasClass('no-refresh')){
+                                $('#top-alert').find('button').click();
+                                $(that).removeClass('disabled').prop('disabled',false);
+                            }else{
+                                location.reload();
+                            }
+                        },1500);
+                    }
                 }else{
                     updateAlert(data.info);
                     setTimeout(function(){

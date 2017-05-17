@@ -216,6 +216,17 @@ class ArticleController extends AdminController {
             $this->assign('model_list', $model);
             // 记录当前列表页的cookie
             Cookie('__forward__',$_SERVER['REQUEST_URI']);
+
+            //添加之前先看是否完善资料
+            $check_info = $this->checkUserInfo($cate_id);
+            $this->assign('check_info_code', $check_info['code']);
+            $this->assign('check_info_url', $check_info['url']);
+
+            //添加之前先看是否已经发布
+            $limit = checkCategoryPublish($cate_id);
+            if($limit !== true){
+                $this->assign('publish_limit', $limit);
+            }
             $this->display($template);
         }else{
             $this->error('非法的文档分类');
@@ -371,13 +382,9 @@ class ArticleController extends AdminController {
         empty($model_id) && $this->error('该分类未绑定模型！');
 
         //添加之前先看是否完善资料
-        if(GROUP_ID > 1){
-            if($cate_id < 7){
-                $user = D('Member')->getUserInfo(UID);
-                if(empty($user['telephone']) || empty($user['contact'])){
-                    $this->error('请先完善资料再发布信息！' , U('User/info'));
-                }
-            }
+        $check_info = $this->checkUserInfo($cate_id);
+        if($check_info['code'] == 1){
+            $this->error('请先完善资料再发布信息！' , $check_info['url']);
         }
         //获取左边菜单
         $this->getMenu();
@@ -525,7 +532,7 @@ class ArticleController extends AdminController {
             $limit = checkCategoryPublish($_POST['category_id']);
             if($limit !== true){
 //                USER_VIP < 2 ? $this->error('抱歉，只有vip才能编辑信息') : false;
-                $this->error('抱歉，请联系客服编辑信息');
+                $this->error('该分类只允许发布'.$limit.'条信息！');
             }
         }
         $data = I('post.');
@@ -1033,5 +1040,19 @@ class ArticleController extends AdminController {
             $return['info'] = '暂无下级地区！';
         }
         $this->ajaxReturn($return);
+    }
+
+    public function checkUserInfo($cate_id){
+        $res = array('code'=>0,'url'=>'');
+        if(GROUP_ID > 1){
+            if($cate_id < 7){
+                $user = D('Member')->getUserInfo(UID);
+                if(empty($user['telephone']) || empty($user['contact'])){
+                    $res['code'] = 1;
+                    $res['url'] = U('User/info');
+                }
+            }
+        }
+        return $res;
     }
 }

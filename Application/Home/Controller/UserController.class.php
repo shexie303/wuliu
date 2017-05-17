@@ -19,9 +19,7 @@ use User\Api\UserApi;
 class UserController extends HomeController {
 
 	/* 用户中心首页 */
-	public function index(){
-		echo time();
-	}
+	public function index(){}
 
 	/* 注册页面 */
 	public function register($username = '', $password = '', $repassword = '', $group = 2, $email = '', $verify = ''){

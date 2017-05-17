@@ -40,6 +40,14 @@ class CityController extends Controller {
         $zhixia = array($all_city['beijing'],$all_city['tianjin'],$all_city['shanghai'],$all_city['chongqing']);
         $this->assign('zhixia', $zhixia);
 
+        $refer = $_SERVER['HTTP_REFERER'];
+        $tmp = explode('-',$refer);
+        $tmp = explode('.',$tmp[1]);
+        $category = $tmp[0];
+        if($category < 6){
+            $category = 2;
+        }
+        $this->assign('category', $category);
         $this->display();
 	}
 

@@ -34,7 +34,7 @@ return array(
     'APP_SUB_DOMAIN_DEPLOY'   =>    1, // 开启子域名
     'APP_SUB_DOMAIN_RULES'  => array(
         'm'         => 'G3',                //指向3G模块
-        'nxgsm'     => 'Admin',         // 指向Xiaoguotu模块的控制器
+        //'nxgsm'     => 'Admin',         // 指向Xiaoguotu模块的控制器
         //'jiaju'      => 'News',         // 指向Home模块的News控制器
         //'*'         => array('Home','city_pinyin=*'), // 二级泛域名指向Home模块
     ),
@@ -42,7 +42,7 @@ return array(
     'DATA_AUTH_KEY' => 'NEIn$Kgm",]u?<VHC`%vJ1WQ)q/28OGkB7+hU:6&', //默认数据加密KEY
 
     /* 调试配置 */
-    'SHOW_PAGE_TRACE' => true,
+    'SHOW_PAGE_TRACE' => false,
 
     /* 用户相关设置 */
     'USER_MAX_CACHE'     => 1000, //最大缓存用户数

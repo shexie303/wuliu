@@ -38,7 +38,7 @@ class PublicController extends \Think\Controller {
                     if(is_administrator() || $user_auth['group_id'] == 1){
                         $this->success('登录成功！', U('User/index'));
                     }else{
-                        if($info['id_card'] && $info['wechat']){
+                        if($info['contact'] && $info['telephone']){
                             $this->success('登录成功！', U('Article/mydocument'));
                         }else{
                             $this->success('登录成功！', U('User/info'));

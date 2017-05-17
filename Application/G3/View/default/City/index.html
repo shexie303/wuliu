@@ -27,7 +27,7 @@
                 <li style="padding:0px;height:auto;line-height:auto;border:0px;background:transparent;">
                     <div class="city_item">
                         <foreach name="hot_city" item="val">
-                            <a href="{:logistics_url(2,$val['pinyin'])}">{$val.name}</a>
+                            <a href="{:logistics_url(2,$val['pinyin'].'/list-'.$category)}">{$val.name}</a>
                         </foreach>
                     </div>
                     <div class="c"></div>
@@ -44,7 +44,7 @@
             <div id="zxs_city_content" class="collapse_content" style="display:none;padding:10px;">
                 <div class="city_item">
                     <foreach name="zhixia" item="city">
-                        <a href="{:logistics_url(2,$city['pinyin'])}">{$city.name}</a>
+                        <a href="{:logistics_url(2,$city['pinyin'].'/list-'.$category)}">{$city.name}</a>
                     </foreach>
                 </div>
                 <div class="c"></div>
@@ -59,7 +59,7 @@
                 <div id="{$p.id}_city_content" class="collapse_content" style="display:none;padding:10px;">
                     <div class="city_item">
                         <foreach name="p.child" item="city">
-                            <a href="{:logistics_url(2,$city['pinyin'])}">{$city.name}</a>
+                            <a href="{:logistics_url(2,$city['pinyin'].'/list-'.$category)}">{$city.name}</a>
                         </foreach>
                     </div>
                     <div class="c"></div>
@@ -90,7 +90,7 @@
                 var gps_city = $('#gps_city');
                 $.post(target,query).success(function(e){
                     if (e.status==1){
-                        content = '<a href="{:logistics_url(2,'/')}/'+e.data.pinyin+'">'+e.data.name+'</a>';
+                        content = '<a href="{:logistics_url(2,'/')}/'+e.data.pinyin+'/list-{$category}.html">'+e.data.name+'</a>';
                     }else{
                         content = '定位失败，请手动选择城市';
                     }

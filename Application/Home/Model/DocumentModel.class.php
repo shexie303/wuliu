@@ -110,7 +110,7 @@ class DocumentModel extends Model{
         $cache_key = md5(serialize($map).$order.$this->options['page']);
 
         $cache = S($cache_key);
-        if(!$cache){
+        if(!false){
             $cache = $this->field($field)->join('LEFT JOIN __MEMBER__ ON __DOCUMENT__.uid = __MEMBER__.uid')->where($map)->order($order)->select();
             if($cache){
                 S($cache_key, $cache, 7200);
@@ -120,7 +120,7 @@ class DocumentModel extends Model{
         }
         $key_sum = md5(serialize($map));
         $cache_sum = S($key_sum);
-        if(!$cache_sum){
+        if(!false){
             $cache_sum = $this->join('LEFT JOIN __MEMBER__ ON __DOCUMENT__.uid = __MEMBER__.uid')->where($map)->count();
             S($key_sum, $cache_sum, 7200);
         }

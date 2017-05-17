@@ -343,4 +343,35 @@ class IndexController extends HomeController {
         $this->ajaxReturn($return);
     }
 
+
+    public function publish(){
+        if(IS_POST){
+            $data = I('post.');
+            /* 检测验证码 */
+            if(!check_verify($data['verify'])){
+                $this->error('验证码输入错误！');
+            }
+            unset($data['verify']);
+            $data['category_id'] = 7;
+            $data['type'] = 2;
+            $data['model_id'] = 2;
+
+            $obj = new \Admin\Model\DocumentModel();
+            $res = $obj->update($data);
+            if(!$res){
+                $this->error($obj->getError());
+            }else{
+                $this->success();
+            }
+        }else{
+            $province = getNextPca(0);
+            $this->assign('province', $province);
+
+            $refer = $_SERVER['HTTP_REFERER'] ? $_SERVER['HTTP_REFERER'] : logistics_url(2, 'list-7');
+            $this->assign('refer', $refer);
+
+            $this->display();
+        }
+    }
+
 }

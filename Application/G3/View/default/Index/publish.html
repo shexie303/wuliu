@@ -1,0 +1,204 @@
+<include file="Public/head"/>
+    <header>
+        <section id="top_bar" style="text-align:center;height:47px;padding:5px 0px 0px 10px;">
+            <ul style="padding-top:5px;">
+                <li style="width:20%;text-align:left;"><img onclick="javascript:history.back();" style="width:30px;height:30px;" src="__IMG__/goback.jpg"></li>
+                <li style="width:56%;vertical-align:30%;"><span class="header_title_text">发布货源</span></li>
+                <li style="width:20%;"></li>
+            </ul>
+        </section>
+    </header>
+    <content>
+        <section class="notice_bar" style="display:none;text-align:center;"></section>
+        <section style="text-align:center;padding:0px 10px 0px 10px;">
+            <form id="submit_form" action="" method="post">
+                <ul style="list-style:none;padding:0px;margin:0px 0px 10px 0px;text-align:left;">
+                    <li>
+                        <input id="title" class="input_field" type="text" name="title" value="" placeholder="请输入标题：例如 北京东城区有某某货物">
+                    </li>
+                    <li>
+                        <input id="contact" class="input_field" type="text" name="contact" value="" placeholder="请输入联系方式：手机号或座机">
+                    </li>
+                    <li>
+                        <select name="location_p" id="location_p" class="input_field pca-select" style="width: 32%" onchange="pac_select('location',1)">
+                            <option value="0">所在地省份</option>
+                            <foreach name="province" item="val">
+                                <option value="{$val.id}">{$val.name}</option>
+                            </foreach>
+                        </select>
+                        <select name="location_c" id="location_c" class="input_field pca-select"style="width: 32%" onchange="pac_select('location',2)">
+                            <option value="0">所在地城市</option>
+                            <foreach name="location_city" item="val">
+                                <option value="{$val.id}">{$val.name}</option>
+                            </foreach>
+                        </select>
+                        <select name="location_a" id="location_a" class="input_field pca-select" style="width: 33%">
+                            <option value="0">所在地县区</option>
+                            <foreach name="location_area" item="val">
+                                <option value="{$val.id}">{$val.name}</option>
+                            </foreach>
+                        </select>
+                    </li>
+                    <li>
+                        <select name="destination_p" id="destination_p" class="input_field pca-select" style="width: 32%" onchange="pac_select('destination',1)">
+                            <option value="0">目的省份</option>
+                            <foreach name="province" item="val">
+                                <option value="{$val.id}">{$val.name}</option>
+                            </foreach>
+                        </select>
+                        <select name="destination_c" id="destination_c" class="input_field pca-select" style="width: 32%" onchange="pac_select('destination',2)">
+                            <option value="0">目的城市</option>
+                            <foreach name="destination_city" item="val">
+                                <option value="{$val.id}">{$val.name}</option>
+                            </foreach>
+                        </select>
+                        <select name="destination_a" id="destination_a" class="input_field pca-select" style="width: 33%">
+                            <option value="0">目的县区</option>
+                            <foreach name="destination_area" item="val">
+                                <option value="{$val.id}">>{$val.name}</option>
+                            </foreach>
+                        </select>
+                    </li>
+                    <li>
+                        <input id="address" class="input_field" type="text" name="address" value="" placeholder="请输入货源所在详细地址">
+                    </li>
+                    <li>
+                        <textarea name="content" class="textarea" style="height: 150px" placeholder="请输入描述：如货物名称、类型、重量、体积，需求车长、车型、其他说明情况。"></textarea>
+                    </li>
+                    <li>
+                        <input id="verify" class="input_field" style="width:50%;" type="text" name="verify" placeholder="看不清？点击图片刷新" value="">
+                        <span class="captcha_box" style="display:inline-block;height:32px;position:relative; top:12px;"><img src="{:logistics_url(2,'verify')}" width="100" height="32" style="border: 0px; cursor: pointer;" alt=" " id="refresh_captcha" title="看不清？点击刷新"></span>
+                    </li>
+                    <li style="margin-top:15px;">
+                        <div class="plain_button_orange" id="signup-submit"><a>发&nbsp;&nbsp;&nbsp;布</a></div>
+                    </li>
+                </ul>
+            </form>
+            <a style="color:#377BA6;font-size:12px;text-decoration:underline;cursor:pointer;display:inline-block; margin-bottom:10px;" onclick='doHREF("{:logistics_url(2,'register')}")'>还没有帐号？请注册</a>
+        </section>
+    </content>
+    <script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+    <script>
+        $(function(){
+            $('#refresh_captcha').click(function(){
+                var url = $(this).attr('src');
+                if( url.indexOf('?')>0){
+                    $(this).attr("src", url.replace(/\?.*$/,'')+'?'+Math.random());
+                }else{
+                    $(this).attr("src", url+'?'+Math.random());
+                }
+            });
+            $('#signup-submit').click(function(){
+                var title = $.trim($('#title').val());
+                if(title.length == 0){
+                    layer.msg('标题不能为空');
+                    return false;
+                }else if(title.length > 60){
+                    layer.msg('标题长度不能超过60个字符');
+                    return false;
+                }
+                var contact = $.trim($('#contact').val());
+                if(contact.length == 0){
+                    layer.msg('请输入联系方式');
+                    return false;
+                }
+                var location_p = $.trim($('#location_p').val());
+                if(location_p == 0){
+                    layer.msg('请选择所在地省份');
+                    return false;
+                }
+                var location_c = $.trim($('#location_c').val());
+                if(location_c == 0){
+                    layer.msg('请选择所在地城市');
+                    return false;
+                }
+                var location_a = $.trim($('#location_a').val());
+                if(location_a == 0){
+                    layer.msg('请选择所在地县区');
+                    return false;
+                }
+                var destination_p = $.trim($('#destination_p').val());
+                if(destination_p == 0){
+                    layer.msg('请选择目的地省份');
+                    return false;
+                }
+                var destination_c = $.trim($('#destination_c').val());
+                if(location_c == 0){
+                    layer.msg('请选择目的地城市');
+                    return false;
+                }
+                var destination_a = $.trim($('#destination_a').val());
+                if(destination_a == 0){
+                    layer.msg('请选择目的地县区');
+                    return false;
+                }
+                var address = $.trim($('#address').val());
+                if(address.length == 0){
+                    layer.msg('请输入货源详细地址');
+                    return false;
+                }
+                var verify = $.trim($('#verify').val());
+                if(verify.length == 0){
+                    layer.msg('验证码不能为空');
+                    return false;
+                }
+                var target = "{:logistics_url(2,'publish')}";
+                var query = $('#submit_form').serialize();
+                query += '&uid=1&type=2';
+                $.post(target,query).success(function(data){
+                    if (data.status==1){
+                        layer.msg('恭喜您，发布成功！请耐心等待审核！');
+                        setTimeout(function(){
+                            window.location.href = '{$refer}';
+                        },1300)
+                    }else{
+                        layer.msg(data.info);
+                        $('#refresh_captcha').click();
+                    }
+                });
+                return false;
+            });
+        });
+        function pac_select(prefix,level){
+            var obj = $('#'+prefix+'_p');
+            var next_obj = $('#'+prefix+'_c');
+            var third_obj = $('#'+prefix+'_a');
+            var id,project,action;
+            if(level == 1){
+                id = obj.val();
+                project = next_obj;
+            }else{
+                id = next_obj.val();
+                project = third_obj;
+            }
+            if(prefix == 'location'){
+                action = '所在地';
+            }else{
+                action = '目的';
+            }
+            if(id > 0){
+                $.post("{:logistics_url(2,'getNextArea')}", {id : id, type : level}, function(e){
+                    if(e.status == 0){
+                        $.each(e.data, function(n, item){
+                            project.append('<option value="'+item.id+'">'+item.name+'</option>')
+                        });
+                    }else{
+                        if(level == 1){
+                            next_obj.html('<option value="0">'+action+'城市</option>');
+                            third_obj.html('<option value="0">'+action+'县区</option>')
+                        }else{
+                            third_obj.html('<option value="0">'+action+'县区</option>')
+                        }
+                    }
+                });
+            }else{
+                if(level == 1){
+                    next_obj.html('<option value="0">'+action+'城市</option>');
+                    third_obj.html('<option value="0">'+action+'县区</option>')
+                }else{
+                    third_obj.html('<option value="0">'+action+'县区</option>')
+                }
+            }
+        }
+    </script>
+<include file="Public/footer"/>

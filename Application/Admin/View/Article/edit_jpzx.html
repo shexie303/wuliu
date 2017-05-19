@@ -118,7 +118,13 @@
                 </label>
             </div>
         </div>
-
+        <div class="form-item">
+            <label class="item-label">状态<span class="check-tips">（审核通过或者不通过）</span></label>
+            <div class="controls">
+                <input type="radio" name="status" value="1" <eq name="data.status" value="1">checked</eq>>审核通过
+                <input type="radio" name="status" value="0" <eq name="data.status" value="0">checked</eq>>审核不通过
+            </div>
+        </div>
 		<div class="form-item cf">
 			<button class="btn submit-btn ajax-post hidden" id="submit" type="submit" target-form="form-horizontal">确 定</button>
 			<a class="btn btn-return" href="{$Think.cookie.__forward__}">返 回</a>

@@ -64,7 +64,6 @@ class DocumentModel extends Model{
         array('create_time', 'getCreateTime', self::MODEL_BOTH,'callback'),
 		array('reply_time', 'getCreateTime', self::MODEL_INSERT,'callback'),
         array('update_time', NOW_TIME, self::MODEL_BOTH),
-        array('status', 0, self::MODEL_BOTH),
         array('position', 'getPosition', self::MODEL_BOTH, 'callback'),
         array('deadline', 'strtotime', self::MODEL_BOTH, 'function'),
     );

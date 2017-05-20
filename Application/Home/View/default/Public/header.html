@@ -21,7 +21,7 @@
                     </empty>
 
                     <li class="sepline">|</li>
-                    <li><a rel="sidebar" href="#" onclick="jQuery.addFavorite('http://www.yuanteng56.com/','源腾物流信息平台');return false;">收藏我们</a></li>
+                    <li><a rel="sidebar" href="#" onclick="jQuery.addFavorite('http://www.yuanteng56.com/','{:C('WEB_SITE_TITLE')}信息平台');return false;">收藏我们</a></li>
                     <li class="sepline">|</li>
                     <li class="hover_li" onmouseover="this.className='hover'" onmouseout="this.className='hover_li'">
                         <a href="" class="help" target="_blank">帮助中心<span class="down"></span></a>
@@ -53,7 +53,7 @@
             }
         </script>
         <div class="w">
-            <a href="{:logistics_url(1,'/')}" id="logo"><img height="71" alt="【源腾物流信息平台】让物流更简单！" src="__STATIC__/images/logo.png"></a>
+            <a href="{:logistics_url(1,'/')}" id="logo"><img height="71" alt="【{:C('WEB_SITE_TITLE')}信息平台】让物流更简单！" src="__STATIC__/images/logo.png"></a>
             <div id="switch_city">
                 <strong class="city_name">{$city_info.name}</strong>
                 <a href="{:logistics_url(1,'city')}">[切换分站]</a>

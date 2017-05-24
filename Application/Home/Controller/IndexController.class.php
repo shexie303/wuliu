@@ -210,7 +210,7 @@ class IndexController extends HomeController {
 		if(!$info){
 			$this->error($Document->getError());
 		}
-        $info['url'] = urlencode(logistics_url(1,$info['id']));
+        $info['url'] = urlencode(logistics_url(2,$this->city['pinyin'].'/'.$info['id']));
 
         $user_model = new MemberModel();
         $user = $user_model->getUserInfo($info['uid']);

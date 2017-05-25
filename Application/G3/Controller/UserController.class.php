@@ -57,7 +57,7 @@ class UserController extends HomeController {
     }
 
 	/* 注册页面 */
-	public function register($username = '', $password = '', $repassword = '', $group = 2, $email = '', $verify = ''){
+	public function register($username = '', $password = '', $repassword = '', $contact = '', $telephone = '', $wechat = '', $group = 2, $verify = ''){
         if(!C('USER_ALLOW_REGISTER')){
             $this->error('注册已关闭');
         }
@@ -74,11 +74,18 @@ class UserController extends HomeController {
 
 			/* 调用注册接口注册用户 */
             $User = new UserApi;
-			$uid = $User->register($username, $password, $email);
+			$uid = $User->register($username, $password, '');
 			if(0 < $uid){ //注册成功
 				//
                 $member = new MemberModel();
-                $info = $member->create(array('nickname' => $username, 'status' => 1));
+                $arr = array(
+                    'nickname'  => $username,
+                    'contact'   => $contact,
+                    'telephone' => $telephone,
+                    'wechat'    => $wechat,
+                    'status'    => 1
+                );
+                $info = $member->create($arr);
                 $info['uid'] = $uid;
                 if($member->add($info)){
                     if(!in_array($group, array(2,3))){

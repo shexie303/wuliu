@@ -13,12 +13,15 @@
         </section>
     </header>
     <content>
-        <section class="notice_bar" style="display:none;text-align:center;"></section>
+        <section style="text-align:center;padding:0px 10px 0px 10px;">
+            <!--<img width="100%" src="__IMG__/m.jpg" />-->
+            <!--<img width="100%" src="__IMG__/card.jpg" />-->
+        </section>
         <section style="text-align:center;padding:0px 10px 0px 10px;">
             <form id="submit_form" action="" method="post">
                 <ul style="list-style:none;padding:0px;margin:0px 0px 10px 0px;text-align:left;">
                     <li>
-                        <input id="nickname" class="input_field" type="text" name="username" value="" placeholder="请输入用户名，用户名由3-30个字符组成">
+                        <input id="nickname" class="input_field" type="text" name="username" value="" placeholder="请输入公司名(登录帐号)，由3-30个字符组成">
                     </li>
                     <li>
                         <input id="password" class="input_field" type="password" name="password" value="" placeholder="请输入密码（不低于6位的字母和数字）">
@@ -26,13 +29,19 @@
                     <li>
                         <input id="repassword" class="input_field" type="password" name="repassword" value="" placeholder="请确认密码（不低于6位的字母和数字）">
                     </li>
+                    <li>
+                        <input id="contact" class="input_field" type="text" name="contact" value="" placeholder="请输入联系人">
+                    </li>
+                    <li>
+                        <input id="telephone" class="input_field" type="text" name="telephone" value="" placeholder="请输入手机号">
+                    </li>
+                    <li>
+                        <input id="wechat" class="input_field" type="text" name="wechat" value="" placeholder="请输入微信号">
+                    </li>
                     <li class="input_field" style="line-height: 40px;padding-left: 10px;font-size: 14px;">
                         用户类型
                         <input type="radio" name="group" value="2" checked> 物流
                         <input type="radio" name="group" value="3" > 厂家
-                    </li>
-                    <li>
-                        <input id="email" class="input_field" type="text" name="email" value="" placeholder="请输入邮箱(选填)">
                     </li>
                     <li>
                         <input id="verify" class="input_field" style="width:50%;" type="text" name="verify" placeholder="看不清？点击图片刷新" value="">
@@ -61,10 +70,10 @@
 
                 var nickname = $.trim($('#nickname').val());
                 if(nickname.length == 0){
-                    layer.msg('用户名不能为空');
+                    layer.msg('帐号不能为空');
                     return false;
                 }else if(nickname.length < 3 || nickname.length > 30){
-                    layer.msg('用户名长度不正确');
+                    layer.msg('帐号长度不正确');
                     return false;
                 }
 
@@ -80,14 +89,31 @@
                     return false
                 }
 
-                var email = $.trim($('#email').val());
-                if(email.length > 0){
-                    var reg_email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-                    if(!reg_email.test(email)){
-                        layer.msg('邮箱格式不正确');
-                        return false;
-                    }
+                var contact = $.trim($('#contact').val());
+                if(contact.length == 0){
+                    layer.msg('联系人不能为空');
+                    return false
+                }else if(contact.length > 5){
+                    layer.msg('联系人不能超过5个字符');
+                    return false
                 }
+                var telephone = $.trim($('#telephone').val());
+                var reg_telephone = /^1[3|4|5|7|8][0-9]\d{8}$/;
+
+                if(telephone.length == 0){
+                    layer.msg('手机号不能为空');
+                    return false
+                }else if(!reg_telephone.test(telephone)){
+                    layer.msg('手机号格式不正确');
+                    return false
+                }
+
+                var wechat = $.trim($('#wechat').val());
+                if(wechat.length == 0){
+                    layer.msg('微信号不能为空');
+                    return false
+                }
+
                 var verify = $.trim($('#verify').val());
                 if(verify.length == 0){
                     layer.msg('验证码不能为空');

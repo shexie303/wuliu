@@ -85,11 +85,7 @@ class UserController extends HomeController {
 				/* 登录用户 */
 				$Member = D('Member');
 				if($Member->login($uid)){ //登录用户
-                    $refer = $_SERVER['HTTP_REFERER'];
-                    if($refer == logistics_url(1, 'login')){
-                        $refer = logistics_url(1, '/');
-                    }
-					$this->success('登录成功！', $refer);
+					$this->success('登录成功！');
 				} else {
 					$this->error($Member->getError());
 				}
@@ -104,7 +100,7 @@ class UserController extends HomeController {
 			}
 
 		} else { //显示登录表单
-            $refer = $_SERVER['HTTP_REFERER'] ? $_SERVER['HTTP_REFERER'] : logistics_url(1, 'list-2');
+            $refer = U('admin/article/mydocument');
             $this->assign('refer', $refer);
 			$this->display();
 		}

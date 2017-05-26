@@ -47,7 +47,7 @@ class HomeController extends Controller {
                 send_http_status(302);
                 header('Location: ' . $redirect);
             }else{
-                $redirect = 'http://' . C('DEFAULT_CITY') . '.' . C('DOMAIN');
+                $redirect = logistics_url(1,'city');
                 send_http_status(302);
                 header('Location: ' . $redirect);
             }
@@ -59,7 +59,7 @@ class HomeController extends Controller {
                 if(array_key_exists($host_arr[0], $city_arr)){
                     $city = $city_arr[$host_arr[0]];
                 }else{
-                    $redirect = 'http://' . C('DEFAULT_CITY') . '.' . C('DOMAIN');
+                    $redirect = logistics_url(1,'city');
                     send_http_status(302);
                     header('Location: ' . $redirect);
                 }

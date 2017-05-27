@@ -1,6 +1,62 @@
-<include file="Public/header"/>
-    <div id="banner"><!-- banner广告横幅 -->
+<include file="Public/head"/>
+    <div id="header">
+        <div class="topbar_bg">
+            <div class="topbar">
+                <ul class="topnav">
+                    <empty name="user_info">
+                        <li><a href="{:logistics_url(1,'login')}" style="color: #FE8107;">登录</a></li>
+                        <li class="sepline">|</li>
+                        <li><a href="{:logistics_url(1,'register')}">注册</a></li>
+                        <else />
+                        <li>您好，{$user_info.username}</li>
+                        <li class="sepline">|</li>
+                        <li><a href="/admin/user">内容管理</a></li>
+                        <li class="sepline">|</li>
+                        <li><a href="{:logistics_url(1,'logout')}">退出</a></li>
+                    </empty>
 
+                    <li class="sepline">|</li>
+                    <li><a rel="sidebar" href="#" onclick="jQuery.addFavorite('http://www.yuanteng56.com/','{:C('WEB_SITE_TITLE')}信息平台');return false;">收藏我们</a></li>
+                    <li class="sepline">|</li>
+                    <li class="hover_li" onmouseover="this.className='hover'" onmouseout="this.className='hover_li'">
+                        <a href="" class="help" target="_blank">帮助中心<span class="down"></span></a>
+                        <div class="downlist">
+                            <a href="" target="_blank">常见问题</a>
+                            <a href="" target="_blank">意见反馈</a>
+                            <a href="" target="_blank">商务合作</a>
+                        </div>
+                    </li>
+                    <li class="sepline">|</li>
+                    <li><span class="sitenav-call">0316-5327722</span></li>
+                    <li class="sepline">|</li>
+                </ul>
+                <div class="c"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            //添加到收藏夹方法
+            jQuery.addFavorite=function(sURL, sTitle){
+                try{
+                    window.external.addFavorite(sURL, sTitle);
+                }catch (e){
+                    try{
+                        window.sidebar.addPanel(sTitle, sURL, "");
+                    }catch (e){
+                        alert("加入收藏失败，请使用Ctrl+D进行添加");
+                    }
+                }
+            }
+        </script>
+        <div class="w">
+            <a href="{:logistics_url(1,'/')}" id="logo"><img height="71" alt="【{:C('WEB_SITE_TITLE')}信息平台】让物流更简单！" src="__STATIC__/images/logo.png"></a>
+            <div id="switch_city">
+                <strong class="city_name">{$city_info.name}</strong>
+                <a href="{:logistics_url(1,'city')}">[切换分站]</a>
+            </div>
+            <div class="c"></div>
+        </div>
+        <div class="nav_bj">	<!-- 主导航 -->
+        </div>
     </div>
     <div id="main">
         <div class='switch_city_page'>

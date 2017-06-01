@@ -1053,7 +1053,7 @@ function checkContact($str){
 function all_city(){
     $cache_key = 'all_city_pinyin';
     $cache = S($cache_key);
-    if(!false){
+    if(!$cache){
         $data = M('Pca')->where(array('type'=>2))->select();
         $cache = array();
         foreach($data as $val){
@@ -1071,7 +1071,7 @@ function all_city(){
 function getHotCity(){
     $cache_key = 'hot_city';
     $cache = S($cache_key);
-    if(!false){
+    if(!$cache){
         $cache = M('Pca')->where(array('type'=>2,'hot'=>1))->select();
         if(!$cache){
             return false;

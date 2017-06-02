@@ -32,3 +32,10 @@ define ( 'RUNTIME_PATH', './Runtime/' );
  * ThinkPHP亦可移动到WEB以外的目录
  */
 require './ThinkPHP/ThinkPHP.php';
+function ip2city($ip){
+    include_once '../libraries/ip2city/iplocition.ext.php';
+    $dat = realpath(base_path('libraries/ip2city/CoralWry.dat'));
+    $iplocation = new ipLocation($dat);
+    $location = $iplocation->getaddress($ip);
+    return $location;
+}

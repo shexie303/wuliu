@@ -13,25 +13,24 @@
  */
 return array(
     /*域名*/
-    'DOMAIN'      => 'yuanteng56.com',
-    'SITE_DOMAIN' => 'http://www.yuanteng56.com',
-    'SITE_ADMIN_DOMAIN' => 'http://nxgsm.yuanteng56.com',
-    'WWW_DOMAIN'  => 'www.yuanteng56.com',
-    'SITE_G3_DOMAIN'  => 'http://m.yuanteng56.com',
-    'G3_DOMAIN'   => 'm.yuanteng56.com',
+    'DOMAIN'      => 'imguang.wang',
+    'SITE_DOMAIN' => 'http://www.imguang.wang',
+    'WWW_DOMAIN'  => 'www.imguang.wang',
+    'SITE_G3_DOMAIN'  => 'http://m.imguang.wang',
+    'G3_DOMAIN'   => 'imguang.wang',
 
     //默认城市
     'DEFAULT_CITY' => 'langfang',
 
     //cookie 有效域名
-    'COOKIE_DOMAIN'  => 'yuanteng56.com',
+    'COOKIE_DOMAIN'  => 'imguang.wang',
 
     /* 模块相关配置 */
     'AUTOLOAD_NAMESPACE' => array('Addons' => ONETHINK_ADDON_PATH), //扩展模块列表
-    'DEFAULT_MODULE'     => 'Home',
+    'DEFAULT_MODULE'     => 'G3',
     'MODULE_DENY_LIST'   => array('Common', 'User'),
     'MODULE_ALLOW_LIST'  => array('Home','Admin','G3'),
-    'APP_SUB_DOMAIN_DEPLOY'   =>    1, // 开启子域名
+    'APP_SUB_DOMAIN_DEPLOY'   =>    0, // 开启子域名
     'APP_SUB_DOMAIN_RULES'  => array(
         'm'         => 'G3',                //指向3G模块
         //'nxgsm'     => 'Admin',         // 指向Xiaoguotu模块的控制器
@@ -59,10 +58,10 @@ return array(
 
     /* 数据库配置 */
     'DB_TYPE'   => 'mysqli', // 数据库类型
-    'DB_HOST'   => '127.0.0.1', // 服务器地址
-    'DB_NAME'   => 'logistics', // 数据库名
-    'DB_USER'   => 'root', // 用户名
-    'DB_PWD'    => 'root',  // 密码
+    'DB_HOST'   => 'bdm288811554.my3w.com', // 服务器地址
+    'DB_NAME'   => 'bdm288811554_db', // 数据库名
+    'DB_USER'   => 'bdm288811554', // 用户名
+    'DB_PWD'    => 'yuanteng56',  // 密码
     'DB_PORT'   => '3306', // 端口
     'DB_PREFIX' => 'logistics_', // 数据库表前缀
 

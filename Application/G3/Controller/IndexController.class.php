@@ -202,7 +202,7 @@ class IndexController extends HomeController {
         $list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, $order);
         if($list){
             $page = new \Think\G3Page($list['count'], $category['list_row'], $this->city['pinyin'].'/'.$uri, $order);
-            $page->setConfig('theme','%UP_PAGE% <div style="width:31%;text-align:center; display:inline-block;"><span style="position:relative;top:8px;" class="dark_grey_14_label">%NOW_PAGE%/%TOTAL_ROW%</span></div> %DOWN_PAGE%');
+            $page->setConfig('theme','%UP_PAGE% <div style="width:31%;text-align:center; display:inline-block;"><span style="position:relative;top:8px;" class="dark_grey_14_label">%NOW_PAGE%/%TOTAL_PAGE%</span></div> %DOWN_PAGE%');
             $page->setConfig('prev','<span class="dark_grey_14_label">上一页</span>');
             $page->setConfig('next','<span class="dark_grey_14_label">下一页</span>');
             /* 模板赋值并渲染模板 */
@@ -281,7 +281,7 @@ class IndexController extends HomeController {
         $list = $Document->page($p, $category['list_row'])->lists($category['id'], $ext, 1);
         if($list){
             $page = new \Think\G3Page($list['count'], $category['list_row'], $this->city['pinyin'].'/'.$uri);
-            $page->setConfig('theme','%UP_PAGE% <div style="width:31%;text-align:center; display:inline-block;"><span style="position:relative;top:8px;" class="dark_grey_14_label">%NOW_PAGE%/%TOTAL_ROW%</span></div> %DOWN_PAGE%');
+            $page->setConfig('theme','%UP_PAGE% <div style="width:31%;text-align:center; display:inline-block;"><span style="position:relative;top:8px;" class="dark_grey_14_label">%NOW_PAGE%/%TOTAL_PAGE%</span></div> %DOWN_PAGE%');
             $page->setConfig('prev','<span class="dark_grey_14_label">上一页</span>');
             $page->setConfig('next','<span class="dark_grey_14_label">下一页</span>');
 

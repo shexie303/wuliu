@@ -6,7 +6,7 @@
         <section id="top_bar" style="text-align:center;height:52px;line-height:52px;padding:0px 0px 0px 10px;">
             <ul>
                 <li style="padding-top:10px;width:20%;text-align:left;vertical-align:middle;">
-                    <img onclick="window.history.back(-1);" style="width:30px;height:30px;margin-left: 15px" src="__IMG__/back_new.jpg" data-bd-imgshare-binded="1"></li>
+                    <img onclick="window.history.back(-1);" style="width:30px;height:30px;margin-left: 15px" data-original="__IMG__/back_new.jpg" data-bd-imgshare-binded="1"></li>
                 <li style="width:56%;"><span class="header_title_text">我的电子名片</span></li>
                 <li style="width:20%;"></li>
             </ul>
@@ -22,7 +22,7 @@
                             <neq name="contact_res.contact_ids" value="no_limit">
                                 <in name="info.id" value="$contact_res['contact_ids']">
                                     <a style="display:block;position:relative;" href="tel:{$info.contact}">
-                                        <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                                        <img data-original="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
                                         <span style="color:#ed6d00;font-size:16px;font-weight:bold;margin-left:5px;">
                                             {$info.contact}
                                         </span>
@@ -30,12 +30,12 @@
                                 <else/>
                                     <eq name="contact_res.contact_limit" value="1">
                                         <a data-id="{$info['id']}" class="show_contact" style="display:block;margin-top:0;">
-                                            <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                                            <img data-original="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
                                             <span style="color:#ed6d00;font-size:14px;font-weight:bold;margin-left:5px;">点击查看联系方式</span>
                                         </a>
                                     <else/>
                                         <a style="display:block;position:relative;" href="tel:{$info.contact}">
-                                            <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                                            <img data-original="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
                                             <span style="color:#ed6d00;font-size:16px;font-weight:bold;margin-left:5px;">
                                                 {$info.contact}
                                             </span>
@@ -44,7 +44,7 @@
                                 </in>
                             <else/>
                                 <a style="display:block;position:relative;" href="tel:{$info.contact}">
-                                    <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                                    <img data-original="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
                                     <span style="color:#ed6d00;font-size:16px;font-weight:bold;margin-left:5px;">
                                         {$info.contact}
                                     </span>
@@ -53,7 +53,7 @@
                         </eq>
                         <eq name="contact_res.contact_show" value="1">
                             <a style="display:block;position:relative;" href="tel:{$info.contact}">
-                                <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                                <img data-original="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
                                 <span style="color:#ed6d00;font-size:16px;font-weight:bold;margin-left:5px;">
                                     {$info.contact}
                                 </span>
@@ -61,13 +61,13 @@
                         </eq>
                         <eq name="contact_res.contact_show" value="0">
                             <a data-id="{$info['id']}" class="show_contact" style="display:block;margin-top:0;color: #FF8500">
-                                <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                                <img data-original="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
                                 <span style="color:#ed6d00;font-size:14px;font-weight:bold;margin-left:5px;">点击查看联系方式</span>
                             </a>
                         </eq>
                     <else/>
                         <a style="display:block;position:relative;" href="tel:{$info.contact}">
-                            <img src="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                            <img data-original="__IMG__/phone.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
                             <span style="color:#ed6d00;font-size:16px;font-weight:bold;margin-left:5px;">
                                 {$info.contact}
                             </span>
@@ -76,14 +76,14 @@
                 </li>
                 <li style="display:block; padding:0 0 5px 10px; ">
                     <a style="display:block;margin-top:0px;" href="javascript:;">
-                        <img src="__IMG__/address.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
+                        <img data-original="__IMG__/address.png" style="position:relative;top:2px;" data-bd-imgshare-binded="1">
                         <span style="color:#666;font-size:14px;margin-left:5px;">{$info.address}</span>
                     </a>
                 </li>
                 <li style="padding:5px 10px 10px 10px; display:block;position:relative;">
                     <img style="width:100%;max-width:440px;" onerror="__STATIC__/images/default.jpg" src="{$info.cover_id|get_cover='path'}" data-bd-imgshare-binded="1">
-                    <eq name="info.vip" value="3"><img src="__IMG__/vip.png" style="position:absolute;left:8px;top:2px;" data-bd-imgshare-binded="1"></eq>
-                    <eq name="info.vip" value="2"><img src="__IMG__/tuijian.png" style="position:absolute;left:8px;top:2px;" data-bd-imgshare-binded="1"></eq>
+                    <eq name="info.vip" value="3"><img data-original="__IMG__/vip.png" style="position:absolute;left:8px;top:2px;" data-bd-imgshare-binded="1"></eq>
+                    <eq name="info.vip" value="2"><img data-original="__IMG__/tuijian.png" style="position:absolute;left:8px;top:2px;" data-bd-imgshare-binded="1"></eq>
                 </li>
 
                 <li style="border-top:1px #ededed solid;padding:10px 0 ;display:block; ">

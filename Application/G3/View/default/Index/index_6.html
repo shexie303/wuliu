@@ -81,9 +81,9 @@
             <section style="text-align:center;" class="goods_list_item">
                 <ul>
                     <li style="width:auto;vertical-align:top;position:relative;" onclick='doHREF("{:logistics_url(2,$CITY['pinyin'].'/'.$val['id'])}");'>
-                        <img class="goods_list_image" src="{$val.cover_id|get_cover='path'}" onerror="javascript:this.src='__STATIC__/images/default.jpg';">
-                        <eq name="val.vip" value="2"><img src="__IMG__/tuijian.png" style="position:absolute;left:-3px;top:-3px;"></eq>
-                        <eq name="val.vip" value="3"><img src="__IMG__/vip.png" style="position:absolute;left:-3px;top:-3px;"></eq>
+                        <img class="goods_list_image" data-original="{$val.cover_id|get_cover='path'}" onerror="javascript:this.src='__STATIC__/images/default.jpg';">
+                        <eq name="val.vip" value="2"><img data-original="__IMG__/tuijian.png" style="position:absolute;left:-3px;top:-3px;"></eq>
+                        <eq name="val.vip" value="3"><img data-original="__IMG__/vip.png" style="position:absolute;left:-3px;top:-3px;"></eq>
                     </li>
                     <li style="text-align:left;width:62%;">
                         <ul>

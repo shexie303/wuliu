@@ -19,6 +19,7 @@
     <script type="text/javascript" src="__STATIC__/idangerous.swiper.min.js"></script>
     <script type="text/javascript"  src="__JS__/function.js" ></script>
     <script type="text/javascript" src="__JS__/navselect.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.lazyload.min.js"></script>
     <script type="text/javascript" charset="utf-8">
         addEventListener("load", function() {
             setTimeout(hideURLbar, 0);
@@ -50,5 +51,8 @@
          var descContent="查物流-让天下货主与物流实现更高效的链接！";
          var imgUrl = "";
          var lineLink = "";*/
+        $(function() {
+            $("img").lazyload({effect: "fadeIn"});
+        });
     </script>
 </head>

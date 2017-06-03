@@ -39,35 +39,34 @@ class HomeController extends Controller {
             $this->assign('is_m', 1);
         }
 
-        $http_host = $_SERVER['HTTP_HOST'];
-        if($http_host == C('WWW_DOMAIN')){
-            $city = cookie('city');
-            if($city){
-                $redirect = 'http://' . $city['pinyin'] . '.' . C('DOMAIN') . $_SERVER['REQUEST_URI'];
-                send_http_status(302);
-                header('Location: ' . $redirect);
-            }else{
-                $redirect = logistics_url(1,'city');
-                send_http_status(302);
-                header('Location: ' . $redirect);
-            }
-        }else{
-            $city = cookie('city');
-            $host_arr = explode('.', $http_host);
-            if($host_arr[0] != $city['pinyin']){
+        $city = I('city','');
+        $cook_city = cookie('city');
+        $city_info = '';
+        if($city){
+            if($city != $cook_city['pinyin']){
                 $city_arr = all_city();
-                if(array_key_exists($host_arr[0], $city_arr)){
-                    $city = $city_arr[$host_arr[0]];
+                if(array_key_exists($city, $city_arr)){
+                    $city_info = $city_arr[$city];
+                    cookie('city', $city_info, 604800); //3600*24*7
                 }else{
                     $redirect = logistics_url(1,'city');
                     send_http_status(302);
                     header('Location: ' . $redirect);
                 }
-                cookie('city', $city, 604800); //3600*24*7
+            }else{
+                $city_info = $cook_city;
+            }
+        }else{
+            if($cook_city['pinyin']){
+                $city_info = $cook_city;
+            }else{
+                $redirect = logistics_url(1,'city');
+                send_http_status(302);
+                header('Location: ' . $redirect);
             }
         }
-        $this->city = $city;
-        $this->assign('city_info', $city);
+        $this->city = $city_info;
+        $this->assign('city_info', $city_info);
 
         //主导航
         $nav = getNextCategory(0);

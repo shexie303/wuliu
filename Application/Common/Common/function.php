@@ -1165,7 +1165,12 @@ function getNextCategory($cate_id = 0, $province_id = 0){
  */
 function logistics_url($domain = 1, $uri){
     if($domain == 1){
-        $domain = 'http://' . $_SERVER['HTTP_HOST'];
+        if(in_array($uri,array('getNextArea','verify','gps_city','city','login','register','logout')) || preg_match('/^search-/',$uri)){
+            $domain = C('SITE_DOMAIN');
+        }else{
+            $cook_city = cookie('city');
+            $domain = C('SITE_DOMAIN').'/'.$cook_city['pinyin'];
+        }
     }elseif($domain == 2){
         $domain = C('SITE_G3_DOMAIN');
     }elseif($domain == 3){

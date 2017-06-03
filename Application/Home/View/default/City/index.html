@@ -51,7 +51,6 @@
             <a href="{:logistics_url(1,'/')}" id="logo"><img height="71" alt="【{:C('WEB_SITE_TITLE')}信息平台】让物流更简单！" src="__STATIC__/images/logo.png"></a>
             <div id="switch_city">
                 <strong class="city_name">{$city_info.name}</strong>
-                <a href="{:logistics_url(1,'city')}">[切换分站]</a>
             </div>
             <div class="c"></div>
         </div>
@@ -69,7 +68,7 @@
                 <strong class='fl' style='background:#f00'>热门城市：<span>》</span></strong>
                 <div class='fl lately_view_list'>
                     <foreach name="hot_city" item="val">
-                        <a href="http://{$val.pinyin}.{:C('DOMAIN')}"><b>{$val.name}</b></a>
+                        <a href="{:C('SITE_DOMAIN')}/{$val.pinyin}"><b>{$val.name}</b></a>
                     </foreach>
                 </div>
                 <div class='c'></div>
@@ -80,7 +79,7 @@
                     <a class="city_item_title"><strong>直辖市</strong></a>
                     <div class="city_item_list">
                         <foreach name="zhixia" item="city">
-                            <a href="http://{$city.pinyin}.{:C('DOMAIN')}">
+                            <a href="{:C('SITE_DOMAIN')}/{$city.pinyin}">
                                 <if condition="$city['hot'] eq 1">
                                     <b>{$city.name}</b>
                                     <span style="background:#f00;color:#fff;border-radius:2px;">hot</span>
@@ -97,7 +96,7 @@
                         <a class="city_item_title"><strong>{$p.name}</strong></a>
                         <div class="city_item_list">
                             <foreach name="p.child" item="city">
-                                <a href="http://{$city.pinyin}.{:C('DOMAIN')}">
+                                <a href="{:C('SITE_DOMAIN')}/{$city.pinyin}">
                                     <if condition="$city['hot'] eq 1">
                                         <b>{$city.name}</b>
                                         <span style="background:#f00;color:#fff;border-radius:2px;">hot</span>
@@ -136,7 +135,7 @@
                 var gps_city = $('#gps_city');
                 $.post(target,query).success(function(e){
                     if (e.status==1){
-                        content = '<a href="http://'+e.data.pinyin+'.{:C('DOMAIN')}/"><b>'+e.data.name+'</b></a>';
+                        content = '<a href="{:C('SITE_DOMAIN')}/'+e.data.pinyin+'"><b>'+e.data.name+'</b></a>';
                     }else{
                         content = '定位失败，请手动选择城市';
                     }

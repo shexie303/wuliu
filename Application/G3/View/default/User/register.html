@@ -51,14 +51,11 @@
                         <input id="destination" class="input_field" type="text"  value="" placeholder="请输入目的地">
                     </li>
                     <li id="sccj" style="display: none">
-                        <select name="destination_p" class="input_field pca-select" style="width: 32%" onchange="pac_select('destination',1)">
+                        <select name="cate_id" id="cate_id" class="input_field pca-select" style="width: 32%">
                             <option value="0">选择分类</option>
-                            <foreach name="province" item="val">
-                                <option value="{$val.id}">{$val.name}</option>
+                            <foreach name="cate" item="val">
+                                <option value="{$val.id}">{$val.title}</option>
                             </foreach>
-                        </select>
-                        <select name="destination_c" class="input_field pca-select" style="width: 32%" onchange="pac_select('destination',2)">
-                            <option value="0">选择小类</option>
                         </select>
                     </li>
                     <li id="content">
@@ -183,6 +180,25 @@
                 });
                 return false;
             });
+        });
+        $('#cate_id').change(function(){
+            var cate_id = $(this).val();
+            if(cate_id > 0){
+                $.post("{:logistics_url(2,'getNextCategory')}", {cate_id : cate_id}, function(e){
+                    if(e.status == 0){
+                        var c_html = '<select id="c_id" name="c_id" class="input_field pca-select" style="width: 32%">';
+                        $.each(e.data, function(n, item){
+                            c_html += '<option value="'+item.id+'">'+item.title+'</option>';
+                        });
+                        c_html+= '</select>';
+                        $('#sccj').append(c_html);
+                    }else{
+                        $('#c_id').remove();
+                    }
+                });
+            }else{
+                $('#c_id').remove();
+            }
         });
         function pac_select(prefix,level){
             var obj = $('#'+prefix+'_p');

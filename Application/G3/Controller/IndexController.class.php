@@ -344,6 +344,26 @@ class IndexController extends HomeController {
         $this->ajaxReturn($return);
     }
 
+    public function getNextCategory(){
+        $cate_id = I('post.cate_id',0);
+        empty($cate_id) && $this->error('分类参数不能为空！');
+        $p_id = I('post.p_id',0);
+        //empty($p_id) && $this->error('省份参数不能为空！');
+        $return = array(
+            'status' => 0,
+            'data' => '',
+            'info' => ''
+        );
+        $s_cate = getNextCategory($cate_id, $p_id);
+        if($s_cate){
+            $return['data'] = $s_cate;
+            $this->ajaxReturn($return);
+        }else{
+            $return['status'] = 1;
+            $return['info'] = '没有下级分类！';
+            $this->ajaxReturn($return);
+        }
+    }
 
     public function publish(){
         if(IS_POST){

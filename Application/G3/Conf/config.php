@@ -154,6 +154,7 @@ return array(
         'logout' => array('User/logout'), //注册页
         'verify' => array('User/verify'), //验证码
         'getNextArea' => array('Index/getNextArea'), //pca
+        'getNextCategory' => array('Index/getNextCategory'), //pca
         'publish' => array('Index/publish'), //发布货源
         '/^([a-z]+)$/' => 'Index/index?city=:1', //详情页
     )

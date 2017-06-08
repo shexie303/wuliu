@@ -102,9 +102,14 @@ class UserController extends HomeController {
 			}
 
 		} else { //显示注册表单
+            //省份
             $province = getNextPca(0);
             $this->assign('province', $province);
-			$this->display();
+			//生产厂家分类
+            $cate = getNextCategory(6,0);
+            $this->assign('cate', $cate);
+
+            $this->display();
 		}
 	}
 

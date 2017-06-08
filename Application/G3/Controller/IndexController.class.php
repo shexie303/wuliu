@@ -355,6 +355,7 @@ class IndexController extends HomeController {
             $data['category_id'] = 7;
             $data['type'] = 2;
             $data['model_id'] = 2;
+            $data['status'] = 1;
 
             $obj = new \Admin\Model\DocumentModel();
             $res = $obj->update($data);

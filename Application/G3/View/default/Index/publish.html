@@ -14,9 +14,6 @@
             <form id="submit_form" action="" method="post">
                 <ul style="list-style:none;padding:0px;margin:0px 0px 10px 0px;text-align:left;">
                     <li>
-                        <input id="title" class="input_field" type="text" name="title" value="" placeholder="请输入标题：例如 北京东城区有某某货物">
-                    </li>
-                    <li>
                         <input id="contact" class="input_field" type="text" name="contact" value="" placeholder="请输入联系方式：手机号或座机">
                     </li>
                     <li>
@@ -60,9 +57,6 @@
                         </select>
                     </li>
                     <li>
-                        <input id="address" class="input_field" type="text" name="address" value="" placeholder="请输入货源所在详细地址">
-                    </li>
-                    <li>
                         <textarea name="content" class="textarea" style="height: 150px" placeholder="请输入描述：如货物名称、类型、重量、体积，需求车长、车型、其他说明情况。"></textarea>
                     </li>
                     <li>
@@ -89,14 +83,7 @@
                 }
             });
             $('#signup-submit').click(function(){
-                var title = $.trim($('#title').val());
-                if(title.length == 0){
-                    layer.msg('标题不能为空');
-                    return false;
-                }else if(title.length > 60){
-                    layer.msg('标题长度不能超过60个字符');
-                    return false;
-                }
+                var location,destination;
                 var contact = $.trim($('#contact').val());
                 if(contact.length == 0){
                     layer.msg('请输入联系方式');
@@ -107,36 +94,41 @@
                     layer.msg('请选择所在地省份');
                     return false;
                 }
+                location = $("#location_p").find("option:selected").text();
                 var location_c = $.trim($('#location_c').val());
                 if(location_c == 0){
                     layer.msg('请选择所在地城市');
                     return false;
+                }
+                if(location != $("#location_c").find("option:selected").text()){
+                    location += $("#location_c").find("option:selected").text();
                 }
                 var location_a = $.trim($('#location_a').val());
                 if(location_a == 0){
                     layer.msg('请选择所在地县区');
                     return false;
                 }
+                location += $("#location_a").find("option:selected").text();
                 var destination_p = $.trim($('#destination_p').val());
                 if(destination_p == 0){
                     layer.msg('请选择目的地省份');
                     return false;
                 }
+                destination = $("#destination_p").find("option:selected").text();
                 var destination_c = $.trim($('#destination_c').val());
                 if(location_c == 0){
                     layer.msg('请选择目的地城市');
                     return false;
+                }
+                if(destination != $("#destination_c").find("option:selected").text()){
+                    destination += $("#destination_c").find("option:selected").text();
                 }
                 var destination_a = $.trim($('#destination_a').val());
                 if(destination_a == 0){
                     layer.msg('请选择目的地县区');
                     return false;
                 }
-                var address = $.trim($('#address').val());
-                if(address.length == 0){
-                    layer.msg('请输入货源详细地址');
-                    return false;
-                }
+                destination += $("#destination_a").find("option:selected").text();
                 var verify = $.trim($('#verify').val());
                 if(verify.length == 0){
                     layer.msg('验证码不能为空');
@@ -144,10 +136,10 @@
                 }
                 var target = "{:logistics_url(2,'publish')}";
                 var query = $('#submit_form').serialize();
-                query += '&uid=1&type=2';
+                query += '&uid=1&type=2&address='+location+'&title='+location+' -> '+destination;
                 $.post(target,query).success(function(data){
                     if (data.status==1){
-                        layer.msg('恭喜您，发布成功！请耐心等待审核！');
+                        layer.msg('恭喜您，发布成功！');
                         setTimeout(function(){
                             window.location.href = '{$refer}';
                         },1300)

@@ -256,10 +256,11 @@ class IndexController extends HomeController {
             $contact_res['goto_login'] = 1;
             $contact_res['contact_show'] = 0;
         }
-        //var_dump($contact_res);
+
         /* 模板赋值并渲染模板 */
         $this->assign('category', $category);
         $this->assign('info', $info);
+        $this->assign('seo_title', $info['title'].' - '.C('WEB_SITE_TITLE').'信息平台');
         $this->assign('contact_res', $contact_res);
         $this->display();
     }

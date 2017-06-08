@@ -13,12 +13,12 @@
         </section>
     </header>
     <content>
-        <section style="text-align:center;padding:0px 10px 0px 10px;">
-            <img width="100%" src="__IMG__/ad_1.jpg" />
-            <img width="100%" src="__IMG__/ad_2.jpg" />
-            <img width="100%" src="__IMG__/ad_3.jpg" />
-            <img width="100%" src="__IMG__/ad_4.jpg" />
-            <img width="100%" src="__IMG__/ad_5.jpg" />
+        <section id="navi_top" style="text-align:center;">
+            <div class="big-nav" style="height: 30px;margin-top: 10px">
+                <div class="reg_select wrapper wrappered" style="width: 32%;">物流专线</div>
+                <div class="reg_select wrapper" style="width: 32%">车源</div>
+                <div class="reg_select wrapper" style="width: 34%">生成厂家</div>
+            </div>
         </section>
         <section style="text-align:center;padding:0px 10px 0px 10px;">
             <form id="submit_form" action="" method="post">
@@ -41,10 +41,28 @@
                     <li>
                         <input id="wechat" class="input_field" type="text" name="wechat" value="" placeholder="请输入微信号">
                     </li>
-                    <li class="input_field" style="line-height: 40px;padding-left: 10px;font-size: 14px;">
-                        用户类型
-                        <input type="radio" name="group" value="2" checked> 物流
-                        <input type="radio" name="group" value="3" > 厂家
+                    <li>
+                        <input id="group" type="hidden" name="group" value="2">
+                    </li>
+                    <li class="wlzx">
+                        <input id="location" class="input_field" type="text"  value="" placeholder="请输入始发地">
+                    </li>
+                    <li class="wlzx">
+                        <input id="destination" class="input_field" type="text"  value="" placeholder="请输入目的地">
+                    </li>
+                    <li id="sccj" style="display: none">
+                        <select name="destination_p" class="input_field pca-select" style="width: 32%" onchange="pac_select('destination',1)">
+                            <option value="0">选择分类</option>
+                            <foreach name="province" item="val">
+                                <option value="{$val.id}">{$val.name}</option>
+                            </foreach>
+                        </select>
+                        <select name="destination_c" class="input_field pca-select" style="width: 32%" onchange="pac_select('destination',2)">
+                            <option value="0">选择小类</option>
+                        </select>
+                    </li>
+                    <li id="content">
+                        <textarea name="content" class="textarea" style="text-indent:6px;height: 60px" placeholder="请描述业务介绍"></textarea>
                     </li>
                     <li>
                         <input id="verify" class="input_field" style="width:50%;" type="text" name="verify" placeholder="看不清？点击图片刷新" value="">
@@ -57,7 +75,14 @@
             </form>
             <a style="margin-bottom:10px;color:#377BA6;font-size:12px;text-decoration:underline;cursor:pointer;display:inline-block;" onclick='doHREF("{:logistics_url(2,'login')}")'>已经有帐号？请登录</a>
         </section>
-        <section style="text-align:center;padding:0px 10px 0px 10px;"><img width="100%" src="__IMG__/ad_6.jpg" /></section>
+        <section style="text-align:center;padding:0px 10px 0px 10px;">
+            <img width="100%" src="__IMG__/ad_1.jpg" />
+            <img width="100%" src="__IMG__/ad_2.jpg" />
+            <img width="100%" src="__IMG__/ad_3.jpg" />
+            <img width="100%" src="__IMG__/ad_4.jpg" />
+            <img width="100%" src="__IMG__/ad_5.jpg" />
+            <img width="100%" src="__IMG__/ad_6.jpg" />
+        </section>
     </content>
     <script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
     <script>
@@ -68,6 +93,25 @@
                     $(this).attr("src", url.replace(/\?.*$/,'')+'?'+Math.random());
                 }else{
                     $(this).attr("src", url+'?'+Math.random());
+                }
+            });
+            $('.reg_select').click(function(){
+                $(this).addClass('wrappered').siblings().removeClass('wrappered');
+                if($(this).index() == 1){
+                    $('#content').hide();
+                    $('.wlzx').hide();
+                    $('#group').val(2);
+                    $('#sccj').hide();
+                }else if($(this).index() == 2){
+                    $('#content').show();
+                    $('#sccj').show();
+                    $('#group').val(3);
+                    $('.wlzx').hide();
+                }else{
+                    $('#content').show();
+                    $('.wlzx').show();
+                    $('#group').val(2);
+                    $('#sccj').hide();
                 }
             });
             $('#signup-submit').click(function(){
@@ -140,5 +184,46 @@
                 return false;
             });
         });
+        function pac_select(prefix,level){
+            var obj = $('#'+prefix+'_p');
+            var next_obj = $('#'+prefix+'_c');
+            var third_obj = $('#'+prefix+'_a');
+            var id,project,action;
+            if(level == 1){
+                id = obj.val();
+                project = next_obj;
+            }else{
+                id = next_obj.val();
+                project = third_obj;
+            }
+            if(prefix == 'location'){
+                action = '所在地';
+            }else{
+                action = '目的';
+            }
+            if(id > 0){
+                $.post("{:logistics_url(2,'getNextArea')}", {id : id, type : level}, function(e){
+                    if(e.status == 0){
+                        $.each(e.data, function(n, item){
+                            project.append('<option value="'+item.id+'">'+item.name+'</option>')
+                        });
+                    }else{
+                        if(level == 1){
+                            next_obj.html('<option value="0">'+action+'城市</option>');
+                            third_obj.html('<option value="0">'+action+'县区</option>')
+                        }else{
+                            third_obj.html('<option value="0">'+action+'县区</option>')
+                        }
+                    }
+                });
+            }else{
+                if(level == 1){
+                    next_obj.html('<option value="0">'+action+'城市</option>');
+                    third_obj.html('<option value="0">'+action+'县区</option>')
+                }else{
+                    third_obj.html('<option value="0">'+action+'县区</option>')
+                }
+            }
+        }
     </script>
 <include file="Public/footer"/>

@@ -102,6 +102,8 @@ class UserController extends HomeController {
 			}
 
 		} else { //显示注册表单
+            $province = getNextPca(0);
+            $this->assign('province', $province);
 			$this->display();
 		}
 	}

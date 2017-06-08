@@ -1228,3 +1228,8 @@ body:not(:-moz-handler-blocked) .blue_12_label{
 .newfilepreview img{
     width: 84px;height: 65px;
 }
+.reg_select{
+    float: left;
+    text-align: center;
+    line-height: 30px;
+}

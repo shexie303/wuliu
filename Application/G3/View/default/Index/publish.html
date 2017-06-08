@@ -25,15 +25,9 @@
                         </select>
                         <select name="location_c" id="location_c" class="input_field pca-select"style="width: 32%" onchange="pac_select('location',2)">
                             <option value="0">所在地城市</option>
-                            <foreach name="location_city" item="val">
-                                <option value="{$val.id}">{$val.name}</option>
-                            </foreach>
                         </select>
                         <select name="location_a" id="location_a" class="input_field pca-select" style="width: 33%">
                             <option value="0">所在地县区</option>
-                            <foreach name="location_area" item="val">
-                                <option value="{$val.id}">{$val.name}</option>
-                            </foreach>
                         </select>
                     </li>
                     <li>
@@ -45,15 +39,9 @@
                         </select>
                         <select name="destination_c" id="destination_c" class="input_field pca-select" style="width: 32%" onchange="pac_select('destination',2)">
                             <option value="0">目的城市</option>
-                            <foreach name="destination_city" item="val">
-                                <option value="{$val.id}">{$val.name}</option>
-                            </foreach>
                         </select>
                         <select name="destination_a" id="destination_a" class="input_field pca-select" style="width: 33%">
                             <option value="0">目的县区</option>
-                            <foreach name="destination_area" item="val">
-                                <option value="{$val.id}">>{$val.name}</option>
-                            </foreach>
                         </select>
                     </li>
                     <li>

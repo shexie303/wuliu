@@ -15,7 +15,6 @@ return array(
     /*域名*/
     'DOMAIN'      => 'yuanteng56.com',
     'SITE_DOMAIN' => 'http://www.yuanteng56.com',
-    'SITE_ADMIN_DOMAIN' => 'http://nxgsm.yuanteng56.com',
     'WWW_DOMAIN'  => 'www.yuanteng56.com',
     'SITE_G3_DOMAIN'  => 'http://m.yuanteng56.com',
     'G3_DOMAIN'   => 'm.yuanteng56.com',

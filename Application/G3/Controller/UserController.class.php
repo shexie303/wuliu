@@ -57,7 +57,7 @@ class UserController extends HomeController {
     }
 
 	/* 注册页面 */
-	public function register($username = '', $password = '', $repassword = '', $contact = '', $telephone = '', $wechat = '', $group = 2, $verify = ''){
+	public function register($username = '', $password = '', $repassword = '', $contact = '', $telephone = '', $wechat = '', $group = 2, $title = '', $address = '', $content = '', $category_id = 0, $cate_id = 0, $c_id = 0, $verify = ''){
         if(!C('USER_ALLOW_REGISTER')){
             $this->error('注册已关闭');
         }
@@ -92,7 +92,29 @@ class UserController extends HomeController {
                         $group = 2;
                     }
                     $group_obj = new AuthGroupModel();
-                    $group_obj->addToGroup($uid, $group);
+                    if($group_obj->addToGroup($uid, $group)){
+                        $core_arr = array(
+                            'title' => $title,
+                            'address' => $address,
+                            'uid' => $uid,
+                            'content' => $content,
+                            'contact' => $telephone,
+                            'category_id' => $category_id,
+                            'cate_id' => $cate_id,
+                            'c_id' => $c_id,
+                            'type' => 2,
+                            'model_id' => 2,
+                            'status' => 0
+                        );
+                        $core = D('Document');
+                        $res = $core->add($core_arr);
+                        if($res){
+                            $res_content = D('DocumentArticle')->add(array('id'=>$res,'content'=>htmlspecialchars($content)));
+                            if(!$res_content){
+                                $core->delete($res);
+                            }
+                        }
+                    }
                     $this->success('注册成功！即将跳转登录页面', logistics_url(2, 'login'));
                 }else{
                     $this->error($this->showRegError());
@@ -108,7 +130,6 @@ class UserController extends HomeController {
 			//生产厂家分类
             $cate = getNextCategory(6,0);
             $this->assign('cate', $cate);
-
             $this->display();
 		}
 	}

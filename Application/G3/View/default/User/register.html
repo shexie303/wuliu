@@ -36,6 +36,9 @@
                         <input id="contact" class="input_field" type="text" name="contact" value="" placeholder="请输入联系人">
                     </li>
                     <li>
+                        <input id="address" class="input_field" type="text" name="address" value="" placeholder="请输入公司地址">
+                    </li>
+                    <li>
                         <input id="telephone" class="input_field" type="text" name="telephone" value="" placeholder="请输入手机号">
                     </li>
                     <li>
@@ -84,6 +87,7 @@
     <script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
     <script>
         $(function(){
+            var reg_select = 0;
             $('#refresh_captcha').click(function(){
                 var url = $(this).attr('src');
                 if( url.indexOf('?')>0){
@@ -110,9 +114,11 @@
                     $('#group').val(2);
                     $('#sccj').hide();
                 }
+                reg_select = $(this).index();
             });
-            $('#signup-submit').click(function(){
 
+            $('#signup-submit').click(function(){
+                var title,category_id;
                 var nickname = $.trim($('#nickname').val());
                 if(nickname.length == 0){
                     layer.msg('帐号不能为空');
@@ -164,9 +170,44 @@
                     layer.msg('验证码不能为空');
                     return false;
                 }
+                if(reg_select == 1){
+                    title = nickname;
+                    category_id = 5;
+                }else if(reg_select == 2){
+                    title = nickname;
+                    category_id = 6;
+                    var cate_id = $.trim($('#cate_id').val());
+                    if(cate_id == 0){
+                        layer.msg('请选择厂家分类');
+                        return false;
+                    }
+                    if($("#c_id").length > 0) {
+                        var c_id = $.trim($('#c_id').val());
+                        if(c_id == 0){
+                            layer.msg('请选择厂家二级分类');
+                            return false;
+                        }
+                    }
+                }else{
+                    category_id = 2;
+                    var location = $.trim($('#location').val());
+                    if(location.length == 0){
+                        layer.msg('始发地不能为空');
+                        return false;
+                    }
+                    var destination = $.trim($('#destination').val());
+                    if(destination.length == 0){
+                        layer.msg('目的地不能为空');
+                        return false;
+                    }
+                    title = location+' -> '+destination;
+                }
+
                 var target = "{:logistics_url(2,'register')}";
                 var query = $('#submit_form').serialize();
-
+                query += '&type=2&title='+title+'&category_id='+category_id;
+                if(cate_id) query += '&cate_id='+cate_id;
+                if(c_id) query += '&c_id='+c_id;
                 $.post(target,query).success(function(data){
                     if (data.status==1){
                         layer.msg('恭喜您，注册成功！页面即将跳转~~');

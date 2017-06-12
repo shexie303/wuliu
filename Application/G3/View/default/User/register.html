@@ -16,8 +16,8 @@
         <section id="navi_top" style="text-align:center;">
             <div class="big-nav" style="height: 30px;margin-top: 10px">
                 <div class="reg_select wrapper wrappered" style="width: 32%;">物流专线</div>
-                <div class="reg_select wrapper" style="width: 32%">车源</div>
-                <div class="reg_select wrapper" style="width: 34%">生成厂家</div>
+                <div class="reg_select wrapper" style="width: 32%">生成厂家</div>
+                <div class="reg_select wrapper" style="width: 34%">推荐车源</div>
             </div>
         </section>
         <section style="text-align:center;padding:0px 10px 0px 10px;">
@@ -39,19 +39,15 @@
                         <input id="address" class="input_field" type="text" name="address" value="" placeholder="请输入公司地址">
                     </li>
                     <li>
-                        <input id="telephone" class="input_field" type="text" name="telephone" value="" placeholder="请输入手机号">
-                    </li>
-                    <li>
-                        <input id="wechat" class="input_field" type="text" name="wechat" value="" placeholder="请输入微信号">
+                        <input style="width: 48%" id="telephone" class="input_field" type="text" name="telephone" value="" placeholder="请输入手机号">
+                        <input style="width: 50%" id="wechat" class="input_field" type="text" name="wechat" value="" placeholder="请输入微信号">
                     </li>
                     <li>
                         <input id="group" type="hidden" name="group" value="2">
                     </li>
                     <li class="wlzx">
-                        <input id="location" class="input_field" type="text"  value="" placeholder="请输入始发地">
-                    </li>
-                    <li class="wlzx">
-                        <input id="destination" class="input_field" type="text"  value="" placeholder="请输入目的地">
+                        <input id="location" style="width: 48%" class="input_field" type="text"  value="" placeholder="请输入始发地">
+                        <input id="destination" style="width: 50%" class="input_field" type="text"  value="" placeholder="请输入目的地">
                     </li>
                     <li id="sccj" style="display: none">
                         <select name="cate_id" id="cate_id" class="input_field pca-select" style="width: 32%">
@@ -98,12 +94,12 @@
             });
             $('.reg_select').click(function(){
                 $(this).addClass('wrappered').siblings().removeClass('wrappered');
-                if($(this).index() == 1){
+                if($(this).index() == 2){
                     $('#content').hide();
                     $('.wlzx').hide();
                     $('#group').val(2);
                     $('#sccj').hide();
-                }else if($(this).index() == 2){
+                }else if($(this).index() == 1){
                     $('#content').show();
                     $('#sccj').show();
                     $('#group').val(3);
@@ -170,10 +166,10 @@
                     layer.msg('验证码不能为空');
                     return false;
                 }
-                if(reg_select == 1){
+                if(reg_select == 2){
                     title = nickname;
                     category_id = 5;
-                }else if(reg_select == 2){
+                }else if(reg_select == 1){
                     title = nickname;
                     category_id = 6;
                     var cate_id = $.trim($('#cate_id').val());

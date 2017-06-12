@@ -21,48 +21,37 @@
         <!-- 头部切换的布局  -->
         <section id="top_bar" style="height:47px;padding:5px 0px 0px 10px;">
             <ul>
-                <li><img style="height:42px;vertical-align:sub;" src="__STATIC__/images/logo.png"></li>
                 <li onclick='doHREF("{:logistics_url(2,'city')}");'>
                     <span style="" class="white_16_label" id="city_name">{$CITY.name}</span>
-                    <br><span class="white_12_label">[切换分站]</span>
+                    <br><span class="white_12_label">[切换]</span>
+                </li>
+                <li style="position:absolute;margin-left:10px;width:60%">
+                    <form id="search_form" action="{:logistics_url(2,'search-'.$category['id'])}" method="get">
+                        <input id="search" type="text" class="input_field" style="height: 30px" name="keywords" value="" placeholder="城市、名称、地址">
+                    </form>
                 </li>
                 <li style="float:right;position:relative;top:5px;right:15px;">
                     <img src="__IMG__/account.jpg" class="header_button" onclick="doDropBox('account_box');">
                     <span style="position:relative;top:20px;left:5px;" class="white_12_label" onclick="doDropBox('account_box');">账户</span>
                 </li>
                 <li style="float:right;position:relative;top:5px;right:20px;">
-                    <img src="__IMG__/search.jpg" class="header_button" onclick="checkRecord('search_record','/search-{$category[id]}');doDropBox('search_box');">
-                    <span style="position:relative;top:20px;left:5px;" class="white_12_label" onclick="checkRecord('search_record','/search-{$category[id]}');doDropBox('search_box');">搜索</span>
+                    <img src="__IMG__/search.jpg" class="header_button" onclick="submitSearch(this)">
+                    <span style="position:relative;top:20px;left:5px;" class="white_12_label" onclick="submitSearch(this)">搜索</span>
                 </li>
             </ul>
         </section>
-        <!-- 搜索的框  -->
-        <section id="search_box" style="text-align:center;padding:5px;font-size:12px;background:#fe9417;border-top:1px #ffca8b dashed;display:none;">
-            <div style="padding:10px 15px 0px 15px;">
-                <form id="search_form" action="{:logistics_url(2,'search-'.$category['id'])}" method="get">
-                    <input id="search" class="input_field" type="text" name="keywords" value="" placeholder="请输入城市、名称、地址等关键字">
-                    <input id="search_submit" style="display:inline-block;" type="button" value="搜索" onclick="submitSearch( this )">
-                </form>
-            </div>
-            <script type="text/javascript">
-                function submitSearch( e ){
-                    var kw = $("#search").val();
-                    kw = $.trim( kw );
-                    if( !kw ){
-                        return false;
-                    }else{
-                        doRecord('search_record', 30);
-                        $("#search_form").submit();
-                    }
+
+        <script type="text/javascript">
+            function submitSearch( e ){
+                var kw = $("#search").val();
+                kw = $.trim( kw );
+                if( !kw ){
+                    return false;
+                }else{
+                    $("#search_form").submit();
                 }
-            </script>
-            <!-- 搜索的记录 -->
-            <div id="search_record" style="padding:0px 0px 15px 0px;text-align:center;"></div>
-            <!-- 清除历史按钮  -->
-            <div style="height:20px;width:100%;padding:0px 0px 5px 0px;">
-                <span onclick="cleanRecord('search_record');" style="float:right;color:#ffffff;margin-right:20px;">[清除历史]</span>
-            </div>
-        </section>
+            }
+        </script>
         <!-- 账户操作  -->
         <section id="account_box" style="padding:10px 0px 5px 0px;text-align:center;background-color:#fe9417;font-size:14px;border-top:1px #ffca8b dashed;display:none;">
             <ul style="list-style:none;padding:0px;margin:0px;">

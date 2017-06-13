@@ -108,6 +108,7 @@ return array(
         'logout' => array('User/logout'), //注册页
         'verify' => array('User/verify'), //验证码
         'getNextArea' => array('Index/getNextArea'), //pca
+        'response_wechat' => array('Wechat/index'), //weixin
         '/^([a-z]+)$/' => 'Index/index?city=:1', //详情页
         /*列表页开始*/
 

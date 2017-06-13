@@ -18,7 +18,7 @@
                     </li>
                 </div>
                 <div id="delivery_info">
-                    <li style="border-bottom:0px;" onclick='doHREF("http://mp.weixin.qq.com/s/T2QrP9ZHbDoxnQ9yCOEB4Q")'>
+                    <li style="border-bottom:0px;" onclick='alert_vip()'>
                         <span style="font-weight:900;">充值vip</span>
                         <img style="float:right" src="__IMG__/jiantou.png">
                     </li>
@@ -27,3 +27,15 @@
         </section>
     </content>
 <include file="Public/footer"/>
+<script type="text/javascript" src="__STATIC__/layer/mobile/layer.js"></script>
+<script>
+    function alert_vip(){
+        layer.open({
+            title: [
+                '恭喜您注册成功，请充值会员',
+                'background-color: #FF4351; color:#fff;'
+            ]
+            ,content: '<img src="__STATIC__/images/recharge_qrcode.jpg"><p>充值为会员更够更好的展示您的信息，</p><p>展示排名更靠前！更多推广服务！</p>',
+        });
+    }
+</script>

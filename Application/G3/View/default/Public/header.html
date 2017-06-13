@@ -23,12 +23,7 @@
             <ul>
                 <li onclick='doHREF("{:logistics_url(2,'city')}");'>
                     <span style="" class="white_16_label" id="city_name">{$CITY.name}</span>
-                    <br><span class="white_12_label">[切换]</span>
-                </li>
-                <li style="position:absolute;margin-left:10px;width:60%">
-                    <form id="search_form" action="{:logistics_url(2,'search-'.$category['id'])}" method="get">
-                        <input id="search" type="text" class="input_field" style="height: 30px;border: 1px #969090 solid;" name="keywords" value="" placeholder="城市、名称、地址">
-                    </form>
+                    <br><span class="white_12_label">[选择地区]</span>
                 </li>
                 <li style="float:right;position:relative;top:5px;right:15px;">
                     <img src="__IMG__/account.jpg" class="header_button" onclick="doDropBox('account_box');">
@@ -37,6 +32,11 @@
                 <li style="float:right;position:relative;top:5px;right:20px;">
                     <img src="__IMG__/search.jpg" class="header_button" onclick="submitSearch(this)">
                     <span style="position:relative;top:20px;left:5px;" class="white_12_label" onclick="submitSearch(this)">搜索</span>
+                </li>
+                <li style="float:right;position:relative;top:5px;right:20px;">
+                    <form id="search_form" action="{:logistics_url(2,'search-'.$category['id'])}" method="get">
+                        <input id="search" type="text" class="input_field" style="height: 30px;border: 1px #969090 solid;" name="keywords" value="" placeholder="专线搜索">
+                    </form>
                 </li>
             </ul>
         </section>

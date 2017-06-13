@@ -80,7 +80,7 @@
             <img width="100%" src="__IMG__/ad_6.jpg" />
         </section>
     </content>
-    <script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+    <script type="text/javascript" src="__STATIC__/layer/mobile/layer.js"></script>
     <script>
         $(function(){
             var reg_select = 0;
@@ -117,53 +117,53 @@
                 var title,category_id;
                 var nickname = $.trim($('#nickname').val());
                 if(nickname.length == 0){
-                    layer.msg('帐号不能为空');
+                    layer.open({content: '帐号不能为空',skin: 'msg',time: 2});
                     return false;
                 }else if(nickname.length < 3 || nickname.length > 30){
-                    layer.msg('帐号长度不正确');
+                    layer.open({content: '帐号长度不正确',skin: 'msg',time: 2});
                     return false;
                 }
 
                 var password = $.trim($('#password').val());
                 if(password.length == 0){
-                    layer.msg('密码不能为空');
+                    layer.open({content: '密码不能为空',skin: 'msg',time: 2});
                     return false
                 }
 
                 var re_password = $.trim($('#repassword').val());
                 if(password != re_password){
-                    layer.msg('两次密码输入不一致');
+                    layer.open({content: '两次密码输入不一致',skin: 'msg',time: 2});
                     return false
                 }
 
                 var contact = $.trim($('#contact').val());
                 if(contact.length == 0){
-                    layer.msg('联系人不能为空');
+                    layer.open({content: '联系人不能为空',skin: 'msg',time: 2});
                     return false
                 }else if(contact.length > 5){
-                    layer.msg('联系人不能超过5个字符');
+                    layer.open({content: '联系人不能超过5个字符',skin: 'msg',time: 2});
                     return false
                 }
                 var telephone = $.trim($('#telephone').val());
                 var reg_telephone = /^1[3|4|5|7|8][0-9]\d{8}$/;
 
                 if(telephone.length == 0){
-                    layer.msg('手机号不能为空');
+                    layer.open({content: '手机号不能为空',skin: 'msg',time: 2});
                     return false
                 }else if(!reg_telephone.test(telephone)){
-                    layer.msg('手机号格式不正确');
+                    layer.open({content: '手机号格式不正确',skin: 'msg',time: 2});
                     return false
                 }
 
                 var wechat = $.trim($('#wechat').val());
                 if(wechat.length == 0){
-                    layer.msg('微信号不能为空');
+                    layer.open({content: '微信号不能为空',skin: 'msg',time: 2});
                     return false
                 }
 
                 var verify = $.trim($('#verify').val());
                 if(verify.length == 0){
-                    layer.msg('验证码不能为空');
+                    layer.open({content: '验证码不能为空',skin: 'msg',time: 2});
                     return false;
                 }
                 if(reg_select == 2){
@@ -174,13 +174,13 @@
                     category_id = 6;
                     var cate_id = $.trim($('#cate_id').val());
                     if(cate_id == 0){
-                        layer.msg('请选择厂家分类');
+                        layer.open({content: '请选择厂家分类',skin: 'msg',time: 2});
                         return false;
                     }
                     if($("#c_id").length > 0) {
                         var c_id = $.trim($('#c_id').val());
                         if(c_id == 0){
-                            layer.msg('请选择厂家二级分类');
+                            layer.open({content: '请选择厂家二级分类',skin: 'msg',time: 2});
                             return false;
                         }
                     }
@@ -188,12 +188,12 @@
                     category_id = 2;
                     var location = $.trim($('#location').val());
                     if(location.length == 0){
-                        layer.msg('始发地不能为空');
+                        layer.open({content: '始发地不能为空',skin: 'msg',time: 2});
                         return false;
                     }
                     var destination = $.trim($('#destination').val());
                     if(destination.length == 0){
-                        layer.msg('目的地不能为空');
+                        layer.open({content: '目的地不能为空',skin: 'msg',time: 2});
                         return false;
                     }
                     title = location+' -> '+destination;
@@ -206,10 +206,14 @@
                 if(c_id) query += '&c_id='+c_id;
                 $.post(target,query).success(function(data){
                     if (data.status==1){
-                        layer.msg('恭喜您，注册成功！页面即将跳转~~');
-                        setTimeout(function(){
-                            window.location.href = data.url;
-                        },1300)
+                        layer.open({
+                            title: [
+                                '恭喜您注册成功，请充值会员',
+                                'background-color: #FF4351; color:#fff;'
+                            ]
+                            ,content: '<img src="__STATIC__/images/recharge_qrcode.jpg"><p>充值为会员更够更好的展示您的信息，</p><p>展示排名更靠前！更多推广服务！</p>',
+                        });
+                        $('#submit_form')[0].reset();
                     }else{
                         layer.msg(data.info);
                         $('#refresh_captcha').click();

@@ -82,7 +82,7 @@ class G3Page{
         /* 生成URL */
         $this->parameter  .= $this->p.urlencode('[PAGE]');
         if($this->ext) $this->parameter  .= '-'.$this->ext;
-        $this->url = logistics_url(1, $this->parameter);
+        $this->url = logistics_url(2, $this->parameter);
         if(ACTION_NAME == 'search' && strlen($_GET['keywords']) > 0){
             $this->url .= '?keywords='. $_GET['keywords'];
         }

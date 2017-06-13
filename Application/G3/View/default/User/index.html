@@ -28,6 +28,11 @@
     </content>
 <include file="Public/footer"/>
 <script type="text/javascript" src="__STATIC__/layer/mobile/layer.js"></script>
+<style>
+    .layui-m-layercont{
+        padding: 0;
+    }
+</style>
 <script>
     function alert_vip(){
         layer.open({
@@ -35,7 +40,7 @@
                 '恭喜您注册成功，请充值会员',
                 'background-color: #FF4351; color:#fff;'
             ]
-            ,content: '<img src="__STATIC__/images/recharge_qrcode.jpg"><p>充值为会员更够更好的展示您的信息，</p><p>展示排名更靠前！更多推广服务！</p><p>会员年费：￥388/推荐 ￥588/vip</p>',
+            ,content: '<div style="float:left;width: 50%;height: 50px;background: orange;line-height: 50px;font-size: 18px;color:white">VIP：￥688/年</div><div style="background: #2bb8aa;float:left;width: 50%;height: 50px;line-height: 50px;font-size: 18px;color:white">推荐：￥488/年</div><img style="margin-top: 10px" src="__STATIC__/images/recharge_qrcode.jpg"><p>充值为会员更够更好的展示您的信息，</p><p>展示排名更靠前！更多推广服务！</p>',
         });
     }
 </script>

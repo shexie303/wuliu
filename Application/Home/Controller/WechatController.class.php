@@ -20,17 +20,28 @@ class WechatController extends Controller {
 	public function index(){
         include_once dirname(__FILE__)."/Wechat/wxBizMsgCrypt.php";
 // 第三方发送消息给公众平台
-        $encodingAesKey = "P6du4ZoxrlRwZze2O90hsIPaWatnXXuQG5g6D11PbOK";
+        $encodingAesKey = "kR2BvaMx2FASjAvnILB90QlICMrFOAgFhEbFD9DmRUn";
         $token = "shexie303";
-        $timeStamp = time();
-        $nonce = "xxxxxx";
+        $timeStamp = $_GET['timestamp'];
+        $nonce = $_GET["nonce"];
         $appId = "wx6a7d132784390325";
-        $text = "<xml><ToUserName><![CDATA[oia2Tj我是中文jewbmiOUlr6X-1crbLOvLw]]></ToUserName><FromUserName><![CDATA[gh_7f083739789a]]></FromUserName><CreateTime>1407743423</CreateTime><MsgType><![CDATA[video]]></MsgType><Video><MediaId><![CDATA[eYJ1MbwPRJtOvIEabaxHs7TX2D-HV71s79GUxqdUkjm6Gs2Ed1KF3ulAOA9H1xG0]]></MediaId><Title><![CDATA[testCallBackReplyVideo]]></Title><Description><![CDATA[testCallBackReplyVideo]]></Description></Video></xml>";
+        $text = "
+            <xml>
+                <ToUserName><![CDATA[oia2Tj我是中文jewbmiOUlr6X-1crbLOvLw]]></ToUserName>
+                <FromUserName><![CDATA[gh_7f083739789a]]></FromUserName>
+                <CreateTime>1407743423</CreateTime>
+                <MsgType><![CDATA[video]]></MsgType>
+                <Video>
+                    <MediaId><![CDATA[eYJ1MbwPRJtOvIEabaxHs7TX2D-HV71s79GUxqdUkjm6Gs2Ed1KF3ulAOA9H1xG0]]></MediaId>
+                    <Title><![CDATA[testCallBackReplyVideo]]></Title>
+                    <Description><![CDATA[testCallBackReplyVideo]]></Description>
+                </Video>
+            </xml>";
         $AppSecret = 'a326758dc37435de4c6602197555f052';
 
         $pc = new \WXBizMsgCrypt($token, $encodingAesKey, $appId);
 
-        $encryptMsg = '';
+        $encryptMsg = $_GET['echostr'];
         $errCode = $pc->encryptMsg($text, $timeStamp, $nonce, $encryptMsg);
         if ($errCode == 0) {
             print("加密后: " . $encryptMsg . "\n");

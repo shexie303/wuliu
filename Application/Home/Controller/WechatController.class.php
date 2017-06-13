@@ -24,8 +24,8 @@ class WechatController extends Controller {
         $appSecret = 'a326758dc37435de4c6602197555f052';
         $encodingAesKey = "kR2BvaMx2FASjAvnILB90QlICMrFOAgFhEbFD9DmRUn";
         $token = "shexie303";
-        $timeStamp = $_GET['timestamp'];
-        $nonce = $_GET["nonce"];
+        $timeStamp = time();
+        $nonce = random(6);
 //        $echostr = $_GET['echostr'];
 //        $signature = $_GET['signature'];
 //        $array = array($token, $timeStamp, $nonce);
@@ -35,7 +35,9 @@ class WechatController extends Controller {
 //            echo $echostr;
 //        }
 //
-        $text = '';
+//        $postStr = file_get_contents('php://input');
+        $text = "<xml><ToUserName><![CDATA[oia2Tj我是中文jewbmiOUlr6X-1crbLOvLw]]></ToUserName><FromUserName><![CDATA[gh_7f083739789a]]></FromUserName><CreateTime>1407743423</CreateTime><MsgType><![CDATA[video]]></MsgType><Video><MediaId><![CDATA[eYJ1MbwPRJtOvIEabaxHs7TX2D-HV71s79GUxqdUkjm6Gs2Ed1KF3ulAOA9H1xG0]]></MediaId><Title><![CDATA[testCallBackReplyVideo]]></Title><Description><![CDATA[testCallBackReplyVideo]]></Description></Video></xml>";
+
         $pc = new \WXBizMsgCrypt($token, $encodingAesKey, $appId);
 
         $encryptMsg = '';
@@ -43,7 +45,7 @@ class WechatController extends Controller {
         if ($errCode == 0) {
             print("加密后: " . $encryptMsg . "\n");
         } else {
-            print($errCode . "\n");
+            print($errCode . "\n");exit;
         }
 
         $xml_tree = new \DOMDocument();
@@ -55,7 +57,6 @@ class WechatController extends Controller {
 
         $format = "<xml><ToUserName><![CDATA[toUser]]></ToUserName><Encrypt><![CDATA[%s]]></Encrypt></xml>";
         $from_xml = sprintf($format, $encrypt);
-
         // 第三方收到公众号平台发送的消息
         $msg = '';
         $errCode = $pc->decryptMsg($msg_sign, $timeStamp, $nonce, $from_xml, $msg);

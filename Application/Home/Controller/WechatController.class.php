@@ -61,7 +61,8 @@ class WechatController extends Controller {
         $msg = '';
         $errCode = $pc->decryptMsg($msg_sign, $timeStamp, $nonce, $from_xml, $msg);
         if ($errCode == 0) {
-            print("解密后: " . $msg . "\n");
+            $postObj = simplexml_load_string($msg, 'SimpleXMLElement', LIBXML_NOCDATA);
+            var_dump($postObj);
         } else {
             print($errCode . "\n");
         }

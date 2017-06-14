@@ -23,6 +23,12 @@
                         <img style="float:right" src="__IMG__/jiantou.png">
                     </li>
                 </div>
+                <div id="delivery_info">
+                    <li style="border-bottom:0px;" onclick='alert_kefu()'>
+                        <span style="font-weight:900;">联系客服</span>
+                        <img style="float:right" src="__IMG__/jiantou.png">
+                    </li>
+                </div>
             </ul>
         </section>
     </content>
@@ -37,10 +43,19 @@
     function alert_vip(){
         layer.open({
             title: [
-                '恭喜您注册成功，请充值会员',
+                '充值会员',
                 'background-color: #FF4351; color:#fff;'
             ]
             ,content: '<div style="float:left;width: 50%;height: 50px;background: orange;line-height: 50px;font-size: 18px;color:white">VIP：￥688/年</div><div style="background: #2bb8aa;float:left;width: 50%;height: 50px;line-height: 50px;font-size: 18px;color:white">推荐：￥488/年</div><img style="margin-top: 10px" src="__STATIC__/images/recharge_qrcode.jpg"><p>充值为会员更够更好的展示您的信息，</p><p>展示排名更靠前！更多推广服务！</p>',
+        });
+    }
+    function alert_kefu(){
+        layer.open({
+            title: [
+                '联系客服',
+                'background-color: #FF4351; color:#fff;'
+            ]
+            ,content: '<img style="margin-top: 10px" src="__STATIC__/images/kefu.png"><p>请用微信扫描上方二维码，</p><p>免费制作名片，快速推广</p>',
         });
     }
 </script>

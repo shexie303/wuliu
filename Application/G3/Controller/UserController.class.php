@@ -212,4 +212,8 @@ class UserController extends HomeController {
 		return $error;
 	}
 
+    public function kefu(){
+        $this->display();
+    }
+
 }

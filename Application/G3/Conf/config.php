@@ -156,6 +156,7 @@ return array(
         'getNextArea' => array('Index/getNextArea'), //pca
         'getNextCategory' => array('Index/getNextCategory'), //pca
         'publish' => array('Index/publish'), //发布货源
+        'kefu' => array('User/kefu'), //客服
         '/^([a-z]+)$/' => 'Index/index?city=:1', //详情页
     )
 );

@@ -216,4 +216,7 @@ class UserController extends HomeController {
         $this->display();
     }
 
+    public function tutorial(){
+        $this->display();
+    }
 }

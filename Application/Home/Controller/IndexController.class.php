@@ -32,7 +32,9 @@ class IndexController extends HomeController {
             $city_zdzx = getNextCategory(2, $this->city['parent_id']);
             $minor['data'] = getZdzxCityCount($city_zdzx, $this->city['id']);
             if($zx){
-                $ext['ids'] = getZdzxJpzxIds($this->city['id'],$zx);
+                if($ids = getZdzxJpzxIds($this->city['id'],$zx)){
+                    $ext['ids'] = $ids;
+                }
             }
             $this->assign('minor', $minor);
 

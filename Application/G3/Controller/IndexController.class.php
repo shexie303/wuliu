@@ -45,8 +45,9 @@ class IndexController extends HomeController {
                 }
             }
             if($zx){
-                $ext['ids'] = getZdzxJpzxIds($this->city['id'],$zx);
-            }
+                if($ids = getZdzxJpzxIds($this->city['id'],$zx)){
+                    $ext['ids'] = $ids;
+                }}
             $this->assign('minor', $minor);
 
             $l_area = I('get.l_area', 0);

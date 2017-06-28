@@ -61,6 +61,17 @@ class HomeController extends Controller {
                 }
             }
         }
+        if(!$this->city){
+            $default_city = array(
+                'id' => 131000,
+                'parent_id' => 130000,
+                'type' => 2,
+                'full_name' => '廊坊市',
+                'pinyin' => 'langfang',
+                'hot' => 1
+            );
+            $this->city = $default_city;
+        }
         //主导航
         $nav = getNextCategory(0);
         unset($nav[6],$nav[7]);

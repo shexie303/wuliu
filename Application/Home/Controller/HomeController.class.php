@@ -65,7 +65,15 @@ class HomeController extends Controller {
                 header('Location: ' . $redirect);
             }
         }
-        $this->city = $city_info;
+        $default_city = array(
+            'id' => 131000,
+            'parent_id' => 130000,
+            'type' => 2,
+            'full_name' => '廊坊市',
+            'pinyin' => 'langfang',
+            'hot' => 1
+        );
+        $this->city = $city_info ? $city_info : $default_city;
         $this->assign('city_info', $city_info);
 
         //主导航

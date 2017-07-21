@@ -36,7 +36,7 @@ class DocumentModel extends Model{
         array('uid', 'require', '用户名或者ID不能为空', self::EXISTS_VALIDATE, 'regex', self::MODEL_INSERT),
         array('uid', 'checkUidNickname', '该用户不存在，请重新输入', self::EXISTS_VALIDATE, 'callback', self::MODEL_INSERT),
         array('level', '/^[\d]+$/', '优先级只能填正整数', self::VALUE_VALIDATE, 'regex', self::MODEL_BOTH),
-    	array('cover_id', '/^[\d]+$/', '请上传封面', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
+    	//array('cover_id', '/^[\d]+$/', '请上传封面', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
     	array('content', 'require', '详细内容不能为空', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
         //TODO: 外链编辑验证
         //array('link_id', 'url', '外链格式不正确', self::VALUE_VALIDATE, 'regex', self::MODEL_BOTH),

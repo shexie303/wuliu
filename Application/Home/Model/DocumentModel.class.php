@@ -92,7 +92,7 @@ class DocumentModel extends Model{
         }
         if($ext['keywords']){
             if($category == 2){
-                $map[$this->tablePrefix.'document.title|'.$this->tablePrefix.'document.search_k'] = array('like', '%'.$ext['keywords'].'%');
+                $map[$this->tablePrefix.'document.title|'.$this->tablePrefix.'document.search_k|'.$this->tablePrefix.'document.content|'] = array('like', '%'.$ext['keywords'].'%');
             }else{
                 $map[$this->tablePrefix.'document.title'] = array('like', '%'.$ext['keywords'].'%');
             }

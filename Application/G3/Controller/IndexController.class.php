@@ -181,7 +181,12 @@ class IndexController extends HomeController {
             $uri .= $l_province .'-'.$l_city .'-'.$l_area .'-'.$d_province .'-'.$d_city .'-'.$d_area .'-';
             //货源联系方式是否显示
             if($this->user){
-                $contact_res = hyContactLimit($this->user['uid'], $this->user['vip']);
+//                $contact_res = hyContactLimit($this->user['uid'], $this->user['vip']);
+                $contact_res = array(
+                    'goto_vip' => 0,
+                    'contact_show' => 1
+                );
+
             }else{
                 $contact_res['goto_login'] = 1;
                 $contact_res['contact_show'] = 0;
@@ -251,8 +256,12 @@ class IndexController extends HomeController {
 
         //货源联系方式是否显示
         if($this->user){
-            $contact_res = hyContactLimit($this->user['uid'], $this->user['vip']);
-            if($this->user['vip'] == 1) AddHyContactLimit($this->user['uid'], $id);
+//            $contact_res = hyContactLimit($this->user['uid'], $this->user['vip']);
+//            if($this->user['vip'] == 1) AddHyContactLimit($this->user['uid'], $id);
+            $contact_res = array(
+                'goto_vip' => 0,
+                'contact_show' => 1
+            );
         }else{
             $contact_res['goto_login'] = 1;
             $contact_res['contact_show'] = 0;

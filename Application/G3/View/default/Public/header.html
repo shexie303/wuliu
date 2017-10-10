@@ -8,9 +8,15 @@
                     <div class="swiper-wrapper">
                         <foreach name="banner" item="val">
                             <div class="swiper-slide">
-                                <a href="{$val.ad_url}" title="{$val.ad_title}">
-                                    <img src="{$val.ad_img}" alt="{$val.ad_title}" style="width:100%;height: 60px;">
-                                </a>
+                                <if condition="$val['ad_title'] eq '添加客服'">
+                                    <a href="javascript:///" title="添加客服" onclick="alert_kefu();">
+                                        <img src="{$val.ad_img}" alt="{$val.ad_title}" style="width:100%;height: 60px;">
+                                    </a>
+                                <else/>
+                                    <a href="{$val.ad_url}" title="{$val.ad_title}">
+                                        <img src="{$val.ad_img}" alt="{$val.ad_title}" style="width:100%;height: 60px;">
+                                    </a>
+                                </if>
                             </div>
                         </foreach>
                     </div>
@@ -40,7 +46,12 @@
                 </li>
             </ul>
         </section>
-
+        <script type="text/javascript" src="__STATIC__/layer/mobile/layer.js"></script>
+        <style>
+            .layui-m-layercont{
+                padding: 0;
+            }
+        </style>
         <script type="text/javascript">
             function submitSearch( e ){
                 var kw = $("#search").val();
@@ -50,6 +61,15 @@
                 }else{
                     $("#search_form").submit();
                 }
+            }
+            function alert_kefu(){
+                layer.open({
+                    title: [
+                        '联系客服',
+                        'background-color: #FF4351; color:#fff;'
+                    ]
+                    ,content: '<img style="width: 100%" src="__STATIC__/images/kefu.jpg"><p>请用微信扫描二维码，联系客服。</p>',
+                });
             }
         </script>
         <!-- 账户操作  -->

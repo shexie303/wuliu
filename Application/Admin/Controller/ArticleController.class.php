@@ -319,11 +319,11 @@ class ArticleController extends AdminController {
         if ( !isset($_GET['pid']) ) {
             $map['pid']    = 0;
         }
-        if ( isset($_GET['time-start']) ) {
-            $map['update_time'][] = array('egt',strtotime(I('time-start')));
+        if ( isset($_GET['time_start']) ) {
+            $map['update_time'][] = array('egt',strtotime(I('time_start')));
         }
-        if ( isset($_GET['time-end']) ) {
-            $map['update_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
+        if ( isset($_GET['time_end']) ) {
+            $map['update_time'][] = array('elt',24*60*60 + strtotime(I('time_end')));
         }
         if ( isset($_GET['nickname']) ) {
             $map['uid'] = M('Member')->where(array('nickname'=>I('nickname')))->getField('uid');

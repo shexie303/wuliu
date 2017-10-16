@@ -99,14 +99,14 @@
             <!-- 列表 -->
             <tbody>
                 <volist name="list" id="data">
-                    <tr>
+                    <tr class="list_a">
                         <td><input class="ids" type="checkbox" value="{$data['id']}" name="ids[]"></td>
                         <volist name="list_grids" id="grid">
-                            <td>{:get_list_field($data,$grid,$model_list)}</td>
+                            <td class="list_info">{:get_list_field($data,$grid,$model_list)}</td>
                         </volist>
                         <td>
                             <if condition="GROUP_ID lt 2">
-                                <a href="{:U('article/edit',array('cate_id'=>$cate_id,'id'=>$data['id']))}">编辑</a>
+                                <a  class="list_edit" href="{:U('article/edit',array('cate_id'=>$cate_id,'id'=>$data['id']))}">编辑</a>
                                 <a href="{:U('article/setstatus',array('status'=>-1,'ids'=>$data['id']))}">删除</a>
                             </if>
                         </td>
@@ -222,6 +222,14 @@
             minView:2,
             autoclose:true
         });
+        $('.list_a').each(function(e,q){
+            var i = (e*6) + 1;
+            var y = (e*4)+1;
+            var title = $('.list_info').eq(i).html();
+            var href = $('.list_edit').eq(e).attr('href');
+            $('.list_info').eq(i).html('<a href="'+href+'">'+title+'</a>')
+        });
+
     })
     </script>
 </block>

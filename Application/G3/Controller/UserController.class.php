@@ -80,6 +80,7 @@ class UserController extends HomeController {
                 $member = new MemberModel();
                 $arr = array(
                     'nickname'  => $username,
+                    'company'   => $username,
                     'contact'   => $contact,
                     'telephone' => $telephone,
                     'wechat'    => $wechat,
@@ -94,7 +95,7 @@ class UserController extends HomeController {
                     $group_obj = new AuthGroupModel();
                     if($group_obj->addToGroup($uid, $group)){
                         $core_arr = array(
-                            'title' => $title,
+                            'title' => $username.' '.$title,
                             'address' => $address,
                             'uid' => $uid,
                             'content' => $content,

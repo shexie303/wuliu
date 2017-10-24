@@ -244,6 +244,9 @@ class IndexController extends HomeController {
 
         $user_model = new \Admin\Model\MemberModel();
         $user = $user_model->getUserInfo($info['uid']);
+
+        $info['wechat'] = $user['wechat'];
+        $info['company'] = $user['company'];
         $info['vip'] = $user['vip'];
         $info['vip_zh'] = vipZh($user['vip']);
 

@@ -23,6 +23,7 @@
         <section style="text-align:center;padding:0px 10px 0px 10px;">
             <form id="submit_form" action="" method="post">
                 <ul style="list-style:none;padding:0px;margin:0px 0px 10px 0px;text-align:left;">
+                    <li style="font-size: 12px;margin-top: 5px;text-align: center;color: red">注册时请确认自身类型，生产厂家请选择生产厂家板块注册</li>
                     <li>
                         <input id="nickname" class="input_field" type="text" name="username" value="" placeholder="请输入公司名(登录帐号)，由3-30个字符组成">
                     </li>
@@ -58,7 +59,7 @@
                         </select>
                     </li>
                     <li id="content">
-                        <textarea name="content" class="textarea" style="text-indent:6px;height: 60px" placeholder="请描述业务介绍"></textarea>
+                        <textarea name="content" class="textarea" style="text-indent:6px;height: 60px" placeholder="请输入更多目的地"></textarea>
                     </li>
                     <li>
                         <input id="verify" class="input_field" style="width:50%;" type="text" name="verify" placeholder="看不清？点击图片刷新" value="">
@@ -105,11 +106,13 @@
                     $('#group').val(2);
                     $('#sccj').hide();
                 }else if($(this).index() == 1){
+                    $('.textarea').attr('placeholder','请输入业务介绍');
                     $('#content').show();
                     $('#sccj').show();
                     $('#group').val(3);
                     $('.wlzx').hide();
                 }else{
+                    $('.textarea').attr('placeholder','请输入更多目的地');
                     $('#content').show();
                     $('.wlzx').show();
                     $('#group').val(2);

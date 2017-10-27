@@ -220,6 +220,13 @@ class IndexController extends HomeController {
         //banner
         $banner = getCateBanner($category['id']);
         $this->assign('banner', $banner);
+        if($category['id'] < 6){
+            $search_placeholder = '专线';
+        }else{
+            $search_placeholder = '产品';
+        }
+        $this->assign('search_placeholder', $search_placeholder);
+
         if($category['id'] == 6){
             $this->display('Index/index_6');
         }else{

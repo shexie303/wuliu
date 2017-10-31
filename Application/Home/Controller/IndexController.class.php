@@ -216,6 +216,9 @@ class IndexController extends HomeController {
 
         $user_model = new MemberModel();
         $user = $user_model->getUserInfo($info['uid']);
+
+        $info['wechat'] = $user['wechat'];
+        $info['company'] = $user['company'];
         $info['vip'] = $user['vip'];
         $info['vip_zh'] = vipZh($user['vip']);
 
@@ -236,8 +239,12 @@ class IndexController extends HomeController {
 
         //货源联系方式是否显示
         if($this->user){
-            $contact_res = hyContactLimit($this->user['uid'], $this->user['vip']);
-            if($this->user['vip'] == 1) AddHyContactLimit($this->user['uid'], $id);
+//            $contact_res = hyContactLimit($this->user['uid'], $this->user['vip']);
+//            if($this->user['vip'] == 1) AddHyContactLimit($this->user['uid'], $id);
+            $contact_res = array(
+                'goto_vip' => 0,
+                'contact_show' => 1
+            );
         }else{
             $contact_res['goto_login'] = 1;
             $contact_res['contact_show'] = 0;

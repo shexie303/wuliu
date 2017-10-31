@@ -29,7 +29,12 @@
                                {$info.contact}
                            </eq>
                         </span>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span><img src="__IMG__/address.png" class="mr5" data-bd-imgshare-binded="1">{$info.address}</span>
+                        <span><img src="__IMG__/address.png" class="mr5" data-bd-imgshare-binded="1">{$info.address}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <notempty name="info.wechat">
+                            <span>
+                                <img src="/Public/G3/images/weixins.png" class="mr5" data-bd-imgshare-binded="1">{$info.wechat}
+                            </span>
+                        </notempty>
                     </div>
                     <div style="height:340px;">
                         <div class="fl" style="width:440px;">

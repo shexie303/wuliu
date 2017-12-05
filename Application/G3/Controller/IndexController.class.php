@@ -195,7 +195,12 @@ class IndexController extends HomeController {
         }
         $order = I('get.order', 1);
         if(!in_array($order, array(1,2,3))){
-            $order = 1;
+            //货源默认排序按照时间倒序
+            if($category['id'] == 7){
+                $order = 3;
+            }else{
+                $order = 1;
+            }
         }
         $this->assign('order_type', $order);
         $this->assign('order_name', $this->order[$order]);

@@ -110,7 +110,7 @@
             $.post(target,query).success(function(data){
                 if (data.status==1) {
                     if(layer_recharge == 1){
-                        layer.confirm('当前信息处于待审核状态，充值成为会员才可以通过审核！', {
+                        layer.confirm('当前您处于游客身份，充值成为会员排名更靠前！', {
                             btn: ['去充值', '取消'] //按钮
                         }, function(){
                             window.location.href = recharge_url;
